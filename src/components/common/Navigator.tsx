@@ -41,7 +41,7 @@ const menu: Record<string, MenuItem[]> = {
     },
     {
       title: "Download App",
-      href: "/app",
+      href: "#",
       description: "Manage and monitor your charging sessions easily.",
     },
   ],
@@ -54,12 +54,12 @@ const menu: Record<string, MenuItem[]> = {
     },
     {
       title: "Charging Types",
-      href: "/stations/types",
+      href: "#",
       description: "Fast chargers, standard chargers, and eBike docks.",
     },
     {
       title: "Supported Vehicles",
-      href: "/supported",
+      href: "#",
       description: "Compatible with eCars and eBikes.",
     },
   ],
@@ -72,21 +72,16 @@ const menu: Record<string, MenuItem[]> = {
     },
     {
       title: "Membership Plans",
-      href: "/pricing/plans",
+      href: "#",
       description: "Save more with our monthly plans.",
     },
     {
       title: "Promotions",
-      href: "/pricing/promos",
+      href: "#",
       description: "Exclusive offers and discounts.",
     },
   ],
   contact: [
-    {
-      title: "FAQs",
-      href: "/support/faqs",
-      description: "Answers to the most common questions.",
-    },
     {
       title: "Contact Form",
       href: "/contact",
@@ -94,8 +89,13 @@ const menu: Record<string, MenuItem[]> = {
     },
     {
       title: "Hotline & Email",
-      href: "/contact/info",
+      href: "#",
       description: "Reach our customer care team.",
+    },
+    {
+      title: "FAQs",
+      href: "#",
+      description: "Answers to the most common questions.",
     },
   ],
 };
@@ -129,6 +129,7 @@ export default function Navigator() {
             {Object.keys(menu).map((key) => (
               <DropdownMenuItem key={key} asChild>
                 <Link
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   href={`/${key === "home" ? "" : key}` as any}
                   className="w-full text-white hover:text-[#78A1BB] hover:bg-[#1B263B] focus:bg-[#1B263B]"
                   onClick={() => setIsOpen(false)}
@@ -148,9 +149,8 @@ export default function Navigator() {
             {Object.entries(menu).map(([key, items]) => (
               <NavigationMenuItem key={key}>
                 <NavigationMenuTrigger className="capitalize">
-                  <Link href={`/${key === "home" ? "" : key}` as any}>
-                    {key}
-                  </Link>
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                  <Link href={items[0]?.href as any}>{key}</Link>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2">
@@ -203,6 +203,7 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <Link href={href as any} className="flex flex-col gap-1">
           <div className="text-sm font-bold leading-none">{title}</div>
           <p className="text-muted-foreground text-sm leading-snug line-clamp-2">
