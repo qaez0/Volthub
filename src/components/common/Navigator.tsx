@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,11 +12,19 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
 import { Button } from "../ui/button";
 
 interface MenuItem {
@@ -107,39 +115,62 @@ export default function Navigator() {
     <Fragment>
       {/* Mobile Menu */}
       <div className="md:hidden">
-        <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-          <DropdownMenuTrigger asChild>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
             <Button
               variant="ghost"
               size="icon-sm"
               className="text-white hover:text-[#78A1BB]"
             >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="end"
-            className="w-56 bg-[#0D1B2A] border-none"
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="w-80 bg-[#0D1B2A] border-l border-[#1B263B] p-2 flex flex-col gap-2"
           >
-            {Object.keys(menu).map((key) => (
-              <DropdownMenuItem key={key} asChild>
-                <Link
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  href={`/${key === "home" ? "" : key}` as any}
-                  className="w-full text-white hover:text-[#78A1BB] hover:bg-[#1B263B] focus:bg-[#1B263B]"
-                  onClick={() => setIsOpen(false)}
+            <SheetHeader>
+              <SheetTitle>Volthub</SheetTitle>
+              <SheetDescription>
+                Electric power generation services
+              </SheetDescription>
+            </SheetHeader>
+            <Accordion type="single" collapsible className="w-full px-2">
+              {Object.entries(menu).map(([key, items]) => (
+                <AccordionItem
+                  key={key}
+                  value={key}
+                  className="border-b border-[#1B263B]"
                 >
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+                  <AccordionTrigger className="text-white hover:text-[#78A1BB] hover:no-underline py-4">
+                    <span className="text-left font-medium">
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="flex flex-col gap-2">
+                    {items.map((item) => (
+                      <Link
+                        key={item.title}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        href={item.href as any}
+                        className="block px-2 py-1 rounded-md text-white hover:text-[#78A1BB] hover:bg-[#1B263B] transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <div className="font-medium text-sm text-primary">
+                          {item.title}
+                        </div>
+                        <div className="text-xs text-gray-400 mt-1">
+                          {item.description}
+                        </div>
+                      </Link>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </SheetContent>
+        </Sheet>
       </div>
 
       {/* Desktop Menu */}
