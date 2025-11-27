@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "next-themes";
@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "VoltHub",
   description: "Electronic power generation services",
@@ -29,7 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" suppressHydrationWarning={true}>
       <body
-        className={cn(geistSans.variable, geistMono.variable, "antialiased")}
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          orbitron.variable,
+          "antialiased"
+        )}
       >
         <ThemeProvider
           attribute="class"

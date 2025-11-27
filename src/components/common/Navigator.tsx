@@ -194,7 +194,7 @@ export default function Navigator() {
                           }}
                           href={items[0]?.href || "/"}
                         >
-                          <div className="absolute inset-0 rounded-md bg-gradient-to-b from-black/20 to-black/60" />
+                          <div className="absolute inset-0 rounded-md bg-linear-to-b from-black/20 to-black/60" />
                           <div className="relative text-lg font-medium text-white">
                             {items[0]?.title || "Volthub"}
                           </div>

@@ -1,3 +1,5 @@
+/* stylelint-disable css/unknownAtRules */
+/* stylelint-disable at-rule-no-unknown */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -8,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-electric: var(--electric);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -69,17 +72,18 @@ html {
   --popover-foreground: var(--foreground);
 
   /* Brand colors */
-  --primary: oklch(0.54 0.18 140); /* La Palma green */
+  --primary: #1a7c11;
   --primary-foreground: oklch(0.98 0.02 95); /* near white text */
 
-  --secondary: oklch(0.93 0.05 95); /* light khaki */
+  --secondary: #ffd700;
   --secondary-foreground: oklch(0.18 0.04 140); /* dark fern text */
 
   /* Muted / Accent */
   --muted: oklch(0.96 0.02 95);
   --muted-foreground: oklch(0.63 0.02 95); /* grayish */
-  --accent: oklch(0.93 0.05 95);
+  --accent: #22c55e;
   --accent-foreground: oklch(0.18 0.04 140);
+  --electric: #15803d;
 
   /* Utility */
   --destructive: oklch(0.55 0.25 25);
@@ -153,5 +157,223 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron), "Orbitron", sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1a7c11, #22c55e, #ffd700);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+.neon-glow {
+  text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e, 0 0 40px #22c55e;
+}
+
+.glow-effect {
+  box-shadow: 0 0 30px rgba(26, 124, 17, 0.4), 0 0 60px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 40px rgba(26, 124, 17, 0.6), 0 0 80px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.floating-nav {
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(26, 124, 17, 0.3);
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.energy-wave {
+  background: linear-gradient(45deg, #1a7c11, #22c55e, #15803d, #ffd700);
+  background-size: 400% 400%;
+  animation: waveFlow 12s ease-in-out infinite;
+}
+
+.pulse-ring {
+  animation: pulseRing 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+.energy-flow {
+  position: relative;
+  overflow: hidden;
+}
+
+.energy-flow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ffd700,
+    #1a7c11,
+    transparent
+  );
+  animation: flowAnimation 4s linear infinite;
+  border-radius: 2px;
+}
+
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.parallax {
+  transform-style: preserve-3d;
+}
+
+.parallax-bg {
+  transform: translateZ(-1px) scale(2);
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid #ffd700;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes waveFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.33);
+    opacity: 1;
+  }
+  80%,
+  100% {
+    transform: scale(2.33);
+    opacity: 0;
+  }
+}
+
+@keyframes flowAnimation {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #ffd700;
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
