@@ -15,7 +15,7 @@ import {
 const leadershipStats = [
   { label: "Top 5%", value: "Global Renewable Firms" },
   { label: "$2.8B", value: "Project Value Delivered" },
-  { label: "ISO Certified", value: "Quality & Environment" },
+  // { label: "ISO Certified", value: "Quality & Environment" },
 ];
 
 const marketInsights = [
@@ -365,11 +365,11 @@ export default function About() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-5xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-5xl mx-auto items-center justify-center">
             <h3 className="text-lg font-semibold mb-6 text-center">
               Market Position & Industry Leadership
             </h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 place-items-center">
               {leadershipStats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <p className="text-3xl font-bold text-primary mb-1">
@@ -493,8 +493,8 @@ export default function About() {
       </section>
 
       <section className="bg-gray-50 py-20">
-        <LayoutContainer className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+        <LayoutContainer className="flex justify-center">
+          {/* <div className="bg-white rounded-2xl p-8 shadow-lg">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
               <RiMedalLine className="text-2xl text-secondary" />
               Certifications & Standards
@@ -509,8 +509,8 @@ export default function About() {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+          </div> */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl w-full">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
               <RiHandHeartLine className="text-2xl text-primary" />
               Strategic Partnerships
