@@ -151,7 +151,7 @@ export default function Contact() {
                       {
                         icon: RiMailLine,
                         title: "Email",
-                        detail: "info@volthub.com",
+                        detail: "joanna-admin@volthub-ev.com",
                       },
                       {
                         icon: RiMapPinLine,

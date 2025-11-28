@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
 interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
-  description?: string;
+  description?: string | ReactNode;
   align?: "left" | "center";
   taglineClassName?: string;
   titleClassName?: string;
@@ -45,9 +46,9 @@ const SectionHeading = ({
         {title}
       </h2>
       {description ? (
-        <p className={cn("text-lg text-gray-600", descriptionClassName)}>
+        <div className={cn("text-lg text-gray-600", descriptionClassName)}>
           {description}
-        </p>
+        </div>
       ) : null}
     </div>
   );

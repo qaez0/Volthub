@@ -151,9 +151,217 @@ export default function About() {
           <SectionHeading
             eyebrow="About VoltHub"
             title="Building the blueprint for a cleaner energy economy"
-            description="Founded in 2020, VoltHub accelerates the global shift to renewables with vertically integrated solar, storage, EV, and smart grid systems."
             align="center"
           />
+          
+          {/* Overview, Mission, Vision Triangle Layout */}
+          <div className="max-w-6xl mx-auto space-y-8">
+            {/* Overview - Top Center */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                OVERVIEW
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                <span className="font-bold">Volthhub Electric Power Generation Services Corporation</span> is a forward-looking energy technology company specializing in EV charging infrastructure, solar power systems, and smart energy solutions. We provide end-to-end services—from design, engineering, and installation to maintenance and system optimization—tailored for commercial, residential, and industrial clients. With a strong commitment to sustainability, Volthub integrates clean energy technologies such as solar-powered charging, battery storage, and intelligent energy management to support the growing demand for renewable-powered transportation. Our goal is to empower communities and businesses with reliable, efficient, and future-ready energy solutions that contribute to a cleaner, smarter, and more sustainable Philippines.
+              </p>
+            </div>
+
+            {/* Mission and Vision - Side by Side */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Mission */}
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                  MISSION
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                <span className="font-bold">Volthhub Electric Power Generation Services Corporation</span> is committed to revolutionizing the energy sector by delivering cutting-edge electronic solutions for power generation. We specialize in sustainable, efficient, and smart energy technologies that empower industries, homes, and communities with reliable, cost-effective electricity. Our mission is to foster a cleaner energy future through the integration of renewable sources, smart grid technology, and energy storage solutions.
+                </p>
+              </div>
+
+              {/* Vision */}
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                  VISION
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  To be a global leader in electric power generation, pioneering advanced technologies that redefine energy production. We aim to lead the transition to renewable energy, delivering smart, scalable solutions that foster sustainability, enhance grid stability, and contribute to a brighter, cleaner future for all.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Who We Are, What We Are, What We Do Cards */}
+          <div className="max-w-6xl mx-auto space-y-8">
+            {/* Who We Are */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                Who We Are
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                <span className="font-bold">Volthub Electric Power Generation Services Corporation</span> is a progressive energy-technology company dedicated to advancing the future of clean power and sustainable transportation. We specialize in delivering integrated solutions—combining EV charging systems, solar power generation, and smart energy technologies—that empower communities, businesses, and cities to transition toward a greener, more efficient future.
+                <br />
+                <br />
+                We believe in innovation with purpose: creating energy solutions that are reliable, accessible, and environmentally responsible.
+              </p>
+            </div>
+
+            {/* What We Are */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                What We Are
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                We are a renewable energy and electric mobility solutions provider committed to building a cleaner, smarter, and more sustainable Philippines. Volthub bridges the gap between traditional energy systems and modern electric mobility by offering solar-integrated EV chargers, energy-efficient technologies, and future-ready infrastructures designed for rapid urban development.
+              </p>
+            </div>
+
+            {/* What We Do */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                What We Do
+              </h3>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                At Volthub, we provide end-to-end energy and mobility solutions through:
+              </p>
+              <div className="text-left space-y-4 text-gray-700">
+                <div>
+                  <span className="font-bold text-gray-900">• EV Charging Infrastructure</span>
+                  <br />
+                  <span className="text-gray-700">Installation of AC and DC chargers   Solar-powered charging hubs
+                  Smart metering and monitoring systems
+                  Commercial, residential, and fleet solutions</span>
+                </div>
+                <div>
+                  <span className="font-bold text-gray-900">• Solar Power Systems</span>
+                  <br />
+                  <span className="text-gray-700">Rooftop solar installations
+                  Solar integration for charging stations
+                  Solar farms for large-scale power supply
+                  Engineering, procurement & construction (EPC) services</span>
+                </div>
+                <div>
+                  <span className="font-bold text-gray-900">• Smart Energy Technologies</span>
+                  <br />
+                  <span className="text-gray-700">Energy management systems (EMS)  Battery storage and hybrid systems  Vehicle-to-Grid (V2G) development  Internet-of-Energy (IoE) innovations</span>
+                </div>
+                <div>
+                  <span className="font-bold text-gray-900">• Technical Services</span>
+                  <br />
+                  <span className="text-gray-700">Preventive maintenance
+                  System inspection and commissioning  Electrical & mechanical upgrades
+                  Compliance support with building and government agencies</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* History Section */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-6xl mx-auto">
+            <h3 className="text-2xl font-bold text-primary mb-6 text-center">
+              HISTORY
+            </h3>
+            
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <p>
+                The idea for Volthub was born out of the founders' shared vision to address two urgent global needs: the growth of electric mobility and the demand for renewable energy. Inspired by rapid EV adoption and the environmental cost of fossil fuels, the team began designing solutions that merge solar power with charging infrastructure.
+              </p>
+
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">January 2025 – Incorporation</h4>
+                  <p>
+                    Volthub Electric Power Generation Services Corporation was officially incorporated on January 17, 2025 in Taguig City, Philippines. The company was founded by David Zhang, Vincent Paul Lim Oo, and Atty. Maria Evita R. Igot, combining expertise in energy systems, finance, and technology.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">Early 2025 – Strategic Planning & Partnerships</h4>
+                  <p>
+                    The team laid out its roadmap, focusing on the deployment of solar-powered EV hubs, large-scale solar panel installations, advanced energy storage systems, and smart grid integration. Strategic partnerships were established with renewable energy providers, solar technology innovators, and local stakeholders to enhance capability in solar generation and accelerate the shift toward cleaner, more sustainable mobility solutions.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">Mid 2025 – Pilot Development</h4>
+                  <p>
+                    Volthub began development of its first solar-powered EV charging prototypes, integrating fast-charging technology with renewable energy storage solutions.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h4 className="font-bold text-gray-900 text-xl mb-4">Future Goals (2026 and beyond)</h4>
+                <div className="space-y-4">
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-2">Expansion of Solar-Integrated Charging Networks Nationwide</h5>
+                    <p>
+                      Strengthen the rollout of EV charging stations across the Philippines powered by solar-energy systems, reducing dependence on grid electricity and promoting sustainable mobility.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-2">Development of Vehicle-to-Grid (V2G) Technology for Smart Cities</h5>
+                    <p>
+                      Advance V2G capabilities that allow electric vehicles to store, discharge, and supply energy back to the grid—supporting smart city infrastructure and grid stability.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-2">Regional Expansion in Southeast Asia to Promote Renewable-Powered Transportation</h5>
+                    <p>
+                      Position Volthub as a regional leader by expanding EV-charging infrastructure into neighboring Southeast Asian countries, focusing on renewable-powered and smart-technology solutions.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-2">Large-Scale Deployment and Innovation of Solar Panel Technologies (NEW – for solar panel future goals)</h5>
+                    <p className="mb-2">
+                      Accelerate the adoption of advanced solar panel technologies to power EV chargers, office facilities, and large commercial installations. This includes:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>Integrating high-efficiency mono-PERC and bifacial panels</li>
+                      <li>Establishing solar farms dedicated for EV charging hubs</li>
+                      <li>Investing in R&D for improved durability and efficiency in tropical climates</li>
+                      <li>Partnering with local and global solar manufacturers for technology transfer</li>
+                      <li>Supporting nationwide solar rooftop programs for cleaner, decentralized energy</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-2">Established:</p>
+                    <p>January 17, 2025</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-2">Address:</p>
+                    <p>Unit 2503, High Street South Corporate Plaza Tower 2, Bonifacio Global City, Taguig</p>
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-3">Incorporators:</p>
+                    <div className="space-y-2">
+                      <p><span className="font-semibold">President/CEO:</span> Vincent Paul Lim Oo</p>
+                      <p><span className="font-semibold">Vice President/COO:</span> Atty. Maria Evita R. Igot</p>
+                    </div>
+                  </div>
+                  <div>
+                    <img
+                      src="/volthub_map.png"
+                      alt="Volthub Location Map"
+                      className="max-w-full h-auto rounded-lg shadow-md"
+                      style={{ width: 'auto', height: 'auto' }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="bg-white rounded-2xl shadow-xl p-8 max-w-5xl mx-auto">
             <h3 className="text-lg font-semibold mb-6 text-center">
               Market Position & Industry Leadership
