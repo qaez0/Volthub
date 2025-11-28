@@ -1,6 +1,5 @@
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
-import Image from "next/image";
 import {
   RiLightbulbLine,
   RiShieldCheckLine,
@@ -264,7 +263,7 @@ export default function About() {
             
             <div className="space-y-6 text-gray-700 leading-relaxed">
               <p>
-                The idea for Volthub was born out of the founders&rsquo; shared vision to address two urgent global needs: the growth of electric mobility and the demand for renewable energy. Inspired by rapid EV adoption and the environmental cost of fossil fuels, the team began designing solutions that merge solar power with charging infrastructure.
+                The idea for Volthub was born out of the founders' shared vision to address two urgent global needs: the growth of electric mobility and the demand for renewable energy. Inspired by rapid EV adoption and the environmental cost of fossil fuels, the team began designing solutions that merge solar power with charging infrastructure.
               </p>
 
               <div className="space-y-4">
@@ -350,14 +349,12 @@ export default function About() {
                       <p><span className="font-semibold">Vice President/COO:</span> Atty. Maria Evita R. Igot</p>
                     </div>
                   </div>
-                  <div className="relative w-full h-64">
-                    <Image
+                  <div>
+                    <img
                       src="/volthub_map.png"
                       alt="Volthub Location Map"
-                      fill
-                      className="object-contain rounded-lg shadow-md"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
+                      className="max-w-full h-auto rounded-lg shadow-md"
+                      style={{ width: 'auto', height: 'auto' }}
                     />
                   </div>
                 </div>
