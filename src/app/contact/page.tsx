@@ -13,10 +13,10 @@ import {
 } from "react-icons/ri";
 
 const socialIcons = [
-  { icon: RiLinkedinFill, href: "#" },
-  { icon: RiTwitterFill, href: "#" },
-  { icon: RiFacebookFill, href: "#" },
-  { icon: RiInstagramLine, href: "#" },
+  { icon: RiLinkedinFill, href: "https://linkedin.com" },
+  { icon: RiTwitterFill, href: "https://twitter.com" },
+  { icon: RiFacebookFill, href: "https://facebook.com" },
+  { icon: RiInstagramLine, href: "https://instagram.com" },
 ];
 
 export default function Contact() {
@@ -146,7 +146,7 @@ export default function Contact() {
                       {
                         icon: RiPhoneLine,
                         title: "Phone",
-                        detail: "+1 (555) 123-4567",
+                        detail: "+63 9659700823",
                       },
                       {
                         icon: RiMailLine,
@@ -156,7 +156,9 @@ export default function Contact() {
                       {
                         icon: RiMapPinLine,
                         title: "Address",
-                        detail: "123 Energy Drive, San Francisco, CA 94105",
+                        detail: "High Street South Corporate Plaza Tower 2. 11th Ave", 
+                        detail2:"Taguig, Metro Manila",
+                        detail3:"Philippines",
                       },
                     ].map((item) => (
                       <div key={item.title} className="flex items-center gap-4">
@@ -166,6 +168,8 @@ export default function Contact() {
                         <div>
                           <p className="font-semibold">{item.title}</p>
                           <p className="text-blue-100 text-sm">{item.detail}</p>
+                          <p className="text-blue-100 text-sm">{item.detail2}</p>
+                          <p className="text-blue-100 text-sm">{item.detail3}</p>
                         </div>
                       </div>
                     ))}

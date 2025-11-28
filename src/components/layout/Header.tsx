@@ -160,7 +160,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center space-x-6">
           <span className="text-sm font-orbitron text-emerald-200 tracking-widest">
-            +1 (555) 123-4567
+          +63 9659700823
           </span>
           <Link
             href="/contact"
