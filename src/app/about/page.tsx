@@ -1,5 +1,6 @@
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
+import Image from "next/image";
 import {
   RiLightbulbLine,
   RiShieldCheckLine,
@@ -7,7 +8,7 @@ import {
   RiRocketLine,
   RiCarLine,
   RiCpuLine,
-  RiMedalLine,
+  //RiMedalLine,
   RiHandHeartLine,
 } from "react-icons/ri";
 
@@ -135,7 +136,7 @@ const timeline = [
   },
 ];
 
-const certifications = ["ISO 9001", "ISO 14001", "IEC 61215", "UL Listed"];
+// const certifications = ["ISO 9001", "ISO 14001", "IEC 61215", "UL Listed"];
 const partnerships = [
   { name: "Tesla Energy", detail: "Battery Technology" },
   { name: "Microsoft Azure", detail: "Cloud & AI" },
@@ -263,7 +264,7 @@ export default function About() {
             
             <div className="space-y-6 text-gray-700 leading-relaxed">
               <p>
-                The idea for Volthub was born out of the founders' shared vision to address two urgent global needs: the growth of electric mobility and the demand for renewable energy. Inspired by rapid EV adoption and the environmental cost of fossil fuels, the team began designing solutions that merge solar power with charging infrastructure.
+                The idea for Volthub was born out of the founders&apos; shared vision to address two urgent global needs: the growth of electric mobility and the demand for renewable energy. Inspired by rapid EV adoption and the environmental cost of fossil fuels, the team began designing solutions that merge solar power with charging infrastructure.
               </p>
 
               <div className="space-y-4">
@@ -350,11 +351,12 @@ export default function About() {
                     </div>
                   </div>
                   <div>
-                    <img
+                    <Image
                       src="/volthub_map.png"
                       alt="Volthub Location Map"
+                      width={800}
+                      height={600}
                       className="max-w-full h-auto rounded-lg shadow-md"
-                      style={{ width: 'auto', height: 'auto' }}
                     />
                   </div>
                 </div>
