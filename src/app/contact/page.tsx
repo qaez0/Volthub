@@ -164,10 +164,10 @@ export default function Contact() {
 
               <div className="space-y-10">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-6">
+                  <h3 className="text-2xl font-bold mb-6">
                     Contact Information
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-6 font-bold ">
                     {[
                       {
                         icon: RiPhoneLine,
@@ -189,21 +189,21 @@ export default function Contact() {
                     ].map((item) => (
                       <div
                         key={item.title}
-                        className="flex items-center gap-4 bg-black/55 rounded-2xl px-4 py-3 shadow-lg"
+                        className="flex items-center gap-4 px-4 py-3"
                       >
-                        <span className="w-12 h-12 rounded-xl bg-secondary/30 flex items-center justify-center">
-                          <item.icon className="text-xl text-secondary" />
+                        <span className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center border-2 border-secondary">
+                          <item.icon className="text-xl gradient-text [-webkit-text-stroke:1px_rgba(0,0,0,0.3)] [text-stroke:1px_rgba(0,0,0,0.3)]" />
                         </span>
                         <div className="leading-snug">
-                          <p className="font-semibold text-white text-base">
+                          <p className="font-semibold text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">
                             {item.title}
                           </p>
-                          <p className="text-white text-sm">{item.detail}</p>
+                          <p className="text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">{item.detail}</p>
                           {item.detail2 && (
-                            <p className="text-white text-sm">{item.detail2}</p>
+                            <p className="text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">{item.detail2}</p>
                           )}
                           {item.detail3 && (
-                            <p className="text-white text-sm">{item.detail3}</p>
+                            <p className="text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">{item.detail3}</p>
                           )}
                         </div>
                       </div>

@@ -478,7 +478,7 @@ export default function About() {
         </LayoutContainer>
       </section>
 
-      <section className="py-20">
+      <section className="pt-12">
         <LayoutContainer className="space-y-12">
           <SectionHeading
             title="VoltHub Global Operations"
@@ -514,7 +514,7 @@ export default function About() {
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="flex gap-6 overflow-x-auto pb-4 snap-x">
+            <div className="flex gap-6 overflow-x-auto snap-x">
               {operationsHighlights.map((item) => (
                 <div
                   key={item.title}
@@ -596,7 +596,7 @@ export default function About() {
         </LayoutContainer>
       </section> */}
 
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 pb-10 mt-[-30px] ">
         <LayoutContainer className="flex justify-center">
           {/* <div className="bg-white rounded-2xl p-8 shadow-lg">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
@@ -614,7 +614,7 @@ export default function About() {
               ))}
             </div>
           </div> */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl w-full">
+          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl w-full ">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
               <RiHandHeartLine className="text-2xl text-primary" />
               Strategic Partnerships
