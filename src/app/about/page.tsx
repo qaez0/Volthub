@@ -196,7 +196,7 @@ export default function About() {
             {/* Who We Are */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
-                Who We Are
+                WHO WE ARE
               </h3>
               <p className="text-gray-700 leading-relaxed">
                 <span className="font-bold">Volthub Electric Power Generation Services Corporation</span> is a progressive energy-technology company dedicated to advancing the future of clean power and sustainable transportation. We specialize in delivering integrated solutions—combining EV charging systems, solar power generation, and smart energy technologies—that empower communities, businesses, and cities to transition toward a greener, more efficient future.
@@ -209,7 +209,7 @@ export default function About() {
             {/* What We Are */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
-                What We Are
+                WHAT WE ARE
               </h3>
               <p className="text-gray-700 leading-relaxed">
                 We are a renewable energy and electric mobility solutions provider committed to building a cleaner, smarter, and more sustainable Philippines. Volthub bridges the gap between traditional energy systems and modern electric mobility by offering solar-integrated EV chargers, energy-efficient technologies, and future-ready infrastructures designed for rapid urban development.
@@ -219,7 +219,7 @@ export default function About() {
             {/* What We Do */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
-                What We Do
+                WHAT WE DO
               </h3>
               <p className="text-gray-700 leading-relaxed mb-4">
                 At Volthub, we provide end-to-end energy and mobility solutions through:

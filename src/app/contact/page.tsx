@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type React from "react";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import {
   RiMailLine,
@@ -28,6 +29,7 @@ export default function Contact() {
     interest: "",
     details: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -36,21 +38,44 @@ export default function Contact() {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("We received your request and will be in touch shortly!");
-    setFormState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      interest: "",
-      details: "",
-    });
+
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      alert("Your request has been sent to our team. We'll be in touch shortly.");
+
+      setFormState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        interest: "",
+        details: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong while sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <main className="pt-32">
+    <main className="pt-10">
       <section
         className="relative py-20 text-white bg-cover bg-center"
         style={{
@@ -58,7 +83,7 @@ export default function Contact() {
             "url('https://readdy.ai/api/search-image?query=futuristic%20sustainable%20city%20skyline%20at%20sunset%20with%20renewable%20energy%20infrastructure%2C%20solar%20panels%20and%20wind%20turbines%2C%20clean%20modern%20architecture%2C%20warm%20golden%20lighting%2C%20professional%20corporate%20background&width=1920&height=600&seq=contact001&orientation=landscape')",
         }}
       >
-        <div className="absolute inset-0 bg-primary/85" />
+        <div className="absolute inset-0 backdrop-blur"/>
         <div className="relative">
           <LayoutContainer className="space-y-14">
             <div className="text-center space-y-4">
@@ -75,7 +100,7 @@ export default function Contact() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+              <div className="bg-black/50 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
                 <h3 className="text-2xl font-semibold mb-6">Get Your Quote</h3>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid md:grid-cols-2 gap-4">
@@ -129,9 +154,10 @@ export default function Contact() {
                   />
                   <button
                     type="submit"
-                    className="w-full bg-secondary text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-300 transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full bg-secondary text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-300 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Quote Request
+                    {isSubmitting ? "Sending..." : "Send Quote Request"}
                   </button>
                 </form>
               </div>
@@ -161,15 +187,24 @@ export default function Contact() {
                         detail3:"Philippines",
                       },
                     ].map((item) => (
-                      <div key={item.title} className="flex items-center gap-4">
-                        <span className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center">
+                      <div
+                        key={item.title}
+                        className="flex items-center gap-4 bg-black/55 rounded-2xl px-4 py-3 shadow-lg"
+                      >
+                        <span className="w-12 h-12 rounded-xl bg-secondary/30 flex items-center justify-center">
                           <item.icon className="text-xl text-secondary" />
                         </span>
-                        <div>
-                          <p className="font-semibold">{item.title}</p>
-                          <p className="text-blue-100 text-sm">{item.detail}</p>
-                          <p className="text-blue-100 text-sm">{item.detail2}</p>
-                          <p className="text-blue-100 text-sm">{item.detail3}</p>
+                        <div className="leading-snug">
+                          <p className="font-semibold text-white text-base">
+                            {item.title}
+                          </p>
+                          <p className="text-white text-sm">{item.detail}</p>
+                          {item.detail2 && (
+                            <p className="text-white text-sm">{item.detail2}</p>
+                          )}
+                          {item.detail3 && (
+                            <p className="text-white text-sm">{item.detail3}</p>
+                          )}
                         </div>
                       </div>
                     ))}
