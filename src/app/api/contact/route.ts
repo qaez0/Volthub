@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       from: `"${firstName} ${lastName} via VoltHub" <${
         process.env.SMTP_FROM || process.env.SMTP_USER
       }>`,
-      to: "ella587620@gmail.com",
+      to: "admin-help@volthub-ev.com",
       subject,
       text: body,
       // This makes replies go directly to the email entered in the form
