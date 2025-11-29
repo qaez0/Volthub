@@ -146,7 +146,7 @@ const partnerships = [
 
 export default function About() {
   return (
-    <main className="pt-32 space-y-20 bg-white">
+    <main className="pt-32 space-y-20 bg-gray-50">
       <section id="overview" className="pt-12">
         <LayoutContainer className="space-y-16">
           <SectionHeading
@@ -159,7 +159,7 @@ export default function About() {
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Overview - Top Center */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                 OVERVIEW
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -171,7 +171,7 @@ export default function About() {
             <div className="grid md:grid-cols-2 gap-6">
               {/* Mission */}
               <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                   MISSION
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -181,7 +181,7 @@ export default function About() {
 
               {/* Vision */}
               <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+                <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                   VISION
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -195,7 +195,7 @@ export default function About() {
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Who We Are */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                 Who We Are
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -208,7 +208,7 @@ export default function About() {
 
             {/* What We Are */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                 What We Are
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -218,7 +218,7 @@ export default function About() {
 
             {/* What We Do */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4 text-center">
+              <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                 What We Do
               </h3>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -258,7 +258,7 @@ export default function About() {
 
           {/* History Section */}
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-6xl mx-auto">
-            <h3 className="text-2xl font-bold text-primary mb-6 text-center">
+            <h3 className="text-2xl font-bold text-primary mb-6 text-center gradient-text">
               HISTORY
             </h3>
             
