@@ -1,6 +1,6 @@
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
-import Image from "next/image";
+import LocationMapWrapper from "@/components/common/LocationMapWrapper";
 import {
   RiLightbulbLine,
   RiShieldCheckLine,
@@ -45,10 +45,10 @@ const operationsHighlights = [
   {
     title: "Global Presence",
     description:
-      "Operating in 25+ countries with 12 manufacturing facilities across four continents.",
+      "Operating in 25+ countries with 12 manufacturing facilities across Southeast Asia.",
     metric: "25+ Countries",
-    subtext: "12 Manufacturing Facilities",
-  },
+    subtext: "12 Manufacturing Facilities in Southeast Asia",
+  },  
   {
     title: "Expert Team",
     description:
@@ -351,13 +351,7 @@ export default function About() {
                     </div>
                   </div>
                   <div>
-                    <Image
-                      src="/volthub_map.png"
-                      alt="Volthub Location Map"
-                      width={800}
-                      height={600}
-                      className="max-w-full h-auto rounded-lg shadow-md"
-                    />
+                    <LocationMapWrapper />
                   </div>
                 </div>
               </div>
@@ -428,7 +422,7 @@ export default function About() {
         </LayoutContainer>
       </section>
 
-      <section className="bg-gray-50 py-20">
+      {/* <section className="bg-gray-50 py-20">
         <LayoutContainer className="space-y-10">
           <div className="grid md:grid-cols-3 gap-8">
             {pillars.map((pillar) => (
@@ -447,9 +441,9 @@ export default function About() {
             ))}
           </div>
         </LayoutContainer>
-      </section>
+      </section> */}
 
-      <section id="timeline" className="py-20">
+      {/* <section id="timeline" className="py-20">
         <LayoutContainer className="space-y-12">
           <SectionHeading
             title="Our Journey & Milestones"
@@ -489,7 +483,7 @@ export default function About() {
             ))}
           </div>
         </LayoutContainer>
-      </section>
+      </section> */}
 
       <section className="bg-gray-50 py-20">
         <LayoutContainer className="flex justify-center">
