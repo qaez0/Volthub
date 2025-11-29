@@ -1,6 +1,7 @@
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import LocationMapWrapper from "@/components/common/LocationMapWrapper";
+import Image from "next/image";
 import {
   RiLightbulbLine,
   RiShieldCheckLine,
@@ -165,6 +166,15 @@ export default function About() {
               <p className="text-gray-700 leading-relaxed">
                 <span className="font-bold">Volthhub Electric Power Generation Services Corporation</span> is a forward-looking energy technology company specializing in EV charging infrastructure, solar power systems, and smart energy solutions. We provide end-to-end services—from design, engineering, and installation to maintenance and system optimization—tailored for commercial, residential, and industrial clients. With a strong commitment to sustainability, Volthub integrates clean energy technologies such as solar-powered charging, battery storage, and intelligent energy management to support the growing demand for renewable-powered transportation. Our goal is to empower communities and businesses with reliable, efficient, and future-ready energy solutions that contribute to a cleaner, smarter, and more sustainable Philippines.
               </p>
+              {/* <div className="mb-6 rounded-xl overflow-hidden max-w-xs mx-auto">
+                <Image
+                  src="/aboutimages/solarpanels.jpg"
+                  alt="Solar panels installation"
+                  width={200}
+                  height={100}
+                  className="w-full h-auto"
+                />
+              </div> */}
             </div>
 
             {/* Mission and Vision - Side by Side */}
@@ -221,36 +231,80 @@ export default function About() {
               <h3 className="text-2xl font-bold text-primary mb-4 text-center gradient-text">
                 WHAT WE DO
               </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-6">
                 At Volthub, we provide end-to-end energy and mobility solutions through:
               </p>
-              <div className="text-left space-y-4 text-gray-700">
-                <div>
-                  <span className="font-bold text-gray-900">• EV Charging Infrastructure</span>
-                  <br />
-                  <span className="text-gray-700">Installation of AC and DC chargers   Solar-powered charging hubs
-                  Smart metering and monitoring systems
-                  Commercial, residential, and fleet solutions</span>
+              <div className="text-left space-y-6 text-gray-700">
+                <div className="grid md:grid-cols-2 gap-4 items-center">
+                  <div>
+                    <span className="font-bold text-gray-900">• EV Charging Infrastructure</span>
+                    <br />
+                    <span className="text-gray-700">Installation of AC and DC chargers   Solar-powered charging hubs
+                    Smart metering and monitoring systems
+                    Commercial, residential, and fleet solutions</span>
+                  </div>
+                  <div className="rounded-xl overflow-hidden max-w-xs">
+                    <Image
+                      src="/aboutimages/ev-charging.jpg"
+                      alt="EV Charging Infrastructure"
+                      width={400}
+                      height={300}
+                      className="w-full h-auto"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <span className="font-bold text-gray-900">• Solar Power Systems</span>
-                  <br />
-                  <span className="text-gray-700">Rooftop solar installations
-                  Solar integration for charging stations
-                  Solar farms for large-scale power supply
-                  Engineering, procurement & construction (EPC) services</span>
+                <div className="grid md:grid-cols-2 gap-4 items-center">
+                  <div className="rounded-xl overflow-hidden max-w-xs order-2 md:order-1">
+                    <Image
+                      src="/aboutimages/solarpanels2.jpg"
+                      alt="Solar Power Systems"
+                      width={400}
+                      height={300}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="order-1 md:order-2">
+                    <span className="font-bold text-gray-900">• Solar Power Systems</span>
+                    <br />
+                    <span className="text-gray-700">Rooftop solar installations
+                    Solar integration for charging stations
+                    Solar farms for large-scale power supply
+                    Engineering, procurement & construction (EPC) services</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="font-bold text-gray-900">• Smart Energy Technologies</span>
-                  <br />
-                  <span className="text-gray-700">Energy management systems (EMS)  Battery storage and hybrid systems  Vehicle-to-Grid (V2G) development  Internet-of-Energy (IoE) innovations</span>
+                <div className="grid md:grid-cols-2 gap-4 items-center">
+                  <div>
+                    <span className="font-bold text-gray-900">• Smart Energy Technologies</span>
+                    <br />
+                    <span className="text-gray-700">Energy management systems (EMS)  Battery storage and hybrid systems  Vehicle-to-Grid (V2G) development  Internet-of-Energy (IoE) innovations</span>
+                  </div>
+                  <div className="rounded-xl overflow-hidden max-w-xs">
+                    <Image
+                      src="/aboutimages/storagesystems.jpg"
+                      alt="Smart Energy Technologies"
+                      width={400}
+                      height={300}
+                      className="w-full h-auto"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <span className="font-bold text-gray-900">• Technical Services</span>
-                  <br />
-                  <span className="text-gray-700">Preventive maintenance
-                  System inspection and commissioning  Electrical & mechanical upgrades
-                  Compliance support with building and government agencies</span>
+                <div className="grid md:grid-cols-2 gap-4 items-center">
+                  <div className="rounded-xl overflow-hidden max-w-xs order-2 md:order-1">
+                    <Image
+                      src="/aboutimages/workshop.jpg"
+                      alt="Technical Services"
+                      width={400}
+                      height={300}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="order-1 md:order-2">
+                    <span className="font-bold text-gray-900">• Technical Services</span>
+                    <br />
+                    <span className="text-gray-700">Preventive maintenance
+                    System inspection and commissioning  Electrical & mechanical upgrades
+                    Compliance support with building and government agencies</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -262,11 +316,19 @@ export default function About() {
               HISTORY
             </h3>
             
-            <div className="space-y-6 text-gray-700 leading-relaxed">
+            <div className="space-y-6 text-gray-700 leading-relaxed">            
               <p>
                 The idea for Volthub was born out of the founders&apos; shared vision to address two urgent global needs: the growth of electric mobility and the demand for renewable energy. Inspired by rapid EV adoption and the environmental cost of fossil fuels, the team began designing solutions that merge solar power with charging infrastructure.
               </p>
-
+              <div className="mb-6 rounded-xl overflow-hidden max-w-xs mx-auto">
+                <Image
+                  src="/aboutimages/factory.jpg"
+                  alt="VoltHub Factory"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
               <div className="space-y-4">
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2">January 2025 – Incorporation</h4>
@@ -284,6 +346,26 @@ export default function About() {
 
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2">Mid 2025 – Pilot Development</h4>
+                  <div className="grid md:grid-cols-2 gap-4 my-4">
+                    <div className="rounded-xl overflow-hidden max-w-xs mx-auto">
+                      <Image
+                        src="/aboutimages/solarpanelsworkshop.jpg"
+                        alt="Pilot Development"
+                        width={400}
+                        height={300}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <div className="rounded-xl overflow-hidden max-w-xs mx-auto">
+                      <Image
+                        src="/aboutimages/unbuildedsolarpanels.jpg"
+                        alt="Solar Panel Development"
+                        width={400}
+                        height={300}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  </div>
                   <p>
                     Volthub began development of its first solar-powered EV charging prototypes, integrating fast-charging technology with renewable energy storage solutions.
                   </p>
@@ -402,6 +484,35 @@ export default function About() {
             title="VoltHub Global Operations"
             description="High-performance delivery backed by engineering rigor and customer obsession."
           />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="rounded-xl overflow-hidden max-w-xs mx-auto">
+              <Image
+                src="/aboutimages/solarstreetlight.jpg"
+                alt="Solar Street Light"
+                width={400}
+                height={300}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-xl overflow-hidden max-w-xs mx-auto">
+              <Image
+                src="/aboutimages/solarstreetlightwithcctv.jpg"
+                alt="Solar Street Light with CCTV"
+                width={400}
+                height={300}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-xl overflow-hidden max-w-xs mx-auto">
+              <Image
+                src="/aboutimages/solartrafficlight.jpg"
+                alt="Solar Traffic Light"
+                width={400}
+                height={300}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
           <div className="overflow-hidden">
             <div className="flex gap-6 overflow-x-auto pb-4 snap-x">
               {operationsHighlights.map((item) => (
