@@ -15,21 +15,26 @@ const footerColumns = [
   {
     heading: "Products",
     links: [
-      { label: "Solar Systems", href: { pathname: "/products", hash: "solar" } },
-      { label: "EV Chargers", href: { pathname: "/products", hash: "ev" } },
+      { 
+        label: "EV Charging Equipment", 
+        href: { pathname: "/products", hash: "ev" } },
+      {
+        label: "Solar Energy Systems",
+        href: { pathname: "/products", hash: "storage" },
+      },
       {
         label: "Energy Storage",
         href: { pathname: "/products", hash: "storage" },
       },
       {
         label: "Smart Lighting",
-        href: { pathname: "/products", hash: "smart-controls" },
+        href: { pathname: "/products", hash: "storage" },
       },
-      { label: "Solar Fans", href: { pathname: "/products", hash: "featured" } },
+      // { label: "Solar Fans", href: { pathname: "/products", hash: "featured" } },
     ],
   },
   {
-    heading: "Solutions",
+    heading: "Sectors",
     links: [
       { label: "Residential", href: { pathname: "/solutions", hash: "flow" } },
       {
@@ -51,12 +56,34 @@ const footerColumns = [
     ],
   },
   {
+    heading: "Services",
+    links: [
+      { label: "EV Charging Solutions", href: { pathname: "/solutions", hash: "flow" } },
+      {
+        label: "Solar Energy Installation",
+        href: { pathname: "/case-studies", hash: "industrial" },
+      },
+      // {
+      //   label: "Industrial",
+      //   href: { pathname: "/case-studies", hash: "industrial" },
+      // },
+      // {
+      //   label: "Smart Cities",
+      //   href: { pathname: "/case-studies", hash: "smart-cities" },
+      // },
+      // {
+      //   label: "Rural Projects",
+      //   href: { pathname: "/case-studies", hash: "rural" },
+      // },
+    ],
+  },
+  {
     heading: "Company",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "Careers", href: "/contact" },
-      { label: "News", href: { pathname: "/about", hash: "insights" } },
+      // { label: "Case Studies", href: "/case-studies" },
+      // { label: "Careers", href: "/contact" },
+      // { label: "News", href: { pathname: "/about", hash: "insights" } },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -69,7 +96,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <LayoutContainer>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid md:grid-cols-1 lg:grid-cols-5 gap-5 mb-12">
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <span className="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center">
@@ -131,9 +158,9 @@ const Footer = () => {
             <a href="#" className="hover:text-white transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            {/* <a href="#" className="hover:text-white transition-colors">
               Cookie Policy
-            </a>
+            </a> */}
           </div>
         </div>
       </LayoutContainer>

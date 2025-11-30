@@ -36,13 +36,25 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Solutions",
+    label: "Sectors",
+    href: "/solutions",
+    description: "Smart energy architecture and technical data",
+    dropdown: [
+      { label: "Residential", href: "/solutions" },
+      { label: "Commercial", href: { pathname: "/solutions", hash: "flows" } },
+      { label: "Industrial", href: { pathname: "/solutions", hash: "spec" } },
+      { label: "Smart Cities", href: { pathname: "/solutions", hash: "flo" } },
+      { label: "Rural Projects", href: { pathname: "/solutions", hash: "spe" } },
+    ],
+  },
+  {
+    label: "Services",
     href: "/solutions",
     description: "Smart energy architecture and technical data",
     dropdown: [
       { label: "Overview", href: "/solutions" },
-      { label: "Smart Flow", href: { pathname: "/solutions", hash: "flow" } },
-      { label: "Specifications", href: { pathname: "/solutions", hash: "specs" } },
+      { label: "EV Charging Solutions", href: { pathname: "/solutions", hash: "flow" } },
+      { label: "Solar Energy Installation", href: { pathname: "/solutions", hash: "specs" } },
     ],
   },
   {
@@ -50,11 +62,11 @@ const navItems: NavItem[] = [
     href: "/about",
     description: "Company history and market insights",
   },
-  {
-    label: "Case Studies",
-    href: "/case-studies",
-    description: "Impact stories and sustainability metrics",
-  },
+  // {
+  //   label: "Case Studies",
+  //   href: "/case-studies",
+  //   description: "Impact stories and sustainability metrics",
+  // },
   {
     label: "Contact",
     href: "/contact",
