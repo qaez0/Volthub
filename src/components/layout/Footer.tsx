@@ -58,23 +58,12 @@ const footerColumns = [
   {
     heading: "Services",
     links: [
-      { label: "EV Charging Solutions", href: { pathname: "/solutions", hash: "flow" } },
+      { label: "Overview", href: "/services" },
+      { label: "EV Charging Solutions", href: "/services/ev-charging" },
       {
         label: "Solar Energy Installation",
-        href: { pathname: "/case-studies", hash: "industrial" },
+        href: "/services/solar-installation",
       },
-      // {
-      //   label: "Industrial",
-      //   href: { pathname: "/case-studies", hash: "industrial" },
-      // },
-      // {
-      //   label: "Smart Cities",
-      //   href: { pathname: "/case-studies", hash: "smart-cities" },
-      // },
-      // {
-      //   label: "Rural Projects",
-      //   href: { pathname: "/case-studies", hash: "rural" },
-      // },
     ],
   },
   {

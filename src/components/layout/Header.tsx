@@ -49,12 +49,12 @@ const navItems: NavItem[] = [
   },
   {
     label: "Services",
-    href: "/solutions",
-    description: "Smart energy architecture and technical data",
+    href: "/services",
+    description: "Professional installation and maintenance services",
     dropdown: [
-      { label: "Overview", href: "/solutions" },
-      { label: "EV Charging Solutions", href: { pathname: "/solutions", hash: "flow" } },
-      { label: "Solar Energy Installation", href: { pathname: "/solutions", hash: "specs" } },
+      { label: "Overview", href: "/services" },
+      { label: "EV Charging Solutions", href: "/services/ev-charging" },
+      { label: "Solar Energy Installation", href: "/services/solar-installation" },
     ],
   },
   {
@@ -152,13 +152,13 @@ const Header = () => {
                 />
               </Link>
               {item.dropdown ? (
-                <div className="absolute top-full left-0 mt-2 w-64 glass-morphism rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300">
+                <div className="absolute top-full left-0 mt-2 w-64 glass-morphism rounded-2xl shadow-xl opacity-10 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300">
                   <div className="p-4 space-y-2">
                     {item.dropdown.map((link) => (
                       <Link
                         key={getHrefKey(link.href)}
                         href={link.href}
-                        className="block px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-white/10 hover:text-secondary transition-colors"
+                        className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
                       >
                         {link.label}
                       </Link>
