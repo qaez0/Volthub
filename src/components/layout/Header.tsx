@@ -86,6 +86,10 @@ const Header = () => {
 
   const isActive = (href: NavHref) => {
     if (typeof href === "string") {
+      // Special case for Services: also active on sub-pages
+      if (href === "/services") {
+        return pathname === href || pathname.startsWith("/services/");
+      }
       return pathname === href;
     }
     return pathname === href.pathname;

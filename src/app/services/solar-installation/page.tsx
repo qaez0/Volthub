@@ -29,7 +29,7 @@ export default function SolarInstallation() {
               "url('https://readdy.ai/api/search-image?query=professional%20solar%20panel%20installation%20team%20working%20on%20residential%20rooftop%2C%20modern%20house%20with%20blue%20solar%20panels%20being%20installed%2C%20safety%20equipment%2C%20professional%20installation%20process%2C%20clear%20blue%20sky%2C%20high-quality%20workmanship&width=1920&height=1080&seq=solarservice001&orientation=landscape')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/90 via-green-800/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-br from-green-900/90 via-green-800/70 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
           <LayoutContainer className="text-center space-y-8">
@@ -44,7 +44,7 @@ export default function SolarInstallation() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 href="/contact"
-                className="bg-gradient-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect"
+                className="bg-linear-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect"
               >
                 Get Free Quote
               </Link>
@@ -149,7 +149,7 @@ export default function SolarInstallation() {
                 <ul className="space-y-2">
                   {service.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex items-start space-x-2 text-sm">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}
@@ -192,7 +192,7 @@ export default function SolarInstallation() {
                     "25-year performance warranty",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -231,7 +231,7 @@ export default function SolarInstallation() {
                     "Comprehensive maintenance",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -267,7 +267,7 @@ export default function SolarInstallation() {
                     "Enterprise support package",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -329,7 +329,7 @@ export default function SolarInstallation() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-green-600 to-green-800 text-white">
+      <section className="py-20 bg-linear-to-br from-green-600 to-green-800 text-white">
         <LayoutContainer>
           <div className="text-center space-y-8">
             <h2 className="text-4xl font-bold">

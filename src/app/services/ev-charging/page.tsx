@@ -27,7 +27,7 @@ export default function EVChargingSolutions() {
               "url('https://readdy.ai/api/search-image?query=modern%20electric%20vehicle%20charging%20installation%20site%20with%20professional%20technicians%20installing%20multiple%20EV%20charging%20stations%2C%20clean%20commercial%20setting%2C%20advanced%20charging%20infrastructure%2C%20blue%20and%20white%20color%20scheme%2C%20professional%20service%20quality&width=1920&height=1080&seq=evservice001&orientation=landscape')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 via-blue-800/70 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
           <LayoutContainer className="text-center space-y-8">
@@ -41,7 +41,7 @@ export default function EVChargingSolutions() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 href="/contact"
-                className="bg-gradient-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect"
+                className="bg-linear-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect"
               >
                 Get Free Quote
               </Link>
@@ -146,7 +146,7 @@ export default function EVChargingSolutions() {
                 <ul className="space-y-2">
                   {service.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex items-start space-x-2 text-sm">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}
@@ -189,7 +189,7 @@ export default function EVChargingSolutions() {
                     "5-year warranty included",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -228,7 +228,7 @@ export default function EVChargingSolutions() {
                     "3-year warranty + support",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -264,7 +264,7 @@ export default function EVChargingSolutions() {
                     "Extended warranty options",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -326,7 +326,7 @@ export default function EVChargingSolutions() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+      <section className="py-20 bg-linear-to-br from-blue-600 to-blue-800 text-white">
         <LayoutContainer>
           <div className="text-center space-y-8">
             <h2 className="text-4xl font-bold">Ready to Install EV Charging?</h2>

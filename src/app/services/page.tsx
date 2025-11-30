@@ -4,6 +4,7 @@ import { useState } from "react";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import Image from "next/image";
+import Link from "next/link";
 import {
   RiCheckLine,
   RiCalendarLine,
@@ -35,7 +36,7 @@ export default function Services() {
               "url('https://readdy.ai/api/search-image?query=professional%20service%20technician%20installing%20solar%20panels%20on%20modern%20building%20rooftop%20with%20EV%20charging%20station%20visible%20in%20background%2C%20clean%20energy%20infrastructure%2C%20technical%20expertise%2C%20bright%20daylight%20with%20blue%20sky%2C%20professional%20installation%20team%20at%20work&width=1920&height=1080&seq=services001&orientation=landscape')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-br from-primary/90 via-primary/70 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
           <LayoutContainer className="text-center space-y-8">
@@ -50,13 +51,13 @@ export default function Services() {
               deliver comprehensive energy solutions tailored to your needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="group bg-gradient-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect">
+              <button className="group bg-linear-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect">
                 <span className="flex items-center justify-center space-x-2">
                   <span>Schedule Consultation</span>
                   <RiCalendarLine className="group-hover:rotate-12 transition-transform duration-300" />
                 </span>
               </button>
-              <button className="group bg-gradient-to-r from-primary to-accent text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105">
+              <button className="group bg-linear-to-r from-primary to-accent text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105">
                 <span className="flex items-center justify-center space-x-2">
                   <span>View Service Areas</span>
                   <RiMapPinLine className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -145,7 +146,7 @@ export default function Services() {
                   height={400}
                   className="w-full h-64 object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-blue-900/80 to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-3xl font-bold text-white mb-2">
                     EV Charging Solutions
@@ -188,7 +189,7 @@ export default function Services() {
                       },
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-start space-x-3">
-                        <RiCheckLine className="text-green-500 text-xl mt-1 flex-shrink-0" />
+                        <RiCheckLine className="text-green-500 text-xl mt-1 shrink-0" />
                         <div>
                           <div className="font-medium">{item.title}</div>
                           <div className="text-sm text-gray-600">
@@ -234,9 +235,20 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-                <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 whitespace-nowrap">
-                  Get EV Charging Quote
-                </button>
+                <div className="flex gap-3">
+                  <Link
+                    href="/services/ev-charging"
+                    className="flex-1 bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 whitespace-nowrap text-center"
+                  >
+                    Learn More
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-300 whitespace-nowrap text-center"
+                  >
+                    Get Quote
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -253,7 +265,7 @@ export default function Services() {
                   height={400}
                   className="w-full h-64 object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-green-900/80 to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-3xl font-bold text-white mb-2">
                     Solar Energy Installation
@@ -296,7 +308,7 @@ export default function Services() {
                       },
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-start space-x-3">
-                        <RiCheckLine className="text-green-500 text-xl mt-1 flex-shrink-0" />
+                        <RiCheckLine className="text-green-500 text-xl mt-1 shrink-0" />
                         <div>
                           <div className="font-medium">{item.title}</div>
                           <div className="text-sm text-gray-600">
@@ -342,9 +354,20 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-                <button className="w-full bg-gradient-to-r from-primary to-green-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 whitespace-nowrap">
-                  Get Solar Installation Quote
-                </button>
+                <div className="flex gap-3">
+                  <Link
+                    href="/services/solar-installation"
+                    className="flex-1 bg-linear-to-r from-primary to-green-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 whitespace-nowrap text-center"
+                  >
+                    Learn More
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-300 whitespace-nowrap text-center"
+                  >
+                    Get Quote
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -393,7 +416,7 @@ export default function Services() {
             ].map((process, idx) => (
               <div key={idx} className="text-center">
                 <div
-                  className={`w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-gradient-to-br ${process.color} rounded-full`}
+                  className={`w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-linear-to-br ${process.color} rounded-full`}
                 >
                   <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full">
                     <span
@@ -412,7 +435,7 @@ export default function Services() {
       </section>
 
       {/* Service Areas & Coverage */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-linear-to-br from-gray-50 to-blue-50">
         <LayoutContainer>
           <div className="text-center mb-16">
             <SectionHeading
@@ -585,7 +608,7 @@ export default function Services() {
                 <ul className="text-sm text-gray-600 space-y-3">
                   {expertise.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="flex items-center space-x-3">
-                      <RiCheckLine className="text-green-500 flex-shrink-0" />
+                      <RiCheckLine className="text-green-500 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
