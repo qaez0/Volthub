@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type React from "react";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   RiMailLine,
   RiPhoneLine,
@@ -163,53 +164,63 @@ export default function Contact() {
               </div>
 
               <div className="space-y-10">
-                <div>
-                  <h3 className="text-2xl font-bold mb-6">
-                    Contact Information
-                  </h3>
-                  <div className="space-y-6 font-bold ">
-                    {[
-                      {
-                        icon: RiPhoneLine,
-                        title: "Phone",
-                        detail: "+63 9659700823",
-                      },
-                      {
-                        icon: RiMailLine,
-                        title: "Email",
-                        detail: "admin-help@volthub-ev.com",
-                      },
-                      {
-                        icon: RiMapPinLine,
-                        title: "Address",
-                        detail: "High Street South Corporate Plaza Tower 2. 11th Ave", 
-                        detail2:"Taguig, Metro Manila",
-                        detail3:"Philippines",
-                      },
-                    ].map((item) => (
-                      <div
-                        key={item.title}
-                        className="flex items-center gap-4 px-4 py-3"
-                      >
-                        <span className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center border-2 border-secondary">
-                          <item.icon className="text-xl gradient-text [-webkit-text-stroke:1px_rgba(0,0,0,0.3)] [text-stroke:1px_rgba(0,0,0,0.3)]" />
-                        </span>
-                        <div className="leading-snug">
-                          <p className="font-semibold text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">
-                            {item.title}
-                          </p>
-                          <p className="text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">{item.detail}</p>
-                          {item.detail2 && (
-                            <p className="text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">{item.detail2}</p>
-                          )}
-                          {item.detail3 && (
-                            <p className="text-white text-base [-webkit-text-stroke:1px_rgba(0,0,0,0.5)] [text-stroke:1px_rgba(0,0,0,0.3)]">{item.detail3}</p>
-                          )}
+                <Card className="bg-black/50 backdrop-blur-sm border-white/20">
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-bold text-white">
+                      Contact Information
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-6 font-bold">
+                      {[
+                        {
+                          icon: RiPhoneLine,
+                          title: "Phone",
+                          detail: "+63 9659700823",
+                        },
+                        {
+                          icon: RiMailLine,
+                          title: "Email",
+                          detail: "admin-help@volthub-ev.com",
+                        },
+                        {
+                          icon: RiMapPinLine,
+                          title: "Address",
+                          detail: "High Street South Corporate Plaza Tower 2. 11th Ave",
+                          detail2: "Taguig, Metro Manila",
+                          detail3: "Philippines",
+                        },
+                      ].map((item) => (
+                        <div
+                          key={item.title}
+                          className="flex items-center gap-4 px-4 py-3"
+                        >
+                          <span className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center border-2 border-secondary">
+                            <item.icon className="text-xl gradient-text" />
+                          </span>
+                          <div className="leading-snug">
+                            <p className="font-semibold text-white text-base">
+                              {item.title}
+                            </p>
+                            <p className="text-white text-base">
+                              {item.detail}
+                            </p>
+                            {item.detail2 && (
+                              <p className="text-white text-base">
+                                {item.detail2}
+                              </p>
+                            )}
+                            {item.detail3 && (
+                              <p className="text-white text-base">
+                                {item.detail3}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
