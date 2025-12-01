@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 import Link from "next/link";
+import type { Route } from "next";
 
 interface CarouselSlide {
   id: number;
@@ -288,7 +289,7 @@ export default function CarouselBanner({
                         </div>
                         <div className="pt-4">
                           <Link
-                            href={slide.buttonLink as any}
+                            href={slide.buttonLink as Route}
                             className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                           >
                             {slide.buttonText}
@@ -335,7 +336,7 @@ export default function CarouselBanner({
                       </div>
                       <div className="pt-4">
                         <Link
-                          href={slide.buttonLink as any}
+                          href={slide.buttonLink as Route}
                           className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                         >
                           {slide.buttonText}

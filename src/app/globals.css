@@ -632,3 +632,213 @@ html {
   transform: scale(1.1);
   box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
 }
+
+/* Advanced Absen-style hover effects */
+.hover-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-3d:hover {
+  transform: translateY(-12px) rotateX(2deg) rotateY(2deg);
+}
+
+/* Enhanced card hover with 3D tilt */
+.card-hover-3d {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.card-hover-3d:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Image parallax zoom effect */
+.image-hover-zoom {
+  overflow: hidden;
+  position: relative;
+}
+
+.image-hover-zoom img {
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.image-hover-zoom:hover img {
+  transform: scale(1.15) translateZ(0);
+}
+
+/* Magnetic button effect */
+.magnetic-button {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.magnetic-button:hover {
+  box-shadow: 0 10px 30px rgba(26, 124, 17, 0.4);
+}
+
+/* Enhanced product card with multiple hover layers */
+.product-card-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.product-card-enhanced::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 124, 17, 0.1), rgba(34, 197, 94, 0.1));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-card-enhanced::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-card-enhanced:hover::before {
+  opacity: 1;
+}
+
+.product-card-enhanced:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.product-card-enhanced:hover {
+  transform: translateY(-12px) scale(1.02) rotateX(1deg);
+  box-shadow: 0 30px 60px rgba(26, 124, 17, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth text reveal on hover */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.text-reveal:hover::after {
+  left: 100%;
+}
+
+/* Glow pulse on hover */
+.glow-pulse {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.glow-pulse:hover {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.3), 0 0 60px rgba(34, 197, 94, 0.1);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.3), 0 0 60px rgba(34, 197, 94, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.7), 0 0 60px rgba(34, 197, 94, 0.5), 0 0 90px rgba(34, 197, 94, 0.3);
+  }
+}
+
+/* Smooth scale and lift */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Border glow effect */
+.border-glow {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.border-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.5), rgba(26, 124, 17, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+/* Image overlay fade */
+.image-overlay-fade {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-overlay-fade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.image-overlay-fade:hover::after {
+  opacity: 1;
+}
+
+/* Smooth color transition */
+.color-transition {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Enhanced shadow on hover */
+.shadow-hover {
+  transition: box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
