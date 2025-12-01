@@ -15,10 +15,10 @@ import {
 } from "react-icons/ri";
 
 const socialIcons = [
-  { icon: RiLinkedinFill, href: "https://linkedin.com" },
-  { icon: RiTwitterFill, href: "https://twitter.com" },
-  { icon: RiFacebookFill, href: "https://facebook.com" },
-  { icon: RiInstagramLine, href: "https://instagram.com" },
+  { icon: RiLinkedinFill, href: "https://linkedin.com", label: "Visit VoltHub on LinkedIn" },
+  { icon: RiTwitterFill, href: "https://twitter.com", label: "Visit VoltHub on Twitter" },
+  { icon: RiFacebookFill, href: "https://facebook.com", label: "Visit VoltHub on Facebook" },
+  { icon: RiInstagramLine, href: "https://instagram.com", label: "Visit VoltHub on Instagram" },
 ];
 
 export default function Contact() {
@@ -225,10 +225,11 @@ export default function Contact() {
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
                   <div className="flex space-x-4">
-                    {socialIcons.map(({ icon: Icon, href }) => (
+                    {socialIcons.map(({ icon: Icon, href, label }) => (
                       <a
                         key={href}
                         href={href}
+                        aria-label={label}
                         className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
                       >
                         <Icon className="text-xl" />
