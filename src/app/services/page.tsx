@@ -440,7 +440,7 @@ export default function Services() {
           <div className="text-center mb-16">
             <SectionHeading
               title="Service Coverage"
-              description="Nationwide installation and support network"
+              description="Serving the Philippines with plans for Southeast Asia expansion"
             />
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -450,39 +450,39 @@ export default function Services() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
                     {
-                      region: "Western Region",
+                      region: "Luzon",
                       areas: [
-                        "California (Full Coverage)",
-                        "Nevada & Arizona",
-                        "Oregon & Washington",
-                        "Utah & Colorado",
+                        "Metro Manila (Full Coverage)",
+                        "Calabarzon",
+                        "Central Luzon",
+                        "Bicol Region",
                       ],
                     },
                     {
-                      region: "Eastern Region",
+                      region: "Visayas",
                       areas: [
-                        "New York & New Jersey",
-                        "Pennsylvania & Maryland",
-                        "Florida & Georgia",
-                        "North & South Carolina",
+                        "Central Visayas",
+                        "Western Visayas",
+                        "Eastern Visayas",
                       ],
                     },
                     {
-                      region: "Central Region",
+                      region: "Mindanao",
                       areas: [
-                        "Texas (Full Coverage)",
-                        "Illinois & Michigan",
-                        "Ohio & Indiana",
-                        "Minnesota & Wisconsin",
+                        "Davao Region",
+                        "Northern Mindanao",
+                        "SOCCSKSARGEN",
+                        "CARAGA",
                       ],
                     },
                     {
-                      region: "Special Programs",
+                      region: "Planned Expansion",
                       areas: [
-                        "Rural Electrification",
-                        "Tribal Land Projects",
-                        "Disaster Recovery",
-                        "International Projects",
+                        "Singapore",
+                        "Malaysia",
+                        "Thailand",
+                        "Indonesia",
+                        "Vietnam",
                       ],
                     },
                   ].map((region, idx) => (
@@ -505,29 +505,28 @@ export default function Services() {
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
-                    backgroundImage:
-                      "url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')",
+                    backgroundImage: "url('/Manila-Map.png')",
                   }}
                 >
-                  <div className="absolute inset-0 bg-primary/20 rounded-2xl flex items-center justify-center">
-                    <div className="text-center text-white">
+                  <div className="absolute inset-0 bg-black/10 rounded-2xl flex items-center justify-center">
+                    <div className="text-center text-white bg-black/50 backdrop-blur-sm rounded-2xl px-8 py-6">
                       <h4 className="text-2xl font-bold mb-4">
-                        25+ States Covered
+                        Philippines Coverage
                       </h4>
                       <p className="text-lg">
-                        Professional installation services nationwide
+                        Professional installation services across major regions
                       </p>
                       <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
                         <div>
-                          <div className="text-2xl font-bold">150+</div>
+                          <div className="text-2xl font-bold">50+</div>
                           <div>Service Centers</div>
                         </div>
                         <div>
-                          <div className="text-2xl font-bold">500+</div>
+                          <div className="text-2xl font-bold">200+</div>
                           <div>Certified Technicians</div>
                         </div>
                         <div>
-                          <div className="text-2xl font-bold">48hr</div>
+                          <div className="text-2xl font-bold">24hr</div>
                           <div>Response Time</div>
                         </div>
                       </div>
