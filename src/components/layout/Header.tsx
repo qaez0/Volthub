@@ -83,6 +83,9 @@ const Header = () => {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [clickedDropdown, setClickedDropdown] = useState<string | null>(null);
+  const [closedDropdown, setClosedDropdown] = useState<string | null>(null);
 
   const isActive = (href: NavHref) => {
     if (typeof href === "string") {
@@ -106,7 +109,25 @@ const Header = () => {
 
   useEffect(() => {
     setMobileOpen(false);
+    setOpenDropdown(null);
+    setClickedDropdown(null);
+    setClosedDropdown(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest(".dropdown-container")) {
+        setOpenDropdown(null);
+        setClickedDropdown(null);
+      }
+    };
+
+    if (openDropdown || clickedDropdown) {
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
+    }
+  }, [openDropdown, clickedDropdown]);
 
   return (
     <header
@@ -132,49 +153,111 @@ const Header = () => {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center space-x-8 text-white">
-          {navItems.map((item) => (
-            <div key={item.label} className="relative group">
-              <Link
-                href={item.href}
-                className={cn(
-                  "font-medium transition-all duration-300 relative flex items-center gap-1",
-                  isActive(item.href)
-                    ? "text-secondary"
-                    : "text-white hover:text-secondary"
-                )}
+        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 text-white lg:ml-8 xl:ml-0">
+          {navItems.map((item) => {
+            const isDropdownOpen = openDropdown === item.label;
+            const hasDropdown = !!item.dropdown;
+
+            return (
+              <div
+                key={item.label}
+                className="relative group dropdown-container"
+                onMouseEnter={() => {
+                  if (hasDropdown && clickedDropdown !== item.label && closedDropdown !== item.label) {
+                    // Only open on hover if not explicitly closed via click
+                    setOpenDropdown(item.label);
+                  }
+                }}
+                onMouseLeave={() => {
+                  // Only close on mouse leave if it wasn't clicked open
+                  if (hasDropdown && clickedDropdown !== item.label) {
+                    setOpenDropdown(null);
+                    setClosedDropdown(null); // Reset closed state on mouse leave
+                  }
+                }}
               >
-                <span>{item.label}</span>
-                {item.dropdown ? (
-                  <RiArrowDownSLine className="text-sm transition-transform duration-300 group-hover:rotate-180" />
-                ) : null}
-                <span
-                  className={cn(
-                    "absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300",
-                    isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
-                  )}
-                />
-              </Link>
-              {item.dropdown ? (
-                <div className="absolute top-full left-0 mt-2 w-64 glass-morphism rounded-2xl shadow-xl opacity-10 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-300">
-                  <div className="p-4 space-y-2">
-                    {item.dropdown.map((link) => (
-                      <Link
-                        key={getHrefKey(link.href)}
-                        href={link.href}
-                        className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-1">
+                  <Link
+                    href={item.href}
+                    onClick={(e) => {
+                      if (hasDropdown) {
+                        e.preventDefault();
+                        const willBeOpen = clickedDropdown !== item.label;
+                        setClickedDropdown(willBeOpen ? item.label : null);
+                        setOpenDropdown(willBeOpen ? item.label : null);
+                        // Track that this dropdown was explicitly closed
+                        setClosedDropdown(willBeOpen ? null : item.label);
+                      }
+                    }}
+                    className={cn(
+                      "font-medium transition-all duration-300 relative flex items-center gap-1",
+                      isActive(item.href)
+                        ? "text-secondary"
+                        : "text-white hover:text-secondary"
+                    )}
+                  >
+                    <span>{item.label}</span>
+                    <span
+                      className={cn(
+                        "absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300",
+                        isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                      )}
+                    />
+                  </Link>
+                  {hasDropdown ? (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const willBeOpen = clickedDropdown !== item.label;
+                        setClickedDropdown(willBeOpen ? item.label : null);
+                        setOpenDropdown(willBeOpen ? item.label : null);
+                        // Track that this dropdown was explicitly closed
+                        setClosedDropdown(willBeOpen ? null : item.label);
+                      }}
+                      className="flex items-center"
+                      aria-label="Toggle dropdown"
+                    >
+                      <RiArrowDownSLine
+                        className={cn(
+                          "text-sm transition-transform duration-300",
+                          clickedDropdown === item.label || (closedDropdown !== item.label && isDropdownOpen)
+                            ? "rotate-180"
+                            : ""
+                        )}
+                      />
+                    </button>
+                  ) : null}
                 </div>
-              ) : null}
-            </div>
-          ))}
+                {hasDropdown ? (
+                  <div
+                    className={cn(
+                      "absolute top-full left-0 mt-2 w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300",
+                      clickedDropdown === item.label
+                        ? "opacity-100 visible translate-y-0"
+                        : clickedDropdown === null && isDropdownOpen
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-10 invisible translate-y-2"
+                    )}
+                  >
+                    <div className="p-4 space-y-2">
+                      {item.dropdown?.map((link) => (
+                        <Link
+                          key={getHrefKey(link.href)}
+                          href={link.href}
+                          className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
         </nav>
 
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-6 ml-8">
           <span className="text-sm font-orbitron text-emerald-200 tracking-widest">
           +63 9659700823
           </span>

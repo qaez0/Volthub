@@ -187,7 +187,7 @@ export default function Home() {
                   href="/products"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group magnetic-button glow-pulse"
                 >
-                  Learn More
+                  View Residential Energy Storage Products
                   <RiArrowRightLine className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <Link
@@ -265,7 +265,7 @@ export default function Home() {
                   href="/products"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group magnetic-button glow-pulse"
                 >
-                  Explore Solutions
+                  Explore Solar Energy Products
                   <RiArrowRightLine className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <Link
@@ -377,7 +377,7 @@ export default function Home() {
                   href="/products"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-700 to-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group magnetic-button glow-pulse"
                 >
-                  View Details
+                  View Home Battery Storage Products
                   <RiArrowRightLine className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <Link

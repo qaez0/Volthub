@@ -104,18 +104,21 @@ const Footer = () => {
               sustainable tomorrow.
             </p>
             <div className="flex space-x-4 text-gray-400">
-              {[RiLinkedinFill, RiTwitterFill, RiFacebookFill, RiInstagramLine].map(
-                (Icon, index) => (
-                  <a
-                    key={Icon.name}
-                    href="#"
-                    className="hover:text-secondary transition-colors"
-                    aria-label={`VoltHub on social channel ${index + 1}`}
-                  >
-                    <Icon className="text-xl" />
-                  </a>
-                )
-              )}
+              {[
+                { Icon: RiLinkedinFill, label: "Visit VoltHub on LinkedIn" },
+                { Icon: RiTwitterFill, label: "Visit VoltHub on Twitter" },
+                { Icon: RiFacebookFill, label: "Visit VoltHub on Facebook" },
+                { Icon: RiInstagramLine, label: "Visit VoltHub on Instagram" },
+              ].map(({ Icon, label }) => (
+                <a
+                  key={Icon.name}
+                  href="#"
+                  className="hover:text-secondary transition-colors"
+                  aria-label={label}
+                >
+                  <Icon className="text-xl" />
+                </a>
+              ))}
             </div>
           </div>
 
