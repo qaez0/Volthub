@@ -74,12 +74,15 @@ const carouselSlides = [
     subtitle: "Enterprise Solutions",
     description:
       "Scalable energy storage systems for businesses and factories. Maximize energy efficiency, reduce costs, and ensure uninterrupted power with our industrial-grade storage solutions.",
-    image:
-      "https://readdy.ai/api/search-image?query=industrial%20energy%20storage%20system%20factory%20warehouse%2C%20large-scale%20battery%20installation%2C%20commercial%20solar%20panels%2C%20modern%20industrial%20facility%2C%20sustainable%20business%20energy&width=1920&height=1080&seq=hero003&orientation=landscape",
-    backgroundImage: "/HomeBanner/banner3.jpg",
+    image: "/HomeBanner/banner3product.png",
+    backgroundImage: "/HomeBanner/banner3.png",
+    showimg: true,
+    imageClassName: "absolute bottom-0 right-0 h-full w-1/2 mb-[-170px]",
+    descriptionClassName: "space-y-6 text-white z-[100]",
     buttonText: "Learn About C&I Solutions",
     buttonLink: "/solutions",
     gradient: "bg-gradient-to-br from-accent/90 via-primary/70 to-transparent",
+    layout: "side-by-side" as const,
   },
   {
     id: 4,
@@ -89,10 +92,26 @@ const carouselSlides = [
       "Fast charging networks for electric vehicles. Build comprehensive EV charging infrastructure with smart grid integration and seamless user experience.",
     image:
       "https://readdy.ai/api/search-image?query=electric%20vehicle%20charging%20station%20network%2C%20modern%20EV%20charging%20infrastructure%2C%20smart%20grid%20technology%2C%20sustainable%20transportation%2C%20clean%20mobility%20future&width=1920&height=1080&seq=hero004&orientation=landscape",
-    backgroundImage: "/HomeBanner/banner4.webp",
+    backgroundImage: "/HomeBanner/commercial.png",
     buttonText: "Explore EV Solutions",
     buttonLink: "/products",
     gradient: "bg-gradient-to-br from-secondary/80 via-primary/70 to-transparent",
+  },
+  {
+    id: 5,
+    title: "Container Energy Solutions",
+    subtitle: "Modular Power Systems",
+    description:
+      "Portable and scalable containerized energy storage systems. Perfect for remote locations, emergency backup, and temporary power needs with rapid deployment capabilities.",
+    image: "/HomeBanner/container.png",
+    backgroundImage: "/HomeBanner/container.png",
+    showimg: false,
+    imageClassName: "absolute bottom-0 right-0 h-full w-1/2",
+    descriptionClassName: "space-y-6 text-white z-[100]",
+    buttonText: "Learn More",
+    buttonLink: "/products",
+    gradient: "bg-gradient-to-br from-blue-800/90 via-primary/70 to-transparent",
+    layout: "side-by-side" as const,
   },
 ];
 
