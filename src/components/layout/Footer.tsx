@@ -36,22 +36,22 @@ const footerColumns = [
   {
     heading: "Sectors",
     links: [
-      { label: "Residential", href: { pathname: "/solutions", hash: "flow" } },
+      { label: "Residential", href: "/sectors/residential" },
       {
         label: "Commercial",
-        href: { pathname: "/case-studies", hash: "industrial" },
+        href: "/sectors/commercial",
       },
       {
         label: "Industrial",
-        href: { pathname: "/case-studies", hash: "industrial" },
+        href: "/sectors/industrial",
       },
       {
         label: "Smart Cities",
-        href: { pathname: "/case-studies", hash: "smart-cities" },
+        href: "/sectors/smart-cities",
       },
       {
         label: "Rural Projects",
-        href: { pathname: "/case-studies", hash: "rural" },
+        href: "/sectors/rural-projects",
       },
     ],
   },

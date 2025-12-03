@@ -1,0 +1,445 @@
+"use client";
+
+import Image from "next/image";
+import LayoutContainer from "@/components/layout/LayoutContainer";
+import SectionHeading from "@/components/marketing/SectionHeading";
+import Link from "next/link";
+import {
+  RiHome2Line,
+  RiArrowRightSLine,
+  RiBatteryChargeLine,
+  RiChargingPile2Line,
+  RiLightbulbLine,
+  RiCheckLine,
+  RiPlantLine,
+} from "react-icons/ri";
+
+const streetLights = [
+  {
+    itemNo: "LVXC-120",
+    poleHeight: "5m",
+    ledLight: "20W",
+    size: "495*205*80mm",
+    battery: "3.2V 65Ah",
+    solarPanel: "70W",
+    price: "₱17,346.00",
+    type: "All in Two Light",
+  },
+  {
+    itemNo: "LVXC-130",
+    poleHeight: "6m",
+    ledLight: "30W",
+    size: "550*240*100mm",
+    battery: "3.2V 80Ah",
+    solarPanel: "70W",
+    price: "₱19,661.75",
+    type: "All in Two Light",
+  },
+  {
+    itemNo: "LVXC-320",
+    poleHeight: "5m",
+    ledLight: "20W",
+    size: "650*300*130mm",
+    battery: "3.2V 65Ah",
+    solarPanel: "70W",
+    price: "₱17,036.25",
+    type: "All in Two Light",
+  },
+  {
+    itemNo: "LVXC-330",
+    poleHeight: "6m",
+    ledLight: "30W",
+    size: "650*300*130mm",
+    battery: "3.2V 80Ah",
+    solarPanel: "70W",
+    price: "₱18,939.00",
+    type: "All in Two Light",
+  },
+  {
+    itemNo: "F2-050",
+    poleHeight: "8m",
+    ledLight: "50W",
+    size: "1319*460*60mm",
+    battery: "12.8V 45Ah",
+    solarPanel: "100W",
+    price: "₱45,164.50",
+    type: "Integrated Light",
+  },
+  {
+    itemNo: "LVQ2-050",
+    poleHeight: "8m",
+    ledLight: "50W",
+    size: "935*415*210mm",
+    battery: "14.8V 45Ah",
+    solarPanel: "100W",
+    price: "₱37,981.25",
+    type: "Split Street Light",
+  },
+];
+
+const storageSystems = [
+  {
+    name: "Mobile Energy Storage Power",
+    kWh: "5kWh",
+    ratedPower: "3KW/AC 220V",
+    battery: "5.3kWh",
+    solarPanel: "36V670W*4",
+    price: "₱255,502.45",
+    description: "Small home / backup kit. Can run 1 HP aircon plus lights, fans, TV, laptop. About 4-5 hours usable. Perfect for basic rural homes.",
+  },
+  {
+    name: "Mobile Energy Storage Power",
+    kWh: "10kWh",
+    ratedPower: "5KW/AC 220V",
+    battery: "10.6kWh",
+    solarPanel: "36V670W*6",
+    price: "₱388,122.65",
+    description: "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers. Around 5-6 hours usable.",
+  },
+  {
+    name: "Mobile Energy Storage Power",
+    kWh: "15kWh",
+    ratedPower: "5KW/AC 220V",
+    battery: "15.9kWh",
+    solarPanel: "36V670W*8",
+    price: "₱526,117.75",
+    description: "Longer backup, same power. Good for rural homes with frequent long outages or stores with freezers that must stay cold overnight.",
+  },
+  {
+    name: "Mobile Energy Storage Power",
+    kWh: "20kWh",
+    ratedPower: "10KW/AC 220V",
+    battery: "21.2kWh",
+    solarPanel: "36V670W*12",
+    price: "₱838,344.15",
+    description: "Larger home / small business. Can run multiple aircons (3-4 HP total), refrigerator/freezer, lights, computers.",
+  },
+  {
+    name: "Off-Grid Power Generation System",
+    kWh: "40kWh",
+    ratedPower: "20KW/AC 380V/220V",
+    battery: "40.96kWh",
+    solarPanel: "670W*30PCS",
+    price: "₱1,823,684.10",
+    description: "Small commercial / remote facility. Can power 5-10 small houses, or a water refilling station, rice mill, small cold room.",
+  },
+  {
+    name: "Off-Grid Power Generation System",
+    kWh: "60kWh",
+    ratedPower: "30KW/AC 380V/220V",
+    battery: "61.4kWh",
+    solarPanel: "670W*40PCS",
+    price: "₱2,694,050.62",
+    description: "Small community or larger business. Can power a small resort (10+ rooms, kitchen, bar, pool pump) or small agricultural facility.",
+  },
+];
+
+const evChargers = [
+  {
+    model: "DPEV-7k",
+    type: "7 kW Single-gun AC Charging Pile",
+    price: "₱18,062.50",
+    description: "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger for rural areas.",
+  },
+  {
+    model: "DPEV-60k",
+    type: "60 kW Dual-gun DC Charging Pile",
+    price: "₱361,250.00",
+    description: "Entry-level DC fast charger. Good for rural commercial centers, small towns, and community charging stations.",
+  },
+];
+
+export default function RuralProjectsSector() {
+  return (
+    <main className="bg-slate-50 min-h-screen">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden border-b border-slate-100 min-h-[400px] md:min-h-[500px]">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
+        <Image
+          src="/HomeBanner/banner3.jpg"
+          alt="Rural Projects Energy Solutions"
+          width={1600}
+          height={600}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0">
+          <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-32">
+            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
+              <RiHome2Line className="h-4 w-4" />
+              <span>Home</span>
+              <RiArrowRightSLine className="h-4 w-4" />
+              <span>Sectors</span>
+              <RiArrowRightSLine className="h-4 w-4" />
+              <span className="text-white/90">Rural Projects</span>
+            </div>
+            <div className="max-w-3xl space-y-4">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
+                Rural Projects Energy Solutions
+              </h1>
+              <p className="text-lg md:text-xl text-white/90">
+                Bringing reliable power to rural communities. Solar street lighting, 
+                off-grid power systems, and EV charging for remote areas.
+              </p>
+            </div>
+          </LayoutContainer>
+        </div>
+      </section>
+
+      {/* Overview Section */}
+      <section className="py-16 bg-white">
+        <LayoutContainer>
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <SectionHeading
+              title="Powering Rural Communities"
+              description="Our rural solutions are designed for off-grid and remote areas, 
+              bringing reliable electricity to communities that need it most."
+            />
+            <div className="grid md:grid-cols-3 gap-6 mt-12">
+              {[
+                {
+                  icon: RiPlantLine,
+                  title: "Off-Grid Power",
+                  desc: "Reliable energy systems for areas without grid connection",
+                },
+                {
+                  icon: RiLightbulbLine,
+                  title: "Rural Lighting",
+                  desc: "Solar street lights for safer rural roads and pathways",
+                },
+                {
+                  icon: RiBatteryChargeLine,
+                  title: "Community Power",
+                  desc: "Microgrid systems for small villages and communities",
+                },
+              ].map((feature, idx) => (
+                <div key={idx} className="p-6 bg-slate-50 rounded-2xl">
+                  <feature.icon className="h-8 w-8 text-primary mb-4 mx-auto" />
+                  <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                  <p className="text-sm text-slate-600">{feature.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* Storage Systems Section */}
+      <section className="py-16 bg-slate-50">
+        <LayoutContainer>
+          <SectionHeading
+            title="Energy Storage Systems"
+            description="From individual homes to small communities - scalable solutions for rural areas"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {storageSystems.map((system, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+              >
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-semibold">{system.kWh}</h3>
+                    <span className="text-lg font-bold text-primary">{system.price}</span>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Rated Power:</span>
+                      <span className="font-medium">{system.ratedPower}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Battery:</span>
+                      <span className="font-medium">{system.battery}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Solar Panel:</span>
+                      <span className="font-medium">{system.solarPanel}</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-slate-600 pt-2 border-t border-slate-100">
+                    {system.description}
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+                  >
+                    Get Quote
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* Street Lights Section */}
+      <section className="py-16 bg-white">
+        <LayoutContainer>
+          <SectionHeading
+            title="Solar Street Lights"
+            description="Affordable lighting solutions for rural roads, pathways, and community areas"
+          />
+          <div className="overflow-x-auto mt-12">
+            <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+              <thead className="bg-primary text-white">
+                <tr>
+                  <th className="px-6 py-4 text-left font-semibold">Type</th>
+                  <th className="px-6 py-4 text-left font-semibold">Item No.</th>
+                  <th className="px-6 py-4 text-left font-semibold">Pole Height</th>
+                  <th className="px-6 py-4 text-left font-semibold">LED Light</th>
+                  <th className="px-6 py-4 text-left font-semibold">Battery</th>
+                  <th className="px-6 py-4 text-left font-semibold">Solar Panel</th>
+                  <th className="px-6 py-4 text-left font-semibold">Unit Price</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {streetLights.map((light, idx) => (
+                  <tr key={idx} className="hover:bg-slate-50">
+                    <td className="px-6 py-4 text-slate-600">{light.type}</td>
+                    <td className="px-6 py-4 font-medium">{light.itemNo}</td>
+                    <td className="px-6 py-4 text-slate-600">{light.poleHeight}</td>
+                    <td className="px-6 py-4 text-slate-600">{light.ledLight}</td>
+                    <td className="px-6 py-4 text-slate-600">{light.battery}</td>
+                    <td className="px-6 py-4 text-slate-600">{light.solarPanel}</td>
+                    <td className="px-6 py-4 font-semibold text-primary">{light.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* EV Charging Section */}
+      <section className="py-16 bg-slate-50">
+        <LayoutContainer>
+          <SectionHeading
+            title="EV Charging Solutions"
+            description="Basic charging infrastructure for rural areas and small communities"
+          />
+          <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
+            {evChargers.map((charger, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
+              >
+                <h3 className="text-xl font-semibold mb-2">{charger.type}</h3>
+                <p className="text-sm text-slate-600 mb-4">{charger.description}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm text-slate-500">Model: {charger.model}</span>
+                  <span className="text-2xl font-bold text-primary">{charger.price}</span>
+                </div>
+                <Link
+                  href="/contact"
+                  className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  Request Installation
+                </Link>
+              </div>
+            ))}
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="py-16 bg-white">
+        <LayoutContainer>
+          <SectionHeading
+            title="Rural Project Applications"
+            description="Perfect solutions for various rural and remote area needs"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {[
+              {
+                title: "Rural Homes",
+                desc: "Off-grid power systems for homes without grid connection, providing reliable electricity for daily needs.",
+              },
+              {
+                title: "Agricultural Facilities",
+                desc: "Power for farms, rice mills, cold storage, and agricultural processing facilities.",
+              },
+              {
+                title: "Rural Roads",
+                desc: "Solar street lighting for safer rural roads, pathways, and community areas.",
+              },
+              {
+                title: "Small Communities",
+                desc: "Microgrid systems for small villages, sitios, and remote communities.",
+              },
+              {
+                title: "Rural Businesses",
+                desc: "Power for sari-sari stores, small clinics, internet cafes, and rural businesses.",
+              },
+              {
+                title: "Island Communities",
+                desc: "Off-grid power systems for island barangays and remote coastal communities.",
+              },
+            ].map((useCase, idx) => (
+              <div key={idx} className="bg-slate-50 rounded-2xl shadow-lg p-6">
+                <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
+                <p className="text-sm text-slate-600">{useCase.desc}</p>
+              </div>
+            ))}
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-slate-50">
+        <LayoutContainer>
+          <div className="max-w-4xl mx-auto">
+            <SectionHeading
+              title="Why Choose Our Rural Solutions"
+              description="Designed specifically for off-grid and remote area applications"
+            />
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              {[
+                "3-year warranty on all products",
+                "Professional installation and maintenance",
+                "Payment terms: 30% advance, balance before shipping",
+                "Production time: 20-25 working days",
+                "Off-grid ready - no grid connection required",
+                "Affordable solutions for rural communities",
+                "Local support and training available",
+                "Scalable from single homes to small communities",
+              ].map((benefit, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <RiCheckLine className="h-6 w-6 text-green-500 shrink-0 mt-0.5" />
+                  <span className="text-slate-700">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+        <LayoutContainer>
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl md:text-4xl font-semibold">
+              Ready to Power Rural Communities?
+            </h2>
+            <p className="text-lg text-white/90">
+              Get a free consultation and discover how our rural solutions can bring reliable power to your community.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-secondary text-black px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 transition-colors"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/products"
+                className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-colors border border-white/20"
+              >
+                View All Products
+              </Link>
+            </div>
+          </div>
+        </LayoutContainer>
+      </section>
+    </main>
+  );
+}
+

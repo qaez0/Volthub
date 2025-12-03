@@ -37,14 +37,14 @@ const navItems: NavItem[] = [
   },
   {
     label: "Sectors",
-    href: "/solutions",
-    description: "Smart energy architecture and technical data",
+    href: "/sectors/residential",
+    description: "Target customers and sector-specific solutions",
     dropdown: [
-      { label: "Residential", href: "/solutions" },
-      { label: "Commercial", href: { pathname: "/solutions", hash: "flows" } },
-      { label: "Industrial", href: { pathname: "/solutions", hash: "spec" } },
-      { label: "Smart Cities", href: { pathname: "/solutions", hash: "flo" } },
-      { label: "Rural Projects", href: { pathname: "/solutions", hash: "spe" } },
+      { label: "Residential", href: "/sectors/residential" },
+      { label: "Commercial", href: "/sectors/commercial" },
+      { label: "Industrial", href: "/sectors/industrial" },
+      { label: "Smart Cities", href: "/sectors/smart-cities" },
+      { label: "Rural Projects", href: "/sectors/rural-projects" },
     ],
   },
   {
@@ -92,6 +92,10 @@ const Header = () => {
       // Special case for Services: also active on sub-pages
       if (href === "/services") {
         return pathname === href || pathname.startsWith("/services/");
+      }
+      // Special case for Sectors: also active on sub-pages
+      if (href === "/sectors/residential") {
+        return pathname === href || pathname.startsWith("/sectors/");
       }
       return pathname === href;
     }
