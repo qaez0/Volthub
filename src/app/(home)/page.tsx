@@ -43,15 +43,7 @@ export default function Home() {
         <ProductShowcase key={index} {...showcase} />
       ))}
 
-      {/* Features Section */}
-      <FeaturesSection
-        title="Clean energy without compromise"
-        description="From ultra-efficient solar modules to AI-driven grid intelligence, we engineer every layer of the renewable ecosystem to deliver measurable impact on day one."
-        features={features}
-      />
-
-      {/* Stats Section */}
-      <StatsSection stats={stats} />
+    
 
       {/* How It Works Section */}
       <HowItWorksSection
@@ -73,28 +65,29 @@ export default function Home() {
         description="Join thousands of satisfied customers who have made the switch to clean energy."
         testimonials={testimonials}
         trustBadges={trustBadges}
+        showCertifications={false}
       />
 
       {/* ROI Calculator Section */}
-      <ROICalculatorSection
+      {/* <ROICalculatorSection
         title="Energy Savings Calculator"
         description="Discover how much you could save with VoltHub's energy solutions. Get an instant estimate of your potential savings and ROI."
         benefits={roiCalculatorBenefits}
-      />
+      /> */}
 
       {/* Video Section */}
-      <VideoSection
+      {/* <VideoSection
         title="See VoltHub in Action"
         description="Discover how VoltHub's energy solutions are transforming homes and businesses worldwide. Watch real customer stories and product demonstrations."
         videoItems={videoItems}
-      />
+      /> */}
 
       {/* Blog/Resources Section */}
-      <BlogResourcesSection
+      {/* <BlogResourcesSection
         title="Latest Resources & Insights"
         description="Stay informed with our latest articles, guides, and industry insights on renewable energy."
         resources={resources}
-      />
+      /> */}
 
       {/* FAQ Section */}
       <FAQSection
@@ -104,10 +97,22 @@ export default function Home() {
       />
 
       {/* Lead Capture Section */}
-      <LeadCaptureSection
+      {/* <LeadCaptureSection
         title="Ready to Make the Switch?"
         description="Join thousands of satisfied customers. Get a free consultation and discover how much you could save with clean energy."
+      /> */}
+
+  {/* Features Section */}
+  <FeaturesSection
+        title="Clean energy without compromise"
+        description="From ultra-efficient solar modules to AI-driven grid intelligence, we engineer every layer of the renewable ecosystem to deliver measurable impact on day one."
+        features={features}
       />
+
+      {/* Stats Section */}
+      <StatsSection stats={stats} />
+
+
     </main>
   );
 }

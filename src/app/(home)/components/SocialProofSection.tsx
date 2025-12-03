@@ -24,6 +24,7 @@ interface SocialProofSectionProps {
   description: string;
   testimonials: Testimonial[];
   trustBadges: TrustBadge[];
+  showCertifications?: boolean;
 }
 
 export default function SocialProofSection({
@@ -32,6 +33,7 @@ export default function SocialProofSection({
   description,
   testimonials,
   trustBadges,
+  showCertifications = true,
 }: SocialProofSectionProps) {
   return (
     <section className="section-spacing bg-gradient-to-br from-white via-gray-50 to-white">
@@ -72,6 +74,7 @@ export default function SocialProofSection({
         </div>
 
         {/* Trust Badges & Certifications */}
+       {showCertifications && (
         <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-semibold text-gray-800 mb-2">Certified & Trusted</h3>
@@ -88,6 +91,8 @@ export default function SocialProofSection({
             ))}
           </div>
         </div>
+
+        )}
       </LayoutContainer>
     </section>
   );

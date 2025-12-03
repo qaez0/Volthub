@@ -1,388 +1,287 @@
+"use client";
+
 import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
-import SectionHeading from "@/components/marketing/SectionHeading";
 import {
-  RiSunLine,
-  RiChargingPile2Line,
+  RiArrowRightSLine,
+  RiHome2Line,
   RiBatteryChargeLine,
-  RiCpuLine,
-  RiScales3Line,
-  RiFlashlightLine,
+  RiChargingPile2Line,
   RiHomeGearLine,
-  RiWindyLine,
-  RiDashboard3Line,
 } from "react-icons/ri";
+import { useState } from "react";
 
-const productStats = [
-  { label: "Product Lines", value: "26+", detail: "Across 4 categories" },
-  { label: "Panel Efficiency", value: "22.8%", detail: "Peak mono-PERC" },
-  { label: "Fast Charging", value: "150kW", detail: "DC max output" },
-  { label: "Battery Cycle Life", value: "10,000", detail: "Deep cycles" },
+type ProductCategory = "all" | "commercial" | "residential" | "baconly";
+
+type Product = {
+  id: string;
+  name: string;
+  subtitle: string;
+  category: ProductCategory;
+  tag?: string;
+  image: string;
+};
+
+const categories: { id: ProductCategory; label: string }[] = [
+  { id: "all", label: "All Products" },
+  { id: "commercial", label: "Commercial & Industrial" },
+  { id: "residential", label: "Residential" },
+  { id: "baconly", label: "Baconly" },
 ];
 
-const categoryCards = [
+// Based on Absen Energy products layout, adapted to VoltHub
+// Reference: `https://www.absenenergy.com/en/product/`
+const products: Product[] = [
   {
-    id: "solar",
-    title: "Solar Solutions",
-    icon: RiSunLine,
-    gradient: "from-primary to-green-600",
-    items: [
-      "Monocrystalline PERC Panels",
-      "Bifacial Solar Modules",
-      "String & Central Inverters",
-      "Power Optimizers & Microinverters",
-      "Smart LED Lighting",
-      "Grid-Tie & Off-Grid Systems",
-    ],
-    metric: "12+ Product Lines",
-  },
-  {
-    id: "ev",
-    title: "EV Infrastructure",
-    icon: RiChargingPile2Line,
-    gradient: "from-blue-600 to-blue-800",
-    items: [
-      "Level 2 AC (7-22kW)",
-      "DC Fast Chargers (50-150kW)",
-      "Ultra-Fast (350kW)",
-      "Fleet Management Systems",
-      "Load Balancing",
-      "RFID & NFC Payment",
-    ],
-    metric: "8+ Charging Types",
-  },
-  {
-    id: "storage",
-    title: "Energy Storage",
-    icon: RiBatteryChargeLine,
-    gradient: "from-green-600 to-emerald-700",
-    items: [
-      "LiFePO4 & NMC Batteries",
-      "Solid-State Technology",
-      "Grid-Scale BESS",
-      "Residential ESS (5-20kWh)",
-      "Frequency Regulation",
-      "Microgrid Integration",
-    ],
-    metric: "6+ Storage Types",
-  },
-  {
-    id: "smart-controls",
-    title: "Smart Controls",
-    icon: RiCpuLine,
-    gradient: "from-orange-600 to-red-600",
-    items: [
-      "AI-Based MPPT Controllers",
-      "Predictive Analytics",
-      "Blockchain Energy Trading",
-      "Digital Twins",
-      "Weather Forecasting API",
-      "Mobile & Web Dashboards",
-    ],
-    metric: "15+ Smart Features",
-  },
-];
-
-const featuredProducts = [
-  {
-    title: "Solar Street Light Pro",
-    badge: "Best Seller",
-    badgeColor: "bg-green-100 text-green-600",
-    icon: RiSunLine,
+    id: "cube-125",
+    name: "Cube 125/161/192",
+    subtitle: "Outdoor Distributed Energy Storage (Air Cooling)",
+    category: "commercial",
+    tag: "Energy Storage",
     image:
-      "https://readdy.ai/api/search-image?query=modern%20solar%20LED%20street%20light%20with%20sleek%20black%20pole%20and%20bright%20LED%20panel%2C%20minimalist%20industrial%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20high-tech%20appearance%20with%20blue%20accents&width=400&height=300&seq=prod001&orientation=landscape",
-    specs: [
-      ["LED Power", "50W - 200W (160lm/W)"],
-      ["Solar Panel", "100W - 400W Mono"],
-      ["Battery", "LiFePO4 150Ah - 600Ah"],
-      ["Operation Time", "12+ Hours (5 Rainy Days)"],
-      ["Warranty", "5 Years (LED 50,000h)"],
-      ["Certifications", "IP65, CE, FCC, RoHS"],
-      ["Price Range", "$299 - $899"],
-    ],
-    cta: "View Details",
+      "https://readdy.ai/api/search-image?query=outdoor%20distributed%20energy%20storage%20cabinet%20white%20industrial%20container%20with%20ventilation%20doors%20and%20warning%20labels%2C%20clean%20studio%20background&width=600&height=420&seq=vh_prod_001&orientation=landscape",
   },
   {
-    title: "Solar Home System",
-    badge: "New",
-    badgeColor: "bg-blue-100 text-blue-600",
-    icon: RiHomeGearLine,
+    id: "cube-1000f",
+    name: "Cube 1000-F",
+    subtitle: "Outdoor Distributed Energy Storage",
+    category: "commercial",
+    tag: "High Capacity",
     image:
-      "https://readdy.ai/api/search-image?query=residential%20solar%20panel%20system%20installation%20on%20modern%20house%20roof%2C%20multiple%20blue%20solar%20panels%20arranged%20in%20grid%20pattern%2C%20clean%20architectural%20setting%2C%20bright%20daylight%2C%20professional%20installation%20quality&width=400&height=300&seq=prod002&orientation=landscape",
-    specs: [
-      ["System Size", "5kW - 20kW (Scalable)"],
-      ["Panel Efficiency", "22.5% Mono-PERC"],
-      ["Inverter Type", "Hybrid String (98.6% Eff)"],
-      ["Annual Production", "7,500 - 28,000 kWh"],
-      ["ROI Period", "6-8 Years"],
-      ["Warranty", "25Y Performance / 12Y Product"],
-      ["Price Range", "$1.70 - $2.20/Watt"],
-    ],
-    cta: "Get Quote",
+      "https://readdy.ai/api/search-image?query=modular%20battery%20energy%20storage%20system%20rack%20with%20multiple%20white%20modules%20and%20led%20indicators%2C%20front%20view%2C%20studio%20lighting&width=600&height=420&seq=vh_prod_002&orientation=landscape",
   },
   {
-    title: "EV Fast Charger",
-    badge: "Popular",
-    badgeColor: "bg-yellow-100 text-yellow-600",
-    icon: RiChargingPile2Line,
+    id: "ebox16",
+    name: "EBOX16",
+    subtitle: "Residential Low Voltage Energy Storage System",
+    category: "residential",
+    tag: "Home Storage",
     image:
-      "https://readdy.ai/api/search-image?query=modern%20electric%20vehicle%20charging%20station%20with%20sleek%20white%20and%20blue%20design%2C%20digital%20display%20screen%2C%20charging%20cable%2C%20futuristic%20appearance%2C%20clean%20industrial%20background%2C%20professional%20product%20shot&width=400&height=300&seq=prod003&orientation=landscape",
-    specs: [
-      ["Charging Speed", "50kW - 150kW"],
-      ["Connector Type", "CCS, CHAdeMO"],
-      ["Warranty", "3 Years"],
-      ["Price Range", "$15,000 - $45,000"],
-    ],
-    cta: "Request Demo",
+      "https://readdy.ai/api/search-image?query=slim%20wall%20mounted%20home%20battery%20unit%20white%20minimal%20design%20with%20soft%20shadow%2C%20modern%20interior%20background&width=600&height=420&seq=vh_prod_003&orientation=portrait",
   },
   {
-    title: "PowerVault Battery",
-    badge: "Premium",
-    badgeColor: "bg-green-100 text-green-600",
-    icon: RiBatteryChargeLine,
+    id: "cube-60",
+    name: "Air-cooling Cube 60",
+    subtitle: "All-in-one Energy Storage Cabinet",
+    category: "commercial",
+    tag: "All-in-one",
     image:
-      "https://readdy.ai/api/search-image?query=industrial%20lithium%20battery%20storage%20system%20with%20blue%20and%20silver%20housing%2C%20LED%20status%20indicators%2C%20modular%20design%2C%20high-tech%20energy%20storage%20unit%2C%20clean%20white%20background%2C%20professional%20equipment%20photography&width=400&height=300&seq=prod004&orientation=landscape",
-    specs: [
-      ["Capacity", "10kWh - 100kWh"],
-      ["Cycle Life", "6,000+ cycles"],
-      ["Warranty", "10 Years"],
-      ["Price Range", "$5,500 - $48,000"],
-    ],
-    cta: "Configure System",
+      "https://readdy.ai/api/search-image?query=compact%20all%20in%20one%20battery%20storage%20cabinet%20with%20touch%20screen%20and%20ventilation%20grilles%2C%20white%20and%20gray%20colors&width=600&height=420&seq=vh_prod_004&orientation=portrait",
   },
   {
-    title: "Solar Ceiling Fan",
-    badge: "Eco-Friendly",
-    badgeColor: "bg-purple-100 text-purple-600",
-    icon: RiWindyLine,
+    id: "cube-225",
+    name: "Air Cooling Cube 225",
+    subtitle: "All-in-one Energy Storage Cabinet",
+    category: "commercial",
     image:
-      "https://readdy.ai/api/search-image?query=modern%20solar-powered%20ceiling%20fan%20with%20sleek%20white%20blades%20and%20integrated%20LED%20lighting%2C%20contemporary%20design%2C%20energy-efficient%20motor%2C%20clean%20minimalist%20appearance%2C%20professional%20product%20photography&width=400&height=300&seq=prod005&orientation=landscape",
-    specs: [
-      ["Blade Size", '48" / 56"'],
-      ["Power Usage", "28W - 35W"],
-      ["Warranty", "3 Years"],
-      ["Price Range", "$199 - $299"],
-    ],
-    cta: "Shop Now",
+      "https://readdy.ai/api/search-image?query=large%20energy%20storage%20cabinet%20with%20double%20doors%20and%20cooling%20vents%2C%20industrial%20white%20finish%20studio%20shot&width=600&height=420&seq=vh_prod_005&orientation=landscape",
   },
   {
-    title: "SmartControl Hub",
-    badge: "Smart",
-    badgeColor: "bg-orange-100 text-orange-600",
-    icon: RiDashboard3Line,
+    id: "cube-261",
+    name: "Liquid Cooling Cube 261/261-Y",
+    subtitle: "All-in-one Energy Storage Cabinet",
+    category: "commercial",
+    tag: "Liquid Cooling",
     image:
-      "https://readdy.ai/api/search-image?query=smart%20energy%20management%20control%20panel%20with%20digital%20touchscreen%20display%2C%20blue%20interface%20graphics%2C%20modern%20industrial%20design%2C%20monitoring%20dashboard%2C%20clean%20technology%20aesthetic%2C%20professional%20equipment%20shot&width=400&height=300&seq=prod006&orientation=landscape",
-    specs: [
-      ["Max Current", "60A - 100A"],
-      ["Efficiency", "98.5%"],
-      ["Warranty", "5 Years"],
-      ["Price Range", "$899 - $1,599"],
-    ],
-    cta: "Learn More",
-  },
-];
-
-const technologyTrends = [
-  {
-    title: "Solar Technology Advances",
-    icon: RiFlashlightLine,
-    bullets: [
-      "Perovskite-silicon tandems hitting 31.3% efficiency",
-      "Bifacial panels delivering 20-30% more energy",
-      "Floating solar growing at 22% CAGR",
-      "Building-integrated photovoltaics expanding",
-      "Agrivoltaics pairing farming with solar",
-    ],
+      "https://readdy.ai/api/search-image?query=modern%20liquid%20cooled%20battery%20storage%20cabinet%20with%20blue%20accent%20lights%2C%20industrial%20data%20center%20style&width=600&height=420&seq=vh_prod_006&orientation=landscape",
   },
   {
-    title: "Battery Storage Evolution",
-    icon: RiBatteryChargeLine,
-    bullets: [
-      "Lithium-ion costs down 89% since 2010",
-      "Solid-state batteries promise 2x density",
-      "Grid-scale storage deployments up 179% YoY",
-      "Second-life EV batteries for stationary storage",
-      "Long-duration technologies emerging",
-    ],
+    id: "ax3700",
+    name: "Liquid Cooling AX3700",
+    subtitle: "Outdoor Distributed Energy Storage",
+    category: "commercial",
+    image:
+      "https://readdy.ai/api/search-image?query=containerized%20battery%20energy%20storage%20system%20with%20company%20branding%20on%20side%2C%20installed%20near%20solar%20farm&width=600&height=420&seq=vh_prod_007&orientation=landscape",
   },
   {
-    title: "EV Charging Infrastructure",
-    icon: RiChargingPile2Line,
-    bullets: [
-      "Global public charging points up 55% in 2023",
-      "350kW ultra-fast is becoming the new standard",
-      "Wireless charging pilots in major cities",
-      "Vehicle-to-grid integration accelerating",
-      "Smart charging with demand response",
-    ],
+    id: "pile-lv",
+    name: "Pile LV",
+    subtitle: "Low-Voltage Stackable Residential Battery",
+    category: "residential",
+    image:
+      "https://readdy.ai/api/search-image?query=stackable%20tower%20home%20battery%20modules%20white%20with%20rounded%20edges%2C%20minimal%20studio%20background&width=600&height=420&seq=vh_prod_008&orientation=portrait",
+  },
+  {
+    id: "unity-lv",
+    name: "Unity LV",
+    subtitle: "Rack Type Residential Battery",
+    category: "residential",
+    image:
+      "https://readdy.ai/api/search-image?query=rack%20mounted%20battery%20modules%20in%20black%20metal%20rack%20with%20status%20leds%2C%20data%20center%20look&width=600&height=420&seq=vh_prod_009&orientation=landscape",
+  },
+  {
+    id: "unity-hv",
+    name: "Unity HV",
+    subtitle: "Residential / Small Industrial Battery",
+    category: "baconly",
+    tag: "High Voltage",
+    image:
+      "https://readdy.ai/api/search-image?query=high%20voltage%20battery%20rack%20system%20with%20orange%20connectors%20and%20safety%20labels%2C%20industrial%20studio%20shot&width=600&height=420&seq=vh_prod_010&orientation=landscape",
   },
 ];
 
 export default function Products() {
+  const [activeCategory, setActiveCategory] = useState<ProductCategory>("all");
+
+  const filteredProducts =
+    activeCategory === "all"
+      ? products
+      : products.filter((p) => p.category === activeCategory);
+
   return (
-    <main className="pt-32 space-y-20 bg-white">
-      <section id="overview" className="pt-12">
-        <LayoutContainer className="space-y-12">
-          <SectionHeading
-            title="Our Products"
-            description="Comprehensive energy solutions engineered for maximum efficiency, reliability, and sustainability."
-          />
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h3 className="text-lg font-semibold text-center mb-6">
-              Technology Leadership & Product Range
-            </h3>
-            <div className="grid md:grid-cols-4 gap-6 text-center">
-              {productStats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-3xl font-bold text-primary">{stat.value}</p>
-                  <p className="text-gray-500 text-sm">{stat.label}</p>
-                  <p className="text-xs text-gray-400 mt-1">{stat.detail}</p>
-                </div>
+    <main className="bg-slate-50 min-h-screen">
+      {/* Hero / banner */}
+      <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
+        <Image
+          src="/HomeBanner/banner3.jpg"
+          alt="VoltHub energy storage solutions"
+          width={1600}
+          height={400}
+          className="w-full h-full md:h-[550px] object-cover"
+        />
+        <div className="absolute inset-0">
+          <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white">
+            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
+              <RiHome2Line className="h-4 w-4" />
+              <span>Home</span>
+              <RiArrowRightSLine className="h-4 w-4" />
+              <span className="text-white/90">Products</span>
+            </div>
+            <div className="max-w-xl space-y-2">
+              <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
+                Energy Storage & Power Products
+              </h1>
+              <p className="text-sm md:text-base text-white/80">
+                From residential batteries to utility-scale storage, VoltHub
+                delivers trusted, safe and efficient energy solutions for every
+                scenario.
+              </p>
+            </div>
+          </LayoutContainer>
+        </div>
+      </section>
+
+      {/* Main layout: sidebar + grid */}
+      <section className="py-10 md:py-14">
+        <LayoutContainer className="grid gap-8 lg:grid-cols-[260px,1fr] items-start">
+          {/* Sidebar categories */}
+          <aside className="space-y-3 lg:sticky lg:top-28 self-start">
+            {categories.map((category) => {
+              const isActive = activeCategory === category.id;
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`w-full flex items-center justify-between rounded-2xl px-5 py-4 text-left text-sm md:text-base transition-all shadow-sm
+                    ${
+                      isActive
+                        ? "bg-white text-slate-900 ring-2 ring-primary/70 shadow-md"
+                        : "bg-white/60 text-slate-700 hover:bg-white hover:shadow-md"
+                    }`}
+                >
+                  <span>{category.label}</span>
+                  <RiArrowRightSLine
+                    className={`h-5 w-5 ${
+                      isActive ? "text-primary" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+              );
+            })}
+
+            <div className="hidden lg:block mt-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white px-5 py-4 text-xs space-y-1">
+              <p className="font-semibold text-sm">
+                Trusted Energy Storage Supplier
+              </p>
+              <p className="text-white/70">
+                Certified safety, bankable performance and global project
+                experience.
+              </p>
+            </div>
+          </aside>
+
+          {/* Products grid */}
+          <div className="space-y-6">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2">
+              <div>
+                <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-primary font-semibold">
+                  Products
+                </p>
+                <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
+                  {activeCategory === "all"
+                    ? "All Products"
+                    : categories.find((c) => c.id === activeCategory)?.label}
+                </h2>
+              </div>
+              <p className="text-xs md:text-sm text-slate-500">
+                Showing {filteredProducts.length} of {products.length} products
+              </p>
+            </div>
+
+            <div className="grid gap-5 xl:gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {filteredProducts.map((product) => (
+                <article
+                  key={product.id}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col border border-slate-100"
+                >
+                  <div className="relative overflow-hidden bg-slate-100">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={640}
+                      height={420}
+                      className="w-full h-52 md:h-56 object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/5 via-transparent to-transparent opacity-70" />
+                  </div>
+
+                  <div className="p-5 md:p-6 flex flex-col gap-3 flex-1">
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                      {product.category === "residential" && (
+                        <RiHomeGearLine className="h-4 w-4 text-primary" />
+                      )}
+                      {product.category === "commercial" && (
+                        <RiBatteryChargeLine className="h-4 w-4 text-primary" />
+                      )}
+                      {product.category === "baconly" && (
+                        <RiChargingPile2Line className="h-4 w-4 text-primary" />
+                      )}
+                      <span className="uppercase tracking-[0.16em]">
+                        {product.category === "all"
+                          ? "All Products"
+                          : categories.find((c) => c.id === product.category)
+                              ?.label}
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg md:text-xl font-semibold text-slate-900">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-slate-600 flex-1">
+                      {product.subtitle}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-1">
+                      {product.tag && (
+                        <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                          {product.tag}
+                        </span>
+                      )}
+                      <button className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-1.5 transition-all">
+                        <span>Learn More</span>
+                        <RiArrowRightSLine className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
-          </div>
-        </LayoutContainer>
-      </section>
-
-      <section id="categories" className="py-4">
-        <LayoutContainer className="space-y-10">
-          <SectionHeading
-            title="Product Categories"
-            description="Every platform integrates seamlessly with VoltHub smart controls."
-          />
-          <div className="grid lg:grid-cols-2 gap-6">
-            {categoryCards.map((category) => (
-              <div
-                key={category.id}
-                id={category.id}
-                className={`text-white p-8 rounded-3xl bg-linear-to-br ${category.gradient}`}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold">{category.title}</h3>
-                  <category.icon className="text-4xl text-secondary" />
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-sm text-white/90">
-                  {category.items.map((item) => (
-                    <p key={item}>• {item}</p>
-                  ))}
-                </div>
-                <p className="mt-6 text-secondary font-semibold text-lg">
-                  {category.metric}
-                </p>
-              </div>
-            ))}
-          </div>
-        </LayoutContainer>
-      </section>
-
-      <section id="featured" className="bg-gray-50 py-20">
-        <LayoutContainer className="space-y-12">
-          <SectionHeading
-            title="Featured Products"
-            description="Modular kits tailored for residential, commercial, and utility-scale deployments."
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <div
-                key={product.title}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col card-hover"
-              >
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6 flex-1 flex flex-col space-y-4">
-                  <div className="flex items-center justify-between">
-                    <product.icon className="text-2xl text-primary" />
-                    <span
-                      className={`text-xs font-semibold px-3 py-1 rounded-full ${product.badgeColor}`}
-                    >
-                      {product.badge}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold">{product.title}</h3>
-                  <div className="space-y-2 text-sm text-gray-600 flex-1">
-                    {product.specs.map(([label, value]) => (
-                      <div key={label} className="flex justify-between text-xs">
-                        <span className="text-gray-500">{label}:</span>
-                        <span className="font-medium text-gray-700">
-                          {value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <button className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors">
-                    {product.cta}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </LayoutContainer>
-      </section>
-
-      <section className="py-20">
-        <LayoutContainer className="space-y-12">
-          <SectionHeading
-            title="Compare Products"
-            description="Select any combination to benchmark power, efficiency, and ROI."
-          />
-          <div className="grid lg:grid-cols-4 gap-6">
-            <div className="bg-gray-50 p-6 rounded-2xl">
-              <h4 className="font-semibold mb-4">Select Products</h4>
-              <div className="space-y-3 text-sm text-gray-700">
-                {[
-                  "Solar Street Light",
-                  "Home Solar System",
-                  "EV Fast Charger",
-                  "Battery Storage",
-                ].map((label) => (
-                  <label key={label} className="flex items-center gap-2">
-                    <input type="checkbox" className="rounded text-primary" />
-                    <span>{label}</span>
-                  </label>
-                ))}
-              </div>
-              <button className="w-full mt-6 bg-secondary text-black py-2 rounded-xl font-semibold hover:bg-yellow-300 transition-colors">
-                Compare Selected
-              </button>
-            </div>
-            <div className="lg:col-span-3 bg-white p-6 rounded-2xl border border-dashed border-gray-200 flex flex-col items-center justify-center text-center text-gray-500">
-              <RiScales3Line className="text-4xl mb-4" />
-              <p>Select products on the left to display a detailed comparison.</p>
-            </div>
-          </div>
-        </LayoutContainer>
-      </section>
-
-      <section className="bg-linear-to-br from-blue-50 to-green-50 py-20">
-        <LayoutContainer className="space-y-12">
-          <SectionHeading title="Renewable Energy Technology Trends" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {technologyTrends.map((trend) => (
-              <div key={trend.title} className="bg-white p-6 rounded-2xl shadow-sm">
-                <trend.icon className="text-3xl text-primary mb-4" />
-                <h3 className="font-semibold mb-4">{trend.title}</h3>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  {trend.bullets.map((bullet) => (
-                    <li key={bullet}>• {bullet}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <span className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-sm text-sm text-gray-600">
-              <RiFlashlightLine className="text-primary" />
-              Data sources: IRENA, IEA, BloombergNEF, Wood Mackenzie 2024 reports
-            </span>
           </div>
         </LayoutContainer>
       </section>
     </main>
   );
 }
+
 
