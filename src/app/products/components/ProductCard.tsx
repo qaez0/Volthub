@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { RiArrowRightSLine, RiBatteryChargeLine, RiChargingPile2Line, RiHomeGearLine, RiSunLine } from "react-icons/ri";
 import { Product, categories } from "./productData";
 
@@ -8,7 +9,8 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col border border-slate-100">
+    <Link href={`/products/${product.id}`}>
+      <article className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col border border-slate-100 cursor-pointer">
       <div className="relative overflow-hidden bg-slate-100">
         <Image
           src={product.image}
@@ -53,13 +55,14 @@ export default function ProductCard({ product }: ProductCardProps) {
               {product.tag}
             </span>
           )}
-          <button className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-1.5 transition-all">
+          <div className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-1.5 transition-all">
             <span>Learn More</span>
             <RiArrowRightSLine className="h-4 w-4" />
-          </button>
+          </div>
         </div>
       </div>
     </article>
+    </Link>
   );
 }
 

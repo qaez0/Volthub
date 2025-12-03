@@ -41,7 +41,7 @@ export const carouselSlides = [
     subtitle: "Energy Independence",
     description:
       "Smart home battery systems that store solar energy for round-the-clock power. Reduce your electricity bills and achieve energy independence with our cutting-edge residential storage solutions.",
-    image: "/HomeBanner/banner2light.png",
+    image: "/HomeBanner/LVXC.png",
     backgroundImage: "/HomeBanner/banner2.png",
     showimg: true,
     imageClassName: "absolute bottom-0 right-0 h-full w-1/2 mb-[-170px]",
@@ -166,7 +166,7 @@ export const productShowcases = [
     ],
     description:
       "High-efficiency solar panels with integrated energy storage. Maximize your energy independence with our premium solar solutions designed for modern homes and businesses.",
-    image: "/HomeBanner/banner2light.png",
+    image: "/HomeBanner/LVXC.png",
     imageAlt: "Advanced Solar System",
     features: [
       { icon: RiSunLine, text: "High Efficiency Panels", color: "text-accent" },
