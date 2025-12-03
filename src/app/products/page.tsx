@@ -11,7 +11,13 @@ import {
 } from "react-icons/ri";
 import { useState } from "react";
 
-type ProductCategory = "all" | "commercial" | "residential" | "baconly";
+type ProductCategory =
+  | "all"
+  | "ev-charging"
+  | "solar-street"
+  | "smart-home"
+  | "cabinet"
+  | "container";
 
 type Product = {
   id: string;
@@ -24,99 +30,185 @@ type Product = {
 
 const categories: { id: ProductCategory; label: string }[] = [
   { id: "all", label: "All Products" },
-  { id: "commercial", label: "Commercial & Industrial" },
-  { id: "residential", label: "Residential" },
-  { id: "baconly", label: "Baconly" },
+  { id: "ev-charging", label: "EV Charging Station" },
+  { id: "solar-street", label: "Solar Street Lights" },
+  { id: "smart-home", label: "Smart Home IPS" },
+  { id: "cabinet", label: "Cabinet Type Power Supply" },
+  { id: "container", label: "Container Type Power Supply" },
 ];
+
+const categoryBanner: Record<
+  ProductCategory,
+  { title: string; description: string; image: string }
+> = {
+  all: {
+    title: "Energy Storage & Power Products",
+    description:
+      "From EV charging to smart home backup and utility-scale storage, VoltHub delivers trusted, safe and efficient power for every scenario.",
+    image: "/HomeBanner/banner3.jpg",
+  },
+  "ev-charging": {
+    title: "EV Charging Station Solutions",
+    description:
+      "Fast, reliable EV charging systems for homes, fleets and public sites, with smart monitoring and billing.",
+    image: "/HomeBanner/item4.png",
+  },
+  "solar-street": {
+    title: "Solar Street Lighting Systems",
+    description:
+      "High‑efficiency solar street lights with intelligent control, built for streets, campuses and industrial parks.",
+    image: "/aboutimages/solarstreetlight.jpg",
+  },
+  "smart-home": {
+    title: "Smart Home IPS Backup",
+    description:
+      "Compact indoor power systems that keep your essential loads running during grid outages.",
+    image: "/HomeBanner/homebatt.png",
+  },
+  cabinet: {
+    title: "Cabinet Type Power Supply",
+    description:
+      "Modular cabinet energy storage and power supply systems for commercial and industrial applications.",
+    image: "/HomeBanner/commercial.png",
+  },
+  container: {
+    title: "Container Type Power Supply",
+    description:
+      "Utility‑scale containerized BESS and hybrid power systems ready for rapid deployment.",
+    image: "/HomeBanner/container.png",
+  },
+};
 
 // Based on Absen Energy products layout, adapted to VoltHub
 // Reference: `https://www.absenenergy.com/en/product/`
 const products: Product[] = [
   {
-    id: "cube-125",
-    name: "Cube 125/161/192",
-    subtitle: "Outdoor Distributed Energy Storage (Air Cooling)",
-    category: "commercial",
-    tag: "Energy Storage",
-    image:
-      "https://readdy.ai/api/search-image?query=outdoor%20distributed%20energy%20storage%20cabinet%20white%20industrial%20container%20with%20ventilation%20doors%20and%20warning%20labels%2C%20clean%20studio%20background&width=600&height=420&seq=vh_prod_001&orientation=landscape",
+    id: "cabinet-item4",
+    name: "Cabinet Type Power Supply",
+    subtitle: "Modular cabinet energy storage and power supply system",
+    category: "cabinet",
+    tag: "Cabinet Type",
+    image: "/Product/cabinet/item4.png",
   },
   {
-    id: "cube-1000f",
-    name: "Cube 1000-F",
-    subtitle: "Outdoor Distributed Energy Storage",
-    category: "commercial",
-    tag: "High Capacity",
-    image:
-      "https://readdy.ai/api/search-image?query=modular%20battery%20energy%20storage%20system%20rack%20with%20multiple%20white%20modules%20and%20led%20indicators%2C%20front%20view%2C%20studio%20lighting&width=600&height=420&seq=vh_prod_002&orientation=landscape",
+    id: "smart-home-smp2",
+    name: "Smart Home IPS SMP2",
+    subtitle: "Residential Smart Home Power System",
+    category: "smart-home",
+    tag: "Home IPS",
+    image: "/Product/SmartHome/SMP2.png",
   },
   {
-    id: "ebox16",
-    name: "EBOX16",
-    subtitle: "Residential Low Voltage Energy Storage System",
-    category: "residential",
-    tag: "Home Storage",
-    image:
-      "https://readdy.ai/api/search-image?query=slim%20wall%20mounted%20home%20battery%20unit%20white%20minimal%20design%20with%20soft%20shadow%2C%20modern%20interior%20background&width=600&height=420&seq=vh_prod_003&orientation=portrait",
+    id: "container-con1",
+    name: "Container Type Power Supply",
+    subtitle: "Utility-scale containerized BESS and hybrid power system",
+    category: "container",
+    tag: "Container Type",
+    image: "/Product/containertype/con1.png",
   },
   {
-    id: "cube-60",
-    name: "Air-cooling Cube 60",
-    subtitle: "All-in-one Energy Storage Cabinet",
-    category: "commercial",
-    tag: "All-in-one",
-    image:
-      "https://readdy.ai/api/search-image?query=compact%20all%20in%20one%20battery%20storage%20cabinet%20with%20touch%20screen%20and%20ventilation%20grilles%2C%20white%20and%20gray%20colors&width=600&height=420&seq=vh_prod_004&orientation=portrait",
+    id: "smart-home-smp3",
+    name: "Smart Home IPS SMP3",
+    subtitle: "Advanced Smart Home Power System",
+    category: "smart-home",
+    tag: "Home IPS",
+    image: "/Product/SmartHome/SMP3.png",
   },
   {
-    id: "cube-225",
-    name: "Air Cooling Cube 225",
-    subtitle: "All-in-one Energy Storage Cabinet",
-    category: "commercial",
-    image:
-      "https://readdy.ai/api/search-image?query=large%20energy%20storage%20cabinet%20with%20double%20doors%20and%20cooling%20vents%2C%20industrial%20white%20finish%20studio%20shot&width=600&height=420&seq=vh_prod_005&orientation=landscape",
+    id: "smart-home-smp4",
+    name: "Smart Home IPS SMP4",
+    subtitle: "Compact Smart Home Power Solution",
+    category: "smart-home",
+    tag: "Home IPS",
+    image: "/Product/SmartHome/SMP4.png",
   },
   {
-    id: "cube-261",
-    name: "Liquid Cooling Cube 261/261-Y",
-    subtitle: "All-in-one Energy Storage Cabinet",
-    category: "commercial",
-    tag: "Liquid Cooling",
-    image:
-      "https://readdy.ai/api/search-image?query=modern%20liquid%20cooled%20battery%20storage%20cabinet%20with%20blue%20accent%20lights%2C%20industrial%20data%20center%20style&width=600&height=420&seq=vh_prod_006&orientation=landscape",
+    id: "smart-home-smp5",
+    name: "Smart Home IPS SMP5",
+    subtitle: "Premium Smart Home Power System",
+    category: "smart-home",
+    tag: "Home IPS",
+    image: "/Product/SmartHome/SMP5.png",
   },
   {
-    id: "ax3700",
-    name: "Liquid Cooling AX3700",
-    subtitle: "Outdoor Distributed Energy Storage",
-    category: "commercial",
-    image:
-      "https://readdy.ai/api/search-image?query=containerized%20battery%20energy%20storage%20system%20with%20company%20branding%20on%20side%2C%20installed%20near%20solar%20farm&width=600&height=420&seq=vh_prod_007&orientation=landscape",
+    id: "smart-home-smp6",
+    name: "Smart Home IPS SMP6",
+    subtitle: "High-Capacity Smart Home Power System",
+    category: "smart-home",
+    tag: "Home IPS",
+    image: "/Product/SmartHome/SMP6.png",
   },
   {
-    id: "pile-lv",
-    name: "Pile LV",
-    subtitle: "Low-Voltage Stackable Residential Battery",
-    category: "residential",
-    image:
-      "https://readdy.ai/api/search-image?query=stackable%20tower%20home%20battery%20modules%20white%20with%20rounded%20edges%2C%20minimal%20studio%20background&width=600&height=420&seq=vh_prod_008&orientation=portrait",
+    id: "smart-home-smp7",
+    name: "Smart Home IPS SMP7",
+    subtitle: "Enterprise Smart Home Power Solution",
+    category: "smart-home",
+    tag: "Home IPS",
+    image: "/Product/SmartHome/SMP7.png",
   },
   {
-    id: "unity-lv",
-    name: "Unity LV",
-    subtitle: "Rack Type Residential Battery",
-    category: "residential",
-    image:
-      "https://readdy.ai/api/search-image?query=rack%20mounted%20battery%20modules%20in%20black%20metal%20rack%20with%20status%20leds%2C%20data%20center%20look&width=600&height=420&seq=vh_prod_009&orientation=landscape",
+    id: "ev-charging-53",
+    name: "EV Charging Station 53",
+    subtitle: "Advanced EV charging solution for commercial and public use",
+    category: "ev-charging",
+    tag: "EV Charging",
+    image: "/Product/EV/53.png",
   },
   {
-    id: "unity-hv",
-    name: "Unity HV",
-    subtitle: "Residential / Small Industrial Battery",
-    category: "baconly",
-    tag: "High Voltage",
-    image:
-      "https://readdy.ai/api/search-image?query=high%20voltage%20battery%20rack%20system%20with%20orange%20connectors%20and%20safety%20labels%2C%20industrial%20studio%20shot&width=600&height=420&seq=vh_prod_010&orientation=landscape",
+    id: "ev-charging-59",
+    name: "EV Charging Station 59",
+    subtitle: "High-performance EV charging system",
+    category: "ev-charging",
+    tag: "EV Charging",
+    image: "/Product/EV/59.png",
+  },
+  {
+    id: "ev-charging-64",
+    name: "EV Charging Station 64",
+    subtitle: "Fast and reliable EV charging solution",
+    category: "ev-charging",
+    tag: "EV Charging",
+    image: "/Product/EV/64.png",
+  },
+  {
+    id: "ev-charging-89",
+    name: "EV Charging Station 89",
+    subtitle: "Premium EV charging station for fleets and public sites",
+    category: "ev-charging",
+    tag: "EV Charging",
+    image: "/Product/EV/89.png",
+  },
+  {
+    id: "solar-street-f1l",
+    name: "F1L Solar Street Light",
+    subtitle: "High-efficiency solar street lighting system",
+    category: "solar-street",
+    tag: "Solar Lighting",
+    image: "/Product/StreetLamp/F1L.png",
+  },
+  {
+    id: "solar-street-f2l",
+    name: "F2L Solar Street Light",
+    subtitle: "Advanced solar street lighting solution",
+    category: "solar-street",
+    tag: "Solar Lighting",
+    image: "/Product/StreetLamp/F2L.png",
+  },
+  {
+    id: "solar-street-rklv02",
+    name: "RK LV02 Solar Street Light",
+    subtitle: "Compact solar street lighting system",
+    category: "solar-street",
+    tag: "Solar Lighting",
+    image: "/Product/StreetLamp/RKlv02.png",
+  },
+  {
+    id: "solar-street-rks",
+    name: "RKS Solar Street Light",
+    subtitle: "Premium solar street lighting solution",
+    category: "solar-street",
+    tag: "Solar Lighting",
+    image: "/Product/StreetLamp/RKS.png",
   },
 ];
 
@@ -130,12 +222,12 @@ export default function Products() {
 
   return (
     <main className="bg-slate-50 min-h-screen">
-      {/* Hero / banner */}
+      {/* Hero / banner (changes with category) */}
       <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
         <Image
-          src="/HomeBanner/banner3.jpg"
-          alt="VoltHub energy storage solutions"
+          src={categoryBanner[activeCategory].image}
+          alt={categoryBanner[activeCategory].title}
           width={1600}
           height={400}
           className="w-full h-full md:h-[550px] object-cover"
@@ -150,12 +242,10 @@ export default function Products() {
             </div>
             <div className="max-w-xl space-y-2">
               <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
-                Energy Storage & Power Products
+                {categoryBanner[activeCategory].title}
               </h1>
               <p className="text-sm md:text-base text-white/80">
-                From residential batteries to utility-scale storage, VoltHub
-                delivers trusted, safe and efficient energy solutions for every
-                scenario.
+                {categoryBanner[activeCategory].description}
               </p>
             </div>
           </LayoutContainer>
@@ -164,9 +254,9 @@ export default function Products() {
 
       {/* Main layout: sidebar + grid */}
       <section className="py-10 md:py-14">
-        <LayoutContainer className="grid gap-8 lg:grid-cols-[260px,1fr] items-start">
+        <LayoutContainer className="flex gap-8 items-start">
           {/* Sidebar categories */}
-          <aside className="space-y-3 lg:sticky lg:top-28 self-start">
+          <aside className="w-[260px] space-y-3 self-start flex-shrink-0">
             {categories.map((category) => {
               const isActive = activeCategory === category.id;
               return (
@@ -202,7 +292,7 @@ export default function Products() {
           </aside>
 
           {/* Products grid */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex-1">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2">
               <div>
                 <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-primary font-semibold">
@@ -238,14 +328,15 @@ export default function Products() {
 
                   <div className="p-5 md:p-6 flex flex-col gap-3 flex-1">
                     <div className="flex items-center gap-2 text-xs text-slate-500">
-                      {product.category === "residential" && (
+                      {product.category === "smart-home" && (
                         <RiHomeGearLine className="h-4 w-4 text-primary" />
                       )}
-                      {product.category === "commercial" && (
-                        <RiBatteryChargeLine className="h-4 w-4 text-primary" />
-                      )}
-                      {product.category === "baconly" && (
+                      {product.category === "ev-charging" && (
                         <RiChargingPile2Line className="h-4 w-4 text-primary" />
+                      )}
+                      {(product.category === "cabinet" ||
+                        product.category === "container") && (
+                        <RiBatteryChargeLine className="h-4 w-4 text-primary" />
                       )}
                       <span className="uppercase tracking-[0.16em]">
                         {product.category === "all"
