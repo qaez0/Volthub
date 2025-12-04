@@ -9,11 +9,7 @@ import StatsSection from "./components/StatsSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import UserSegmentationSection from "./components/UserSegmentationSection";
 import SocialProofSection from "./components/SocialProofSection";
-import ROICalculatorSection from "./components/ROICalculatorSection";
-import VideoSection from "./components/VideoSection";
-import BlogResourcesSection from "./components/BlogResourcesSection";
 import FAQSection from "./components/FAQSection";
-import LeadCaptureSection from "./components/LeadCaptureSection";
 import {
   carouselSlides,
   features,
@@ -23,9 +19,6 @@ import {
   userSegments,
   testimonials,
   trustBadges,
-  roiCalculatorBenefits,
-  videoItems,
-  resources,
   faqs,
 } from "./components/homeData";
 

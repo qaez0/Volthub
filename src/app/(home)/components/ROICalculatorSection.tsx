@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { RiArrowRightLine, RiCalculatorLine, RiCheckLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import { Route } from "next";
 
 interface ROICalculatorSectionProps {
   badge?: string;
@@ -10,7 +11,7 @@ interface ROICalculatorSectionProps {
   description: string;
   benefits: string[];
   ctaText?: string;
-  ctaLink?: string;
+  ctaLink?: Route;
 }
 
 export default function ROICalculatorSection({
@@ -45,7 +46,7 @@ export default function ROICalculatorSection({
               ))}
             </ul>
             <Link
-              href={ctaLink as any}
+              href={ctaLink}
               className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
               {ctaText}

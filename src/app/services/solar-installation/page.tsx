@@ -2,7 +2,6 @@
 
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
-import Image from "next/image";
 import Link from "next/link";
 import {
   RiCheckLine,

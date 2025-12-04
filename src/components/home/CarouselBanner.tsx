@@ -184,20 +184,6 @@ export default function CarouselBanner({
     });
   };
 
-  // Initialize slides on mount
-  useEffect(() => {
-    if (carouselRef.current) {
-      const slideElements = carouselRef.current.querySelectorAll(".carousel-slide");
-      slideElements.forEach((slide, index) => {
-        if (index === currentSlide) {
-          gsap.set(slide, { opacity: 1, scale: 1 });
-        } else {
-          gsap.set(slide, { opacity: 0, scale: 1.1 });
-        }
-      });
-    }
-  }, []);
-
   // Touch handlers for mobile swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -266,13 +252,15 @@ export default function CarouselBanner({
                     <div className="flex flex-row gap-12 items-center ">
                       {/* Image on Left */}
                      {slide.showimg && (
-                      <div className= {slide.imageClassName}  >
+                      <div className={slide.imageClassName}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={slide.image}
                           alt={slide.title}
-                          className="w-full h-full object-contain "
+                          className="w-full h-full object-contain"
                         />
-                      </div>)} 
+                      </div>
+                    )}
                       
                       {/* Text on Right */}
                       <div className={slide.descriptionClassName}>

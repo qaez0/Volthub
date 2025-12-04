@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { IconType } from "react-icons";
 import { RiArrowRightLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import { Route } from "next";
 
 interface Feature {
   icon: IconType;
@@ -19,7 +21,7 @@ interface TrustIndicator {
 
 interface CTA {
   text: string;
-  href: string;
+  href: Route;
   variant: "primary" | "secondary";
 }
 
@@ -70,7 +72,13 @@ export default function ProductShowcase({
                 className={`absolute inset-0 bg-gradient-to-br ${gradientColors.from} ${gradientColors.to} rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500`}
               />
               <div className="relative image-hover-zoom card-hover-3d rounded-3xl overflow-hidden shadow-2xl bg-white p-8 lg:p-12">
-                <img src={image} alt={imageAlt} className="w-full h-auto object-contain rounded-2xl" />
+                <Image
+                  src={image}
+                  alt={imageAlt}
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto object-contain rounded-2xl"
+                />
                 {/* Decorative elements */}
                 <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
                 <div className="absolute bottom-4 left-4 w-16 h-16 bg-accent/10 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
@@ -84,7 +92,10 @@ export default function ProductShowcase({
               <p className={`text-sm font-semibold tracking-[0.3em] ${badgeColor} uppercase mb-4`}>
                 {badge}
               </p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <h2
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+                aria-label={title}
+              >
                 {titleParts.map((part, index) => (
                   <span key={index} className={part.color}>
                     {part.text}{" "}
@@ -134,7 +145,7 @@ export default function ProductShowcase({
                 return (
                   <Link
                     key={index}
-                    href={cta.href as any}
+                    href={cta.href as Route}
                     className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 group magnetic-button ${
                       isPrimary
                         ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg hover:shadow-xl glow-pulse`

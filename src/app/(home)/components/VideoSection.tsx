@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IconType } from "react-icons";
 import { RiArrowRightLine, RiPlayFill } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import { Route } from "next";
 
 interface VideoItem {
   title: string;
@@ -16,7 +17,7 @@ interface VideoSectionProps {
   description: string;
   videoItems: VideoItem[];
   ctaText?: string;
-  ctaLink?: string;
+  ctaLink?: Route;
 }
 
 export default function VideoSection({
@@ -62,7 +63,7 @@ export default function VideoSection({
               ))}
             </div>
             <Link
-              href={ctaLink as any}
+              href={ctaLink}
               className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
               {ctaText}

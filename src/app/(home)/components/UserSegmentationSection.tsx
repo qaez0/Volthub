@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IconType } from "react-icons";
 import { RiArrowRightLine, RiCheckLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import { Route } from "next";
 
 interface Segment {
   title: string;
@@ -11,7 +12,7 @@ interface Segment {
   icon: IconType;
   features: string[];
   cta: string;
-  link: string;
+  link: Route;
   color: string;
 }
 
@@ -60,7 +61,7 @@ export default function UserSegmentationSection({
                 ))}
               </ul>
               <Link
-                href={segment.link as any}
+                href={segment.link}
                 className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-xl font-semibold text-sm hover:shadow-lg transition-all duration-300 hover:scale-105 group/btn w-full"
               >
                 {segment.cta}

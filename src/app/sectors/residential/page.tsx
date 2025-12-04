@@ -5,8 +5,6 @@ import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import Link from "next/link";
 import {
-  RiHome2Line,
-  RiArrowRightSLine,
   RiBatteryChargeLine,
   RiChargingPile2Line,
   RiLightbulbLine,

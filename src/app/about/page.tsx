@@ -3,12 +3,6 @@ import SectionHeading from "@/components/marketing/SectionHeading";
 import LocationMapWrapper from "@/components/common/LocationMapWrapper";
 import Image from "next/image";
 import {
-  RiLightbulbLine,
-  RiShieldCheckLine,
-  RiLeafLine,
-  RiRocketLine,
-  RiCarLine,
-  RiCpuLine,
   //RiMedalLine,
   RiHandHeartLine,
 } from "react-icons/ri";
@@ -80,62 +74,62 @@ const operationsHighlights = [
   },
 ];
 
-const pillars = [
-  {
-    icon: RiLightbulbLine,
-    title: "Innovation First",
-    bullets: [
-      "200+ patents with AI-powered energy management",
-      "Blockchain-enabled energy trading platform",
-      "Partnership with MIT Energy Initiative",
-    ],
-  },
-  {
-    icon: RiShieldCheckLine,
-    title: "Reliability & Performance",
-    bullets: [
-      "99.8% system uptime across deployments",
-      "25-year performance warranties",
-      "Remote diagnostics with IoT sensors",
-    ],
-  },
-  {
-    icon: RiLeafLine,
-    title: "Environmental Leadership",
-    bullets: [
-      "Carbon negative operations by 2028",
-      "100% recyclable silicon components",
-      "UN Global Compact signatory",
-    ],
-  },
-];
+// const pillars = [
+//   {
+//     icon: RiLightbulbLine,
+//     title: "Innovation First",
+//     bullets: [
+//       "200+ patents with AI-powered energy management",
+//       "Blockchain-enabled energy trading platform",
+//       "Partnership with MIT Energy Initiative",
+//     ],
+//   },
+//   {
+//     icon: RiShieldCheckLine,
+//     title: "Reliability & Performance",
+//     bullets: [
+//       "99.8% system uptime across deployments",
+//       "25-year performance warranties",
+//       "Remote diagnostics with IoT sensors",
+//     ],
+//   },
+//   {
+//     icon: RiLeafLine,
+//     title: "Environmental Leadership",
+//     bullets: [
+//       "Carbon negative operations by 2028",
+//       "100% recyclable silicon components",
+//       "UN Global Compact signatory",
+//     ],
+//   },
+// ];
 
-const timeline = [
-  {
-    icon: RiRocketLine,
-    color: "bg-primary",
-    year: "2020",
-    title: "Company Founded",
-    description: "Launched solar lighting solutions for rural communities.",
-    tags: ["$2M Seed Funding", "10 Employees"],
-  },
-  {
-    icon: RiCarLine,
-    color: "bg-secondary text-black",
-    year: "2022",
-    title: "EV Charging Division",
-    description: "Expanded into fast-charging infrastructure worldwide.",
-    tags: ["$25M Series A", "150 Employees"],
-  },
-  {
-    icon: RiCpuLine,
-    color: "bg-green-500",
-    year: "2024",
-    title: "Smart Grid Solutions",
-    description: "Launched AI-powered energy management suite.",
-    tags: ["$100M Series B", "450+ Employees"],
-  },
-];
+// const timeline = [
+//   {
+//     icon: RiRocketLine,
+//     color: "bg-primary",
+//     year: "2020",
+//     title: "Company Founded",
+//     description: "Launched solar lighting solutions for rural communities.",
+//     tags: ["$2M Seed Funding", "10 Employees"],
+//   },
+//   {
+//     icon: RiCarLine,
+//     color: "bg-secondary text-black",
+//     year: "2022",
+//     title: "EV Charging Division",
+//     description: "Expanded into fast-charging infrastructure worldwide.",
+//     tags: ["$25M Series A", "150 Employees"],
+//   },
+//   {
+//     icon: RiCpuLine,
+//     color: "bg-green-500",
+//     year: "2024",
+//     title: "Smart Grid Solutions",
+//     description: "Launched AI-powered energy management suite.",
+//     tags: ["$100M Series B", "450+ Employees"],
+//   },
+// ];
 
 // const certifications = ["ISO 9001", "ISO 14001", "IEC 61215", "UL Listed"];
 const partnerships = [

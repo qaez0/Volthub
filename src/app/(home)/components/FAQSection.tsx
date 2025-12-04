@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { RiArrowRightLine, RiQuestionLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import { Route } from "next";
 
 interface FAQ {
   question: string;
@@ -14,7 +15,7 @@ interface FAQSectionProps {
   title: string;
   description: string;
   faqs: FAQ[];
-  contactLink?: string;
+  contactLink?: Route;
 }
 
 export default function FAQSection({
@@ -57,7 +58,7 @@ export default function FAQSection({
 
         <div className="text-center mt-12">
           <Link
-            href={contactLink as any}
+            href={contactLink}
             className="inline-flex items-center justify-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300"
           >
             Still have questions? Contact us

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Route } from "next";
 import { IconType } from "react-icons";
 import { RiArrowRightLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
@@ -18,7 +19,7 @@ interface BlogResourcesSectionProps {
   title: string;
   description: string;
   resources: Resource[];
-  viewAllLink?: string;
+  viewAllLink?: Route;
 }
 
 export default function BlogResourcesSection({
@@ -68,7 +69,7 @@ export default function BlogResourcesSection({
 
         <div className="text-center mt-12">
           <Link
-            href={viewAllLink as any}
+            href={viewAllLink}
             className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 group"
           >
             View All Resources

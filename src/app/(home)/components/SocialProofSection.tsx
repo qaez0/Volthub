@@ -57,7 +57,7 @@ export default function SocialProofSection({
                   <RiStarFill key={i} className="text-yellow-400 text-lg" />
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
+              <p className="text-gray-700 mb-6 leading-relaxed italic">&ldquo;{testimonial.text}&rdquo;</p>
               <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
                 <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-2xl">
                   {testimonial.image}
@@ -74,24 +74,25 @@ export default function SocialProofSection({
         </div>
 
         {/* Trust Badges & Certifications */}
-       {showCertifications && (
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Certified & Trusted</h3>
-            <p className="text-gray-600">Our certifications and partnerships ensure quality and reliability</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center">
-            {trustBadges.map((badge, index) => (
-              <div key={index} className="flex flex-col items-center gap-2 text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <badge.icon className="text-3xl text-primary" />
+        {showCertifications && (
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">Certified &amp; Trusted</h3>
+              <p className="text-gray-600">
+                Our certifications and partnerships ensure quality and reliability
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center">
+              {trustBadges.map((badge, index) => (
+                <div key={index} className="flex flex-col items-center gap-2 text-center group">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <badge.icon className="text-3xl text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700">{badge.name}</span>
                 </div>
-                <span className="text-sm font-medium text-gray-700">{badge.name}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-
         )}
       </LayoutContainer>
     </section>

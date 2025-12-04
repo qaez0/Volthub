@@ -1,5 +1,5 @@
+import type { Route } from "next";
 import {
-  RiArrowRightLine,
   RiBatteryChargeLine,
   RiLeafLine,
   RiSunLine,
@@ -15,7 +15,6 @@ import {
   RiFileTextLine,
   RiDownloadLine,
   RiBookOpenLine,
-  RiQuestionLine,
 } from "react-icons/ri";
 
 // Carousel Slides
@@ -144,8 +143,8 @@ export const productShowcases = [
       { icon: RiShieldCheckLine, text: "10+ Year Warranty", color: "text-green-600" },
     ],
     ctas: [
-      { text: "View Residential Energy Storage Products", href: "/products", variant: "primary" as const },
-      { text: "Get Quote", href: "/contact", variant: "secondary" as const },
+      { text: "View Residential Energy Storage Products", href: "/products" as Route, variant: "primary" as const },
+      { text: "Get Quote", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiShieldCheckLine, text: "Certified & Safe", color: "text-green-600" },
@@ -174,8 +173,8 @@ export const productShowcases = [
       { icon: RiHomeGearLine, text: "Smart Energy Management", color: "text-green-600" },
     ],
     ctas: [
-      { text: "Explore Solar Energy Products", href: "/products", variant: "primary" as const },
-      { text: "Request Demo", href: "/contact", variant: "secondary" as const },
+      { text: "Explore Solar Energy Products", href: "/products" as Route, variant: "primary" as const },
+      { text: "Request Demo", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiSunLine, text: "25+ Year Lifespan", color: "text-accent" },
@@ -204,8 +203,8 @@ export const productShowcases = [
       { icon: RiFlashlightLine, text: "Grid Integration", color: "text-accent" },
     ],
     ctas: [
-      { text: "View Home Battery Storage Products", href: "/products", variant: "primary" as const },
-      { text: "Schedule Consultation", href: "/contact", variant: "secondary" as const },
+      { text: "View Home Battery Storage Products", href: "/products" as Route, variant: "primary" as const },
+      { text: "Schedule Consultation", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiBatteryChargeLine, text: "Long Lasting", color: "text-emerald-700" },
@@ -234,8 +233,8 @@ export const productShowcases = [
       { icon: RiSpeedUpLine, text: "Fast Response Time", color: "text-accent" },
     ],
     ctas: [
-      { text: "View Products", href: "/products", variant: "primary" as const },
-      { text: "Contact Sales", href: "/contact", variant: "secondary" as const },
+      { text: "View Products", href: "/products" as Route, variant: "primary" as const },
+      { text: "Contact Sales", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiFlashlightLine, text: "High Capacity", color: "text-secondary" },
@@ -289,7 +288,7 @@ export const userSegments = [
     icon: RiUserLine,
     features: ["Lower Electricity Bills", "Energy Independence", "Increase Home Value", "10+ Year Warranty"],
     cta: "Explore Residential Solutions",
-    link: "/products",
+    link: "/products" as Route,
     color: "from-primary to-accent",
   },
   {
@@ -298,7 +297,7 @@ export const userSegments = [
     icon: RiBuildingLine,
     features: ["Reduce Energy Costs", "Tax Incentives", "24/7 Support", "Scalable Solutions"],
     cta: "Explore Commercial Solutions",
-    link: "/solutions",
+    link: "/solutions" as Route,
     color: "from-accent to-primary",
   },
   {
@@ -307,7 +306,7 @@ export const userSegments = [
     icon: RiGlobalLine,
     features: ["Bulk Pricing", "Custom Solutions", "Project Management", "Fast Deployment"],
     cta: "Contact Sales Team",
-    link: "/contact",
+    link: "/contact" as Route,
     color: "from-primary to-emerald-600",
   },
 ];

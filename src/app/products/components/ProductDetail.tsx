@@ -406,8 +406,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </div>
                   </div>
                   <p className="text-slate-700 leading-relaxed">
-                    "Excellent charging station! Fast charging speed and very reliable. 
-                    Perfect for our commercial parking lot. Highly recommend!"
+                    &quot;Excellent charging station! Fast charging speed and very reliable. 
+                    Perfect for our commercial parking lot. Highly recommend!&quot;
                   </p>
                   <div className="mt-3 text-sm text-slate-500">2 days ago</div>
                 </div>
@@ -429,8 +429,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </div>
                   </div>
                   <p className="text-slate-700 leading-relaxed">
-                    "Installed 5 units at our expressway service area. Great performance 
-                    and customer satisfaction. The dual-gun feature is a game-changer!"
+                    &quot;Installed 5 units at our expressway service area. Great performance 
+                    and customer satisfaction. The dual-gun feature is a game-changer!&quot;
                   </p>
                   <div className="mt-3 text-sm text-slate-500">1 week ago</div>
                 </div>
@@ -452,8 +452,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </div>
                   </div>
                   <p className="text-slate-700 leading-relaxed">
-                    "Future-proof design with excellent build quality. Our EV fleet 
-                    charges efficiently. Weather resistance is impressive."
+                    &quot;Future-proof design with excellent build quality. Our EV fleet 
+                    charges efficiently. Weather resistance is impressive.&quot;
                   </p>
                   <div className="mt-3 text-sm text-slate-500">2 weeks ago</div>
                 </div>
