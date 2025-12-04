@@ -35,6 +35,21 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     : [product.image];
   const [selectedImage, setSelectedImage] = useState(allImages[0]);
   const [activeTab, setActiveTab] = useState<"stats" | "comments" | "projects">("stats");
+
+  // Variant-based pricing (for products that define prices on variations)
+  const pricedVariations =
+    details?.variations?.filter(
+      (v) => typeof v.price === "string" && !v.name.toLowerCase().includes("model")
+    ) ?? [];
+  const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
+  const selectedVariant =
+    pricedVariations.length > 0 ? pricedVariations[selectedVariantIndex] : undefined;
+  const currentPrice =
+    pricedVariations.length > 0
+      ? pricedVariations[selectedVariantIndex]?.price ?? product.price
+      : product.price;
+  const descriptionText =
+    selectedVariant?.description ?? details?.description;
   
   // Interactive stats state
   const [likes, setLikes] = useState(1234);
@@ -106,6 +121,31 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {product.name}
             </h1>
             <p className="text-lg text-slate-600 mt-3">{product.subtitle}</p>
+
+            {/* Variant selector buttons (e.g. 60k / 120k / 400k) */}
+            {pricedVariations.length > 0 && (
+              <div className="flex flex-wrap gap-3 mt-4">
+                {pricedVariations.map((variant, idx) => {
+                  const match = variant.name.match(/(\d+\s*k)/i);
+                  const label = match ? match[1].toUpperCase() : variant.name;
+                  const isActive = idx === selectedVariantIndex;
+                  return (
+                    <button
+                      key={variant.name}
+                      type="button"
+                      onClick={() => setSelectedVariantIndex(idx)}
+                      className={`px-4 py-1.5 rounded-full text-sm font-semibold border shadow-sm transition-all ${
+                        isActive
+                          ? "bg-primary text-white border-primary shadow-md scale-[1.03]"
+                          : "bg-white text-slate-700 border-slate-200 hover:border-primary/60 hover:bg-primary/5"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -114,10 +154,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 {product.tag}
               </span>
             )}
-            {product.price && (
+            {currentPrice && (
               <div className="flex items-baseline gap-2">
                 <span className="text-3xl md:text-4xl font-bold text-slate-900">
-                  {product.price}
+                  {currentPrice}
                 </span>
                 <span className="text-sm text-slate-500">per unit</span>
               </div>
@@ -130,7 +170,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 Description
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                {details.description}
+                {descriptionText}
               </p>
             </div>
           )}
@@ -167,10 +207,26 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       return <RiBatteryChargeLine className="h-5 w-5" />;
                     };
 
-                    return (
+                            const isPricedVariant = typeof variation.price === "string";
+                            const pricedIndex = isPricedVariant
+                              ? pricedVariations.findIndex((v) => v.name === variation.name)
+                              : -1;
+                            const isSelected =
+                              isPricedVariant &&
+                              pricedIndex !== -1 &&
+                              pricedIndex === selectedVariantIndex;
+
+                            return (
                       <tr
                         key={index}
-                        className="hover:bg-slate-50 transition-colors"
+                                onClick={() => {
+                                  if (isPricedVariant && pricedIndex !== -1) {
+                                    setSelectedVariantIndex(pricedIndex);
+                                  }
+                                }}
+                                className={`hover:bg-slate-50 transition-colors cursor-${
+                                  isPricedVariant ? "pointer" : "default"
+                                } ${isSelected ? "bg-primary/5" : ""}`}
                       >
                         <td className="px-4 py-3 w-12">
                           <div className="text-primary">
@@ -183,9 +239,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                           </div>
                         </td>
                         <td className="px-4 py-3">
-                          <div className="text-slate-700">
-                            {variation.value}
-                          </div>
+                                <div className="text-slate-700 flex flex-col gap-1">
+                                  <span>{variation.value}</span>
+                                  {variation.price && (
+                                    <span className="text-sm font-semibold text-primary">
+                                      {variation.price}
+                                    </span>
+                                  )}
+                                </div>
                           {variation.description && (
                             <div className="text-sm text-slate-500 mt-1">
                               {variation.description}
@@ -467,14 +528,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="group cursor-pointer">
                   <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                    {product.images && product.images[2] && (
-                      <Image
-                        src={product.images[2]}
-                        alt="Project 1"
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
+                    <Image
+                      src={allImages[0]}
+                      alt="Project 1"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <h4 className="font-semibold text-slate-900 mb-1">Expressway Service Area</h4>
@@ -482,14 +541,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 </div>
                 <div className="group cursor-pointer">
                   <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                    {product.images && product.images[0] && (
-                      <Image
-                        src={product.images[0]}
-                        alt="Project 2"
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
+                    <Image
+                      src={allImages[1] ?? allImages[0]}
+                      alt="Project 2"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <h4 className="font-semibold text-slate-900 mb-1">Commercial Parking Complex</h4>
@@ -497,14 +554,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 </div>
                 <div className="group cursor-pointer">
                   <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                    {product.images && product.images[1] && (
-                      <Image
-                        src={product.images[1]}
-                        alt="Project 3"
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
+                    <Image
+                      src={allImages[2] ?? allImages[0]}
+                      alt="Project 3"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <h4 className="font-semibold text-slate-900 mb-1">Fleet Charging Station</h4>

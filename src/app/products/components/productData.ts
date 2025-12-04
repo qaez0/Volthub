@@ -10,6 +10,7 @@ export type ProductVariation = {
   name: string;
   value: string;
   description?: string;
+  price?: string; // Optional price for this variation
 };
 
 export type Product = {
@@ -103,6 +104,13 @@ export const products: Product[] = [
     category: "ev-charging",
     tag: " Single-gun AC Charging Pile",
     image: "/Product/EV/59.png",
+    images: [
+      "/Product/EV/59.png",
+      "/Product/EV/small/82.png",
+      "/Product/EV/small/173.jpg",
+      "/Product/EV/small/192.jpg",
+    ],
+    price: "₱18,062.50",
   },
   {
     id: "ev-charging-64",
@@ -111,6 +119,11 @@ export const products: Product[] = [
     category: "ev-charging",
     tag: " Dual-gun DC Charging Pile ",
     image: "/Product/EV/64.png",
+    images: [
+      "/Product/EV/64.png",
+      "/Product/EV/red/69.jpg",
+      "/Product/EV/red/111.png",
+    ],
   },
   {
     id: "ev-charging-89",
@@ -119,6 +132,16 @@ export const products: Product[] = [
     category: "ev-charging",
     tag: " Dual-gun DC Charging Pile ",
     image: "/Product/EV/89.png",
+    images: [
+      "/Product/EV/89.png",
+      "/Product/EV/green/58.png",
+      "/Product/EV/green/106.jpg",
+      "/Product/EV/green/161.jpg",
+      "/Product/EV/green/162.jpg",
+      "/Product/EV/green/163.jpg",
+    ],
+    price: "₱1,030,625.00",
+    description: "DPEV-400K - 400 kW Dual-Gun DC ultra-fast charger. For vehicles that can accept >200 kW, allows very short charging stops. Strong marketing value with ultra-fast charging up to 400 kW. Ideal for flagship highway stations and bus/truck depots needing very high power.",
   },
   // Solar Street Lights products
 //   {
@@ -300,11 +323,23 @@ export const productDetails: Record<string, {
     ],
   },
   "ev-charging-59": {
-    description: "Compact AC charging solution perfect for residential and workplace installations. Easy to install and operate with smart connectivity features.",
+    description:
+      "DPEV-7K – 7 kW Single-Gun AC “slow” charger designed as a reliable, everyday AC charging solution. Ideal for locations where vehicles remain parked for longer periods, such as residential, office and hotel parking. Offers dependable performance with low installation cost, making it an excellent choice as a basic amenity charger.",
     variations: [
       { name: "Power Output", value: "7kW / 11kW / 22kW" },
       { name: "Connector Type", value: "Type 2 (IEC 62196)" },
       { name: "Gun Type", value: "Single-gun AC Charging Pile" },
+      { name: "Type", value: "AC “slow” charger" },
+      {
+        name: "Use Cases",
+        value:
+          "Residential, office, hotel parking; locations where cars stay parked for many hours",
+      },
+      {
+        name: "Selling Point",
+        value:
+          "Low installation cost, suitable as a “basic amenity” charger for long-stay parking",
+      },
     ],
     specifications: [
       { label: "Rated Power", value: "7-22kW" },
@@ -320,6 +355,51 @@ export const productDetails: Record<string, {
       "Energy consumption tracking",
       "Compact wall-mounted design",
       "Easy installation",
+    ],
+  },
+  "ev-charging-64": {
+    description:
+      "DC EV Charger Single Gun fast-charging solution designed for commercial sites, fleet depots and urban charging stations. Delivers reliable DC power through a single connector, ideal for locations that need dependable fast charging without the complexity of multi-gun systems.",
+    variations: [
+      {
+        name: "Type",
+        value: "Single-gun DC fast charger",
+      },
+      {
+        name: "Power Output",
+        value: "Up to 120kW (configurable by project)",
+      },
+      {
+        name: "Connector Type",
+        value: "CCS (optional CHAdeMO depending on configuration)",
+      },
+      {
+        name: "Use Cases",
+        value:
+          "Commercial parking, fleet depots, workplace charging, urban DC fast-charging sites",
+      },
+      {
+        name: "Selling Point",
+        value:
+          "Fast and reliable DC charging in a compact footprint — ideal where one dedicated high‑power outlet per parking bay is preferred.",
+      },
+    ],
+    specifications: [
+      { label: "Charger Type", value: "Single-gun DC fast charger" },
+      { label: "Configuration", value: "Project‑dependent up to 120kW" },
+      { label: "Input Voltage", value: "380V AC (three‑phase)" },
+      { label: "Output Voltage", value: "200–750V DC (typical range)" },
+      { label: "Protection Level", value: "IP54 or higher (outdoor‑ready)" },
+      { label: "Installation", value: "Floor‑mounted cabinet" },
+      { label: "Warranty", value: "3 Years (extendable)" },
+    ],
+    features: [
+      "Fast DC charging with single-gun simplicity",
+      "Ideal for dedicated fleet or assigned parking bays",
+      "Compact cabinet design for tight urban sites",
+      "Remote monitoring and diagnostics (OCPP‑ready)",
+      "Multiple protection layers for safe operation",
+      "Low noise and high‑reliability power modules",
     ],
   },
   "solar-street-f2l": {
@@ -392,6 +472,72 @@ export const productDetails: Record<string, {
       "Grid-tie and off-grid compatible",
       "Industrial-grade components",
       "Easy maintenance",
+    ],
+  },
+  "ev-charging-89": {
+    description: "DPEV-400K - 400 kW Dual-Gun DC ultra-fast charger. For vehicles that can accept >200 kW, allows very short charging stops. Strong marketing value with ultra-fast charging up to 400 kW. Ideal for flagship highway stations and bus/truck depots needing very high power.",
+    variations: [
+      {
+        name: "Model",
+        value: "DPEV-400K",
+        description: "400 kW Dual-Gun DC Charger (ultra-fast flagship model)",
+        price: "₱1,030,625.00",
+      },
+      { name: "Type", value: "Ultra-fast DC charger" },
+      { name: "Power Output", value: "Up to 400kW" },
+      { name: "Connector Type", value: "CCS, CHAdeMO" },
+      { name: "Gun Type", value: "Dual-gun DC Charging Pile" },
+      {
+        name: "Available Variants",
+        value: "DPEV-60K / DPEV-120K / DPEV-400K",
+        description:
+          "60kW and 120kW cabinets for everyday and highway fast charging, 400kW for flagship ultra-fast highway stations",
+      },
+      {
+        name: "DPEV-60K – 60 kW Dual-Gun DC",
+        value: "Entry-level DC fast charger",
+        price: "₱361,250.00",
+        description:
+          "Ideal for malls, supermarkets, city public charging and medium-sized fleets (delivery vans, taxis). Good balance of cost and speed; can support 1–2 vehicles at a time.",
+      },
+      {
+        name: "DPEV-120K – 120 kW Dual-Gun DC",
+        value: "Standard fast charger",
+        price: "₱446,250.00",
+        description:
+          "Designed for highway rest stops, big commercial centers and fleet depots with higher turnover. Enables “fast top-up within a coffee break” and is attractive for inter-city travel.",
+      },
+      {
+        name: "Use Cases",
+        value:
+          "Flagship highway stations, Bus/truck depots needing very high power",
+      },
+      {
+        name: "Selling Point",
+        value:
+          "For vehicles that can accept >200 kW, allows very short charging stops; strong marketing value (ultra-fast charging up to 400 kW)",
+      },
+    ],
+    specifications: [
+      { label: "Model Code", value: "DPEV-400K" },
+      { label: "Rated Power", value: "Up to 400kW" },
+      { label: "Maximum Power", value: "400kW" },
+      { label: "Input Voltage", value: "380V AC" },
+      { label: "Output Voltage", value: "200-750V DC" },
+      { label: "Efficiency", value: "≥95%" },
+      { label: "Protection Level", value: "IP54" },
+      { label: "Warranty", value: "3 Years" },
+    ],
+    features: [
+      "Ultra-fast charging up to 400kW",
+      "Dual-gun simultaneous charging",
+      "Very short charging stops for high-power vehicles",
+      "Ideal for flagship highway stations",
+      "Perfect for bus/truck depots",
+      "Strong marketing value",
+      "OCPP 2.0 compatible",
+      "Remote monitoring and diagnostics",
+      "Weather-resistant design",
     ],
   },
 };
