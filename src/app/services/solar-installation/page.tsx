@@ -482,7 +482,7 @@ export default function SolarInstallation() {
                       href="/contact"
                       className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
                     >
-                      Get Quote
+                      Request Installation
                     </Link>
                   </div>
                 </div>

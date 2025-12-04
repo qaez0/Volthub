@@ -106,8 +106,8 @@ export const features = [
   },
   {
     icon: RiGlobalLine,
-    title: "Global Deployment",
-    description: "Proven solutions deployed across 25+ countries worldwide",
+    title: "National Deployment",
+    description: "Proven solutions deployed across the Philippines",
   },
   {
     icon: RiPlantLine,

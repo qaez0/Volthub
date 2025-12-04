@@ -57,7 +57,15 @@ export default function Services() {
                   <RiCalendarLine className="group-hover:rotate-12 transition-transform duration-300" />
                 </span>
               </button>
-              <button className="group bg-linear-to-r from-primary to-accent text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105">
+              <button
+                onClick={() => {
+                  const element = document.getElementById("service-coverage");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                className="group bg-linear-to-r from-primary to-accent text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105"
+              >
                 <span className="flex items-center justify-center space-x-2">
                   <span>View Service Areas</span>
                   <RiMapPinLine className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -97,7 +105,7 @@ export default function Services() {
           </LayoutContainer>
         </div>
         {/* Service Navigation Pills */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
+        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 md:hidden">
           <div className="flex space-x-4 bg-white/10 backdrop-blur-lg rounded-full p-2">
             <button
               onClick={() => scrollToService("ev-charging")}
@@ -435,7 +443,7 @@ export default function Services() {
       </section>
 
       {/* Service Areas & Coverage */}
-      <section className="py-20 bg-linear-to-br from-gray-50 to-blue-50">
+      <section id="service-coverage" className="py-20 bg-linear-to-br from-gray-50 to-blue-50">
         <LayoutContainer>
           <div className="text-center mb-16">
             <SectionHeading
