@@ -3,6 +3,7 @@
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import Link from "next/link";
+import Image from "next/image";
 import {
   RiCheckLine,
   RiChargingPile2Line,
@@ -156,126 +157,141 @@ export default function EVChargingSolutions() {
         </LayoutContainer>
       </section>
 
-      {/* Charging Levels & Pricing */}
+      {/* Charging Solutions & Pricing */}
       <section className="py-20">
         <LayoutContainer>
           <div className="text-center mb-16">
             <SectionHeading
-              title="Charging Solutions & Pricing"
+              title="EV Charging Solutions & Pricing"
               description="Choose the right charging solution for your needs"
             />
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-blue-600 text-white p-6 text-center">
-                <RiChargingPile2Line className="text-4xl mx-auto mb-2" />
-                <h3 className="text-2xl font-bold mb-2">Level 2 AC</h3>
-                <p className="text-blue-100">7.2-22kW Charging</p>
-              </div>
-              <div className="p-8">
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">
-                    $2,500 - $6,500
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                model: "DPEV-7k",
+                type: "7 kW Single-gun AC Charging Pile",
+                price: "₱18,062.50",
+                description: "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger.",
+                image: "/Product/EV/59.png",
+                features: [
+                  "Perfect for residential & workplace",
+                  "4-8 hour full charge time",
+                  "Low installation cost",
+                  "Basic amenity charger",
+                ],
+                color: "blue",
+              },
+              {
+                model: "DPEV-60k",
+                type: "60 kW Dual-gun DC Charging Pile",
+                price: "₱361,250.00",
+                description: "Entry-level DC fast charger. Good for malls, supermarkets, city public charging. Can support 1-2 vehicles at a time.",
+                image: "/Product/EV/89.png",
+                features: [
+                  "Ideal for commercial & public use",
+                  "20-40 minute fast charge",
+                  "Dual-gun design",
+                  "Entry-level fast charging",
+                ],
+                color: "green",
+              },
+              {
+                model: "DPEV-120k",
+                type: "120kW Dual-gun DC Charging Pile",
+                price: "₱446,250.00",
+                description: "Standard fast charger. Perfect for highway rest stops, big commercial centers, fleet depots with higher turnover.",
+                image: "/Product/EV/89.png",
+                features: [
+                  "Highway rest stops",
+                  "Big commercial centers",
+                  "Fleet depots",
+                  "Higher turnover sites",
+                ],
+                color: "green",
+              },
+              {
+                model: "DPEV-160k",
+                type: "160 kW Single-gun DC Charging Pile",
+                price: "₱573,750.00",
+                description: "High-power fast charger. Perfect for premium charging hubs, expressway service areas, sites serving EVs that support higher charging power.",
+                image: "/Product/EV/53.png",
+                features: [
+                  "Premium charging hubs",
+                  "Expressway service areas",
+                  "High-power charging",
+                  "Future-proof technology",
+                ],
+                color: "purple",
+              },
+              {
+                model: "DPEV-400k",
+                type: "400 kW Single-gun DC Charging Pile",
+                price: "₱1,030,625.00",
+                description: "Ultra-fast DC charger. For flagship highway stations, bus/truck depots needing very high power. Allows very short charging stops.",
+                image: "/Product/EV/64.png",
+                features: [
+                  "Flagship highway stations",
+                  "Bus/truck depots",
+                  "Ultra-fast charging",
+                  "Very short charging stops",
+                ],
+                color: "purple",
+              },
+            ].map((charger, idx) => {
+              const colorClasses = {
+                blue: "bg-blue-600 hover:bg-blue-700",
+                green: "bg-green-600 hover:bg-green-700",
+                purple: "bg-purple-600 hover:bg-purple-700",
+              };
+              const headerClasses = {
+                blue: "bg-blue-600",
+                green: "bg-green-600",
+                purple: "bg-purple-600",
+              };
+              return (
+                <div key={idx} className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+                  {charger.image && (
+                    <div className="w-full h-48 relative bg-slate-50">
+                      <Image
+                        src={charger.image}
+                        alt={charger.type}
+                        fill
+                        className="object-contain p-4"
+                      />
+                    </div>
+                  )}
+                  <div className={`${headerClasses[charger.color as keyof typeof headerClasses]} text-white p-6 text-center`}>
+                    <RiChargingPile2Line className="text-4xl mx-auto mb-2" />
+                    <h3 className="text-xl font-bold mb-1">{charger.type}</h3>
+                    <p className="text-sm text-white/90">Model: {charger.model}</p>
                   </div>
-                  <p className="text-gray-600">Per unit installed</p>
-                </div>
-                <ul className="space-y-3 mb-6">
-                  {[
-                    "Perfect for residential & workplace",
-                    "4-8 hour full charge time",
-                    "240V AC installation",
-                    "WiFi & app connectivity",
-                    "5-year warranty included",
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="block w-full bg-blue-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-blue-700 transition-colors"
-                >
-                  Get Level 2 Quote
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-green-500">
-              <div className="bg-green-600 text-white p-6 text-center">
-                <RiChargingPile2Line className="text-4xl mx-auto mb-2" />
-                <h3 className="text-2xl font-bold mb-2">DC Fast Charging</h3>
-                <p className="text-green-100">50-150kW Rapid Charging</p>
-                <span className="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
-                </span>
-              </div>
-              <div className="p-8">
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-green-600 mb-2">
-                    $25,000 - $85,000
+                  <div className="p-6">
+                    <div className="text-center mb-4">
+                      <div className="text-2xl font-bold text-primary mb-2">
+                        {charger.price}
+                      </div>
+                      <p className="text-sm text-gray-600">Unit Price</p>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">{charger.description}</p>
+                    <ul className="space-y-2 mb-6">
+                      {charger.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-start space-x-2 text-sm">
+                          <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
+                          <span className="text-gray-600">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href="/contact"
+                      className={`block w-full ${colorClasses[charger.color as keyof typeof colorClasses]} text-white py-3 rounded-xl font-semibold text-center transition-colors`}
+                    >
+                      Request Installation
+                    </Link>
                   </div>
-                  <p className="text-gray-600">Per unit installed</p>
                 </div>
-                <ul className="space-y-3 mb-6">
-                  {[
-                    "Ideal for commercial & public use",
-                    "20-40 minute fast charge",
-                    "CCS & CHAdeMO compatible",
-                    "Network management included",
-                    "3-year warranty + support",
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="block w-full bg-green-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-green-700 transition-colors"
-                >
-                  Get DC Fast Quote
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-purple-600 text-white p-6 text-center">
-                <RiChargingPile2Line className="text-4xl mx-auto mb-2" />
-                <h3 className="text-2xl font-bold mb-2">Ultra-Fast</h3>
-                <p className="text-purple-100">350kW+ Premium Speed</p>
-              </div>
-              <div className="p-8">
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">
-                    $150,000 - $350,000
-                  </div>
-                  <p className="text-gray-600">Per unit installed</p>
-                </div>
-                <ul className="space-y-3 mb-6">
-                  {[
-                    "Highway & fleet applications",
-                    "10-15 minute ultra-fast charge",
-                    "Future-proof technology",
-                    "Premium support package",
-                    "Extended warranty options",
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="block w-full bg-purple-600 text-white py-3 rounded-xl font-semibold text-center hover:bg-purple-700 transition-colors"
-                >
-                  Get Ultra-Fast Quote
-                </Link>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </LayoutContainer>
       </section>

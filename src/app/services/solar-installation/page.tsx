@@ -3,6 +3,7 @@
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import Link from "next/link";
+import Image from "next/image";
 import {
   RiCheckLine,
   RiSunLine,
@@ -165,7 +166,7 @@ export default function SolarInstallation() {
           <div className="text-center mb-16">
             <SectionHeading
               title="Solar Solutions for Every Need"
-              description="From residential rooftops to utility-scale installations"
+              description="From residential street lights to utility-scale power generation"
             />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -173,26 +174,30 @@ export default function SolarInstallation() {
               <div className="bg-yellow-500 text-white p-6 text-center">
                 <RiHomeLine className="text-4xl mx-auto mb-2" />
                 <h3 className="text-2xl font-bold mb-2">Residential</h3>
-                <p className="text-yellow-100">5-20kW Home Systems</p>
+                <p className="text-yellow-100">Street Lights & Energy Storage</p>
               </div>
               <div className="p-8">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">
-                    $1.80 - $2.50
+                  <div className="text-2xl font-bold text-yellow-600 mb-1">
+                    From ₱17,036.25
                   </div>
-                  <p className="text-gray-600">Per Watt installed</p>
+                  <p className="text-sm text-gray-600">Street Lights</p>
+                  <div className="text-2xl font-bold text-yellow-600 mb-1 mt-3">
+                    From ₱255,502.45
+                  </div>
+                  <p className="text-sm text-gray-600">5-30kWh Storage Systems</p>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {[
-                    "Perfect for single-family homes",
-                    "5-20kW system capacity",
-                    "7,500-28,000 kWh/year",
-                    "6-8 year ROI period",
-                    "25-year performance warranty",
+                    "Solar street lights (5-12m poles)",
+                    "5-30kWh mobile energy storage",
+                    "Perfect for homes & small businesses",
+                    "3-5kW to 10kW rated power",
+                    "3-year warranty included",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
                       <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">{item}</span>
+                      <span className="text-gray-600 text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -209,29 +214,33 @@ export default function SolarInstallation() {
               <div className="bg-orange-600 text-white p-6 text-center">
                 <RiBuildingLine className="text-4xl mx-auto mb-2" />
                 <h3 className="text-2xl font-bold mb-2">Commercial</h3>
-                <p className="text-orange-100">50-500kW Business Systems</p>
+                <p className="text-orange-100">40-261kWh Power Systems</p>
                 <span className="inline-block mt-2 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
                   Best Value
                 </span>
               </div>
               <div className="p-8">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-orange-600 mb-2">
-                    $1.50 - $2.00
+                  <div className="text-2xl font-bold text-orange-600 mb-1">
+                    From ₱1,823,684.10
                   </div>
-                  <p className="text-gray-600">Per Watt installed</p>
+                  <p className="text-sm text-gray-600">40-261kWh Systems</p>
+                  <div className="text-lg font-bold text-orange-600 mb-1 mt-3">
+                    Up to 110kW Rated Power
+                  </div>
+                  <p className="text-sm text-gray-600">Three-phase 400V/220V</p>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {[
-                    "Ideal for businesses & offices",
-                    "50-500kW system capacity",
-                    "Significant energy savings",
-                    "5-7 year ROI period",
-                    "Comprehensive maintenance",
+                    "Small commercial & remote facilities",
+                    "Resorts, farms, barangay centers",
+                    "20kW to 110kW rated power",
+                    "40-261kWh battery capacity",
+                    "Perfect for businesses & communities",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
                       <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">{item}</span>
+                      <span className="text-gray-600 text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -248,26 +257,30 @@ export default function SolarInstallation() {
               <div className="bg-red-600 text-white p-6 text-center">
                 <RiPlantLine className="text-4xl mx-auto mb-2" />
                 <h3 className="text-2xl font-bold mb-2">Utility-Scale</h3>
-                <p className="text-red-100">1MW+ Large Projects</p>
+                <p className="text-red-100">466kWh+ Power Plants</p>
               </div>
               <div className="p-8">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-red-600 mb-2">
-                    $1.20 - $1.60
+                  <div className="text-2xl font-bold text-red-600 mb-1">
+                    From ₱16,173,481.20
                   </div>
-                  <p className="text-gray-600">Per Watt installed</p>
+                  <p className="text-sm text-gray-600">466kWh+ Systems</p>
+                  <div className="text-lg font-bold text-red-600 mb-1 mt-3">
+                    Up to 1MW Rated Power
+                  </div>
+                  <p className="text-sm text-gray-600">Island & industrial grids</p>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {[
-                    "Large-scale solar farms",
-                    "1MW+ system capacity",
-                    "Maximum energy production",
-                    "4-6 year ROI period",
+                    "Town centers & island grids",
+                    "466kWh to 2700kWh capacity",
+                    "220kW to 1MW rated power",
+                    "Industrial parks & utilities",
                     "Enterprise support package",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start space-x-2">
                       <RiCheckLine className="text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600">{item}</span>
+                      <span className="text-gray-600 text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -278,6 +291,483 @@ export default function SolarInstallation() {
                   Get Utility Quote
                 </Link>
               </div>
+            </div>
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* Street Lights Section */}
+      <section className="py-20 bg-gray-50">
+        <LayoutContainer>
+          <div className="text-center mb-16">
+            <SectionHeading
+              title="Solar Street Lights"
+              description="Integrated solar-powered street lighting solutions for reliable, off-grid illumination"
+            />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                model: "F2-050",
+                type: "Integrated Light",
+                poleHeight: "8m",
+                ledPower: "50W",
+                size: "1319*460*60mm",
+                battery: "12.8V 45Ah",
+                solarPanel: "100W",
+                price: "₱45,164.50",
+                image: "/Sector/sampleproducts/IntegratedLight.png",
+              },
+              {
+                model: "F2-080",
+                type: "Integrated Light",
+                poleHeight: "9m",
+                ledPower: "80W",
+                size: "1490*640*60mm",
+                battery: "25.6V 45Ah",
+                solarPanel: "160W",
+                price: "₱62,717.00",
+                image: "/Sector/sampleproducts/IntegratedLight.png",
+              },
+              {
+                model: "F2-100",
+                type: "Integrated Light",
+                poleHeight: "10m",
+                ledPower: "100W",
+                size: "1490*730*60mm",
+                battery: "25.6V 52Ah",
+                solarPanel: "200W",
+                price: "₱71,803.00",
+                image: "/Sector/sampleproducts/IntegratedLight.png",
+              },
+              {
+                model: "F2-120",
+                type: "Integrated Light",
+                poleHeight: "12m",
+                ledPower: "120W",
+                size: "1650*830*60mm",
+                battery: "25.6V 60Ah",
+                solarPanel: "240W",
+                price: "₱81,228.25",
+                image: "/Sector/sampleproducts/IntegratedLight.png",
+              },
+              {
+                model: "LVQ2-050",
+                type: "Split Street Light",
+                poleHeight: "8m",
+                ledPower: "50W",
+                size: "935*415*210mm",
+                battery: "14.8V 45Ah",
+                solarPanel: "100W",
+                price: "₱37,981.25",
+                image: "/Sector/sampleproducts/LVQ2.png",
+              },
+              {
+                model: "LVQ2-080",
+                type: "Split Street Light",
+                poleHeight: "9m",
+                ledPower: "80W",
+                size: "935*415*210mm",
+                battery: "12.8V 90Ah",
+                solarPanel: "200W",
+                price: "₱54,088.25",
+                image: "/Sector/sampleproducts/LVQ2.png",
+              },
+              {
+                model: "LVQ2-100",
+                type: "Split Street Light",
+                poleHeight: "10m",
+                ledPower: "100W",
+                size: "935*415*210mm",
+                battery: "25.6V 48Ah",
+                solarPanel: "250W",
+                price: "₱60,224.25",
+                image: "/Sector/sampleproducts/LVQ2-100.png",
+              },
+              {
+                model: "LVQ2-120",
+                type: "Split Street Light",
+                poleHeight: "12m",
+                ledPower: "120W",
+                size: "935*415*210mm",
+                battery: "25.6V 60Ah",
+                solarPanel: "300W",
+                price: "₱70,003.50",
+                image: "/Sector/sampleproducts/LVQ2-100.png",
+              },
+              {
+                model: "LVXC-120",
+                type: "All in Two Light",
+                poleHeight: "5m",
+                ledPower: "20W",
+                size: "495*205*80mm",
+                battery: "3.2V 65Ah",
+                solarPanel: "70W",
+                price: "₱17,346.00",
+                image: "/Sector/sampleproducts/LVXC-120-130.png",
+              },
+              {
+                model: "LVXC-130",
+                type: "All in Two Light",
+                poleHeight: "6m",
+                ledPower: "30W",
+                size: "550*240*100mm",
+                battery: "3.2V 80Ah",
+                solarPanel: "70W",
+                price: "₱19,661.75",
+                image: "/Sector/sampleproducts/LVXC-120-130.png",
+              },
+              {
+                model: "LVXC-320",
+                type: "All in Two Light",
+                poleHeight: "5m",
+                ledPower: "20W",
+                size: "650*300*130mm",
+                battery: "3.2V 65Ah",
+                solarPanel: "70W",
+                price: "₱17,036.25",
+                image: "/Sector/sampleproducts/LVCX-320-330.png",
+              },
+              {
+                model: "LVXC-330",
+                type: "All in Two Light",
+                poleHeight: "6m",
+                ledPower: "30W",
+                size: "650*300*130mm",
+                battery: "3.2V 80Ah",
+                solarPanel: "70W",
+                price: "₱18,939.00",
+                image: "/Sector/sampleproducts/LVCX-320-330.png",
+              },
+            ].map((light, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
+                {light.image && (
+                  <div className="w-full h-48 relative bg-slate-50">
+                    <Image
+                      src={light.image}
+                      alt={light.model}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                )}
+                <div className="p-6">
+                  <div className="mb-3">
+                    <h3 className="text-lg font-bold text-primary mb-1">{light.model}</h3>
+                    <p className="text-sm text-gray-600">{light.type}</p>
+                  </div>
+                  <div className="space-y-2 text-sm mb-4">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Pole Height:</span>
+                      <span className="font-medium">{light.poleHeight}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">LED Power:</span>
+                      <span className="font-medium">{light.ledPower}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Battery:</span>
+                      <span className="font-medium">{light.battery}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Solar Panel:</span>
+                      <span className="font-medium">{light.solarPanel}</span>
+                    </div>
+                  </div>
+                  <div className="border-t pt-4 mt-4">
+                    <div className="text-2xl font-bold text-primary mb-2">
+                      {light.price}
+                    </div>
+                    <Link
+                      href="/contact"
+                      className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
+                    >
+                      Get Quote
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-xl font-semibold mb-4">Payment Terms & Warranty</h3>
+            <div className="grid md:grid-cols-2 gap-6 text-sm">
+              <div>
+                <h4 className="font-semibold mb-2">Payment Terms:</h4>
+                <ul className="space-y-1 text-gray-600">
+                  <li>• 30% bank transfer in advance</li>
+                  <li>• Balance before shipping</li>
+                  <li>• Price valid for 15 days from quotation date</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Production & Warranty:</h4>
+                <ul className="space-y-1 text-gray-600">
+                  <li>• Production time: 20-25 working days after payment</li>
+                  <li>• Package: Standard Export package</li>
+                  <li>• Warranty: 3 years</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </LayoutContainer>
+      </section>
+
+      {/* Storage Systems Section */}
+      <section className="py-20">
+        <LayoutContainer>
+          <div className="text-center mb-16">
+            <SectionHeading
+              title="Energy Storage & Power Generation Systems"
+              description="Complete off-grid and backup power solutions from small homes to industrial facilities"
+            />
+          </div>
+          
+          {/* Mobile Energy Storage (5-30 kWh) */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 text-center">Mobile Energy Storage Power (5-30 kWh)</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Mobile Energy Storage Power",
+                  kWh: "5kWh",
+                  ratedPower: "3KW/AC 220V",
+                  battery: "5.3kWh",
+                  solarPanel: "36V670W*4",
+                  price: "₱255,502.45",
+                  description: "Small home / backup kit. Can run 1 HP aircon plus lights, fans, TV, laptop. About 4-5 hours usable at 1kW average.",
+                  image: "/Product/SmartHome/SMP2.png",
+                },
+                {
+                  name: "Mobile Energy Storage Power",
+                  kWh: "10kWh",
+                  ratedPower: "5KW/AC 220V",
+                  battery: "10.6kWh",
+                  solarPanel: "36V670W*6",
+                  price: "₱388,122.65",
+                  description: "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers. Around 5-6 hours usable.",
+                  image: "/Product/SmartHome/SMP3.png",
+                },
+                {
+                  name: "Mobile Energy Storage Power",
+                  kWh: "15kWh",
+                  ratedPower: "5KW/AC 220V",
+                  battery: "15.9kWh",
+                  solarPanel: "36V670W*8",
+                  price: "₱526,117.75",
+                  description: "Longer backup, same power. Good for rural homes with frequent long outages or stores with freezers.",
+                  image: "/Product/SmartHome/SMP4.png",
+                },
+                {
+                  name: "Mobile Energy Storage Power",
+                  kWh: "20kWh",
+                  ratedPower: "10KW/AC 220V",
+                  battery: "21.2kWh",
+                  solarPanel: "36V670W*12",
+                  price: "₱838,344.15",
+                  description: "Larger home / small commercial. Can run multiple aircons (3-4 HP total), refrigerator, lights, computers, pumps.",
+                  image: "/Product/SmartHome/SMP5.png",
+                },
+                {
+                  name: "Mobile Energy Storage Power",
+                  kWh: "25kWh",
+                  ratedPower: "10KW/AC 220V",
+                  battery: "26.5kWh",
+                  solarPanel: "36V670W*14",
+                  price: "₱963,918.40",
+                  description: "More hours, same power. Good for full day-night cycle backup for moderate loads.",
+                  image: "/Product/SmartHome/SMP5.png",
+                },
+                {
+                  name: "Mobile Energy Storage Power",
+                  kWh: "30kWh",
+                  ratedPower: "10KW/AC 220V",
+                  battery: "31.8kWh",
+                  solarPanel: "36V670W*16",
+                  price: "₱1,112,638.22",
+                  description: "Mini-microgrid. Can run through the night at 2-3kW average. Good for off-grid communities, remote resorts.",
+                  image: "/Product/SmartHome/SMP6.png",
+                },
+              ].map((system, idx) => (
+                <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
+                  {system.image && (
+                    <div className="w-full h-48 relative bg-slate-50">
+                      <Image
+                        src={system.image}
+                        alt={system.name}
+                        fill
+                        className="object-contain p-4"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h4 className="text-lg font-bold text-primary mb-2">{system.kWh}</h4>
+                    <div className="space-y-2 text-sm mb-4">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Rated Power:</span>
+                        <span className="font-medium">{system.ratedPower}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Battery:</span>
+                        <span className="font-medium">{system.battery}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Solar Panel:</span>
+                        <span className="font-medium">{system.solarPanel}</span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">{system.description}</p>
+                    <div className="border-t pt-4">
+                      <div className="text-2xl font-bold text-primary mb-3">
+                        {system.price}
+                      </div>
+                      <Link
+                        href="/contact"
+                        className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
+                      >
+                        Request Quote
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Off-Grid Power Generation Systems (40kWh+) */}
+          <div>
+            <h3 className="text-2xl font-bold mb-8 text-center">Off-Grid Power Generation Systems (40kWh+)</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "40kWh",
+                  ratedPower: "20KW/AC 380V/220V",
+                  battery: "40.96kWh",
+                  solarPanel: "670W*30PCS",
+                  price: "₱1,823,684.10",
+                  description: "Small commercial / remote facility. Can power 5-10 small houses, water refilling station, rice mill, or cell tower.",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "60kWh",
+                  ratedPower: "30KW/AC 380V/220V",
+                  battery: "61.4kWh",
+                  solarPanel: "670W*40PCS",
+                  price: "₱2,694,050.62",
+                  description: "Small community or larger business. Can power small resort (10+ rooms), medium agricultural facility, or cluster of 10-20 households.",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "80kWh",
+                  ratedPower: "40KW/AC 380V/220V",
+                  battery: "83.2kWh",
+                  solarPanel: "670W*60PCS",
+                  price: "₱3,918,051.35",
+                  description: "Microgrid for barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "100kWh",
+                  ratedPower: "50KW/AC 380V/220V",
+                  battery: "100.3kWh",
+                  solarPanel: "670W*72PCS",
+                  price: "₱4,593,349.12",
+                  description: "Microgrid for barangay center or campus. Suitable for medium resort or eco-park with many cottages plus common facilities.",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "215kWh",
+                  ratedPower: "100KW/AC 400V/220V",
+                  battery: "215.04kWh",
+                  solarPanel: "670W*144PCS",
+                  price: "₱7,754,538.15",
+                  description: "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
+                  image: "/Sector/sampleproducts/14.png",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "466kWh",
+                  ratedPower: "220KW/AC 400V/220V",
+                  battery: "465.8kWh",
+                  solarPanel: "670W*288PCS",
+                  price: "₱16,173,481.20",
+                  description: "Mini power plant for small town center or big factory. Can power town center, large commercial building, or single big industrial customer.",
+                  image: "/Sector/sampleproducts/14.png",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "783kWh",
+                  ratedPower: "300KW/AC 400V/220V",
+                  battery: "783.6kWh",
+                  solarPanel: "670W*444PCS",
+                  price: "₱26,311,107.50",
+                  description: "Village or island grid. Can act as main power plant for whole small island barangay with few hundred households.",
+                  image: "/Sector/sampleproducts/17.png",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "1075kWh",
+                  ratedPower: "500KW/AC 400V/220V",
+                  battery: "1075.2kWh",
+                  solarPanel: "670W*728PCS",
+                  price: "₱42,239,802.20",
+                  description: "Small utility level / industrial park. Main power for small island town, industrial park, or large university/hospital campus.",
+                  image: "/Sector/sampleproducts/17.png",
+                },
+                {
+                  name: "Off-Grid Power Generation System",
+                  kWh: "1800kWh",
+                  ratedPower: "1000KW/AC 400V/220V",
+                  battery: "1806.3kWh",
+                  solarPanel: "670W*1484PCS",
+                  price: "₱71,207,141.30",
+                  description: "Main power plant for whole town or large island. For places where diesel or grid can take over at night.",
+                  image: "/Sector/sampleproducts/17.png",
+                },
+              ].map((system, idx) => (
+                <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
+                  {system.image && (
+                    <div className="w-full h-48 relative bg-slate-50">
+                      <Image
+                        src={system.image}
+                        alt={system.name}
+                        fill
+                        className="object-contain p-4"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h4 className="text-lg font-bold text-primary mb-2">{system.kWh}</h4>
+                    <div className="space-y-2 text-sm mb-4">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Rated Power:</span>
+                        <span className="font-medium">{system.ratedPower}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Battery:</span>
+                        <span className="font-medium">{system.battery}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Solar Panel:</span>
+                        <span className="font-medium">{system.solarPanel}</span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">{system.description}</p>
+                    <div className="border-t pt-4">
+                      <div className="text-2xl font-bold text-primary mb-3">
+                        {system.price}
+                      </div>
+                      <Link
+                        href="/contact"
+                        className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
+                      >
+                        Request Quote
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </LayoutContainer>

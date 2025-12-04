@@ -203,13 +203,13 @@ export default function Services() {
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="text-center p-4 bg-blue-50 rounded-lg">
                     <div className="text-2xl font-bold text-blue-600 mb-1">
-                      Level 2
+                      AC Charging
                     </div>
                     <div className="text-sm text-gray-600">
-                      7.2-22kW AC Charging
+                      7 kW Single-gun
                     </div>
                     <div className="text-xs text-blue-500 mt-1">
-                      $2,500 - $6,500
+                      From ₱18,062.50
                     </div>
                   </div>
                   <div className="text-center p-4 bg-green-50 rounded-lg">
@@ -217,10 +217,10 @@ export default function Services() {
                       DC Fast
                     </div>
                     <div className="text-sm text-gray-600">
-                      50-150kW Rapid Charging
+                      60-160kW Charging
                     </div>
                     <div className="text-xs text-green-500 mt-1">
-                      $25,000 - $85,000
+                      From ₱361,250.00
                     </div>
                   </div>
                   <div className="text-center p-4 bg-purple-50 rounded-lg">
@@ -228,10 +228,10 @@ export default function Services() {
                       Ultra-Fast
                     </div>
                     <div className="text-sm text-gray-600">
-                      350kW+ Premium Speed
+                      400kW Premium Speed
                     </div>
                     <div className="text-xs text-purple-500 mt-1">
-                      $150,000 - $350,000
+                      From ₱1,030,625.00
                     </div>
                   </div>
                 </div>
@@ -322,35 +322,35 @@ export default function Services() {
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="text-center p-4 bg-yellow-50 rounded-lg">
                     <div className="text-2xl font-bold text-yellow-600 mb-1">
-                      Residential
+                      Street Lights
                     </div>
                     <div className="text-sm text-gray-600">
-                      5-20kW Home Systems
+                      Solar-Powered Lighting
                     </div>
                     <div className="text-xs text-yellow-500 mt-1">
-                      $1.80 - $2.50/Watt
+                      From ₱17,036.25
                     </div>
                   </div>
                   <div className="text-center p-4 bg-orange-50 rounded-lg">
                     <div className="text-2xl font-bold text-orange-600 mb-1">
-                      Commercial
+                      Energy Storage
                     </div>
                     <div className="text-sm text-gray-600">
-                      50-500kW Business Systems
+                      5-30kWh Mobile Systems
                     </div>
                     <div className="text-xs text-orange-500 mt-1">
-                      $1.50 - $2.00/Watt
+                      From ₱255,502.45
                     </div>
                   </div>
                   <div className="text-center p-4 bg-red-50 rounded-lg">
                     <div className="text-2xl font-bold text-red-600 mb-1">
-                      Utility-Scale
+                      Power Generation
                     </div>
                     <div className="text-sm text-gray-600">
-                      1MW+ Large Projects
+                      40kWh+ Off-Grid Systems
                     </div>
                     <div className="text-xs text-red-500 mt-1">
-                      $1.20 - $1.60/Watt
+                      From ₱1,823,684.10
                     </div>
                   </div>
                 </div>

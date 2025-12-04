@@ -316,7 +316,7 @@ export const testimonials = [
   {
     name: "Sarah Johnson",
     role: "Homeowner",
-    location: "California, USA",
+    location: "Metro Manila, Philippines",
     rating: 5,
     text: "VoltHub's residential battery system has cut our electricity bills by 70%. The installation was seamless and the support team is excellent.",
     image: "👩",
@@ -324,7 +324,7 @@ export const testimonials = [
   {
     name: "Michael Chen",
     role: "Business Owner",
-    location: "New York, USA",
+    location: "Taguig City, Philippines",
     rating: 5,
     text: "Our commercial solar installation exceeded expectations. We've reduced our energy costs significantly and the ROI is impressive.",
     image: "👨",
@@ -332,7 +332,7 @@ export const testimonials = [
   {
     name: "Emma Rodriguez",
     role: "Property Developer",
-    location: "Texas, USA",
+    location: "Pasig, Philippines",
     rating: 5,
     text: "VoltHub provided a complete energy solution for our new development. Professional service from start to finish. Highly recommended!",
     image: "👩",
