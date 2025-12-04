@@ -24,6 +24,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱17,346.00",
     type: "All in Two Light",
+    image: "/Sector/sampleproducts/LVXC-120-130.png",
   },
   {
     itemNo: "LVXC-130",
@@ -34,6 +35,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱19,661.75",
     type: "All in Two Light",
+    image: "/Sector/sampleproducts/LVXC-120-130.png",
   },
   {
     itemNo: "LVXC-320",
@@ -44,6 +46,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱17,036.25",
     type: "All in Two Light",
+    image: "/Sector/sampleproducts/LVCX-320-330.png",
   },
   {
     itemNo: "LVXC-330",
@@ -54,6 +57,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱18,939.00",
     type: "All in Two Light",
+    image: "/Sector/sampleproducts/LVCX-320-330.png",
   },
   {
     itemNo: "F2-050",
@@ -282,6 +286,7 @@ export default function RuralProjectsSector() {
             <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
               <thead className="bg-primary text-white">
                 <tr>
+                  <th className="px-6 py-4 text-left font-semibold">Image</th>
                   <th className="px-6 py-4 text-left font-semibold">Type</th>
                   <th className="px-6 py-4 text-left font-semibold">Item No.</th>
                   <th className="px-6 py-4 text-left font-semibold">Pole Height</th>
@@ -294,6 +299,18 @@ export default function RuralProjectsSector() {
               <tbody className="divide-y divide-slate-100">
                 {streetLights.map((light, idx) => (
                   <tr key={idx} className="hover:bg-slate-50">
+                    <td className="px-6 py-4">
+                      {light.image && (
+                        <div className="w-20 h-20 relative">
+                          <Image
+                            src={light.image}
+                            alt={light.itemNo}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                    </td>
                     <td className="px-6 py-4 text-slate-600">{light.type}</td>
                     <td className="px-6 py-4 font-medium">{light.itemNo}</td>
                     <td className="px-6 py-4 text-slate-600">{light.poleHeight}</td>
@@ -442,4 +459,5 @@ export default function RuralProjectsSector() {
     </main>
   );
 }
+
 

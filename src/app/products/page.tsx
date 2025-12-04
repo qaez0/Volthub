@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import ProductBanner from "./components/ProductBanner";
 import ProductSidebar from "./components/ProductSidebar";
@@ -8,8 +9,19 @@ import ProductGrid from "./components/ProductGrid";
 import { ProductCategory, products } from "./components/productData";
 
 export default function Products() {
-  const [activeCategory, setActiveCategory] =
-    useState<ProductCategory>("all");
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category") as ProductCategory | null;
+  const [activeCategory, setActiveCategory] = useState<ProductCategory>(
+    categoryParam && ["all", "ev-charging", "solar-street", "smart-home", "cabinet", "container"].includes(categoryParam)
+      ? categoryParam
+      : "all"
+  );
+
+  useEffect(() => {
+    if (categoryParam && ["all", "ev-charging", "solar-street", "smart-home", "cabinet", "container"].includes(categoryParam)) {
+      setActiveCategory(categoryParam);
+    }
+  }, [categoryParam]);
 
   const filteredProducts =
     activeCategory === "all"

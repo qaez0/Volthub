@@ -22,6 +22,7 @@ const streetLights = [
     battery: "3.2V 65Ah",
     solarPanel: "70W",
     price: "₱17,346.00",
+    image: "/Sector/sampleproducts/LVXC-120-130.png",
   },
   {
     itemNo: "LVXC-130",
@@ -31,6 +32,7 @@ const streetLights = [
     battery: "3.2V 80Ah",
     solarPanel: "70W",
     price: "₱19,661.75",
+    image: "/Sector/sampleproducts/LVXC-120-130.png",
   },
   {
     itemNo: "LVXC-320",
@@ -40,6 +42,7 @@ const streetLights = [
     battery: "3.2V 65Ah",
     solarPanel: "70W",
     price: "₱17,036.25",
+    image: "/Sector/sampleproducts/LVCX-320-330.png",
   },
   {
     itemNo: "LVXC-330",
@@ -49,6 +52,7 @@ const streetLights = [
     battery: "3.2V 80Ah",
     solarPanel: "70W",
     price: "₱18,939.00",
+    image: "/Sector/sampleproducts/LVCX-320-330.png",
   },
 ];
 
@@ -61,6 +65,7 @@ const storageSystems = [
     solarPanel: "36V670W*4",
     price: "₱255,502.45",
     description: "Small home / backup kit. Can run 1 HP aircon plus lights, fans, TV, laptop. About 4-5 hours usable.",
+    image: "/Product/SmartHome/SMP2.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -70,6 +75,7 @@ const storageSystems = [
     solarPanel: "36V670W*6",
     price: "₱388,122.65",
     description: "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers. Around 5-6 hours usable.",
+    image: "/Product/SmartHome/SMP3.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -79,6 +85,7 @@ const storageSystems = [
     solarPanel: "36V670W*8",
     price: "₱526,117.75",
     description: "Longer backup, same power. Good for rural homes with frequent long outages or stores with freezers.",
+    image: "/Product/SmartHome/SMP4.png",
   },
 ];
 
@@ -88,6 +95,7 @@ const evChargers = [
     type: "7 kW Single-gun AC Charging Pile",
     price: "₱18,062.50",
     description: "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger.",
+    image: "/Product/EV/59.png",
   },
 ];
 
@@ -178,6 +186,16 @@ export default function ResidentialSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
+                {system.image && (
+                  <div className="w-full h-48 relative bg-slate-50">
+                    <Image
+                      src={system.image}
+                      alt={system.kWh}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                )}
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{system.kWh}</h3>
@@ -201,10 +219,10 @@ export default function ResidentialSector() {
                     {system.description}
                   </p>
                   <Link
-                    href="/contact"
+                    href="/products?category=smart-home"
                     className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
                   >
-                    Get Quote
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -224,6 +242,7 @@ export default function ResidentialSector() {
             <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
               <thead className="bg-primary text-white">
                 <tr>
+                  <th className="px-6 py-4 text-left font-semibold">Image</th>
                   <th className="px-6 py-4 text-left font-semibold">Item No.</th>
                   <th className="px-6 py-4 text-left font-semibold">Pole Height</th>
                   <th className="px-6 py-4 text-left font-semibold">LED Light</th>
@@ -235,6 +254,18 @@ export default function ResidentialSector() {
               <tbody className="divide-y divide-slate-100">
                 {streetLights.map((light, idx) => (
                   <tr key={idx} className="hover:bg-slate-50">
+                    <td className="px-6 py-4">
+                      {light.image && (
+                        <div className="w-20 h-20 relative">
+                          <Image
+                            src={light.image}
+                            alt={light.itemNo}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                    </td>
                     <td className="px-6 py-4 font-medium">{light.itemNo}</td>
                     <td className="px-6 py-4 text-slate-600">{light.poleHeight}</td>
                     <td className="px-6 py-4 text-slate-600">{light.ledLight}</td>
@@ -262,6 +293,16 @@ export default function ResidentialSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg p-8 border border-slate-100"
               >
+                {charger.image && (
+                  <div className="mb-6 w-full h-64 relative rounded-xl overflow-hidden bg-slate-50">
+                    <Image
+                      src={charger.image}
+                      alt={charger.type}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                )}
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-semibold mb-2">{charger.type}</h3>
@@ -341,4 +382,5 @@ export default function ResidentialSector() {
     </main>
   );
 }
+
 
