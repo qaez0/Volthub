@@ -43,7 +43,7 @@ const navItems: NavItem[] = [
       { label: "Residential", href: "/sectors/residential" },
       { label: "Commercial", href: "/sectors/commercial" },
       { label: "Industrial", href: "/sectors/industrial" },
-      { label: "Smart Cities", href: "/sectors/smart-cities" },
+      // { label: "Smart Cities", href: "/sectors/smart-cities" },
       { label: "Rural Projects", href: "/sectors/rural-projects" },
     ],
   },

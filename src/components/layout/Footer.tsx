@@ -45,10 +45,10 @@ const footerColumns = [
         label: "Industrial",
         href: "/sectors/industrial",
       },
-      {
-        label: "Smart Cities",
-        href: "/sectors/smart-cities",
-      },
+      // {
+      //   label: "Smart Cities",
+      //   href: "/sectors/smart-cities",
+      // },
       {
         label: "Rural Projects",
         href: "/sectors/rural-projects",
