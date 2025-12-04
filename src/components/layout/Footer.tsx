@@ -17,18 +17,22 @@ const footerColumns = [
     links: [
       { 
         label: "EV Charging Equipment", 
-        href: { pathname: "/products", hash: "ev" } },
+        href: "/products?category=ev-charging" },
       {
         label: "Solar Energy Systems",
-        href: { pathname: "/products", hash: "storage" },
+        href: "/products?category=solar-street",
       },
       {
         label: "Energy Storage",
-        href: { pathname: "/products", hash: "storage" },
+        href: "/products?category=smart-home",
       },
       {
-        label: "Smart Lighting",
-        href: { pathname: "/products", hash: "storage" },
+        label: "Cabinet Type Power Supplies",
+        href: "/products?category=cabinet",
+      },
+      {
+        label: "Container Type Power Supplies",
+        href: "/products?category=container",
       },
       // { label: "Solar Fans", href: { pathname: "/products", hash: "featured" } },
     ],

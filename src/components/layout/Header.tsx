@@ -29,10 +29,12 @@ const navItems: NavItem[] = [
     href: "/products",
     description: "Product families, specs, and trends",
     dropdown: [
-      { label: "All Products", href: { pathname: "/products", hash: "overview" } },
-      { label: "Solar Systems", href: { pathname: "/products", hash: "solar" } },
-      { label: "EV Chargers", href: { pathname: "/products", hash: "ev" } },
-      { label: "Energy Storage", href: { pathname: "/products", hash: "storage" } },
+      { label: "All Products", href: "/products" },
+      { label: "Solar Systems", href: "/products?category=solar-street" },
+      { label: "EV Chargers", href: "/products?category=ev-charging" },
+      { label: "Energy Storage", href: "/products?category=smart-home" },
+      { label: "Cabinet Type Power Supplies", href: "/products?category=cabinet" },
+      { label: "Container Type Power Supplies", href: "/products?category=container" },
     ],
   },
   {
@@ -182,15 +184,16 @@ const Header = () => {
               >
                 <div className="flex items-center gap-1">
                   <Link
-                    href={item.href}
-                    onClick={(e) => {
+                    href={hasDropdown && item.dropdown?.[0] ? item.dropdown[0].href : item.href}
+                    onClick={() => {
                       if (hasDropdown) {
-                        e.preventDefault();
+                        // Navigate to first dropdown item, but also toggle dropdown on click
                         const willBeOpen = clickedDropdown !== item.label;
                         setClickedDropdown(willBeOpen ? item.label : null);
                         setOpenDropdown(willBeOpen ? item.label : null);
                         // Track that this dropdown was explicitly closed
                         setClosedDropdown(willBeOpen ? null : item.label);
+                        // Don't prevent default - let it navigate
                       }
                     }}
                     className={cn(
