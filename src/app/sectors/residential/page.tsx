@@ -114,14 +114,7 @@ export default function ResidentialSector() {
         />
         <div className="absolute inset-0">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-32">
-            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
-              <RiHome2Line className="h-4 w-4" />
-              <span>Home</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span>Sectors</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span className="text-white/90">Residential</span>
-            </div>
+           
             <div className="max-w-3xl space-y-4">
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
                 Residential Energy Solutions

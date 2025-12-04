@@ -113,7 +113,9 @@ const storageSystems = [
     battery: "100.3kWh",
     solarPanel: "670W*72PCS",
     price: "₱4,593,349.12",
-    description: "Microgrid for a barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
+    description:
+      "Microgrid for a barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
+    image: "/Sector/sampleproducts/13.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -122,7 +124,9 @@ const storageSystems = [
     battery: "215.04kWh",
     solarPanel: "670W*144PCS",
     price: "₱7,754,538.15",
-    description: "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
+    description:
+      "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
+    image: "/Sector/sampleproducts/14.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -131,7 +135,9 @@ const storageSystems = [
     battery: "465.8kWh",
     solarPanel: "670W*288PCS",
     price: "₱16,173,481.20",
-    description: "Mini power plant for a small town center or big factory. A town center: municipal hall, market, street lighting, plus many nearby shops.",
+    description:
+      "Mini power plant for a small town center or big factory. A town center: municipal hall, market, street lighting, plus many nearby shops.",
+    image: "/Sector/sampleproducts/15.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -140,7 +146,9 @@ const storageSystems = [
     battery: "783.6kWh",
     solarPanel: "670W*444PCS",
     price: "₱26,311,107.50",
-    description: "Village or island grid. Can act as the main power plant for a whole small island barangay with a few hundred households.",
+    description:
+      "Village or island grid. Can act as the main power plant for a whole small island barangay with a few hundred households.",
+    image: "/Sector/sampleproducts/16.png",
   },
 ];
 
@@ -150,18 +158,21 @@ const evChargers = [
     type: "60 kW Dual-gun DC Charging Pile",
     price: "₱361,250.00",
     description: "Entry-level DC fast charger. Good for malls, supermarkets, city public charging. Can support 1-2 vehicles at a time.",
+    image: "/Product/EV/89.png",
   },
   {
     model: "DPEV-120k",
     type: "120 kW Dual-gun DC Charging Pile",
     price: "₱446,250.00",
     description: "Standard fast charger. Perfect for highway rest stops, big commercial centers, fleet depots with higher turnover.",
+    image: "/Product/EV/89.png",
   },
   {
     model: "DPEV-160k",
     type: "160 kW Single-gun DC Charging Pile",
     price: "₱573,750.00",
     description: "High-power fast charger. Perfect for premium charging hubs, expressway service areas, sites serving EVs that support higher charging power.",
+    image: "/Product/EV/53.png",
   },
 ];
 
@@ -180,14 +191,7 @@ export default function SmartCitiesSector() {
         />
         <div className="absolute inset-0">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-32">
-            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
-              <RiHome2Line className="h-4 w-4" />
-              <span>Home</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span>Sectors</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span className="text-white/90">Smart Cities</span>
-            </div>
+            
             <div className="max-w-3xl space-y-4">
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
                 Smart Cities Energy Solutions
@@ -328,10 +332,22 @@ export default function SmartCitiesSector() {
                 key={idx}
                 className="bg-slate-50 rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
+                {system.image && (
+                  <div className="w-full h-40 relative bg-slate-100">
+                    <Image
+                      src={system.image}
+                      alt={system.kWh}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                )}
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{system.kWh}</h3>
-                    <span className="text-sm font-bold text-primary">{system.price}</span>
+                    <span className="text-sm font-bold text-primary">
+                      {system.price}
+                    </span>
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
@@ -351,10 +367,10 @@ export default function SmartCitiesSector() {
                     {system.description}
                   </p>
                   <Link
-                    href="/contact"
+                    href="/products?category=cabinet"
                     className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
                   >
-                    Get Quote
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -376,6 +392,16 @@ export default function SmartCitiesSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
               >
+                {charger.image && (
+                  <div className="mb-6 w-full h-64 relative rounded-xl overflow-hidden bg-slate-50">
+                    <Image
+                      src={charger.image}
+                      alt={charger.type}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                )}
                 <h3 className="text-xl font-semibold mb-2">{charger.type}</h3>
                 <p className="text-sm text-slate-600 mb-4">{charger.description}</p>
                 <div className="flex items-center justify-between mb-4">

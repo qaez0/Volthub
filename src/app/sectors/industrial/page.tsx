@@ -21,7 +21,9 @@ const storageSystems = [
     battery: "40.96kWh",
     solarPanel: "670W*30PCS",
     price: "₱1,823,684.10",
-    description: "Small commercial / remote facility. Can power 5-10 small houses or a water refilling station, rice mill, small cold room.",
+    description:
+      "Small commercial / remote facility. Can power 5-10 small houses or a water refilling station, rice mill, small cold room.",
+    image: "/Sector/sampleproducts/12.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -30,7 +32,9 @@ const storageSystems = [
     battery: "61.4kWh",
     solarPanel: "670W*40PCS",
     price: "₱2,694,050.62",
-    description: "Small community or larger business. Can power a small resort (10+ rooms, kitchen, bar, pool pump).",
+    description:
+      "Small community or larger business. Can power a small resort (10+ rooms, kitchen, bar, pool pump).",
+    image: "/Product/cabinet/item4.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -39,7 +43,9 @@ const storageSystems = [
     battery: "100.3kWh",
     solarPanel: "670W*72PCS",
     price: "₱4,593,349.12",
-    description: "Microgrid for a barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
+    description:
+      "Microgrid for a barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
+    image: "/Sector/sampleproducts/13.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -48,7 +54,9 @@ const storageSystems = [
     battery: "215.04kWh",
     solarPanel: "670W*144PCS",
     price: "₱7,754,538.15",
-    description: "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
+    description:
+      "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
+    image: "/Sector/sampleproducts/14.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -57,7 +65,9 @@ const storageSystems = [
     battery: "465.8kWh",
     solarPanel: "670W*288PCS",
     price: "₱16,173,481.20",
-    description: "Mini power plant for a small town center or big factory. A town center: municipal hall, market, street lighting, plus many nearby shops.",
+    description:
+      "Mini power plant for a small town center or big factory. A town center: municipal hall, market, street lighting, plus many nearby shops.",
+    image: "/Sector/sampleproducts/15.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -66,7 +76,9 @@ const storageSystems = [
     battery: "783.6kWh",
     solarPanel: "670W*444PCS",
     price: "₱26,311,107.50",
-    description: "Village or island grid. Can act as the main power plant for a whole small island barangay with a few hundred households.",
+    description:
+      "Village or island grid. Can act as the main power plant for a whole small island barangay with a few hundred households.",
+      image: "/Sector/sampleproducts/16.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -75,7 +87,9 @@ const storageSystems = [
     battery: "1075.2kWh",
     solarPanel: "670W*728PCS",
     price: "₱42,239,802.20",
-    description: "Small utility level / industrial park. The main power for a small island town that currently relies on diesel gensets.",
+    description:
+      "Small utility level / industrial park. The main power for a small island town that currently relies on diesel gensets.",
+      image: "/Sector/sampleproducts/17.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -84,7 +98,9 @@ const storageSystems = [
     battery: "1806.3kWh",
     solarPanel: "670W*1484PCS",
     price: "₱71,207,141.30",
-    description: "Main power plant for a whole town or large island. Can power an entire island town or large industrial estate, cutting diesel consumption by 60-90%.",
+    description:
+      "Main power plant for a whole town or large island. Can power an entire island town or large industrial estate, cutting diesel consumption by 60-90%.",
+      image: "/Sector/sampleproducts/17.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -93,7 +109,9 @@ const storageSystems = [
     battery: "2700.9kWh",
     solarPanel: "670W*1484PCS",
     price: "₱85,828,342.80",
-    description: "Maximum independence from diesel, with longer night-time coverage. For projects aiming for maximum independence from diesel.",
+    description:
+      "Maximum independence from diesel, with longer night-time coverage. For projects aiming for maximum independence from diesel.",
+      image: "/Sector/sampleproducts/17.png",
   },
 ];
 
@@ -102,13 +120,17 @@ const evChargers = [
     model: "DPEV-160k",
     type: "160 kW Single-gun DC Charging Pile",
     price: "₱573,750.00",
-    description: "High-power fast charger. Perfect for premium charging hubs, expressway service areas, sites serving EVs that support higher charging power.",
+    description:
+      "High-power fast charger. Perfect for premium charging hubs, expressway service areas, sites serving EVs that support higher charging power.",
+    image: "/Product/EV/53.png",
   },
   {
     model: "DPEV-400k",
     type: "400 kW Single-gun DC Charging Pile",
     price: "₱1,030,625.00",
-    description: "Ultra-fast DC charger. For flagship highway stations, bus/truck depots needing very high power. Allows very short charging stops.",
+    description:
+      "Ultra-fast DC charger. For flagship highway stations, bus/truck depots needing very high power. Allows very short charging stops.",
+    image: "/Product/EV/64.png",
   },
 ];
 
@@ -127,14 +149,7 @@ export default function IndustrialSector() {
         />
         <div className="absolute inset-0">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-32">
-            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
-              <RiHome2Line className="h-4 w-4" />
-              <span>Home</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span>Sectors</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span className="text-white/90">Industrial</span>
-            </div>
+           
             <div className="max-w-3xl space-y-4">
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
                 Industrial Energy Solutions
@@ -205,6 +220,16 @@ export default function IndustrialSector() {
                     key={idx}
                     className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
                   >
+                    {system.image && (
+                      <div className="w-full h-40 relative bg-slate-100">
+                        <Image
+                          src={system.image}
+                          alt={system.kWh}
+                          fill
+                          className="object-contain p-4"
+                        />
+                      </div>
+                    )}
                     <div className="p-6 space-y-4">
                       <div className="flex items-center justify-between">
                         <h4 className="text-lg font-semibold">{system.kWh}</h4>
@@ -228,10 +253,10 @@ export default function IndustrialSector() {
                         {system.description}
                       </p>
                       <Link
-                        href="/contact"
+                        href="/products?category=cabinet"
                         className="block w-full text-center bg-primary text-white py-2 rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm"
                       >
-                        Get Quote
+                        Learn More
                       </Link>
                     </div>
                   </div>
@@ -250,6 +275,16 @@ export default function IndustrialSector() {
                     key={idx}
                     className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
                   >
+                    {system.image && (
+                      <div className="w-full h-40 relative bg-slate-100">
+                        <Image
+                          src={system.image}
+                          alt={system.kWh}
+                          fill
+                          className="object-contain p-4"
+                        />
+                      </div>
+                    )}
                     <div className="p-6 space-y-4">
                       <div className="flex items-center justify-between">
                         <h4 className="text-lg font-semibold">{system.kWh}</h4>
@@ -273,10 +308,10 @@ export default function IndustrialSector() {
                         {system.description}
                       </p>
                       <Link
-                        href="/contact"
+                        href="/products?category=cabinet"
                         className="block w-full text-center bg-primary text-white py-2 rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm"
                       >
-                        Get Quote
+                        Learn More
                       </Link>
                     </div>
                   </div>
@@ -300,11 +335,23 @@ export default function IndustrialSector() {
                 key={idx}
                 className="bg-slate-50 rounded-2xl shadow-lg p-8 border border-slate-100"
               >
+                {charger.image && (
+                  <div className="mb-6 w-full h-64 relative rounded-2xl overflow-hidden bg-slate-100">
+                    <Image
+                      src={charger.image}
+                      alt={charger.type}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                )}
                 <h3 className="text-2xl font-semibold mb-2">{charger.type}</h3>
                 <p className="text-sm text-slate-600 mb-4">{charger.description}</p>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm text-slate-500">Model: {charger.model}</span>
-                  <span className="text-3xl font-bold text-primary">{charger.price}</span>
+                  <span className="text-3xl font-bold text-primary">
+                    {charger.price}
+                  </span>
                 </div>
                 <Link
                   href="/contact"

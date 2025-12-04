@@ -68,6 +68,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱45,164.50",
     type: "Integrated Light",
+    image: "/Sector/sampleproducts/IntegratedLight.png",
   },
   {
     itemNo: "LVQ2-050",
@@ -78,6 +79,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱37,981.25",
     type: "Split Street Light",
+    image: "/Sector/sampleproducts/LVQ2.png",
   },
 ];
 
@@ -90,6 +92,7 @@ const storageSystems = [
     solarPanel: "36V670W*4",
     price: "₱255,502.45",
     description: "Small home / backup kit. Can run 1 HP aircon plus lights, fans, TV, laptop. About 4-5 hours usable. Perfect for basic rural homes.",
+    image: "/Product/SmartHome/SMP2.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -99,6 +102,7 @@ const storageSystems = [
     solarPanel: "36V670W*6",
     price: "₱388,122.65",
     description: "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers. Around 5-6 hours usable.",
+    image: "/Product/SmartHome/SMP3.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -108,6 +112,7 @@ const storageSystems = [
     solarPanel: "36V670W*8",
     price: "₱526,117.75",
     description: "Longer backup, same power. Good for rural homes with frequent long outages or stores with freezers that must stay cold overnight.",
+    image: "/Product/SmartHome/SMP4.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -117,6 +122,7 @@ const storageSystems = [
     solarPanel: "36V670W*12",
     price: "₱838,344.15",
     description: "Larger home / small business. Can run multiple aircons (3-4 HP total), refrigerator/freezer, lights, computers.",
+    image: "/Product/SmartHome/SMP5.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -126,6 +132,7 @@ const storageSystems = [
     solarPanel: "670W*30PCS",
     price: "₱1,823,684.10",
     description: "Small commercial / remote facility. Can power 5-10 small houses, or a water refilling station, rice mill, small cold room.",
+    image: "/Sector/sampleproducts/12.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -135,6 +142,7 @@ const storageSystems = [
     solarPanel: "670W*40PCS",
     price: "₱2,694,050.62",
     description: "Small community or larger business. Can power a small resort (10+ rooms, kitchen, bar, pool pump) or small agricultural facility.",
+    image: "/Product/cabinet/item4.png",
   },
 ];
 
@@ -144,12 +152,14 @@ const evChargers = [
     type: "7 kW Single-gun AC Charging Pile",
     price: "₱18,062.50",
     description: "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger for rural areas.",
+    image: "/Product/EV/59.png",
   },
   {
     model: "DPEV-60k",
     type: "60 kW Dual-gun DC Charging Pile",
     price: "₱361,250.00",
     description: "Entry-level DC fast charger. Good for rural commercial centers, small towns, and community charging stations.",
+    image: "/Product/EV/89.png",
   },
 ];
 
@@ -168,14 +178,7 @@ export default function RuralProjectsSector() {
         />
         <div className="absolute inset-0">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-32">
-            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
-              <RiHome2Line className="h-4 w-4" />
-              <span>Home</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span>Sectors</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span className="text-white/90">Rural Projects</span>
-            </div>
+            
             <div className="max-w-3xl space-y-4">
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
                 Rural Projects Energy Solutions
@@ -240,6 +243,16 @@ export default function RuralProjectsSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
+                {system.image && (
+                  <div className="w-full h-48 relative bg-slate-50">
+                    <Image
+                      src={system.image}
+                      alt={system.kWh}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                )}
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{system.kWh}</h3>
@@ -263,10 +276,10 @@ export default function RuralProjectsSector() {
                     {system.description}
                   </p>
                   <Link
-                    href="/contact"
+                    href={system.kWh === "40kWh" || system.kWh === "60kWh" ? "/products?category=cabinet" : "/products?category=smart-home"}
                     className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
                   >
-                    Get Quote
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -339,6 +352,16 @@ export default function RuralProjectsSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
               >
+                {charger.image && (
+                  <div className="mb-6 w-full h-64 relative rounded-xl overflow-hidden bg-slate-50">
+                    <Image
+                      src={charger.image}
+                      alt={charger.type}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                )}
                 <h3 className="text-xl font-semibold mb-2">{charger.type}</h3>
                 <p className="text-sm text-slate-600 mb-4">{charger.description}</p>
                 <div className="flex items-center justify-between mb-4">

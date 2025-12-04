@@ -24,6 +24,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱45,164.50",
     type: "Integrated Light",
+    image: "/Sector/sampleproducts/IntegratedLight.png",
   },
   {
     itemNo: "F2-080",
@@ -34,6 +35,7 @@ const streetLights = [
     solarPanel: "160W",
     price: "₱62,717.00",
     type: "Integrated Light",
+    image: "/Sector/sampleproducts/IntegratedLight.png",
   },
   {
     itemNo: "F2-100",
@@ -44,6 +46,7 @@ const streetLights = [
     solarPanel: "200W",
     price: "₱71,803.00",
     type: "Integrated Light",
+    image: "/Sector/sampleproducts/IntegratedLight.png",
   },
   {
     itemNo: "LVQ2-080",
@@ -54,6 +57,7 @@ const streetLights = [
     solarPanel: "200W",
     price: "₱54,088.25",
     type: "Split Street Light",
+    image: "/Sector/sampleproducts/LVQ2.png",
   },
   {
     itemNo: "LVQ2-100",
@@ -64,6 +68,7 @@ const streetLights = [
     solarPanel: "250W",
     price: "₱60,224.25",
     type: "Split Street Light",
+    image: "/Sector/sampleproducts/LVQ2-100.png",
   },
 ];
 
@@ -76,6 +81,7 @@ const storageSystems = [
     solarPanel: "36V670W*6",
     price: "₱388,122.65",
     description: "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers.",
+    image: "/Product/SmartHome/SMP3.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -85,6 +91,7 @@ const storageSystems = [
     solarPanel: "36V670W*8",
     price: "₱526,117.75",
     description: "Longer backup, same power. Good for stores with freezers that must stay cold overnight.",
+    image: "/Product/SmartHome/SMP4.png",
   },
   {
     name: "Mobile Energy Storage Power",
@@ -94,6 +101,7 @@ const storageSystems = [
     solarPanel: "36V670W*12",
     price: "₱838,344.15",
     description: "Larger home / small commercial. Can run multiple aircons (3-4 HP total), refrigerator/freezer, lights, computers.",
+    image: "/Product/SmartHome/SMP5.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -103,6 +111,7 @@ const storageSystems = [
     solarPanel: "670W*30PCS",
     price: "₱1,823,684.10",
     description: "Small commercial / remote facility. Can power 5-10 small houses or a water refilling station, rice mill, small cold room.",
+    image: "/Sector/sampleproducts/12.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -112,6 +121,7 @@ const storageSystems = [
     solarPanel: "670W*40PCS",
     price: "₱2,694,050.62",
     description: "Small community or larger business. Can power a small resort (10+ rooms, kitchen, bar, pool pump).",
+    image: "/Product/cabinet/item4.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -121,6 +131,7 @@ const storageSystems = [
     solarPanel: "670W*72PCS",
     price: "₱4,593,349.12",
     description: "Microgrid for a barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
+    image: "/Sector/sampleproducts/13.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -130,6 +141,7 @@ const storageSystems = [
     solarPanel: "670W*144PCS",
     price: "₱7,754,538.15",
     description: "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
+    image: "/Product/cabinet/14.png",
   },
 ];
 
@@ -139,18 +151,21 @@ const evChargers = [
     type: "7 kW Single-gun AC Charging Pile",
     price: "₱18,062.50",
     description: "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger.",
+    image: "/Product/EV/59.png",
   },
   {
     model: "DPEV-60k",
     type: "60 kW Dual-gun DC Charging Pile",
     price: "₱361,250.00",
     description: "Entry-level DC fast charger. Good for malls, supermarkets, city public charging. Can support 1-2 vehicles at a time.",
+    image: "/Product/EV/89.png",
   },
   {
     model: "DPEV-120k",
     type: "120 kW Dual-gun DC Charging Pile",
     price: "₱446,250.00",
     description: "Standard fast charger. Perfect for highway rest stops, big commercial centers, fleet depots with higher turnover.",
+    image: "/Product/EV/89.png",
   },
 ];
 
@@ -169,14 +184,7 @@ export default function CommercialSector() {
         />
         <div className="absolute inset-0">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-32">
-            <div className="flex items-center gap-2 text-xs md:text-sm text-white/70">
-              <RiHome2Line className="h-4 w-4" />
-              <span>Home</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span>Sectors</span>
-              <RiArrowRightSLine className="h-4 w-4" />
-              <span className="text-white/90">Commercial</span>
-            </div>
+        
             <div className="max-w-3xl space-y-4">
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
                 Commercial Energy Solutions
@@ -241,6 +249,16 @@ export default function CommercialSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
+                {system.image && (
+                  <div className="w-full h-48 relative bg-slate-50">
+                    <Image
+                      src={system.image}
+                      alt={system.kWh}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                )}
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{system.kWh}</h3>
@@ -264,10 +282,10 @@ export default function CommercialSector() {
                     {system.description}
                   </p>
                   <Link
-                    href="/contact"
+                    href="/products?category=smart-home"
                     className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
                   >
-                    Get Quote
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -287,6 +305,7 @@ export default function CommercialSector() {
             <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
               <thead className="bg-primary text-white">
                 <tr>
+                  <th className="px-6 py-4 text-left font-semibold">Image</th>
                   <th className="px-6 py-4 text-left font-semibold">Type</th>
                   <th className="px-6 py-4 text-left font-semibold">Item No.</th>
                   <th className="px-6 py-4 text-left font-semibold">Pole Height</th>
@@ -299,6 +318,18 @@ export default function CommercialSector() {
               <tbody className="divide-y divide-slate-100">
                 {streetLights.map((light, idx) => (
                   <tr key={idx} className="hover:bg-slate-50">
+                    <td className="px-6 py-4">
+                      {light.image && (
+                        <div className="w-20 h-20 relative">
+                          <Image
+                            src={light.image}
+                            alt={light.itemNo}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                    </td>
                     <td className="px-6 py-4 text-slate-600">{light.type}</td>
                     <td className="px-6 py-4 font-medium">{light.itemNo}</td>
                     <td className="px-6 py-4 text-slate-600">{light.poleHeight}</td>
@@ -327,6 +358,16 @@ export default function CommercialSector() {
                 key={idx}
                 className="bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
               >
+                {charger.image && (
+                  <div className="mb-6 w-full h-64 relative rounded-xl overflow-hidden bg-slate-50">
+                    <Image
+                      src={charger.image}
+                      alt={charger.type}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                )}
                 <h3 className="text-xl font-semibold mb-2">{charger.type}</h3>
                 <p className="text-sm text-slate-600 mb-4">{charger.description}</p>
                 <div className="flex items-center justify-between mb-4">
