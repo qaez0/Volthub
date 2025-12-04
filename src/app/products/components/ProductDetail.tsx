@@ -15,7 +15,6 @@ import {
   RiHeartLine,
   RiHeartFill,
   RiChat3Line,
-  RiFolderLine,
   RiThumbUpLine,
   RiStarLine
 } from "react-icons/ri";
@@ -302,8 +301,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               }`}
             >
               <span className="flex items-center gap-2">
-                <RiFolderLine className="h-4 w-4" />
-                Sample Projects Made
+                <RiMapPinLine className="h-4 w-4" />
+                Applicable Spaces
               </span>
             </button>
           </nav>
@@ -524,47 +523,120 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
           {activeTab === "projects" && (
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Sample Projects Made</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="group cursor-pointer">
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                    <Image
-                      src={allImages[0]}
-                      alt="Project 1"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-1">Expressway Service Area</h4>
-                  <p className="text-sm text-slate-600">Premium charging hub with 10 units installed</p>
-                </div>
-                <div className="group cursor-pointer">
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                    <Image
-                      src={allImages[1] ?? allImages[0]}
-                      alt="Project 2"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-1">Commercial Parking Complex</h4>
-                  <p className="text-sm text-slate-600">High-traffic location with 15 dual-gun chargers</p>
-                </div>
-                <div className="group cursor-pointer">
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                    <Image
-                      src={allImages[2] ?? allImages[0]}
-                      alt="Project 3"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-1">Fleet Charging Station</h4>
-                  <p className="text-sm text-slate-600">Enterprise solution with 20 charging points</p>
-                </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Applicable Spaces</h3>
+              <div className={`grid ${product.id === "ev-charging-89" ? "md:grid-cols-4" : "md:grid-cols-3"} gap-6`}>
+                {product.id === "ev-charging-89" ? (
+                  <>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/green/96.jpg"
+                          alt="Office building parking lot"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Office building parking lot</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Ideal for corporate and business facilities</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/green/97.jpg"
+                          alt="Residential community"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Residential community</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Perfect for apartment complexes and housing developments</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/green/98.jpg"
+                          alt="Commercial parking lot"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Commercial parking lot</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Suitable for shopping centers and retail facilities</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/green/99.jpg"
+                          alt="Small enterprise parking lot"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Small enterprise parking lot</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Perfect for small businesses and local enterprises</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/small/83.jpg"
+                          alt="Apartment parking spaces"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Apartment parking spaces</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Ideal for residential complexes and multi-unit buildings</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/small/84.jpg"
+                          alt="Enterprise parking spaces"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Enterprise parking spaces</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Perfect for commercial and office parking facilities</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/EV/small/85.jpg"
+                          alt="Private parking spaces"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Private parking spaces</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Suitable for individual homes and private garages</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}
