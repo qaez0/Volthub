@@ -19,6 +19,8 @@ export type Product = {
   category: ProductCategory;
   tag?: string;
   image: string;
+  images?: string[]; // Additional images for gallery
+  price?: string; // Product price
   description?: string;
   variations?: ProductVariation[];
   specifications?: { label: string; value: string }[];
@@ -36,7 +38,7 @@ export const categories: { id: ProductCategory; label: string }[] = [
 
 export const categoryBanner: Record<
   ProductCategory,
-  { title: string; description: string; image: string }
+  { title: string; description: string; image: string; video?: string }
 > = {
   all: {
     title: "Energy Storage & Power Products",
@@ -48,7 +50,7 @@ export const categoryBanner: Record<
     title: "EV Charging Station Solutions",
     description:
       "Fast, reliable EV charging systems for homes, fleets and public sites, with smart monitoring and billing.",
-    image: "/HomeBanner/item4.png",
+    image: "/Product/evpb.jpg",
   },
   "solar-street": {
     title: "Solar Street Lighting Systems",
@@ -61,18 +63,21 @@ export const categoryBanner: Record<
     description:
       "Compact indoor power systems that keep your essential loads running during grid outages.",
     image: "/HomeBanner/homebatt.png",
+    video: "/Product/SMVB.mp4",
   },
   cabinet: {
     title: "Cabinet Type Power Supply",
     description:
       "Modular cabinet energy storage and power supply systems for commercial and industrial applications.",
     image: "/HomeBanner/commercial.png",
+    video: "/Product/CNvB.mp4",
   },
   container: {
     title: "Container Type Power Supply",
     description:
       "Utility‑scale containerized BESS and hybrid power systems ready for rapid deployment.",
     image: "/HomeBanner/container.png",
+    video: "/Product/CBMB.mp4",
   },
 };
 
@@ -82,11 +87,14 @@ export const products: Product[] = [
   // EV Charging Station products
   {
     id: "ev-charging-53",
-    name: "DC EV Charger Single Gun",
+    name: "DC EV Charger Dual Gun",
     subtitle: "Advanced EV charging solution for commercial and public use",
     category: "ev-charging",
     tag: " Dual-gun DC Charging Pile ",
     image: "/Product/EV/53.png",
+    images: ["/Product/EV/53.png", "/Product/EV/yellow/110.png", "/Product/EV/yellow/197.jpg"],
+    price: "P573,750.00",
+    description: "DPEV-160K - 160 kW Dual-Gun DC high-power fast charger. Ideal for premium charging hubs, expressway service areas, and sites serving EVs that support higher charging power. Faster sessions, future-proof for newer EVs.",
   },
   {
     id: "ev-charging-59",
@@ -259,14 +267,19 @@ export const productDetails: Record<string, {
   features: string[];
 }> = {
   "ev-charging-53": {
-    description: "Advanced DC fast charging station with dual-gun capability, designed for commercial and public use. Features smart monitoring, payment integration, and remote management capabilities.",
+    description: "DPEV-160K - 160 kW Dual-Gun DC high-power fast charger. Advanced DC fast charging station with dual-gun capability, designed for commercial and public use. Features smart monitoring, payment integration, and remote management capabilities. Ideal for premium charging hubs, expressway service areas, and sites serving EVs that support higher charging power. Faster sessions, future-proof for newer EVs.",
     variations: [
-      { name: "Power Output", value: "50kW / 120kW / 150kW" },
+      { name: "Model", value: "DPEV-160K", description: "160 kW Dual-Gun DC Charger" },
+      { name: "Type", value: "High-power fast charger" },
+      { name: "Power Output", value: "50kW / 120kW / 150kW / 160kW" },
       { name: "Connector Type", value: "CCS, CHAdeMO" },
       { name: "Gun Type", value: "Dual-gun DC Charging Pile" },
+      { name: "Use Cases", value: "Premium charging hubs, Expressway service areas, Sites serving EVs that support higher charging power" },
     ],
     specifications: [
-      { label: "Rated Power", value: "50-150kW" },
+      { label: "Model Code", value: "DPEV-160K" },
+      { label: "Rated Power", value: "50-160kW" },
+      { label: "Maximum Power", value: "160kW" },
       { label: "Input Voltage", value: "380V AC" },
       { label: "Output Voltage", value: "200-750V DC" },
       { label: "Efficiency", value: "≥95%" },
@@ -275,11 +288,15 @@ export const productDetails: Record<string, {
     ],
     features: [
       "Dual-gun simultaneous charging",
+      "High-power fast charging (up to 160kW)",
+      "Future-proof for newer EVs",
+      "Faster charging sessions",
       "OCPP 2.0 compatible",
       "RFID and mobile app payment",
       "Remote monitoring and diagnostics",
       "Load balancing technology",
       "Weather-resistant design",
+      "Ideal for premium charging hubs and expressway service areas",
     ],
   },
   "ev-charging-59": {
