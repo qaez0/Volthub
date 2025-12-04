@@ -16,7 +16,9 @@ import {
   RiHeartFill,
   RiChat3Line,
   RiThumbUpLine,
-  RiStarLine
+  RiStarLine,
+  RiRulerLine,
+  RiSunLine
 } from "react-icons/ri";
 import { Product, categories, productDetails } from "./productData";
 
@@ -27,6 +29,7 @@ interface ProductDetailProps {
 export default function ProductDetail({ product }: ProductDetailProps) {
   const details = productDetails[product.id];
   const categoryLabel = categories.find((c) => c.id === product.category)?.label;
+  const isEVProduct = product.category === "ev-charging";
   
   // Get all images (main image + additional images)
   const allImages = product.images && product.images.length > 0 
@@ -38,7 +41,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   // Variant-based pricing (for products that define prices on variations)
   const pricedVariations =
     details?.variations?.filter(
-      (v) => typeof v.price === "string" && !v.name.toLowerCase().includes("model")
+      (v) => typeof v.price === "string" && 
+      (!v.name.toLowerCase().includes("model") || 
+       v.name.toLowerCase().includes("f2-") ||
+       v.name.toLowerCase().includes("lvq2-") ||
+       v.name.toLowerCase().includes("lvxc-"))
     ) ?? [];
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const selectedVariant =
@@ -49,6 +56,25 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       : product.price;
   const descriptionText =
     selectedVariant?.description ?? details?.description;
+  
+  // Parse variant info from description (e.g., "LED: 50W | Size: 1319×460×60mm | Battery: 12.8V 45Ah | Solar Panel: 100W | Pole Height: 8m")
+  const parseVariantInfo = (desc?: string) => {
+    if (!desc) return { led: null, size: null, battery: null, solar: null };
+    
+    const ledMatch = desc.match(/LED:\s*(\d+W)/i);
+    const sizeMatch = desc.match(/Size:\s*([^|]+)/i);
+    const batteryMatch = desc.match(/Battery:\s*([\d.]+V)/i); // Extract voltage only (e.g., 12.8V)
+    const solarMatch = desc.match(/Solar Panel:\s*(\d+W)/i);
+    
+    return {
+      led: ledMatch ? ledMatch[1] : null,
+      size: sizeMatch ? sizeMatch[1].trim() : null,
+      battery: batteryMatch ? batteryMatch[1] : null,
+      solar: solarMatch ? solarMatch[1] : null,
+    };
+  };
+  
+  const variantInfo = parseVariantInfo(selectedVariant?.description);
   
   // Interactive stats state
   const [likes, setLikes] = useState(1234);
@@ -82,7 +108,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             priority
           />
         </div>
-        
+
         {/* Image Selection List */}
         {allImages.length > 1 && (
           <div className="flex gap-3 overflow-x-auto pb-2">
@@ -106,6 +132,56 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             ))}
           </div>
         )}
+        
+        {/* Variant Info Section - LED, Size, Battery, Solar Panel */}
+        {(variantInfo.led || variantInfo.size || variantInfo.battery || variantInfo.solar) && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
+            {variantInfo.led && (
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <RiFlashlightLine className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">LED</div>
+                  <div className="text-sm font-semibold text-slate-900">{variantInfo.led}</div>
+                </div>
+              </div>
+            )}
+            {variantInfo.size && (
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <RiRulerLine className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">Size</div>
+                  <div className="text-sm font-semibold text-slate-900">{variantInfo.size}</div>
+                </div>
+              </div>
+            )}
+            {variantInfo.battery && (
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <RiBatteryChargeLine className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">Battery</div>
+                  <div className="text-sm font-semibold text-slate-900">{variantInfo.battery}</div>
+                </div>
+              </div>
+            )}
+            {variantInfo.solar && (
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <RiSunLine className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">Solar Panel</div>
+                  <div className="text-sm font-semibold text-slate-900">{variantInfo.solar}</div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Top Section - Row 2: Description and Variations */}
@@ -121,12 +197,30 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </h1>
             <p className="text-lg text-slate-600 mt-3">{product.subtitle}</p>
 
-            {/* Variant selector buttons (e.g. 60k / 120k / 400k) */}
+            {/* Variant selector buttons (e.g. 60k / 120k / 400k or F2-050 / F2-080) */}
             {pricedVariations.length > 0 && (
               <div className="flex flex-wrap gap-3 mt-4">
                 {pricedVariations.map((variant, idx) => {
-                  const match = variant.name.match(/(\d+\s*k)/i);
-                  const label = match ? match[1].toUpperCase() : variant.name;
+                  // Extract label: F2-050, F2-080, LVQ2-080, LVXC-120, etc. or 60K, 120K, etc.
+                  let label = variant.name;
+                  const f2Match = variant.name.match(/(F2-\d+)/i);
+                  const lvq2Match = variant.name.match(/(LVQ2-\d+)/i);
+                  const lvxcMatch = variant.name.match(/(LVXC-\d+)/i);
+                  const kwMatch = variant.name.match(/(\d+\s*k)/i);
+                  
+                  if (f2Match) {
+                    label = f2Match[1].toUpperCase();
+                  } else if (lvq2Match) {
+                    label = lvq2Match[1].toUpperCase();
+                  } else if (lvxcMatch) {
+                    label = lvxcMatch[1].toUpperCase();
+                  } else if (kwMatch) {
+                    label = kwMatch[1].toUpperCase();
+                  } else {
+                    // Fallback: use first part of name or clean it up
+                    label = variant.name.split("–")[0]?.trim() || variant.name;
+                  }
+                  
                   const isActive = idx === selectedVariantIndex;
                   return (
                     <button
@@ -148,7 +242,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
-            {product.tag && (
+          {product.tag && (
               <span className="inline-flex items-center rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold">
                 {product.tag}
               </span>
@@ -159,32 +253,55 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   {currentPrice}
                 </span>
                 <span className="text-sm text-slate-500">per unit</span>
-              </div>
-            )}
+            </div>
+          )}
           </div>
 
           {details && (
-            <div>
-              <h2 className="text-xl font-semibold text-slate-900 mb-3">
-                Description
-              </h2>
-              <p className="text-slate-600 leading-relaxed">
+              <div>
+                <h2 className="text-xl font-semibold text-slate-900 mb-3">
+                  Description
+                </h2>
+                <p className="text-slate-600 leading-relaxed">
                 {descriptionText}
-              </p>
+                </p>
             </div>
           )}
-        </div>
+              </div>
 
-        {/* Variations */}
+              {/* Variations */}
         {details && details.variations && details.variations.length > 0 && (
-          <div>
+                <div>
             <h2 className="text-xl font-semibold text-slate-900 mb-4">
               Product Specifications
-            </h2>
+                  </h2>
             <div className="overflow-hidden border border-slate-200 rounded-xl bg-white">
               <table className="w-full">
                 <tbody className="divide-y divide-slate-200">
-                  {details.variations.map((variation, index) => {
+                  {details.variations
+                    .filter((variation) => {
+                      // If a variant is selected, hide general variations that list all models
+                      if (pricedVariations.length > 0 && selectedVariant) {
+                        // Show non-priced variations that are not general listings (like "Light Type")
+                        if (!variation.price) {
+                          // Keep "Light Type" and similar, but hide general specs that list all models
+                          const lowerName = variation.name.toLowerCase();
+                          const isGeneralSpec = 
+                            lowerName.includes("led power") ||
+                            lowerName.includes("solar panel") ||
+                            lowerName.includes("battery capacity") ||
+                            lowerName.includes("pole height");
+                          return !isGeneralSpec;
+                        }
+                        
+                        // For priced variations, only show the selected one
+                        return variation.name === selectedVariant.name;
+                      }
+                      
+                      // If no variant selected, show all (fallback)
+                      return true;
+                    })
+                    .map((variation, index) => {
                     // Get icon based on variation name
                     const getIcon = (name: string) => {
                       const lowerName = name.toLowerCase();
@@ -257,8 +374,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   })}
                 </tbody>
               </table>
-            </div>
-          </div>
+                        </div>
+                      </div>
         )}
       </div>
 
@@ -302,7 +419,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             >
               <span className="flex items-center gap-2">
                 <RiMapPinLine className="h-4 w-4" />
-                Applicable Spaces
+                {isEVProduct ? "Applicable Spaces" : "Sample Projects"}
               </span>
             </button>
           </nav>
@@ -407,35 +524,57 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   <div className="text-sm text-slate-600 font-medium">Positive Reviews</div>
                   <div className="text-xs text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     Click to add review
-                  </div>
+        </div>
                 </button>
-              </div>
+      </div>
               {details && details.specifications && details.specifications.length > 0 && (
                 <div className="mt-8">
                   <h4 className="text-lg font-semibold text-slate-900 mb-4">Technical Specifications</h4>
                   <div className="grid md:grid-cols-2 gap-4">
-                    {details.specifications.map((spec, index) => (
-                      <div
-                        key={index}
+                {details.specifications.map((spec, index) => (
+                  <div
+                    key={index}
                         className="flex justify-between items-center py-3 px-4 bg-slate-50 rounded-lg"
-                      >
-                        <span className="text-slate-600">{spec.label}</span>
-                        <span className="font-semibold text-slate-900">
-                          {spec.value}
-                        </span>
+                  >
+                    <span className="text-slate-600">{spec.label}</span>
+                    <span className="font-semibold text-slate-900">
+                      {spec.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+              {details && details.features && details.features.length > 0 && (
+                <div className="mt-6">
+                  <h4 className="text-lg font-semibold text-slate-900 mb-4">Key Features</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                {details.features.map((feature, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
+                    <RiCheckLine className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-slate-700">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
-              {details && details.features && details.features.length > 0 && (
-                <div className="mt-6">
-                  <h4 className="text-lg font-semibold text-slate-900 mb-4">Key Features</h4>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    {details.features.map((feature, index) => (
-                      <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
-                        <RiCheckLine className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-700">{feature}</span>
+              
+              {/* Product Images Gallery */}
+              {product.images && product.images.length > 0 && (
+                <div className="mt-8">
+                  <h4 className="text-lg font-semibold text-slate-900 mb-4">Product Images</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {product.images.map((img, index) => (
+                      <div
+                        key={index}
+                        className="relative aspect-square rounded-lg overflow-hidden border border-slate-200 bg-slate-100 hover:border-primary/50 transition-all hover:shadow-md"
+                      >
+                        <Image
+                          src={img}
+                          alt={`${product.name} - Image ${index + 1}`}
+                          fill
+                          className="object-contain p-2"
+                        />
                       </div>
                     ))}
                   </div>
@@ -523,9 +662,107 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
           {activeTab === "projects" && (
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Applicable Spaces</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">
+                {isEVProduct ? "Applicable Spaces" : "Sample Projects"}
+              </h3>
               <div className={`grid ${product.id === "ev-charging-89" ? "md:grid-cols-4" : "md:grid-cols-3"} gap-6`}>
-                {product.id === "ev-charging-89" ? (
+                {product.id === "solar-street-f2l" ? (
+                  <>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/f2/proj1.png"
+                          alt="Sample Project 1"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Sample Project 1</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Real-world installation showcase</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/f2/proj2.png"
+                          alt="Sample Project 2"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Sample Project 2</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Professional installation example</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/f2/proj3.png"
+                          alt="Sample Project 3"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Sample Project 3</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Completed project demonstration</p>
+                    </div>
+                  </>
+                ) : product.id === "solar-street-rklv02" ? (
+                  <>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvq2/proj1.png"
+                          alt="Sample Project 1"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Sample Project 1</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Real-world installation showcase</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvq2/proj2.png"
+                          alt="Sample Project 2"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Sample Project 2</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Professional installation example</p>
+                    </div>
+                    <div className="group cursor-pointer">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvq2/proj3.png"
+                          alt="Sample Project 3"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Sample Project 3</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Completed project demonstration</p>
+                    </div>
+                  </>
+                ) : product.id === "ev-charging-89" ? (
                   <>
                     <div className="group cursor-pointer">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
