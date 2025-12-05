@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import type { Route } from "next";
 import { RiMenuLine, RiCloseLine, RiArrowDownSLine } from "react-icons/ri";
@@ -86,8 +87,8 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [clickedDropdown, setClickedDropdown] = useState<string | null>(null);
-  const [closedDropdown, setClosedDropdown] = useState<string | null>(null);
+  const [dropdownPositions, setDropdownPositions] = useState<Record<string, { top: number; left: number }>>({});
+  const navItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const isActive = (href: NavHref) => {
     if (typeof href === "string") {
@@ -116,24 +117,50 @@ const Header = () => {
   useEffect(() => {
     setMobileOpen(false);
     setOpenDropdown(null);
-    setClickedDropdown(null);
-    setClosedDropdown(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const updatePositions = () => {
+      const positions: Record<string, { top: number; left: number }> = {};
+      Object.keys(navItemRefs.current).forEach((label) => {
+        const ref = navItemRefs.current[label];
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const header = document.querySelector('header');
+          const headerBottom = header?.getBoundingClientRect().bottom || 0;
+          positions[label] = {
+            top: headerBottom + 8,
+            left: rect.left,
+          };
+        }
+      });
+      setDropdownPositions(positions);
+    };
+
+    if (openDropdown) {
+      updatePositions();
+      window.addEventListener('resize', updatePositions);
+      window.addEventListener('scroll', updatePositions);
+      return () => {
+        window.removeEventListener('resize', updatePositions);
+        window.removeEventListener('scroll', updatePositions);
+      };
+    }
+  }, [openDropdown]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (!target.closest(".dropdown-container")) {
+      if (!target.closest(".dropdown-container") && !target.closest(".dropdown-menu")) {
         setOpenDropdown(null);
-        setClickedDropdown(null);
       }
     };
 
-    if (openDropdown || clickedDropdown) {
+    if (openDropdown) {
       document.addEventListener("click", handleClickOutside);
       return () => document.removeEventListener("click", handleClickOutside);
     }
-  }, [openDropdown, clickedDropdown]);
+  }, [openDropdown]);
 
   return (
     <header
@@ -161,41 +188,21 @@ const Header = () => {
 
         <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 text-white lg:ml-8 xl:ml-0">
           {navItems.map((item) => {
-            const isDropdownOpen = openDropdown === item.label;
             const hasDropdown = !!item.dropdown;
 
             return (
               <div
                 key={item.label}
+                ref={(el) => {
+                  if (hasDropdown) {
+                    navItemRefs.current[item.label] = el;
+                  }
+                }}
                 className="relative group dropdown-container"
-                onMouseEnter={() => {
-                  if (hasDropdown && clickedDropdown !== item.label && closedDropdown !== item.label) {
-                    // Only open on hover if not explicitly closed via click
-                    setOpenDropdown(item.label);
-                  }
-                }}
-                onMouseLeave={() => {
-                  // Only close on mouse leave if it wasn't clicked open
-                  if (hasDropdown && clickedDropdown !== item.label) {
-                    setOpenDropdown(null);
-                    setClosedDropdown(null); // Reset closed state on mouse leave
-                  }
-                }}
               >
                 <div className="flex items-center gap-1">
                   <Link
                     href={hasDropdown && item.dropdown?.[0] ? item.dropdown[0].href : item.href}
-                    onClick={() => {
-                      if (hasDropdown) {
-                        // Navigate to first dropdown item, but also toggle dropdown on click
-                        const willBeOpen = clickedDropdown !== item.label;
-                        setClickedDropdown(willBeOpen ? item.label : null);
-                        setOpenDropdown(willBeOpen ? item.label : null);
-                        // Track that this dropdown was explicitly closed
-                        setClosedDropdown(willBeOpen ? null : item.label);
-                        // Don't prevent default - let it navigate
-                      }
-                    }}
                     className={cn(
                       "font-medium transition-all duration-300 relative flex items-center gap-1",
                       isActive(item.href)
@@ -215,11 +222,7 @@ const Header = () => {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        const willBeOpen = clickedDropdown !== item.label;
-                        setClickedDropdown(willBeOpen ? item.label : null);
-                        setOpenDropdown(willBeOpen ? item.label : null);
-                        // Track that this dropdown was explicitly closed
-                        setClosedDropdown(willBeOpen ? null : item.label);
+                        setOpenDropdown(openDropdown === item.label ? null : item.label);
                       }}
                       className="flex items-center"
                       aria-label="Toggle dropdown"
@@ -227,38 +230,12 @@ const Header = () => {
                       <RiArrowDownSLine
                         className={cn(
                           "text-sm transition-transform duration-300",
-                          clickedDropdown === item.label || (closedDropdown !== item.label && isDropdownOpen)
-                            ? "rotate-180"
-                            : ""
+                          openDropdown === item.label ? "rotate-180" : ""
                         )}
                       />
                     </button>
                   ) : null}
                 </div>
-                {hasDropdown ? (
-                  <div
-                    className={cn(
-                      "absolute top-full left-0 mt-2 w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300",
-                      clickedDropdown === item.label
-                        ? "opacity-100 visible translate-y-0"
-                        : clickedDropdown === null && isDropdownOpen
-                        ? "opacity-100 visible translate-y-0"
-                        : "opacity-10 invisible translate-y-2"
-                    )}
-                  >
-                    <div className="p-4 space-y-2">
-                      {item.dropdown?.map((link) => (
-                        <Link
-                          key={getHrefKey(link.href)}
-                          href={link.href}
-                          className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
               </div>
             );
           })}
@@ -353,6 +330,45 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* Dropdowns rendered outside header using portal */}
+      {typeof window !== 'undefined' && openDropdown && navItems
+        .filter(item => item.dropdown && openDropdown === item.label)
+        .map((item) => {
+          const position = dropdownPositions[item.label];
+          if (!position) return null;
+
+          return createPortal(
+            <div
+              key={item.label}
+              className={cn(
+                "fixed w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300 z-[9999] dropdown-menu",
+                openDropdown === item.label
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible translate-y-2"
+              )}
+              style={{
+                top: `${position.top}px`,
+                left: `${position.left}px`,
+              }}
+              onMouseEnter={() => setOpenDropdown(item.label)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              <div className="p-4 space-y-2">
+                {item.dropdown?.map((link) => (
+                  <Link
+                    key={getHrefKey(link.href)}
+                    href={link.href}
+                    className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>,
+            document.body
+          );
+        })}
     </header>
   );
 };

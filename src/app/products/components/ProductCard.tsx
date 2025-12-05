@@ -23,7 +23,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       <div className="p-4 md:p-5 lg:p-6 flex flex-col gap-2 md:gap-3 flex-1">
-        <div className="flex items-center gap-2 text-xs text-slate-500">
+        <div className="flex items-center gap-2 text-xs text-slate-500 ">
           {product.category === "smart-home" && (
             <RiHomeGearLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
           )}

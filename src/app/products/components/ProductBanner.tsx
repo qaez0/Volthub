@@ -53,7 +53,7 @@ export default function ProductBanner({ activeCategory }: ProductBannerProps) {
         {/* Breadcrumb at bottom */}
         <div className="absolute bottom-4 md:bottom-6 left-0 right-0">
           <div className="max-w-[1600px] w-full mx-auto px-4">
-            <div className="flex items-center justify-start md:justify-center gap-1.5 md:gap-2 text-xs sm:text-sm md:text-base text-white">
+            <div className="flex items-center justify-start gap-1.5 md:gap-2 text-xs sm:text-sm md:text-base text-white">
               <RiHome2Line className="h-3.5 w-3.5 md:h-4 md:w-4 lg:h-5 lg:w-5 flex-shrink-0" />
               <RiArrowRightSLine className="h-3.5 w-3.5 md:h-4 md:w-4 lg:h-5 lg:w-5 flex-shrink-0" />
               <span className="truncate">Products</span>

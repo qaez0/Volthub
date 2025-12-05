@@ -31,7 +31,7 @@ export default function UserSegmentationSection({
 }: UserSegmentationSectionProps) {
   return (
     <section className="section-spacing bg-white overflow-x-hidden">
-      <LayoutContainer className="flex flex-col md:flex-col gap-6 md:gap-8 p-2">
+      <LayoutContainer className="flex flex-col md:flex-col md:pt-10 gap-6 md:gap-8 p-2">
         <div className="text-center space-y-3 md:space-y-4 mb-8 md:mb-16 reveal-on-scroll px-2">
           <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] md:tracking-[0.3em] text-accent uppercase">{badge}</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text break-words">{title}</h2>

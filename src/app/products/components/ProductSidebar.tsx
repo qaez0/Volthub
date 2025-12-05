@@ -39,7 +39,7 @@ export default function ProductSidebar({
       </div>
 
       {/* Desktop: Vertical sidebar */}
-      <aside className="hidden md:block w-[260px] lg:w-[280px] space-y-3 self-start flex-shrink-0">
+      <aside className="hidden md:block w-[260px] lg:w-[280px] space-y-3 self-start flex-shrink-0 p-2">
         {categories.map((category) => {
           const isActive = activeCategory === category.id;
           return (
