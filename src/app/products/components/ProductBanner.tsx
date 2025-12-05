@@ -22,7 +22,7 @@ export default function ProductBanner({ activeCategory }: ProductBannerProps) {
   }, [banner.video, activeCategory]);
 
   return (
-    <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
+    <section className="relative overflow-hidden border-b border-slate-100 min-h-[200px] sm:min-h-[250px] md:min-h-[320px] w-full">
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
       {banner.video ? (
         <video
@@ -43,29 +43,28 @@ export default function ProductBanner({ activeCategory }: ProductBannerProps) {
         />
       )}
       <div className="absolute inset-0">
-        <LayoutContainer className="h-full flex flex-col justify-center items-center text-center text-white pt-30">
-          <div className="max-w-4xl border-b border-white/10 pb-10 mb-10 space-y-6">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
+        <LayoutContainer className="h-full flex flex-col justify-center items-center text-center text-white pt-20 md:pt-30">
+          <div className="max-w-4xl w-full border-b border-white/10 pb-6 md:pb-10 mb-6 md:mb-10 space-y-4 md:space-y-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight">
               {banner.title}
             </h1>
-           
           </div>
         </LayoutContainer>
         {/* Breadcrumb at bottom */}
-        <div className="absolute bottom-6 left-0 right-0">
-          <LayoutContainer>
-            <div className="flex items-center gap-2 text-sm md:text-base text-white">
-              <RiHome2Line className="h-4 w-4 md:h-5 md:w-5" />
-              <RiArrowRightSLine className="h-4 w-4 md:h-5 md:w-5" />
-              <span>Products</span>
+        <div className="absolute bottom-4 md:bottom-6 left-0 right-0">
+          <div className="max-w-[1600px] w-full mx-auto px-4">
+            <div className="flex items-center justify-start md:justify-center gap-1.5 md:gap-2 text-xs sm:text-sm md:text-base text-white">
+              <RiHome2Line className="h-3.5 w-3.5 md:h-4 md:w-4 lg:h-5 lg:w-5 flex-shrink-0" />
+              <RiArrowRightSLine className="h-3.5 w-3.5 md:h-4 md:w-4 lg:h-5 lg:w-5 flex-shrink-0" />
+              <span className="truncate">Products</span>
               {activeCategory !== "all" && (
                 <>
-                  <RiArrowRightSLine className="h-4 w-4 md:h-5 md:w-5" />
-                  <span>{categoryLabel}</span>
+                  <RiArrowRightSLine className="h-3.5 w-3.5 md:h-4 md:w-4 lg:h-5 lg:w-5 flex-shrink-0" />
+                  <span className="truncate">{categoryLabel}</span>
                 </>
               )}
             </div>
-          </LayoutContainer>
+          </div>
         </div>
       </div>
     </section>

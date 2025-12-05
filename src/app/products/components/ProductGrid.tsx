@@ -11,13 +11,13 @@ export default function ProductGrid({
   activeCategory,
 }: ProductGridProps) {
   return (
-    <div className="space-y-6 flex-1">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2">
+    <div className="space-y-4 md:space-y-6 flex-1 w-full md:w-auto">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 md:gap-4">
         <div>
           <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-primary font-semibold">
             Products
           </p>
-          <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-slate-900 mt-1">
             {activeCategory === "all"
               ? "All Products"
               : categories.find((c) => c.id === activeCategory)?.label}
@@ -28,11 +28,17 @@ export default function ProductGrid({
         </p>
       </div>
 
-      <div className="grid gap-5 xl:gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {products.length === 0 ? (
+        <div className="text-center py-12 md:py-16">
+          <p className="text-slate-500 text-sm md:text-base">No products found in this category.</p>
+        </div>
+      ) : (
+        <div className="grid gap-4 md:gap-5 xl:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

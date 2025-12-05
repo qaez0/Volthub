@@ -48,24 +48,26 @@ export default function ProductsClient() {
       : products.filter((p) => p.category === activeCategory);
 
   return (
-    <main className="bg-slate-50 min-h-screen">
+    <main className="bg-slate-50 min-h-screen overflow-x-hidden">
       {/* Hero / banner (changes with category) */}
       <ProductBanner activeCategory={activeCategory} />
 
       {/* Main layout: sidebar + grid */}
-      <section className="py-10 md:py-14">
-        <LayoutContainer className="flex gap-8 items-start">
-          {/* Sidebar categories */}
-          <ProductSidebar
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-          />
+      <section className="py-6 md:py-10 lg:py-14">
+        <LayoutContainer>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start w-full">
+            {/* Sidebar categories */}
+            <ProductSidebar
+              activeCategory={activeCategory}
+              onCategoryChange={setActiveCategory}
+            />
 
-          {/* Products grid */}
-          <ProductGrid
-            products={filteredProducts}
-            activeCategory={activeCategory}
-          />
+            {/* Products grid */}
+            <ProductGrid
+              products={filteredProducts}
+              activeCategory={activeCategory}
+            />
+          </div>
         </LayoutContainer>
       </section>
     </main>

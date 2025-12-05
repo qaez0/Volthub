@@ -30,6 +30,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const details = productDetails[product.id];
   const categoryLabel = categories.find((c) => c.id === product.category)?.label;
   const isEVProduct = product.category === "ev-charging";
+  const isSmartHomeProduct = product.category === "smart-home";
   
   // Get related products from the same category, excluding current product
   const relatedProducts = products.filter(
@@ -331,11 +332,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     .filter((spec) => {
                       // Show only important specifications from marketing perspective
                       const lowerLabel = spec.label.toLowerCase();
-                      // Key marketing specs: Model, Power, Output Voltage, Connector/Gun, Dimensions, Warranty
+                      // Key marketing specs: Model, Power, Battery Capacity, Solar Panel, Output Voltage, Connector/Gun, Dimensions, Warranty
                       return (
                         lowerLabel.includes("model") ||
                         lowerLabel.includes("code") ||
                         (lowerLabel.includes("power") && (lowerLabel.includes("rated") || lowerLabel.includes("maximum") || lowerLabel.includes("output"))) ||
+                        (lowerLabel.includes("battery") && lowerLabel.includes("capacity")) ||
+                        lowerLabel.includes("solar panel") ||
                         (lowerLabel.includes("voltage") && lowerLabel.includes("output")) ||
                         lowerLabel.includes("connector") ||
                         (lowerLabel.includes("gun") && (lowerLabel.includes("type") || lowerLabel.includes("line"))) ||
@@ -361,6 +364,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       }
                       if (lowerLabel.includes("dimension") || lowerLabel.includes("size") || lowerLabel.includes("length")) {
                         return <RiRulerLine className="h-5 w-5" />;
+                      }
+                      if (lowerLabel.includes("battery") && lowerLabel.includes("capacity")) {
+                        return <RiBatteryChargeLine className="h-5 w-5" />;
+                      }
+                      if (lowerLabel.includes("solar panel")) {
+                        return <RiSunLine className="h-5 w-5" />;
                       }
                       if (lowerLabel.includes("efficiency") || lowerLabel.includes("protection") || lowerLabel.includes("warranty")) {
                         return <RiBatteryChargeLine className="h-5 w-5" />;
@@ -683,10 +692,112 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
           {activeTab === "projects" && (
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                {isEVProduct ? "Applicable Spaces" : "Sample Projects"}
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">
+                {isEVProduct ? "Applicable Spaces" : isSmartHomeProduct ? "Applicable Scenarios" : "Sample Projects"}
               </h3>
-              <div className={`grid ${product.id === "ev-charging-89" ? "md:grid-cols-4" : "md:grid-cols-3"} gap-6`}>
+              {isSmartHomeProduct ? (
+                <div className="space-y-4 md:space-y-6">
+                  <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6">
+                    {product.id === "smart-home-smp2" 
+                      ? "Suitable for small houses, sari-sari stores, off-grid tiny homes, farm huts, and construction site offices."
+                      : product.id === "smart-home-smp3"
+                      ? "Suitable for urban homes, small clinics, small offices, BPO satellite offices, internet cafés, and small resort cottages."
+                      : product.id === "smart-home-smp4"
+                      ? "Suitable for rural homes with frequent long outages, stores with freezers requiring overnight operation, and small cell sites/telecom repeaters."
+                      : product.id === "smart-home-smp5"
+                      ? "Suitable for large homes with multiple AC units, small resorts or beach houses, restaurants, bakeries, small manufacturing, and community facilities."
+                      : product.id === "smart-home-smp6"
+                      ? "Suitable for off-grid homes or lodges that must run all night, cold storage rooms for small agri businesses, and small hospitals/clinics needing longer uptime."
+                      : product.id === "smart-home-smp7"
+                      ? "Suitable for off-grid communities, remote resorts, island communities, telecom towers, and farms with integrated systems."
+                      : "Suitable for various places such as villas, small businesses, construction sites, farmer breeding, remote pastoral areas, islands, communication base stations, etc."
+                    }
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                    {(product.id === "smart-home-smp2" 
+                      ? [
+                          { title: "Small Houses", description: "Backup power for small houses during brownouts" },
+                          { title: "Small Businesses", description: "Sari-sari store lights + small freezer for a few hours" },
+                          { title: "Construction Sites", description: "Construction site office power supply" },
+                          { title: "Off-Grid Tiny Homes", description: "Power for off-grid tiny homes and farm huts" },
+                          { title: "Farm Huts", description: "Rural farm hut power solutions" },
+                          { title: "Power Shortage Areas", description: "Backup power for areas with unreliable grid" },
+                        ]
+                      : product.id === "smart-home-smp3"
+                      ? [
+                          { title: "Urban Homes", description: "Backup power for urban homes during long brownouts" },
+                          { title: "Small Clinics", description: "Power supply for small medical clinics" },
+                          { title: "Small Offices", description: "Backup power for small office spaces" },
+                          { title: "BPO Satellite Offices", description: "Power for BPO satellite office locations" },
+                          { title: "Internet Cafés", description: "Reliable power for internet café operations" },
+                          { title: "Resort Cottages", description: "Small resort cottage / Airbnb unit power supply" },
+                        ]
+                      : product.id === "smart-home-smp4"
+                      ? [
+                          { title: "Rural Homes", description: "Rural homes with frequent long outages" },
+                          { title: "Stores with Freezers", description: "Stores with freezers (meat, ice cream) that must stay cold overnight" },
+                          { title: "Cell Sites", description: "Small cell sites/telecom repeaters wanting longer autonomy" },
+                          { title: "Telecom Repeaters", description: "Telecom infrastructure requiring extended backup power" },
+                          { title: "Long Outage Areas", description: "Areas with frequent and extended power outages" },
+                          { title: "Cold Storage", description: "Commercial applications requiring overnight refrigeration" },
+                        ]
+                      : product.id === "smart-home-smp5"
+                      ? [
+                          { title: "Large Homes", description: "Large homes with multiple AC units" },
+                          { title: "Resorts & Beach Houses", description: "Small resorts or beach houses (several rooms + common area)" },
+                          { title: "Restaurants", description: "Restaurants requiring reliable power for operations" },
+                          { title: "Bakeries", description: "Bakeries with light machinery and equipment" },
+                          { title: "Small Manufacturing", description: "Small manufacturing with light machinery" },
+                          { title: "Community Facilities", description: "Barangay halls, schools, classrooms, and evacuation centers" },
+                        ]
+                      : product.id === "smart-home-smp6"
+                      ? [
+                          { title: "Off-Grid Homes", description: "Off-grid homes or lodges that must run all night" },
+                          { title: "Cold Storage", description: "Cold storage rooms for small agri businesses" },
+                          { title: "Small Hospitals", description: "Small hospitals/clinics needing longer uptime for equipment" },
+                          { title: "Clinics", description: "Small-scale medical facilities requiring extended backup" },
+                          { title: "All-Night Operations", description: "Applications requiring full day-night cycle backup" },
+                          { title: "Extended Backup", description: "Systems needing longer-lasting storage for moderate loads" },
+                        ]
+                      : product.id === "smart-home-smp7"
+                      ? [
+                          { title: "Off-Grid Communities", description: "Off-grid communities (several houses sharing one system)" },
+                          { title: "Remote Resorts", description: "Remote resorts and island communities" },
+                          { title: "Island Communities", description: "Island communities requiring mini-microgrid solutions" },
+                          { title: "Telecom Towers", description: "Telecom towers + equipment shelters" },
+                          { title: "Integrated Farms", description: "Farms with pumps, cold storage, and house all in one system" },
+                          { title: "Mini-Microgrids", description: "Shared energy systems for multiple users" },
+                        ]
+                      : [
+                          { title: "Villas", description: "Residential solar power for luxury homes" },
+                          { title: "Small Businesses", description: "Commercial solar solutions for shops and stores" },
+                          { title: "Construction Sites", description: "Temporary power for construction projects" },
+                          { title: "Farmer Breeding", description: "Agricultural and farming applications" },
+                          { title: "Remote Pastoral Areas", description: "Off-grid power for remote locations" },
+                          { title: "Islands", description: "Island communities and marine applications" },
+                          { title: "Communication Base Stations", description: "Power for telecom infrastructure" },
+                          { title: "Remote Mountainous Areas", description: "Mountain and high-altitude installations" },
+                          { title: "Power Shortage Areas", description: "Backup power for areas with unreliable grid" },
+                          { title: "Fishery Aquaculture", description: "Aquaculture and fishery operations" },
+                        ]
+                    ).map((scenario, index) => (
+                      <div
+                        key={index}
+                        className="group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
+                        </div>
+                        <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{scenario.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+              <div className={`grid ${product.id === "ev-charging-89" ? "md:grid-cols-4" : "md:grid-cols-3"} gap-4 md:gap-6`}>
                 {product.id === "solar-street-f2l" ? (
                   <>
                     <div className="group cursor-pointer">
@@ -896,6 +1007,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </>
                 )}
               </div>
+              )}
             </div>
           )}
         </div>
