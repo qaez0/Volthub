@@ -28,7 +28,7 @@ export const carouselSlides = [
     image: "/HomeBanner/89.png",
     backgroundImage: "/HomeBanner/banner1.jpg",
     showimg: false,
-    descriptionClassName: "ml-[50%] w-1/2  space-y-6 text-white",
+    descriptionClassName: "w-full md:w-1/2 md:ml-auto md:max-w-2xl",
     buttonText: "Explore Products",
     buttonLink: "/products",
     gradient: "bg-gradient-to-br from-primary/90 via-primary/70 to-transparent",

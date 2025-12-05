@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -40,9 +40,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   );
   
   // Get all images (main image + additional images)
-  const allImages = product.images && product.images.length > 0 
-    ? product.images 
-    : [product.image];
+  const allImages = useMemo(() => 
+    product.images && product.images.length > 0 
+      ? product.images 
+      : [product.image],
+    [product.images, product.image]
+  );
   const [selectedImage, setSelectedImage] = useState(allImages[0]);
   const [activeTab, setActiveTab] = useState<"stats" | "comments" | "projects">("stats");
 
@@ -64,6 +67,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       : product.price;
   const descriptionText =
     selectedVariant?.description ?? details?.description;
+  
+  // Update image when variant changes
+  useEffect(() => {
+    if (selectedVariant?.image) {
+      setSelectedImage(selectedVariant.image);
+    } else {
+      // Reset to first image if variant doesn't have a specific image
+      setSelectedImage(allImages[0]);
+    }
+  }, [selectedVariant, allImages]);
   
   // Parse variant info from description (e.g., "LED: 50W | Size: 1319×460×60mm | Battery: 12.8V 45Ah | Solar Panel: 100W | Pole Height: 8m")
   const parseVariantInfo = (desc?: string) => {
@@ -175,12 +188,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {pricedVariations.length > 0 && (
               <div className="flex flex-wrap gap-2 md:gap-3 mt-3 md:mt-4">
                 {pricedVariations.map((variant, idx) => {
-                  // Extract label: F2-050, F2-080, LVQ2-080, LVXC-120, etc. or 60K, 120K, etc.
+                  // Extract label: F2-050, F2-080, LVQ2-080, LVXC-120, etc. or 40kWh, 60kWh, etc.
                   let label = variant.name;
                   const f2Match = variant.name.match(/(F2-\d+)/i);
                   const lvq2Match = variant.name.match(/(LVQ2-\d+)/i);
                   const lvxcMatch = variant.name.match(/(LVXC-\d+)/i);
-                  const kwMatch = variant.name.match(/(\d+\s*k)/i);
+                  const kWhMatch = variant.name.match(/(\d+\s*kWh)/i);
+                  const kwMatch = variant.name.match(/(\d+\s*kW?)/i);
                   
                   if (f2Match) {
                     label = f2Match[1].toUpperCase();
@@ -188,8 +202,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     label = lvq2Match[1].toUpperCase();
                   } else if (lvxcMatch) {
                     label = lvxcMatch[1].toUpperCase();
+                  } else if (kWhMatch) {
+                    // Match kWh first (e.g., "40kWh")
+                    label = kWhMatch[1];
                   } else if (kwMatch) {
-                    label = kwMatch[1].toUpperCase();
+                    // Fallback to kW or k (e.g., "60kW" or "60k")
+                    label = kwMatch[1];
                   } else {
                     // Fallback: use first part of name or clean it up
                     label = variant.name.split("–")[0]?.trim() || variant.name;

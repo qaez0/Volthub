@@ -1,6 +1,5 @@
 "use client";
 
-import ScrollAnimations from "@/components/home/ScrollAnimations";
 import CarouselBanner from "@/components/home/CarouselBanner";
 import HoverEffects from "@/components/home/HoverEffects";
 import ProductShowcase from "./components/ProductShowcase";
@@ -25,7 +24,6 @@ import {
 export default function Home() {
   return (
     <main className="flex flex-col w-full overflow-x-hidden">
-      <ScrollAnimations />
       <HoverEffects />
 
       {/* Carousel Banner */}

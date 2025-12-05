@@ -11,6 +11,7 @@ export type ProductVariation = {
   value: string;
   description?: string;
   price?: string; // Optional price for this variation
+  image?: string; // Optional image for this variation
 };
 
 export type Product = {
@@ -991,25 +992,29 @@ export const productDetails: Record<string, {
         name: "40kWh / 20kW", 
         value: "Small Commercial / Remote Facility",
         description: "40.96kWh battery, 20kW rated power, 380V/220V output. Includes 30×670W solar panels (20.1kW total). Can power: 5-10 small houses, or a water refilling station, rice mill, small cold room, plus office & lighting, or a cell tower + equipment shelter with extra capacity. Market: Off-grid tourist sites with a few cottages, poultry/piggery/fish farms (lighting, blowers, small machinery), telecom sites that want to reduce diesel use.",
-        price: "₱1,823,684.10"
+        price: "₱1,823,684.10",
+        image: "/Product/cabinet/20k.png"
       },
       { 
         name: "60kWh / 30kW", 
         value: "Small Community or Larger Business",
         description: "61.4kWh battery, 30kW rated power, 380V/220V output. Includes 40×670W solar panels (26.8kW total). Can power: a small resort (10+ rooms, kitchen, bar, pool pump), a medium agricultural facility (irrigation pumps, storage, office), or a cluster of 10-20 households with controlled use. Market: Island barangays, remote mountain communities, bigger manufacturing workshops (welding, small machines).",
-        price: "₱2,694,050.62"
+        price: "₱2,694,050.62",
+        image: "/Product/cabinet/30k.png"
       },
       { 
         name: "80kWh / 40kW", 
         value: "Microgrid for a Barangay Center or Campus",
         description: "83.2kWh battery, 40kW rated power, 380V/220V output. Includes 60×670W solar panels (40.2kW total). Suitable for: school campus (several buildings, lights, fans, computers), barangay center + streetlights + market area, or medium resort or eco-park with many cottages plus common facilities. Good where diesel gensets are currently used daily, and fuel is expensive. Many loads are running at the same time (kitchen, laundry, ACs, pumps).",
-        price: "₱3,918,051.35"
+        price: "₱3,918,051.35",
+        image: "/Product/cabinet/40k.png"
       },
       { 
         name: "100kWh / 50kW", 
         value: "Microgrid for a Barangay Center or Campus",
         description: "100.3kWh battery, 50kW rated power, 380V/220V output. Includes 72×670W solar panels (48.24kW total). Suitable for: school campus (several buildings, lights, fans, computers), barangay center + streetlights + market area, or medium resort or eco-park with many cottages plus common facilities. Good where diesel gensets are currently used daily, and fuel is expensive. Many loads are running at the same time (kitchen, laundry, ACs, pumps).",
-        price: "₱4,593,349.12"
+        price: "₱4,593,349.12",
+        image: "/Product/cabinet/50k.png"
       },
       { name: "Type", value: "Off-Grid Power Generation System" },
       { name: "Included Components", value: "Splice bracket + wiring" },

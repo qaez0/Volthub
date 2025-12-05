@@ -471,16 +471,11 @@ html {
   animation: slideUpFade 0.8s ease-out;
 }
 
-/* Scroll reveal classes */
+/* Scroll reveal classes - simplified, elements visible by default */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.reveal-on-scroll.revealed {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 /* Stagger animation delays */
