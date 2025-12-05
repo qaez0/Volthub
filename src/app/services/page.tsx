@@ -72,8 +72,8 @@ export default function Services() {
                 </span>
               </button>
             </div>
-            <div className="grid md:grid-cols-4 gap-8 pt-12">
-              <div className="text-center">
+            <div className="flex flex-wrap justify-center gap-8 pt-12">
+              <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] text-center">
                 <div className="text-3xl font-bold text-secondary font-orbitron mb-2">
                   500+
                 </div>
@@ -81,7 +81,7 @@ export default function Services() {
                   Installations Completed
                 </div>
               </div>
-              <div className="text-center">
+              <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] text-center">
                 <div className="text-3xl font-bold text-accent font-orbitron mb-2">
                   98.5%
                 </div>
@@ -89,13 +89,13 @@ export default function Services() {
                   Customer Satisfaction
                 </div>
               </div>
-              <div className="text-center">
+              <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] text-center">
                 <div className="text-3xl font-bold text-primary font-orbitron mb-2">
                   24/7
                 </div>
                 <div className="text-sm text-green-200">Support Available</div>
               </div>
-              <div className="text-center">
+              <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] text-center">
                 <div className="text-3xl font-bold text-secondary font-orbitron mb-2">
                   15+
                 </div>
@@ -140,11 +140,11 @@ export default function Services() {
               description="Comprehensive energy solutions backed by certified professionals, cutting-edge technology, and unmatched customer service excellence."
             />
           </div>
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="flex flex-col lg:flex-row gap-12">
             {/* EV Charging Solutions */}
             <div
               id="ev-charging-service"
-              className="service-section bg-white rounded-2xl shadow-xl overflow-hidden"
+              className="flex-1 service-section bg-white rounded-2xl shadow-xl overflow-hidden"
             >
               <div className="relative">
                 <Image
@@ -169,7 +169,7 @@ export default function Services() {
                   <h4 className="text-xl font-semibold mb-4">
                     Service Offerings
                   </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex flex-wrap gap-4">
                     {[
                       {
                         title: "Site Assessment & Design",
@@ -196,7 +196,7 @@ export default function Services() {
                         desc: "RFID, mobile app, and credit card integration",
                       },
                     ].map((item, idx) => (
-                      <div key={idx} className="flex items-start space-x-3">
+                      <div key={idx} className="w-full md:w-[calc(50%-0.5rem)] flex items-start space-x-3">
                         <RiCheckLine className="text-green-500 text-xl mt-1 shrink-0" />
                         <div>
                           <div className="font-medium">{item.title}</div>
@@ -208,8 +208,8 @@ export default function Services() {
                     ))}
                   </div>
                 </div>
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
+                <div className="flex flex-wrap gap-6 mb-8">
+                  <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 bg-blue-50 rounded-lg">
                     <div className="text-2xl font-bold text-blue-600 mb-1">
                       AC Charging
                     </div>
@@ -220,7 +220,7 @@ export default function Services() {
                       From ₱18,062.50
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
+                  <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 bg-green-50 rounded-lg">
                     <div className="text-2xl font-bold text-green-600 mb-1">
                       DC Fast
                     </div>
@@ -231,7 +231,7 @@ export default function Services() {
                       From ₱361,250.00
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
+                  <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 bg-purple-50 rounded-lg">
                     <div className="text-2xl font-bold text-purple-600 mb-1">
                       Ultra-Fast
                     </div>
@@ -288,7 +288,7 @@ export default function Services() {
                   <h4 className="text-xl font-semibold mb-4">
                     Service Offerings
                   </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex flex-wrap gap-4">
                     {[
                       {
                         title: "Energy Audit & Design",
@@ -315,7 +315,7 @@ export default function Services() {
                         desc: "25-year performance guarantee",
                       },
                     ].map((item, idx) => (
-                      <div key={idx} className="flex items-start space-x-3">
+                      <div key={idx} className="w-full md:w-[calc(50%-0.5rem)] flex items-start space-x-3">
                         <RiCheckLine className="text-green-500 text-xl mt-1 shrink-0" />
                         <div>
                           <div className="font-medium">{item.title}</div>
@@ -327,8 +327,8 @@ export default function Services() {
                     ))}
                   </div>
                 </div>
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="text-center p-4 bg-yellow-50 rounded-lg">
+                <div className="flex flex-wrap gap-6 mb-8">
+                  <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 bg-yellow-50 rounded-lg">
                     <div className="text-2xl font-bold text-yellow-600 mb-1">
                       Street Lights
                     </div>
@@ -339,7 +339,7 @@ export default function Services() {
                       From ₱17,036.25
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-orange-50 rounded-lg">
+                  <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 bg-orange-50 rounded-lg">
                     <div className="text-2xl font-bold text-orange-600 mb-1">
                       Energy Storage
                     </div>
@@ -350,7 +350,7 @@ export default function Services() {
                       From ₱255,502.45
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-red-50 rounded-lg">
+                  <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 bg-red-50 rounded-lg">
                     <div className="text-2xl font-bold text-red-600 mb-1">
                       Power Generation
                     </div>
@@ -391,7 +391,7 @@ export default function Services() {
               description="From initial consultation to ongoing support, we ensure a seamless experience"
             />
           </div>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="flex flex-wrap gap-8 justify-center">
             {[
               {
                 step: "1",
@@ -422,7 +422,7 @@ export default function Services() {
                 textColor: "text-blue-600",
               },
             ].map((process, idx) => (
-              <div key={idx} className="text-center">
+              <div key={idx} className="w-full md:w-[calc(25%-1.5rem)] text-center">
                 <div
                   className={`w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-linear-to-br ${process.color} rounded-full`}
                 >
@@ -451,11 +451,14 @@ export default function Services() {
               description="Serving the Philippines with plans for Southeast Asia expansion"
             />
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="flex-1">
               <div className="bg-white rounded-xl shadow-lg p-8">
                 <h3 className="text-2xl font-semibold mb-6">Service Areas</h3>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1 space-y-6">
+                  {/* Use a simple map rendering logic adjusted for flex or keep as is if mapping is complex, 
+                      but for Flex conversion: */}
                   {[
                     {
                       region: "Luzon",
@@ -474,6 +477,21 @@ export default function Services() {
                         "Eastern Visayas",
                       ],
                     },
+                  ].map((region, idx) => (
+                    <div key={idx}>
+                      <h4 className="font-semibold text-primary mb-3">
+                        {region.region}
+                      </h4>
+                      <ul className="text-sm text-gray-600 space-y-2">
+                        {region.areas.map((area, areaIdx) => (
+                          <li key={areaIdx}>• {area}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                  </div>
+                  <div className="flex-1 space-y-6">
+                  {[
                     {
                       region: "Mindanao",
                       areas: [
@@ -505,10 +523,11 @@ export default function Services() {
                       </ul>
                     </div>
                   ))}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative flex-1 w-full">
               <div className="w-full h-96 bg-center bg-cover rounded-2xl shadow-lg relative overflow-hidden">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
@@ -524,16 +543,16 @@ export default function Services() {
                       <p className="text-lg">
                         Professional installation services across major regions
                       </p>
-                      <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
-                        <div>
+                      <div className="mt-6 flex flex-wrap gap-4 text-sm">
+                        <div className="w-full sm:w-[calc(33.333%-0.7rem)]">
                           <div className="text-2xl font-bold">50+</div>
                           <div>Service Centers</div>
                         </div>
-                        <div>
+                        <div className="w-full sm:w-[calc(33.333%-0.7rem)]">
                           <div className="text-2xl font-bold">200+</div>
                           <div>Certified Technicians</div>
                         </div>
-                        <div>
+                        <div className="w-full sm:w-[calc(33.333%-0.7rem)]">
                           <div className="text-2xl font-bold">24hr</div>
                           <div>Response Time</div>
                         </div>
@@ -556,7 +575,7 @@ export default function Services() {
               description="Industry-leading certifications and technical capabilities"
             />
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap gap-8 justify-center">
             {[
               {
                 icon: RiAwardLine,
@@ -601,7 +620,7 @@ export default function Services() {
                 iconColor: "text-green-500",
               },
             ].map((expertise, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg p-8">
+              <div key={idx} className="w-full lg:w-[calc(33.333%-1.5rem)] bg-white rounded-xl shadow-lg p-8">
                 <div
                   className={`w-16 h-16 flex items-center justify-center mb-6 ${expertise.bgColor} rounded-full mx-auto`}
                 >

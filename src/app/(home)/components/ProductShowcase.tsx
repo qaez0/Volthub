@@ -64,9 +64,9 @@ export default function ProductShowcase({
   return (
     <section className={`section-spacing ${bgGradient} overflow-x-hidden`}>
       <LayoutContainer>
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 items-center">
           {/* Product Image */}
-          <div className={`hidden md:block reveal-on-scroll ${isImageLeft ? "order-1" : "order-2 lg:order-1"}`}>
+          <div className={`hidden md:block w-full lg:w-1/2 reveal-on-scroll ${isImageLeft ? "order-1" : "order-2 lg:order-1"}`}>
             <div className="relative group">
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${gradientColors.from} ${gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500`}
@@ -87,7 +87,7 @@ export default function ProductShowcase({
           </div>
 
           {/* Product Information */}
-          <div className={`space-y-3 md:space-y-6 reveal-on-scroll ${isImageLeft ? "order-2 md:order-2" : "order-1 md:order-1 lg:order-2"}`}>
+          <div className={`w-full lg:w-1/2 space-y-3 md:space-y-6 reveal-on-scroll ${isImageLeft ? "order-2 md:order-2" : "order-1 md:order-1 lg:order-2"}`}>
             <div>
               <p className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.15em] md:tracking-[0.3em] ${badgeColor} uppercase mb-2 md:mb-4`}>
                 {badge}

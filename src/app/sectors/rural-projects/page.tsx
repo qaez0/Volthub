@@ -198,7 +198,7 @@ export default function RuralProjectsSector() {
               description="Our rural solutions are designed for off-grid and remote areas, 
               bringing reliable electricity to communities that need it most."
             />
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
               {[
                 {
                   icon: RiPlantLine,
@@ -216,7 +216,7 @@ export default function RuralProjectsSector() {
                   desc: "Microgrid systems for small villages and communities",
                 },
               ].map((feature, idx) => (
-                <div key={idx} className="p-6 bg-slate-50 rounded-2xl">
+                <div key={idx} className="w-full md:w-[calc(33.333%-1rem)] p-6 bg-slate-50 rounded-2xl">
                   <feature.icon className="h-8 w-8 text-primary mb-4 mx-auto" />
                   <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                   <p className="text-sm text-slate-600">{feature.desc}</p>
@@ -234,11 +234,11 @@ export default function RuralProjectsSector() {
             title="Energy Storage Systems"
             description="From individual homes to small communities - scalable solutions for rural areas"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
             {storageSystems.map((system, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+                className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
                 {system.image && (
                   <div className="w-full h-48 relative bg-slate-50">
@@ -343,11 +343,11 @@ export default function RuralProjectsSector() {
             title="EV Charging Solutions"
             description="Basic charging infrastructure for rural areas and small communities"
           />
-          <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 mt-12 max-w-4xl mx-auto">
             {evChargers.map((charger, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
+                className="w-full md:w-[calc(50%-0.75rem)] bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
               >
                 {charger.image && (
                   <div className="mb-6 w-full h-64 relative rounded-xl overflow-hidden bg-slate-50">
@@ -384,7 +384,7 @@ export default function RuralProjectsSector() {
             title="Rural Project Applications"
             description="Perfect solutions for various rural and remote area needs"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
             {[
               {
                 title: "Rural Homes",
@@ -411,7 +411,7 @@ export default function RuralProjectsSector() {
                 desc: "Off-grid power systems for island barangays and remote coastal communities.",
               },
             ].map((useCase, idx) => (
-              <div key={idx} className="bg-slate-50 rounded-2xl shadow-lg p-6">
+              <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-slate-50 rounded-2xl shadow-lg p-6">
                 <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
                 <p className="text-sm text-slate-600">{useCase.desc}</p>
               </div>
@@ -428,7 +428,7 @@ export default function RuralProjectsSector() {
               title="Why Choose Our Rural Solutions"
               description="Designed specifically for off-grid and remote area applications"
             />
-            <div className="grid md:grid-cols-2 gap-6 mt-12">
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
               {[
                 "3-year warranty on all products",
                 "Professional installation and maintenance",
@@ -439,7 +439,7 @@ export default function RuralProjectsSector() {
                 "Local support and training available",
                 "Scalable from single homes to small communities",
               ].map((benefit, idx) => (
-                <div key={idx} className="flex items-start gap-3">
+                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] flex items-start gap-3">
                   <RiCheckLine className="h-6 w-6 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-slate-700">{benefit}</span>
                 </div>

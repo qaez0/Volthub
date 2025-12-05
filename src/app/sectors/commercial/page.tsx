@@ -204,7 +204,7 @@ export default function CommercialSector() {
               description="Whether you run a small office, restaurant, retail store, or large commercial facility, 
               our commercial solutions help reduce operating costs and ensure reliable power."
             />
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
               {[
                 {
                   icon: RiBuilding2Line,
@@ -222,7 +222,7 @@ export default function CommercialSector() {
                   desc: "Attract customers with EV charging facilities",
                 },
               ].map((feature, idx) => (
-                <div key={idx} className="p-6 bg-slate-50 rounded-2xl">
+                <div key={idx} className="w-full md:w-[calc(33.333%-1rem)] p-6 bg-slate-50 rounded-2xl">
                   <feature.icon className="h-8 w-8 text-primary mb-4 mx-auto" />
                   <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                   <p className="text-sm text-slate-600">{feature.desc}</p>
@@ -240,11 +240,11 @@ export default function CommercialSector() {
             title="Energy Storage Systems"
             description="Scalable solutions from small businesses to large commercial facilities"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
             {storageSystems.map((system, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+                className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
                 {system.image && (
                   <div className="w-full h-48 relative bg-slate-50">
@@ -349,11 +349,11 @@ export default function CommercialSector() {
             title="EV Charging Solutions"
             description="Attract customers and support the growing EV market"
           />
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
             {evChargers.map((charger, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
+                className="w-full md:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-lg p-6 border border-slate-100"
               >
                 {charger.image && (
                   <div className="mb-6 w-full h-64 relative rounded-xl overflow-hidden bg-slate-50">
@@ -391,7 +391,7 @@ export default function CommercialSector() {
               title="Why Choose Our Commercial Solutions"
               description="Designed for business reliability and ROI"
             />
-            <div className="grid md:grid-cols-2 gap-6 mt-12">
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
               {[
                 "3-year warranty on all products",
                 "Professional installation and maintenance",
@@ -402,7 +402,7 @@ export default function CommercialSector() {
                 "24/7 monitoring and support available",
                 "Compliance with local regulations",
               ].map((benefit, idx) => (
-                <div key={idx} className="flex items-start gap-3">
+                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] flex items-start gap-3">
                   <RiCheckLine className="h-6 w-6 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-slate-700">{benefit}</span>
                 </div>

@@ -38,11 +38,11 @@ export default function UserSegmentationSection({
           <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto break-words px-2">{description}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8">
           {segments.map((segment, index) => (
             <div
               key={segment.title}
-              className="stagger-card reveal-on-scroll p-4 sm:p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 rounded-xl md:rounded-2xl shadow-lg card-hover-3d hover-lift border border-gray-100 group"
+              className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.34rem)] stagger-card reveal-on-scroll p-4 sm:p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 rounded-xl md:rounded-2xl shadow-lg card-hover-3d hover-lift border border-gray-100 group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div

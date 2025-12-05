@@ -159,9 +159,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       </div>
 
       {/* Top Section - Row 2: Description and Variations */}
-      <div className="grid md:grid-cols-2 gap-4 md:gap-8">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-8">
         {/* Product Info & Description */}
-        <div className="space-y-4 md:space-y-6">
+        <div className="flex-1 space-y-4 md:space-y-6">
           <div>
             <span className="text-xs uppercase tracking-wider text-primary font-semibold">
               {categoryLabel}
@@ -462,14 +462,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {activeTab === "stats" && (
             <div className="space-y-4 md:space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Product Stats & Reactions</h3>
-              <div className="grid md:grid-cols-3 gap-3 md:gap-6">
+              <div className="flex flex-wrap gap-3 md:gap-6">
                 {/* Likes Card - Clickable */}
                 <button
                   onClick={() => {
                     setIsLiked(!isLiked);
                     setLikes(prev => isLiked ? prev - 1 : prev + 1);
                   }}
-                  className="group text-center p-4 md:p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl border-2 border-slate-200 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
+                  className="w-full md:w-[calc(33.333%-1rem)] group text-center p-4 md:p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl border-2 border-slate-200 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                 >
                   <div className="flex items-center justify-center gap-2 mb-2">
                     {isLiked ? (
@@ -488,7 +488,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 </button>
 
                 {/* Rating Card - Interactive Stars */}
-                <div className="text-center p-4 md:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 hover:border-green-300 transition-all hover:shadow-lg">
+                <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 md:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 hover:border-green-300 transition-all hover:shadow-lg">
                   <div className="flex items-center justify-center gap-2 text-green-600 mb-2 md:mb-3">
                     <RiStarLine className="h-5 w-5 md:h-6 md:w-6" />
                   </div>
@@ -545,7 +545,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   onClick={() => {
                     setPositiveReviews(prev => prev + 1);
                   }}
-                  className="group text-center p-4 md:p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
+                  className="w-full md:w-[calc(33.333%-1rem)] group text-center p-4 md:p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                 >
                   <div className="flex items-center justify-center gap-2 text-blue-600 mb-2">
                     <RiThumbUpLine className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
@@ -562,11 +562,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {details && details.specifications && details.specifications.length > 0 && (
                 <div className="mt-6 md:mt-8">
                   <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Technical Specifications</h4>
-                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+                  <div className="flex flex-wrap gap-3 md:gap-4">
                 {details.specifications.map((spec, index) => (
                   <div
                     key={index}
-                        className="flex justify-between items-center py-2 px-3 md:py-3 md:px-4 bg-slate-50 rounded-lg"
+                        className="flex justify-between items-center py-2 px-3 md:py-3 md:px-4 bg-slate-50 rounded-lg w-full md:w-[calc(50%-0.5rem)]"
                   >
                     <span className="text-sm md:text-base text-slate-600">{spec.label}</span>
                     <span className="text-sm md:text-base font-semibold text-slate-900">
@@ -580,9 +580,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {details && details.features && details.features.length > 0 && (
                 <div className="mt-4 md:mt-6">
                   <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Key Features</h4>
-                  <div className="grid md:grid-cols-2 gap-2 md:gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                 {details.features.map((feature, index) => (
-                      <div key={index} className="flex items-start gap-2 md:gap-3 p-2 md:p-3 bg-slate-50 rounded-lg">
+                      <div key={index} className="flex items-start gap-2 md:gap-3 p-2 md:p-3 bg-slate-50 rounded-lg w-full md:w-[calc(50%-0.375rem)]">
                     <RiCheckLine className="h-4 w-4 md:h-5 md:w-5 text-primary mt-0.5 flex-shrink-0" />
                         <span className="text-sm md:text-base text-slate-700">{feature}</span>
                       </div>
@@ -595,11 +595,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {product.images && product.images.length > 0 && (
                 <div className="mt-6 md:mt-8">
                   <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Product Images</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                  <div className="flex flex-wrap gap-3 md:gap-4">
                     {product.images.map((img, index) => (
                       <div
                         key={index}
-                        className="relative aspect-square rounded-lg overflow-hidden border border-slate-200 bg-slate-100 hover:border-primary/50 transition-all hover:shadow-md"
+                        className="relative aspect-square rounded-lg overflow-hidden border border-slate-200 bg-slate-100 hover:border-primary/50 transition-all hover:shadow-md w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)]"
                       >
                         <Image
                           src={img}
@@ -705,7 +705,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       : "Suitable for utility-scale applications, large industrial complexes, and major infrastructure projects requiring reliable, high-capacity energy storage."
                     }
                   </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                  <div className="flex flex-wrap gap-3 md:gap-4">
                     {(product.id === "container-con1"
                       ? [
                           { title: "Small Island Towns", description: "Main power for small island towns currently using diesel generators" },
@@ -728,7 +728,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     ).map((scenario, index) => (
                       <div
                         key={index}
-                        className="group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                        className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -755,7 +755,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       : "Suitable for large-scale commercial and industrial applications, utility-scale projects, and major infrastructure."
                     }
                   </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                  <div className="flex flex-wrap gap-3 md:gap-4">
                     {(product.id === "cabinet-14"
                       ? [
                           { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)" },
@@ -811,7 +811,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     ).map((scenario, index) => (
                       <div
                         key={index}
-                        className="group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                        className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -842,7 +842,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       : "Suitable for various places such as villas, small businesses, construction sites, farmer breeding, remote pastoral areas, islands, communication base stations, etc."
                     }
                   </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                  <div className="flex flex-wrap gap-3 md:gap-4">
                     {(product.id === "smart-home-smp2" 
                       ? [
                           { title: "Small Houses", description: "Backup power for small houses during brownouts" },
@@ -912,7 +912,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     ).map((scenario, index) => (
                       <div
                         key={index}
-                        className="group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                        className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -926,10 +926,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </div>
                 </div>
               ) : (
-              <div className={`grid ${product.id === "ev-charging-89" ? "md:grid-cols-4" : "md:grid-cols-3"} gap-4 md:gap-6`}>
+              <div className="flex flex-wrap gap-4 md:gap-6">
                 {product.id === "solar-street-f2l" ? (
                   <>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/f2/proj1.png"
@@ -944,7 +944,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Real-world installation showcase</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/f2/proj2.png"
@@ -959,7 +959,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Professional installation example</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/f2/proj3.png"
@@ -977,7 +977,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </>
                 ) : product.id === "solar-street-rklv02" ? (
                   <>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/lvq2/proj1.png"
@@ -992,7 +992,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Real-world installation showcase</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/lvq2/proj2.png"
@@ -1007,7 +1007,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Professional installation example</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/lvq2/proj3.png"
@@ -1025,7 +1025,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </>
                 ) : product.id === "ev-charging-89" ? (
                   <>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(25%-1.125rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/green/96.jpg"
@@ -1040,7 +1040,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Ideal for corporate and business facilities</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(25%-1.125rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/green/97.jpg"
@@ -1055,7 +1055,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Perfect for apartment complexes and housing developments</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(25%-1.125rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/green/98.jpg"
@@ -1070,7 +1070,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Suitable for shopping centers and retail facilities</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(25%-1.125rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/green/99.jpg"
@@ -1088,7 +1088,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </>
                 ) : (
                   <>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/small/83.jpg"
@@ -1103,7 +1103,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Ideal for residential complexes and multi-unit buildings</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/small/84.jpg"
@@ -1118,7 +1118,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       </div>
                       <p className="text-sm text-slate-600 text-center">Perfect for commercial and office parking facilities</p>
                     </div>
-                    <div className="group cursor-pointer">
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/EV/small/85.jpg"

@@ -37,11 +37,11 @@ export default function FeaturesSection({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="stagger-card p-4 sm:p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 rounded-xl md:rounded-2xl shadow-lg card-hover-3d hover-lift border border-gray-100 group border-glow"
+              className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.34rem)] stagger-card p-4 sm:p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 rounded-xl md:rounded-2xl shadow-lg card-hover-3d hover-lift border border-gray-100 group border-glow"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 glow-pulse">

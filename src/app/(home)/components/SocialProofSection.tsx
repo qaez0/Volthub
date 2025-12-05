@@ -45,11 +45,11 @@ export default function SocialProofSection({
         </div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-16">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-16">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="stagger-card reveal-on-scroll p-4 sm:p-5 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+              className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.34rem)] stagger-card reveal-on-scroll p-4 sm:p-5 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center gap-1 mb-3 md:mb-4">
@@ -82,9 +82,9 @@ export default function SocialProofSection({
                 Our certifications and partnerships ensure quality and reliability
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 items-center justify-items-center">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center">
               {trustBadges.map((badge, index) => (
-                <div key={index} className="flex flex-col items-center gap-2 text-center group">
+                <div key={index} className="w-[45%] sm:w-[45%] md:w-[22%] flex flex-col items-center gap-2 text-center group">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg md:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <badge.icon className="text-2xl sm:text-2xl md:text-3xl text-primary" />
                   </div>

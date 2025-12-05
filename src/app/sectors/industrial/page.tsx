@@ -170,7 +170,7 @@ export default function IndustrialSector() {
               description="Our industrial solutions are designed for factories, manufacturing plants, 
               industrial parks, and utility-scale projects requiring reliable, high-capacity power."
             />
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
               {[
                 {
                   icon: RiBuilding2Line,
@@ -188,7 +188,7 @@ export default function IndustrialSector() {
                   desc: "Ultra-fast EV charging for industrial fleets and depots",
                 },
               ].map((feature, idx) => (
-                <div key={idx} className="p-6 bg-slate-50 rounded-2xl">
+                <div key={idx} className="w-full md:w-[calc(33.333%-1rem)] p-6 bg-slate-50 rounded-2xl">
                   <feature.icon className="h-8 w-8 text-primary mb-4 mx-auto" />
                   <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                   <p className="text-sm text-slate-600">{feature.desc}</p>
@@ -212,11 +212,11 @@ export default function IndustrialSector() {
               <h3 className="text-2xl font-semibold mb-6 text-slate-900">
                 Small to Medium Industrial (40kWh - 215kWh)
               </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="flex flex-wrap justify-center gap-6">
                 {storageSystems.slice(0, 4).map((system, idx) => (
                   <div
                     key={idx}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+                    className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
                   >
                     {system.image && (
                       <div className="w-full h-40 relative bg-slate-100">
@@ -267,11 +267,11 @@ export default function IndustrialSector() {
               <h3 className="text-2xl font-semibold mb-6 text-slate-900">
                 Large Industrial & Utility Scale (466kWh - 2700kWh)
               </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex flex-wrap justify-center gap-6">
                 {storageSystems.slice(4).map((system, idx) => (
                   <div
                     key={idx}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+                    className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
                   >
                     {system.image && (
                       <div className="w-full h-40 relative bg-slate-100">
@@ -327,11 +327,11 @@ export default function IndustrialSector() {
             title="Industrial EV Charging Solutions"
             description="Ultra-fast charging for industrial fleets, buses, and heavy-duty vehicles"
           />
-          <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 mt-12 max-w-4xl mx-auto">
             {evChargers.map((charger, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 rounded-2xl shadow-lg p-8 border border-slate-100"
+                className="w-full md:w-[calc(50%-0.75rem)] bg-slate-50 rounded-2xl shadow-lg p-8 border border-slate-100"
               >
                 {charger.image && (
                   <div className="mb-6 w-full h-64 relative rounded-2xl overflow-hidden bg-slate-100">
@@ -370,7 +370,7 @@ export default function IndustrialSector() {
             title="Industrial Applications"
             description="Perfect for various industrial and utility-scale projects"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
             {[
               {
                 title: "Manufacturing Plants",
@@ -397,7 +397,7 @@ export default function IndustrialSector() {
                 desc: "Island grids, small towns, and community power plants.",
               },
             ].map((useCase, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg p-6">
+              <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-lg p-6">
                 <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
                 <p className="text-sm text-slate-600">{useCase.desc}</p>
               </div>
@@ -414,7 +414,7 @@ export default function IndustrialSector() {
               title="Why Choose Our Industrial Solutions"
               description="Built for reliability, scalability, and long-term performance"
             />
-            <div className="grid md:grid-cols-2 gap-6 mt-12">
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
               {[
                 "Three-phase 380/400V output for industrial equipment",
                 "Scalable from 40kWh to 2.7MWh capacity",
@@ -425,7 +425,7 @@ export default function IndustrialSector() {
                 "24/7 monitoring and maintenance available",
                 "Compliance with industrial safety standards",
               ].map((benefit, idx) => (
-                <div key={idx} className="flex items-start gap-3">
+                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] flex items-start gap-3">
                   <RiCheckLine className="h-6 w-6 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-slate-700">{benefit}</span>
                 </div>

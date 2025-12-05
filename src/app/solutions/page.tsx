@@ -119,19 +119,21 @@ export default function Solutions() {
       </section>
 
       <section className="py-20">
-        <LayoutContainer className="grid md:grid-cols-3 gap-8">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className="bg-white p-8 rounded-2xl shadow-lg text-center"
-            >
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                <item.icon className="text-2xl text-primary" />
+        <LayoutContainer>
+          <div className="flex flex-wrap justify-center gap-8">
+            {highlights.map((item) => (
+              <div
+                key={item.title}
+                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] bg-white p-8 rounded-2xl shadow-lg text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                  <item.icon className="text-2xl text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </LayoutContainer>
       </section>
 

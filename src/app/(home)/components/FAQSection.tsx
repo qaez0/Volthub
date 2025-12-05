@@ -34,7 +34,7 @@ export default function FAQSection({
           <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto break-words px-2">{description}</p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-3 md:space-y-4">
+        <div className="max-w-4xl mx-auto flex flex-col gap-3 md:gap-4">
           {faqs.map((faq, index) => (
             <div
               key={index}

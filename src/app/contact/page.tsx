@@ -86,7 +86,7 @@ export default function Contact() {
       >
         <div className="absolute inset-0 backdrop-blur"/>
         <div className="relative">
-          <LayoutContainer className="space-y-14">
+          <LayoutContainer className="flex-col space-y-14">
             <div className="text-center space-y-4">
               <p className="font-orbitron tracking-[0.3em] uppercase text-sm text-secondary">
                 Partner with VoltHub
@@ -100,11 +100,11 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div className="bg-black/50 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+              <div className="flex-1 bg-black/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-2xl">
                 <h3 className="text-2xl font-semibold mb-6">Get Your Quote</h3>
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex flex-col md:flex-row gap-4">
                     {["firstName", "lastName"].map((field) => (
                       <input
                         key={field}
@@ -163,7 +163,7 @@ export default function Contact() {
                 </form>
               </div>
 
-              <div className="space-y-10">
+              <div className="flex-1 space-y-10">
                 <Card className="bg-black/50 backdrop-blur-sm border-white/20">
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-white">
@@ -224,7 +224,7 @@ export default function Contact() {
 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
-                  <div className="flex space-x-4">
+                  <div className="flex gap-4">
                     {socialIcons.map(({ icon: Icon, href, label }) => (
                       <a
                         key={href}

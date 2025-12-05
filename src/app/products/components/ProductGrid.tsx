@@ -33,9 +33,11 @@ export default function ProductGrid({
           <p className="text-slate-500 text-sm md:text-base">No products found in this category.</p>
         </div>
       ) : (
-        <div className="grid gap-4 md:gap-5 xl:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div className="flex flex-wrap gap-4 md:gap-5 xl:gap-6">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <div key={product.id} className="w-full md:w-[calc(50%-0.625rem)] xl:w-[calc(33.333%-1rem)]">
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       )}

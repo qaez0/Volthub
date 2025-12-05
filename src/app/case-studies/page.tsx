@@ -78,12 +78,12 @@ export default function CaseStudies() {
             title="Case Studies"
             description="Real-world implementations driving sustainable change."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap gap-8 justify-center">
             {caseStudies.map((study) => (
               <div
                 key={study.id}
                 id={study.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
               >
                 <Image
                   src={study.image}
@@ -118,11 +118,11 @@ export default function CaseStudies() {
             title="Sustainability Impact"
             description="Measuring our contribution to a cleaner future."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap gap-8 justify-center">
             {impactMetrics.map((metric) => (
               <div
                 key={metric.label}
-                className="text-center bg-white rounded-2xl p-8"
+                className="text-center bg-white rounded-2xl p-8 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
               >
                 <p className="text-3xl font-bold text-primary">{metric.value}</p>
                 <p className="text-gray-600 mt-2">{metric.label}</p>

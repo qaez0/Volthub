@@ -164,11 +164,11 @@ export default function Pricing() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="flex flex-wrap justify-center gap-8">
               {pricingPlans.map((plan) => (
                 <Card
                   key={plan.id}
-                  className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl ${
+                  className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] ${
                     plan.popular ? "ring-2 ring-primary scale-105" : ""
                   }`}
                 >
@@ -272,8 +272,8 @@ export default function Pricing() {
               </Card>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="p-6">
+            <div className="flex flex-col md:flex-row gap-8">
+              <Card className="flex-1 p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-green-100 rounded-full">
                     <DollarSign className="w-6 h-6 text-green-600" />
@@ -288,7 +288,7 @@ export default function Pricing() {
                 </p>
               </Card>
 
-              <Card className="p-6">
+              <Card className="flex-1 p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-blue-100 rounded-full">
                     <Zap className="w-6 h-6 text-blue-600" />

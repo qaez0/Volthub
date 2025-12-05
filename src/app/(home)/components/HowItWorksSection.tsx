@@ -26,18 +26,18 @@ export default function HowItWorksSection({
 }: HowItWorksSectionProps) {
   return (
     <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      <LayoutContainer className="flex flex-col md:flex-row gap-6 md:gap-8 p-2">
+      <LayoutContainer className="flex flex-col gap-6 md:gap-8 p-2">
         <div className="text-center space-y-3 md:space-y-4 mb-8 md:mb-16 reveal-on-scroll px-2">
           <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] md:tracking-[0.3em] text-primary uppercase">{badge}</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text break-words">{title}</h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto break-words px-2">{description}</p>
         </div>
 
-        <div className="flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
           {steps.map((item, index) => (
             <div
               key={item.step}
-              className="stagger-card reveal-on-scroll text-center group relative"
+              className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] stagger-card reveal-on-scroll text-center group relative"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative mb-4 md:mb-6">

@@ -68,7 +68,7 @@ export default function SolarInstallation() {
               description="From energy audit to grid connection, we handle every step of your solar journey"
             />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {[
               {
                 icon: RiBarChartLine,
@@ -139,7 +139,7 @@ export default function SolarInstallation() {
             ].map((service, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-4 bg-green-100 rounded-full">
                   <service.icon className="text-3xl text-green-600" />
@@ -169,8 +169,8 @@ export default function SolarInstallation() {
               description="From residential street lights to utility-scale power generation"
             />
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="w-full md:w-[calc(33.333%-1.34rem)] bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="bg-yellow-500 text-white p-6 text-center">
                 <RiHomeLine className="text-4xl mx-auto mb-2" />
                 <h3 className="text-2xl font-bold mb-2">Residential</h3>
@@ -210,7 +210,7 @@ export default function SolarInstallation() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-orange-500">
+            <div className="w-full md:w-[calc(33.333%-1.34rem)] bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-orange-500">
               <div className="bg-orange-600 text-white p-6 text-center">
                 <RiBuildingLine className="text-4xl mx-auto mb-2" />
                 <h3 className="text-2xl font-bold mb-2">Commercial</h3>
@@ -253,7 +253,7 @@ export default function SolarInstallation() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="w-full md:w-[calc(33.333%-1.34rem)] bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="bg-red-600 text-white p-6 text-center">
                 <RiPlantLine className="text-4xl mx-auto mb-2" />
                 <h3 className="text-2xl font-bold mb-2">Utility-Scale</h3>
@@ -526,7 +526,7 @@ export default function SolarInstallation() {
           {/* Mobile Energy Storage (5-30 kWh) */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-8 text-center">Mobile Energy Storage Power (5-30 kWh)</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {[
                 {
                   name: "Mobile Energy Storage Power",
@@ -589,7 +589,7 @@ export default function SolarInstallation() {
                   image: "/Product/SmartHome/SMP6.png",
                 },
               ].map((system, idx) => (
-                <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
+                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
                   {system.image && (
                     <div className="w-full h-48 relative bg-slate-50">
                       <Image
@@ -637,7 +637,7 @@ export default function SolarInstallation() {
           {/* Off-Grid Power Generation Systems (40kWh+) */}
           <div>
             <h3 className="text-2xl font-bold mb-8 text-center">Off-Grid Power Generation Systems (40kWh+)</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {[
                 {
                   name: "Off-Grid Power Generation System",
@@ -726,7 +726,7 @@ export default function SolarInstallation() {
                   image: "/Sector/sampleproducts/17.png",
                 },
               ].map((system, idx) => (
-                <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
+                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
                   {system.image && (
                     <div className="w-full h-48 relative bg-slate-50">
                       <Image
@@ -782,7 +782,7 @@ export default function SolarInstallation() {
               description="Industry-leading expertise and proven track record"
             />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {[
               {
                 stat: "2,500+",
@@ -805,7 +805,7 @@ export default function SolarInstallation() {
                 desc: "Rated excellent by our clients for quality and service",
               },
             ].map((item, idx) => (
-              <div key={idx} className="text-center">
+              <div key={idx} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] text-center">
                 <div className="text-4xl font-bold text-primary font-orbitron mb-2">
                   {item.stat}
                 </div>
