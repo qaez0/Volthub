@@ -62,38 +62,38 @@ export default function ProductShowcase({
   const isImageLeft = imagePosition === "left";
 
   return (
-    <section className={`section-spacing ${bgGradient}`}>
+    <section className={`section-spacing ${bgGradient} overflow-x-hidden`}>
       <LayoutContainer>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
           {/* Product Image */}
-          <div className={`reveal-on-scroll ${isImageLeft ? "order-1" : "order-2 lg:order-1"}`}>
+          <div className={`hidden md:block reveal-on-scroll ${isImageLeft ? "order-1" : "order-2 lg:order-1"}`}>
             <div className="relative group">
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${gradientColors.from} ${gradientColors.to} rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500`}
+                className={`absolute inset-0 bg-gradient-to-br ${gradientColors.from} ${gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500`}
               />
-              <div className="relative image-hover-zoom card-hover-3d rounded-3xl overflow-hidden shadow-2xl bg-white p-8 lg:p-12">
+              <div className="relative image-hover-zoom card-hover-3d rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-white p-4 sm:p-6 md:p-8 lg:p-12">
                 <Image
                   src={image}
                   alt={imageAlt}
                   width={1200}
                   height={800}
-                  className="w-full h-auto object-contain rounded-2xl"
+                  className="w-full h-auto object-contain rounded-xl md:rounded-2xl"
                 />
                 {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
-                <div className="absolute bottom-4 left-4 w-16 h-16 bg-accent/10 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+                <div className="absolute top-2 right-2 md:top-4 md:right-4 w-12 h-12 md:w-20 md:h-20 bg-primary/10 rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+                <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 w-10 h-10 md:w-16 md:h-16 bg-accent/10 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
               </div>
             </div>
           </div>
 
           {/* Product Information */}
-          <div className={`space-y-6 reveal-on-scroll ${isImageLeft ? "order-2" : "order-1 lg:order-2"}`}>
+          <div className={`space-y-3 md:space-y-6 reveal-on-scroll ${isImageLeft ? "order-2 md:order-2" : "order-1 md:order-1 lg:order-2"}`}>
             <div>
-              <p className={`text-sm font-semibold tracking-[0.3em] ${badgeColor} uppercase mb-4`}>
+              <p className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.15em] md:tracking-[0.3em] ${badgeColor} uppercase mb-2 md:mb-4`}>
                 {badge}
               </p>
               <h2
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+                className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-6 break-words leading-tight"
                 aria-label={title}
               >
                 {titleParts.map((part, index) => (
@@ -102,22 +102,22 @@ export default function ProductShowcase({
                   </span>
                 ))}
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">{description}</p>
+              <p className="text-xs sm:text-sm md:text-lg lg:text-xl text-gray-600 leading-relaxed mb-4 md:mb-8 break-words">{description}</p>
             </div>
 
             {/* Features List */}
-            <div className="space-y-4 mb-8">
+            <div className="flex flex-row md:flex-col gap-2 md:gap-4 mb-4 md:mb-8 overflow-x-auto pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group/feature border border-gray-100 hover:border-primary/20"
+                  className="flex flex-col md:flex-row items-center md:items-center gap-1.5 md:gap-4 p-2 md:p-4 bg-white rounded-lg md:rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group/feature border border-gray-100 hover:border-primary/20 flex-shrink-0 min-w-[80px] md:min-w-0"
                 >
                   <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover/feature:scale-110 transition-transform duration-300 ${feature.color}`}
+                    className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-300 ${feature.color}`}
                   >
-                    <feature.icon className="text-2xl" />
+                    <feature.icon className="text-lg md:text-2xl" />
                   </div>
-                  <span className="text-lg font-medium text-gray-800 group-hover/feature:text-primary transition-colors duration-300">
+                  <span className="text-[10px] sm:text-xs md:text-lg font-medium text-gray-800 group-hover/feature:text-primary transition-colors duration-300 break-words text-center md:text-left">
                     {feature.text}
                   </span>
                 </div>
@@ -125,7 +125,7 @@ export default function ProductShowcase({
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-2.5 md:gap-4">
               {ctas.map((cta, index) => {
                 const isPrimary = cta.variant === "primary";
                 // Extract color from badgeColor (e.g., "text-primary" -> "primary")
@@ -146,25 +146,25 @@ export default function ProductShowcase({
                   <Link
                     key={index}
                     href={cta.href as Route}
-                    className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 group magnetic-button ${
+                    className={`inline-flex items-center justify-center gap-1.5 md:gap-2 px-4 py-2 md:px-8 md:py-4 rounded-lg md:rounded-xl text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 hover:scale-105 group magnetic-button ${
                       isPrimary
-                        ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg hover:shadow-xl glow-pulse`
+                        ? `bg-gradient-to-r ${colors.gradient} text-white shadow-md md:shadow-lg hover:shadow-xl glow-pulse`
                         : `border-2 ${colors.border} hover:text-white`
                     }`}
                   >
-                    {cta.text}
-                    <RiArrowRightLine className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
+                    <span className="line-clamp-1">{cta.text}</span>
+                    <RiArrowRightLine className="text-sm md:text-xl flex-shrink-0 group-hover:translate-x-2 transition-transform duration-300" />
                   </Link>
                 );
               })}
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex items-center gap-6 pt-6 border-t border-gray-200">
+            <div className="flex flex-wrap items-center gap-3 md:gap-6 pt-3 md:pt-6 border-t border-gray-200">
               {trustIndicators.map((indicator, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <indicator.icon className={`text-2xl ${indicator.color}`} />
-                  <span className="text-sm text-gray-600">{indicator.text}</span>
+                <div key={index} className="flex items-center gap-1.5 md:gap-2">
+                  <indicator.icon className={`text-base md:text-2xl ${indicator.color} flex-shrink-0`} />
+                  <span className="text-[10px] sm:text-xs md:text-sm text-gray-600 break-words">{indicator.text}</span>
                 </div>
               ))}
             </div>

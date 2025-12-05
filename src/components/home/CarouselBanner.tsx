@@ -211,7 +211,7 @@ export default function CarouselBanner({
 
   return (
     <div
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full h-screen overflow-hidden max-w-full"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
@@ -248,11 +248,11 @@ export default function CarouselBanner({
 
                 {/* Content with side-by-side layout */}
                 <div className="relative z-10 h-full flex items-center">
-                  <div className="max-w-7xl mx-auto px-6 w-full">
-                    <div className="flex flex-row gap-12 items-center ">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
                       {/* Image on Left */}
                      {slide.showimg && (
-                      <div className={slide.imageClassName}>
+                      <div className={slide.imageClassName || "w-full md:w-1/2"}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={slide.image}
@@ -263,25 +263,25 @@ export default function CarouselBanner({
                     )}
                       
                       {/* Text on Right */}
-                      <div className={slide.descriptionClassName}>
-                        <div className="space-y-4">
-                          <p className="font-orbitron tracking-[0.3em] text-sm text-secondary uppercase animate-fade-in">
+                      <div className={slide.descriptionClassName || "w-full md:w-1/2"}>
+                        <div className="space-y-3 md:space-y-4">
+                          <p className="font-orbitron tracking-[0.2em] md:tracking-[0.3em] text-xs sm:text-sm text-secondary uppercase animate-fade-in">
                             {slide.subtitle}
                           </p>
-                          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight break-words">
                             <span className="neon-glow block">{slide.title}</span>
                           </h1>
-                          <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 leading-relaxed break-words">
                             {slide.description}
                           </p>
                         </div>
-                        <div className="pt-4">
+                        <div className="pt-3 md:pt-4">
                           <Link
                             href={slide.buttonLink as Route}
-                            className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                            className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-base font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                           >
                             {slide.buttonText}
-                            <RiArrowRightLine className="text-lg group-hover:translate-x-1 transition-transform" />
+                            <RiArrowRightLine className="text-base md:text-lg group-hover:translate-x-1 transition-transform" />
                           </Link>
                         </div>
                       </div>
@@ -309,26 +309,26 @@ export default function CarouselBanner({
 
                 {/* Content */}
                 <div className="relative z-10 h-full flex items-center">
-                  <div className="max-w-7xl mx-auto px-6 w-full">
-                    <div className="max-w-2xl space-y-6 text-white">
-                      <div className="space-y-4">
-                        <p className="font-orbitron tracking-[0.3em] text-sm text-secondary uppercase animate-fade-in">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+                    <div className="max-w-2xl space-y-4 md:space-y-6 text-white">
+                      <div className="space-y-3 md:space-y-4">
+                        <p className="font-orbitron tracking-[0.2em] md:tracking-[0.3em] text-xs sm:text-sm text-secondary uppercase animate-fade-in">
                           {slide.subtitle}
                         </p>
-                        <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight break-words">
                           <span className="neon-glow block">{slide.title}</span>
                         </h1>
-                        <p className="text-xl text-blue-100 leading-relaxed max-w-xl">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 leading-relaxed max-w-xl break-words">
                           {slide.description}
                         </p>
                       </div>
-                      <div className="pt-4">
+                      <div className="pt-3 md:pt-4">
                         <Link
                           href={slide.buttonLink as Route}
-                          className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                          className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-base font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                         >
                           {slide.buttonText}
-                          <RiArrowRightLine className="text-lg group-hover:translate-x-1 transition-transform" />
+                          <RiArrowRightLine className="text-base md:text-lg group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </div>
                     </div>
@@ -346,18 +346,18 @@ export default function CarouselBanner({
           <button
             onClick={goToPrevious}
             disabled={isTransitioning}
-            className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="hidden sm:flex absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-md rounded-full items-center justify-center text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
             aria-label="Previous slide"
           >
-            <RiArrowLeftLine className="text-2xl group-hover:-translate-x-1 transition-transform" />
+            <RiArrowLeftLine className="text-xl md:text-2xl group-hover:-translate-x-1 transition-transform" />
           </button>
           <button
             onClick={goToNext}
             disabled={isTransitioning}
-            className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="hidden sm:flex absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-md rounded-full items-center justify-center text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
             aria-label="Next slide"
           >
-            <RiArrowRightLine className="text-2xl group-hover:translate-x-1 transition-transform" />
+            <RiArrowRightLine className="text-xl md:text-2xl group-hover:translate-x-1 transition-transform" />
           </button>
         </>
       )}

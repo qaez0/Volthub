@@ -52,6 +52,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 html {
@@ -547,7 +548,13 @@ html {
 
 @media (max-width: 768px) {
   .section-spacing {
-    padding: 60px 0;
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-spacing {
+    padding: 32px 0;
   }
 }
 
