@@ -31,6 +31,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const categoryLabel = categories.find((c) => c.id === product.category)?.label;
   const isEVProduct = product.category === "ev-charging";
   const isSmartHomeProduct = product.category === "smart-home";
+  const isCabinetProduct = product.category === "cabinet";
+  const isContainerProduct = product.category === "container";
   
   // Get related products from the same category, excluding current product
   const relatedProducts = products.filter(
@@ -693,9 +695,136 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {activeTab === "projects" && (
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">
-                {isEVProduct ? "Applicable Spaces" : isSmartHomeProduct ? "Applicable Scenarios" : "Sample Projects"}
+                {isEVProduct ? "Applicable Spaces" : (isSmartHomeProduct || isCabinetProduct || isContainerProduct) ? "Applicable Scenarios" : "Sample Projects"}
               </h3>
-              {isSmartHomeProduct ? (
+              {isContainerProduct ? (
+                <div className="space-y-4 md:space-y-6">
+                  <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6">
+                    {product.id === "container-con1"
+                      ? "Small utility-level / industrial park containerized BESS system. Ideal for main power for small island towns (currently using diesel generators), industrial park or export zone tenants (cold-storage hubs, fish ports, mining camps), and large university or hospital campuses or combined municipal loads. When paired with big solar and possibly backup diesel, can provide 24/7 coverage."
+                      : "Suitable for utility-scale applications, large industrial complexes, and major infrastructure projects requiring reliable, high-capacity energy storage."
+                    }
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                    {(product.id === "container-con1"
+                      ? [
+                          { title: "Small Island Towns", description: "Main power for small island towns currently using diesel generators" },
+                          { title: "Industrial Parks", description: "Industrial park or export zone tenants requiring reliable power" },
+                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs in industrial parks and export zones" },
+                          { title: "Fish Ports", description: "Fish ports and landing centers requiring continuous power" },
+                          { title: "Mining Camps", description: "Mining camps and remote industrial operations" },
+                          { title: "University Campuses", description: "Large university campuses with significant energy demands" },
+                          { title: "Hospital Campuses", description: "Large hospital campuses requiring 24/7 reliable power" },
+                          { title: "Municipal Loads", description: "Combined municipal loads and public facilities" },
+                          { title: "Export Zones", description: "Export processing zones and special economic zones" },
+                          { title: "Utility Operations", description: "Small utility-level operations replacing diesel generators" },
+                        ]
+                      : [
+                          { title: "Large Industrial Complexes", description: "Large industrial complexes requiring massive power" },
+                          { title: "Utility-Scale Projects", description: "Utility-scale energy storage applications" },
+                          { title: "Major Infrastructure", description: "Major infrastructure projects" },
+                          { title: "Manufacturing Facilities", description: "Large manufacturing facilities" },
+                        ]
+                    ).map((scenario, index) => (
+                      <div
+                        key={index}
+                        className="group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
+                        </div>
+                        <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{scenario.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : isCabinetProduct ? (
+                <div className="space-y-4 md:space-y-6">
+                  <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6">
+                    {product.id === "cabinet-14"
+                      ? "Suitable for whole small islands / sitios (dozens of households), LGU projects (solarizing barangays, ports, fish landing centers), and large commercial farms, cold-storage hubs, ice plants."
+                      : product.id === "cabinet-15"
+                      ? "Suitable for whole small islands / sitios (dozens of households), LGU projects (solarizing barangays, ports, fish landing centers), and large commercial farms, cold-storage hubs, ice plants."
+                      : product.id === "cabinet-16"
+                      ? "Can act as the main power plant for whole small island barangays with a few hundred households, large resort complexes, or clusters of factories."
+                      : product.id === "cabinet-item4"
+                      ? "Suitable for single businesses, small compounds, schools, resorts, barangay centers, off-grid tourist sites, poultry/piggery/fish farms, and telecom sites."
+                      : "Suitable for large-scale commercial and industrial applications, utility-scale projects, and major infrastructure."
+                    }
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                    {(product.id === "cabinet-14"
+                      ? [
+                          { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)" },
+                          { title: "LGU Projects", description: "LGU projects: solarizing barangays, ports, fish landing centers" },
+                          { title: "Barangays", description: "Solarizing barangays with community power" },
+                          { title: "Ports", description: "Port facilities requiring reliable power" },
+                          { title: "Fish Landing Centers", description: "Fish landing centers needing power for operations" },
+                          { title: "Large Commercial Farms", description: "Large commercial farms with extensive power needs" },
+                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs requiring continuous power" },
+                          { title: "Ice Plants", description: "Ice plants needing reliable industrial power" },
+                          { title: "Industrial Plants", description: "Small industrial plants (rice mill, ice plant, food processing, shipyard)" },
+                          { title: "Village Communities", description: "Whole small communities requiring microgrid solutions" },
+                        ]
+                      : product.id === "cabinet-15"
+                      ? [
+                          { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)" },
+                          { title: "LGU Projects", description: "LGU projects: solarizing barangays, ports, fish landing centers" },
+                          { title: "Barangays", description: "Solarizing barangays with community power" },
+                          { title: "Ports", description: "Port facilities requiring reliable power" },
+                          { title: "Fish Landing Centers", description: "Fish landing centers needing power for operations" },
+                          { title: "Large Commercial Farms", description: "Large commercial farms with extensive power needs" },
+                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs requiring continuous power" },
+                          { title: "Ice Plants", description: "Ice plants needing reliable industrial power" },
+                          { title: "Industrial Plants", description: "Small industrial plants (rice mill, ice plant, food processing, shipyard)" },
+                          { title: "Village Communities", description: "Whole small communities requiring microgrid solutions" },
+                        ]
+                      : product.id === "cabinet-16"
+                      ? [
+                          { title: "Small Island Barangays", description: "Whole small island barangay with a few hundred households, a school, a clinic, and small businesses" },
+                          { title: "Large Resort Complexes", description: "Large resort complex with multiple buildings, pools, restaurants, and laundry" },
+                          { title: "Factory Clusters", description: "Cluster of factories (e.g., agro-processing complex)" },
+                          { title: "Island Grids", description: "Main power plant for island communities" },
+                          { title: "Village Power Plants", description: "Primary power source for entire villages" },
+                          { title: "Resort Power Systems", description: "Complete power solution for large resort operations" },
+                        ]
+                      : product.id === "cabinet-item4"
+                      ? [
+                          { title: "Single Businesses", description: "Single business or small compound applications" },
+                          { title: "Schools", description: "Schools requiring reliable power supply" },
+                          { title: "Resorts", description: "Resorts needing off-grid power solutions" },
+                          { title: "Barangay Centers", description: "Barangay centers and community facilities" },
+                          { title: "Off-Grid Tourist Sites", description: "Off-grid tourist sites with a few cottages" },
+                          { title: "Poultry/Piggery/Fish Farms", description: "Poultry/piggery/fish farms (lighting, blowers, small machinery)" },
+                          { title: "Telecom Sites", description: "Telecom sites that want to reduce diesel use" },
+                          { title: "Small Industrial Plants", description: "Small industrial operations requiring reliable power" },
+                        ]
+                      : [
+                          { title: "Large Industrial Complexes", description: "Large industrial complexes requiring massive power" },
+                          { title: "Utility-Scale Projects", description: "Utility-scale energy storage applications" },
+                          { title: "Major Infrastructure", description: "Major infrastructure projects" },
+                          { title: "Manufacturing Facilities", description: "Large manufacturing facilities" },
+                        ]
+                    ).map((scenario, index) => (
+                      <div
+                        key={index}
+                        className="group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
+                        </div>
+                        <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{scenario.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : isSmartHomeProduct ? (
                 <div className="space-y-4 md:space-y-6">
                   <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6">
                     {product.id === "smart-home-smp2" 
@@ -1017,13 +1146,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       {relatedProducts.length > 0 && (
         <div className="space-y-4 md:space-y-6">
           <h2 className="text-xl md:text-2xl font-bold text-slate-900">Related Products</h2>
-          <div className="overflow-x-auto pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] touch-pan-x snap-x snap-mandatory" style={{ WebkitOverflowScrolling: 'touch' }}>
             <div className="flex gap-4 md:gap-6 min-w-max">
               {relatedProducts.map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
                   href={`/products/${relatedProduct.id}`}
-                  className="group flex-shrink-0 w-64 md:w-80 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 cursor-pointer"
+                  className="group flex-shrink-0 w-64 md:w-80 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 cursor-pointer snap-start"
                 >
                   <div className="relative overflow-hidden bg-slate-100">
                     <Image
