@@ -468,8 +468,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             >
               <span className="flex items-center gap-1 md:gap-2">
                 <RiMapPinLine className="h-3 w-3 md:h-4 md:w-4" />
-                <span className="hidden sm:inline">{isEVProduct ? "Applicable Spaces" : "Sample Projects"}</span>
-                <span className="sm:hidden">{isEVProduct ? "Spaces" : "Projects"}</span>
+                <span className="hidden sm:inline">{isEVProduct || isCabinetProduct ? "Applicable Spaces" : "Sample Projects"}</span>
+                <span className="sm:hidden">{isEVProduct || isCabinetProduct ? "Spaces" : "Projects"}</span>
               </span>
             </button>
           </nav>
@@ -713,7 +713,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {activeTab === "projects" && (
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">
-                {isEVProduct ? "Applicable Spaces" : (isSmartHomeProduct || isCabinetProduct || isContainerProduct) ? "Applicable Scenarios" : "Sample Projects"}
+                {isEVProduct || isCabinetProduct ? "Applicable Spaces" : (isSmartHomeProduct || isContainerProduct) ? "Applicable Scenarios" : "Sample Projects"}
               </h3>
               {isContainerProduct ? (
                 <div className="space-y-4 md:space-y-6">
@@ -726,16 +726,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   <div className="flex flex-wrap gap-3 md:gap-4">
                     {(product.id === "container-con1"
                       ? [
-                          { title: "Small Island Towns", description: "Main power for small island towns currently using diesel generators" },
-                          { title: "Industrial Parks", description: "Industrial park or export zone tenants requiring reliable power" },
-                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs in industrial parks and export zones" },
-                          { title: "Fish Ports", description: "Fish ports and landing centers requiring continuous power" },
-                          { title: "Mining Camps", description: "Mining camps and remote industrial operations" },
-                          { title: "University Campuses", description: "Large university campuses with significant energy demands" },
-                          { title: "Hospital Campuses", description: "Large hospital campuses requiring 24/7 reliable power" },
-                          { title: "Municipal Loads", description: "Combined municipal loads and public facilities" },
-                          { title: "Export Zones", description: "Export processing zones and special economic zones" },
-                          { title: "Utility Operations", description: "Small utility-level operations replacing diesel generators" },
+                          { title: "Small Island Towns", description: "Main power for small island towns currently using diesel generators", image: "/Product/containertype/location/loc1.png" },
+                          { title: "Industrial Parks", description: "Industrial park or export zone tenants requiring reliable power", image: "/Product/containertype/location/loc2.png" },
+                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs in industrial parks and export zones", image: "/Product/containertype/location/loc3.png" },
+                          { title: "Fish Ports", description: "Fish ports and landing centers requiring continuous power", image: "/Product/containertype/location/loc4.png" },
+                          { title: "Mining Camps", description: "Mining camps and remote industrial operations", image: "/Product/containertype/location/loc5.png" },
+                          { title: "University Campuses", description: "Large university campuses with significant energy demands", image: "/Product/containertype/location/loc6.png" },
+                          { title: "Hospital Campuses", description: "Large hospital campuses requiring 24/7 reliable power", image: "/Product/containertype/location/loc7.png" },
+                          { title: "Municipal Loads", description: "Combined municipal loads and public facilities", image: "/Product/containertype/location/loc8.png" },
+                          { title: "Export Zones", description: "Export processing zones and special economic zones", image: "/Product/containertype/location/loc9.png" },
+                          { title: "Utility Operations", description: "Small utility-level operations replacing diesel generators", image: "/Product/containertype/location/loc10.png" },
                         ]
                       : [
                           { title: "Large Industrial Complexes", description: "Large industrial complexes requiring massive power" },
@@ -746,14 +746,28 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     ).map((scenario, index) => (
                       <div
                         key={index}
-                        className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                        className="w-full md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                        {('image' in scenario && scenario.image && product.id === "container-con1") ? (
+                          <>
+                            <div className="relative w-full h-32 md:h-40 mb-3 rounded-lg overflow-hidden bg-slate-100">
+                              <Image
+                                src={scenario.image}
+                                alt={scenario.title}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                            </div>
+                            <h4 className="font-semibold text-sm md:text-base text-slate-900 mb-2">{scenario.title}</h4>
+                          </>
+                        ) : (
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                            </div>
+                            <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
                           </div>
-                          <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
-                        </div>
+                        )}
                         <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{scenario.description}</p>
                       </div>
                     ))}
@@ -776,49 +790,45 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   <div className="flex flex-wrap gap-3 md:gap-4">
                     {(product.id === "cabinet-14"
                       ? [
-                          { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)" },
-                          { title: "LGU Projects", description: "LGU projects: solarizing barangays, ports, fish landing centers" },
-                          { title: "Barangays", description: "Solarizing barangays with community power" },
-                          { title: "Ports", description: "Port facilities requiring reliable power" },
-                          { title: "Fish Landing Centers", description: "Fish landing centers needing power for operations" },
-                          { title: "Large Commercial Farms", description: "Large commercial farms with extensive power needs" },
-                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs requiring continuous power" },
-                          { title: "Ice Plants", description: "Ice plants needing reliable industrial power" },
-                          { title: "Industrial Plants", description: "Small industrial plants (rice mill, ice plant, food processing, shipyard)" },
-                          { title: "Village Communities", description: "Whole small communities requiring microgrid solutions" },
+                          { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)", image: "/Product/cabinet/location/cab14/loc1.png" },
+                          { title: "LGU Projects", description: "LGU projects: solarizing barangays, ports, fish landing centers", image: "/Product/cabinet/location/cab14/loc2.png" },
+                          { title: "Barangays", description: "Solarizing barangays with community power", image: "/Product/cabinet/location/cab14/loc3.png" },
+                          { title: "Ports", description: "Port facilities requiring reliable power", image: "/Product/cabinet/location/cab14/loc4.png" },
+                          { title: "Fish Landing Centers", description: "Fish landing centers needing power for operations", image: "/Product/cabinet/location/cab14/loc5.png" },
+                          { title: "Large Commercial Farms", description: "Large commercial farms with extensive power needs", image: "/Product/cabinet/location/cab14/loc6.png" },
+                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs requiring continuous power", image: "/Product/cabinet/location/cab14/loc7.png" },
+                          { title: "Ice Plants", description: "Ice plants needing reliable industrial power", image: "/Product/cabinet/location/cab14/loc8.png" },
                         ]
                       : product.id === "cabinet-15"
                       ? [
-                          { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)" },
-                          { title: "LGU Projects", description: "LGU projects: solarizing barangays, ports, fish landing centers" },
-                          { title: "Barangays", description: "Solarizing barangays with community power" },
-                          { title: "Ports", description: "Port facilities requiring reliable power" },
-                          { title: "Fish Landing Centers", description: "Fish landing centers needing power for operations" },
-                          { title: "Large Commercial Farms", description: "Large commercial farms with extensive power needs" },
-                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs requiring continuous power" },
-                          { title: "Ice Plants", description: "Ice plants needing reliable industrial power" },
-                          { title: "Industrial Plants", description: "Small industrial plants (rice mill, ice plant, food processing, shipyard)" },
-                          { title: "Village Communities", description: "Whole small communities requiring microgrid solutions" },
+                          { title: "Whole Small Islands", description: "Whole small islands / sitios (dozens of households)", image: "/Product/cabinet/location/cab14/loc1.png" },
+                          { title: "LGU Projects", description: "LGU projects: solarizing barangays, ports, fish landing centers", image: "/Product/cabinet/location/cab14/loc2.png" },
+                          { title: "Barangays", description: "Solarizing barangays with community power", image: "/Product/cabinet/location/cab14/loc3.png" },
+                          { title: "Ports", description: "Port facilities requiring reliable power", image: "/Product/cabinet/location/cab14/loc4.png" },
+                          { title: "Fish Landing Centers", description: "Fish landing centers needing power for operations", image: "/Product/cabinet/location/cab14/loc5.png" },
+                          { title: "Large Commercial Farms", description: "Large commercial farms with extensive power needs", image: "/Product/cabinet/location/cab14/loc6.png" },
+                          { title: "Cold-Storage Hubs", description: "Cold-storage hubs requiring continuous power", image: "/Product/cabinet/location/cab14/loc7.png" },
+                          { title: "Ice Plants", description: "Ice plants needing reliable industrial power", image: "/Product/cabinet/location/cab14/loc8.png" },
                         ]
                       : product.id === "cabinet-16"
                       ? [
-                          { title: "Small Island Barangays", description: "Whole small island barangay with a few hundred households, a school, a clinic, and small businesses" },
-                          { title: "Large Resort Complexes", description: "Large resort complex with multiple buildings, pools, restaurants, and laundry" },
-                          { title: "Factory Clusters", description: "Cluster of factories (e.g., agro-processing complex)" },
-                          { title: "Island Grids", description: "Main power plant for island communities" },
-                          { title: "Village Power Plants", description: "Primary power source for entire villages" },
-                          { title: "Resort Power Systems", description: "Complete power solution for large resort operations" },
+                          { title: "Small Island Barangays", description: "Whole small island barangay with a few hundred households, a school, a clinic, and small businesses", image: "/Product/cabinet/location/cab14/loc1.png" },
+                          { title: "Large Resort Complexes", description: "Large resort complex with multiple buildings, pools, restaurants, and laundry", image: "/Product/cabinet/location/cab14/loc2.png" },
+                          { title: "Factory Clusters", description: "Cluster of factories (e.g., agro-processing complex)", image: "/Product/cabinet/location/cab14/loc3.png" },
+                          { title: "Island Grids", description: "Main power plant for island communities", image: "/Product/cabinet/location/cab14/loc4.png" },
+                          { title: "Village Power Plants", description: "Primary power source for entire villages", image: "/Product/cabinet/location/cab14/loc5.png" },
+                          { title: "Resort Power Systems", description: "Complete power solution for large resort operations", image: "/Product/cabinet/location/cab14/loc6.png" },
                         ]
                       : product.id === "cabinet-item4"
                       ? [
-                          { title: "Single Businesses", description: "Single business or small compound applications" },
-                          { title: "Schools", description: "Schools requiring reliable power supply" },
-                          { title: "Resorts", description: "Resorts needing off-grid power solutions" },
-                          { title: "Barangay Centers", description: "Barangay centers and community facilities" },
-                          { title: "Off-Grid Tourist Sites", description: "Off-grid tourist sites with a few cottages" },
-                          { title: "Poultry/Piggery/Fish Farms", description: "Poultry/piggery/fish farms (lighting, blowers, small machinery)" },
-                          { title: "Telecom Sites", description: "Telecom sites that want to reduce diesel use" },
-                          { title: "Small Industrial Plants", description: "Small industrial operations requiring reliable power" },
+                          { title: "Single Businesses", description: "Single business or small compound applications", image: "/Product/cabinet/location/loc1.png" },
+                          { title: "Schools", description: "Schools requiring reliable power supply", image: "/Product/cabinet/location/loc2.png" },
+                          { title: "Resorts", description: "Resorts needing off-grid power solutions", image: "/Product/cabinet/location/loc3.png" },
+                          { title: "Barangay Centers", description: "Barangay centers and community facilities", image: "/Product/cabinet/location/loc4.png" },
+                          { title: "Off-Grid Tourist Sites", description: "Off-grid tourist sites with a few cottages", image: "/Product/cabinet/location/loc5.png" },
+                          { title: "Poultry/Piggery/Fish Farms", description: "Poultry/piggery/fish farms (lighting, blowers, small machinery)", image: "/Product/cabinet/location/loc6.png" },
+                          { title: "Telecom Sites", description: "Telecom sites that want to reduce diesel use", image: "/Product/cabinet/location/loc7.png" },
+                          { title: "Small Industrial Plants", description: "Small industrial operations requiring reliable power", image: "/Product/cabinet/location/loc8.png" },
                         ]
                       : [
                           { title: "Large Industrial Complexes", description: "Large industrial complexes requiring massive power" },
@@ -829,14 +839,28 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     ).map((scenario, index) => (
                       <div
                         key={index}
-                        className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                        className="w-full md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                        {('image' in scenario && scenario.image && (product.id === "cabinet-item4" || product.id === "cabinet-14" || product.id === "cabinet-15" || product.id === "cabinet-16")) ? (
+                          <>
+                            <div className="relative w-full h-32 md:h-40 mb-3 rounded-lg overflow-hidden bg-slate-100">
+                              <Image
+                                src={scenario.image}
+                                alt={scenario.title}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                            </div>
+                            <h4 className="font-semibold text-sm md:text-base text-slate-900 mb-2">{scenario.title}</h4>
+                          </>
+                        ) : (
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                            </div>
+                            <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
                           </div>
-                          <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
-                        </div>
+                        )}
                         <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{scenario.description}</p>
                       </div>
                     ))}
@@ -930,7 +954,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     ).map((scenario, index) => (
                       <div
                         key={index}
-                        className="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
+                        className="w-full md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
