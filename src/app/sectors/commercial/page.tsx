@@ -21,7 +21,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱45,164.50",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "F2-080",
@@ -32,7 +32,7 @@ const streetLights = [
     solarPanel: "160W",
     price: "₱62,717.00",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "F2-100",
@@ -43,7 +43,7 @@ const streetLights = [
     solarPanel: "200W",
     price: "₱71,803.00",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "LVQ2-080",
@@ -54,7 +54,7 @@ const streetLights = [
     solarPanel: "200W",
     price: "₱54,088.25",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2.png",
+    image: "/Product/StreetLamp/RKlv02.png",
   },
   {
     itemNo: "LVQ2-100",
@@ -65,7 +65,7 @@ const streetLights = [
     solarPanel: "250W",
     price: "₱60,224.25",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2-100.png",
+    image: "/Product/StreetLamp/RKS.png",
   },
 ];
 
@@ -138,7 +138,7 @@ const storageSystems = [
     solarPanel: "670W*144PCS",
     price: "₱7,754,538.15",
     description: "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
-    image: "/Product/cabinet/14.png",
+    image: "/Product/cabinet/200kwh.png",
   },
 ];
 
@@ -171,7 +171,7 @@ export default function CommercialSector() {
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
         <Image
           src="/HomeBanner/banner3.jpg"
           alt="Commercial Energy Solutions"
@@ -413,7 +413,7 @@ export default function CommercialSector() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-16 bg-linear-to-r from-primary to-primary/80 text-white">
         <LayoutContainer>
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-semibold">

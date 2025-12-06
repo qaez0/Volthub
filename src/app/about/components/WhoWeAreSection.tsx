@@ -1,7 +1,7 @@
 export default function WhoWeAreSection() {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      <div className="bg-gradient-to-br from-white to-gray-50 rounded-none md:rounded-3xl shadow-lg p-6 md:p-8 border border-gray-100">
+      <div className="bg-linear-to-br from-white to-gray-50 rounded-none md:rounded-3xl shadow-lg p-6 md:p-8 border border-gray-100">
         <h3 className="text-3xl font-bold text-primary mb-6 text-center gradient-text">
           WHO WE ARE
         </h3>
@@ -22,7 +22,7 @@ export default function WhoWeAreSection() {
         </p>
       </div>
 
-      <div className="bg-gradient-to-br from-white to-gray-50 rounded-none md:rounded-3xl shadow-lg p-6 md:p-8 border border-gray-100">
+      <div className="bg-linear-to-br from-white to-gray-50 rounded-none md:rounded-3xl shadow-lg p-6 md:p-8 border border-gray-100">
         <h3 className="text-3xl font-bold text-primary mb-6 text-center gradient-text">
           WHAT WE ARE
         </h3>

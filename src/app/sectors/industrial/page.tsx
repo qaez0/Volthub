@@ -54,7 +54,7 @@ const storageSystems = [
     price: "₱7,754,538.15",
     description:
       "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
-    image: "/Sector/sampleproducts/14.png",
+      image: "/Product/cabinet/200kwh.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -65,7 +65,7 @@ const storageSystems = [
     price: "₱16,173,481.20",
     description:
       "Mini power plant for a small town center or big factory. A town center: municipal hall, market, street lighting, plus many nearby shops.",
-    image: "/Sector/sampleproducts/15.png",
+      image: "/Product/cabinet/500kwh.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -76,7 +76,7 @@ const storageSystems = [
     price: "₱26,311,107.50",
     description:
       "Village or island grid. Can act as the main power plant for a whole small island barangay with a few hundred households.",
-      image: "/Sector/sampleproducts/16.png",
+    image: "/Product/containertype/con1.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -87,7 +87,7 @@ const storageSystems = [
     price: "₱42,239,802.20",
     description:
       "Small utility level / industrial park. The main power for a small island town that currently relies on diesel gensets.",
-      image: "/Sector/sampleproducts/17.png",
+    image: "/Product/containertype/con1.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -98,7 +98,7 @@ const storageSystems = [
     price: "₱71,207,141.30",
     description:
       "Main power plant for a whole town or large island. Can power an entire island town or large industrial estate, cutting diesel consumption by 60-90%.",
-      image: "/Sector/sampleproducts/17.png",
+    image: "/Product/containertype/con1.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -109,7 +109,7 @@ const storageSystems = [
     price: "₱85,828,342.80",
     description:
       "Maximum independence from diesel, with longer night-time coverage. For projects aiming for maximum independence from diesel.",
-      image: "/Sector/sampleproducts/17.png",
+    image: "/Product/containertype/con1.png",
   },
 ];
 
@@ -137,7 +137,7 @@ export default function IndustrialSector() {
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
         <Image
           src="/HomeBanner/banner3.jpg"
           alt="Industrial Energy Solutions"
@@ -436,7 +436,7 @@ export default function IndustrialSector() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-16 bg-linear-to-r from-primary to-primary/80 text-white">
         <LayoutContainer>
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-semibold">

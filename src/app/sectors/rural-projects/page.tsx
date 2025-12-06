@@ -21,7 +21,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱17,346.00",
     type: "All in Two Light",
-    image: "/Sector/sampleproducts/LVXC-120-130.png",
+    image: "/Product/StreetLamp/F2L.png",
   },
   {
     itemNo: "LVXC-130",
@@ -32,7 +32,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱19,661.75",
     type: "All in Two Light",
-    image: "/Sector/sampleproducts/LVXC-120-130.png",
+    image: "/Product/StreetLamp/F2L.png",
   },
   {
     itemNo: "LVXC-320",
@@ -43,7 +43,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱17,036.25",
     type: "All in Two Light",
-    image: "/Sector/sampleproducts/LVCX-320-330.png",
+    image: "/Product/StreetLamp/LVXC.png",
   },
   {
     itemNo: "LVXC-330",
@@ -54,7 +54,7 @@ const streetLights = [
     solarPanel: "70W",
     price: "₱18,939.00",
     type: "All in Two Light",
-    image: "/Sector/sampleproducts/LVCX-320-330.png",
+    image: "/Product/StreetLamp/LVXC.png",
   },
   {
     itemNo: "F2-050",
@@ -65,7 +65,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱45,164.50",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "LVQ2-050",
@@ -76,7 +76,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱37,981.25",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2.png",
+    image: "/Product/StreetLamp/RKlv02.png",
   },
 ];
 
@@ -165,7 +165,7 @@ export default function RuralProjectsSector() {
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
         <Image
           src="/HomeBanner/banner3.jpg"
           alt="Rural Projects Energy Solutions"
@@ -450,7 +450,7 @@ export default function RuralProjectsSector() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-16 bg-linear-to-r from-primary to-primary/80 text-white">
         <LayoutContainer>
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-semibold">

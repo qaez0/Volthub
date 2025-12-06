@@ -347,7 +347,7 @@ function ContactForm() {
                     {isDropdownOpen && (
                       <div 
                         data-dropdown-portal
-                        className="absolute z-[9999] w-full mt-2 rounded-xl bg-gray-800/95 backdrop-blur-sm border border-white/30 shadow-2xl top-full left-0 overflow-y-auto"
+                        className="absolute z-9999 w-full mt-2 rounded-xl bg-gray-800/95 backdrop-blur-sm border border-white/30 shadow-2xl top-full left-0 overflow-y-auto"
                         style={{ zIndex: 9999, ...dropdownStyle }}
                       >
                         {interestOptions.map((option) => (

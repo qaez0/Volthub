@@ -30,7 +30,7 @@ export default function OperationsCarouselSection() {
                 key={item.title}
                 className="md:basis-1/2 lg:basis-1/3"
               >
-                <div className="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl border border-gray-200 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-linear-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl border border-gray-200 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <h4 className="text-xl font-semibold mb-3 text-primary">
                     {item.title}
                   </h4>

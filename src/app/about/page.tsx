@@ -12,7 +12,7 @@ import SectionHeading from "@/components/marketing/SectionHeading";
 
 export default function About() {
   return (
-    <main className="pt-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 min-h-screen">
+    <main className="pt-32 bg-linear-to-b from-gray-50 via-white to-gray-50 min-h-screen">
       <LayoutContainer className="flex flex-1 flex-col gap-6 pb-16 px-0 md:px-4">
         <SectionHeading
           eyebrow="About VoltHub"

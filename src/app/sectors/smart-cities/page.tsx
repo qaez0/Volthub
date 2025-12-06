@@ -21,7 +21,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱45,164.50",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "F2-080",
@@ -32,7 +32,7 @@ const streetLights = [
     solarPanel: "160W",
     price: "₱62,717.00",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "F2-100",
@@ -43,7 +43,7 @@ const streetLights = [
     solarPanel: "200W",
     price: "₱71,803.00",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "F2-120",
@@ -54,7 +54,7 @@ const streetLights = [
     solarPanel: "240W",
     price: "₱81,228.25",
     type: "Integrated Light",
-    image: "/Sector/sampleproducts/IntegratedLight.png",
+    image: "/Product/StreetLamp/F1L.png",
   },
   {
     itemNo: "LVQ2-050",
@@ -65,7 +65,7 @@ const streetLights = [
     solarPanel: "100W",
     price: "₱37,981.25",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2.png",
+    image: "/Product/StreetLamp/RKlv02.png",
   },
   {
     itemNo: "LVQ2-080",
@@ -76,7 +76,7 @@ const streetLights = [
     solarPanel: "200W",
     price: "₱54,088.25",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2.png",
+    image: "/Product/StreetLamp/RKlv02.png",
   },
   {
     itemNo: "LVQ2-100",
@@ -87,7 +87,7 @@ const streetLights = [
     solarPanel: "250W",
     price: "₱60,224.25",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2-100.png",
+    image: "/Product/StreetLamp/RKS.png",
   },
   {
     itemNo: "LVQ2-120",
@@ -98,7 +98,7 @@ const streetLights = [
     solarPanel: "300W",
     price: "₱70,003.50",
     type: "Split Street Light",
-    image: "/Sector/sampleproducts/LVQ2-100.png",
+    image: "/Product/StreetLamp/RKS.png",
   },
 ];
 

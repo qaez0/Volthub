@@ -20,7 +20,7 @@ const streetLights = [
     battery: "3.2V 65Ah",
     solarPanel: "70W",
     price: "₱17,346.00",
-    image: "/Sector/sampleproducts/LVXC-120-130.png",
+    image: "/Product/StreetLamp/F2L.png",
   },
   {
     itemNo: "LVXC-130",
@@ -30,7 +30,7 @@ const streetLights = [
     battery: "3.2V 80Ah",
     solarPanel: "70W",
     price: "₱19,661.75",
-    image: "/Sector/sampleproducts/LVXC-120-130.png",
+    image: "/Product/StreetLamp/F2L.png",
   },
   {
     itemNo: "LVXC-320",
@@ -40,7 +40,7 @@ const streetLights = [
     battery: "3.2V 65Ah",
     solarPanel: "70W",
     price: "₱17,036.25",
-    image: "/Sector/sampleproducts/LVCX-320-330.png",
+    image: "/Product/StreetLamp/LVXC.png",
   },
   {
     itemNo: "LVXC-330",
@@ -50,7 +50,7 @@ const streetLights = [
     battery: "3.2V 80Ah",
     solarPanel: "70W",
     price: "₱18,939.00",
-    image: "/Sector/sampleproducts/LVCX-320-330.png",
+    image: "/Product/StreetLamp/LVXC.png",
   },
 ];
 
@@ -102,7 +102,7 @@ export default function ResidentialSector() {
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
         <Image
           src="/HomeBanner/banner3.jpg"
           alt="Residential Energy Solutions"
@@ -344,7 +344,7 @@ export default function ResidentialSector() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-16 bg-linear-to-r from-primary to-primary/80 text-white">
         <LayoutContainer>
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-semibold">

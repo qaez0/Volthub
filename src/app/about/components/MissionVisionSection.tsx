@@ -3,7 +3,7 @@ export default function MissionVisionSection() {
     <div className="grid md:grid-cols-2 gap-6">
       <div className="bg-white rounded-none md:rounded-3xl shadow-lg p-6 md:p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
         <div className="flex items-center justify-center mb-6">
-          <div className="w-16 h-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-full"></div>
+          <div className="w-16 h-1 bg-linear-to-r from-primary via-accent to-secondary rounded-full"></div>
         </div>
         <h3 className="text-3xl font-bold text-primary mb-6 text-center gradient-text">
           MISSION
@@ -24,7 +24,7 @@ export default function MissionVisionSection() {
 
       <div className="bg-white rounded-none md:rounded-3xl shadow-lg p-6 md:p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
         <div className="flex items-center justify-center mb-6">
-          <div className="w-16 h-1 bg-gradient-to-r from-secondary via-accent to-primary rounded-full"></div>
+          <div className="w-16 h-1 bg-linear-to-r from-secondary via-accent to-primary rounded-full"></div>
         </div>
         <h3 className="text-3xl font-bold text-primary mb-6 text-center gradient-text">
           VISION

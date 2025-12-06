@@ -12,7 +12,7 @@ export default function PartnershipsSection() {
         {partnerships.map((partner) => (
           <div
             key={partner.name}
-            className="flex items-center justify-between p-5 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+            className="flex items-center justify-between p-5 bg-linear-to-br from-gray-50 to-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
           >
             <span className="font-semibold text-gray-900 text-lg">
               {partner.name}

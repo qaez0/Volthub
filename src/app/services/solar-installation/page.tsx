@@ -316,7 +316,7 @@ export default function SolarInstallation() {
                 battery: "12.8V 45Ah",
                 solarPanel: "100W",
                 price: "₱45,164.50",
-                image: "/Sector/sampleproducts/IntegratedLight.png",
+                image: "/Product/StreetLamp/F1L.png",
               },
               {
                 model: "F2-080",
@@ -327,7 +327,7 @@ export default function SolarInstallation() {
                 battery: "25.6V 45Ah",
                 solarPanel: "160W",
                 price: "₱62,717.00",
-                image: "/Sector/sampleproducts/IntegratedLight.png",
+                image: "/Product/StreetLamp/F1L.png",
               },
               {
                 model: "F2-100",
@@ -338,7 +338,7 @@ export default function SolarInstallation() {
                 battery: "25.6V 52Ah",
                 solarPanel: "200W",
                 price: "₱71,803.00",
-                image: "/Sector/sampleproducts/IntegratedLight.png",
+                image: "/Product/StreetLamp/F1L.png",
               },
               {
                 model: "F2-120",
@@ -349,7 +349,7 @@ export default function SolarInstallation() {
                 battery: "25.6V 60Ah",
                 solarPanel: "240W",
                 price: "₱81,228.25",
-                image: "/Sector/sampleproducts/IntegratedLight.png",
+                image: "/Product/StreetLamp/F1L.png",
               },
               {
                 model: "LVQ2-050",
@@ -360,7 +360,7 @@ export default function SolarInstallation() {
                 battery: "14.8V 45Ah",
                 solarPanel: "100W",
                 price: "₱37,981.25",
-                image: "/Sector/sampleproducts/LVQ2.png",
+                image: "/Product/StreetLamp/RKlv02.png",
               },
               {
                 model: "LVQ2-080",
@@ -371,7 +371,7 @@ export default function SolarInstallation() {
                 battery: "12.8V 90Ah",
                 solarPanel: "200W",
                 price: "₱54,088.25",
-                image: "/Sector/sampleproducts/LVQ2.png",
+                image: "/Product/StreetLamp/RKlv02.png",
               },
               {
                 model: "LVQ2-100",
@@ -382,7 +382,7 @@ export default function SolarInstallation() {
                 battery: "25.6V 48Ah",
                 solarPanel: "250W",
                 price: "₱60,224.25",
-                image: "/Sector/sampleproducts/LVQ2-100.png",
+                image: "/Product/StreetLamp/RKS.png",
               },
               {
                 model: "LVQ2-120",
@@ -393,7 +393,7 @@ export default function SolarInstallation() {
                 battery: "25.6V 60Ah",
                 solarPanel: "300W",
                 price: "₱70,003.50",
-                image: "/Sector/sampleproducts/LVQ2-100.png",
+                image: "/Product/StreetLamp/RKS.png",
               },
               {
                 model: "LVXC-120",
@@ -404,7 +404,7 @@ export default function SolarInstallation() {
                 battery: "3.2V 65Ah",
                 solarPanel: "70W",
                 price: "₱17,346.00",
-                image: "/Sector/sampleproducts/LVXC-120-130.png",
+                image: "/Product/StreetLamp/F2L.png",
               },
               {
                 model: "LVXC-130",
@@ -415,7 +415,7 @@ export default function SolarInstallation() {
                 battery: "3.2V 80Ah",
                 solarPanel: "70W",
                 price: "₱19,661.75",
-                image: "/Sector/sampleproducts/LVXC-120-130.png",
+                image: "/Product/StreetLamp/F2L.png",
               },
               {
                 model: "LVXC-320",
@@ -426,7 +426,7 @@ export default function SolarInstallation() {
                 battery: "3.2V 65Ah",
                 solarPanel: "70W",
                 price: "₱17,036.25",
-                image: "/Sector/sampleproducts/LVCX-320-330.png",
+                image: "/Product/StreetLamp/LVXC.png",
               },
               {
                 model: "LVXC-330",
@@ -437,7 +437,7 @@ export default function SolarInstallation() {
                 battery: "3.2V 80Ah",
                 solarPanel: "70W",
                 price: "₱18,939.00",
-                image: "/Sector/sampleproducts/LVCX-320-330.png",
+                image: "/Product/StreetLamp/LVXC.png",
               },
             ].map((light, idx) => (
               <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
@@ -687,7 +687,7 @@ export default function SolarInstallation() {
                   solarPanel: "670W*144PCS",
                   price: "₱7,754,538.15",
                   description: "Village / industrial-scale. Can supply tens of houses plus businesses, or one small industrial plant.",
-                  image: "/Sector/sampleproducts/14.png",
+                  image: "/Product/cabinet/200kwh.png",
                 },
                 {
                   name: "Off-Grid Power Generation System",
@@ -697,7 +697,7 @@ export default function SolarInstallation() {
                   solarPanel: "670W*288PCS",
                   price: "₱16,173,481.20",
                   description: "Mini power plant for small town center or big factory. Can power town center, large commercial building, or single big industrial customer.",
-                  image: "/Sector/sampleproducts/14.png",
+                  image: "/Product/cabinet/500kwh.png",
                 },
                 {
                   name: "Off-Grid Power Generation System",
@@ -707,7 +707,7 @@ export default function SolarInstallation() {
                   solarPanel: "670W*444PCS",
                   price: "₱26,311,107.50",
                   description: "Village or island grid. Can act as main power plant for whole small island barangay with few hundred households.",
-                  image: "/Sector/sampleproducts/17.png",
+                  image: "/Product/cabinet/700kwh.png",
                 },
                 {
                   name: "Off-Grid Power Generation System",
@@ -717,7 +717,7 @@ export default function SolarInstallation() {
                   solarPanel: "670W*728PCS",
                   price: "₱42,239,802.20",
                   description: "Small utility level / industrial park. Main power for small island town, industrial park, or large university/hospital campus.",
-                  image: "/Sector/sampleproducts/17.png",
+                  image: "/Product/containertype/con1.png",
                 },
                 {
                   name: "Off-Grid Power Generation System",
@@ -727,7 +727,7 @@ export default function SolarInstallation() {
                   solarPanel: "670W*1484PCS",
                   price: "₱71,207,141.30",
                   description: "Main power plant for whole town or large island. For places where diesel or grid can take over at night.",
-                  image: "/Sector/sampleproducts/17.png",
+                  image: "/Product/containertype/con1.png",
                 },
               ].map((system, idx) => (
                 <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">

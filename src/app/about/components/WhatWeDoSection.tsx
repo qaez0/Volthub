@@ -19,7 +19,7 @@ export default function WhatWeDoSection() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="flex flex-col gap-3 p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              className="flex flex-col gap-3 p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1"
             >
               <h4 className="font-bold text-lg text-gray-900 flex items-start gap-2">
                 <span className="text-primary text-xl">▸</span>

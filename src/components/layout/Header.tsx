@@ -368,7 +368,7 @@ const Header = () => {
             <div
               key={item.label}
               className={cn(
-                "fixed w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300 z-[9999] dropdown-menu",
+                "fixed w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300 z-9999 dropdown-menu",
                 openDropdown === item.label
                   ? "opacity-100 visible translate-y-0"
                   : "opacity-0 invisible translate-y-2"
