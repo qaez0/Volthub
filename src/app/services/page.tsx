@@ -72,7 +72,7 @@ export default function Services() {
                 </span>
               </button>
             </div>
-            <div className="grid md:grid-cols-4 gap-8 pt-12">
+            <div className="grid md:grid-cols-4 gap-8 pt-12 pb-24 md:pb-12">
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary font-orbitron mb-2">
                   500+
@@ -105,7 +105,7 @@ export default function Services() {
           </LayoutContainer>
         </div>
         {/* Service Navigation Pills */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 md:hidden">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden">
           <div className="flex space-x-4 bg-white/10 backdrop-blur-lg rounded-full p-2">
             <button
               onClick={() => scrollToService("ev-charging")}
@@ -516,15 +516,15 @@ export default function Services() {
                     backgroundImage: "url('/Manila-Map.png')",
                   }}
                 >
-                  <div className="absolute inset-0 bg-black/10 rounded-2xl flex items-center justify-center">
-                    <div className="text-center text-white bg-black/50 backdrop-blur-sm rounded-2xl px-8 py-6">
-                      <h4 className="text-2xl font-bold mb-4">
+                  <div className="absolute inset-0 bg-black/10 rounded-2xl flex items-center justify-center p-4 md:p-0">
+                    <div className="text-center text-white bg-black/50 backdrop-blur-sm rounded-2xl px-4 py-6 md:px-8 w-full max-w-[90%] md:max-w-md">
+                      <h4 className="text-xl md:text-2xl font-bold mb-4">
                         Philippines Coverage
                       </h4>
-                      <p className="text-lg">
+                      <p className="text-base md:text-lg">
                         Professional installation services across major regions
                       </p>
-                      <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
+                      <div className="mt-6 grid grid-cols-3 gap-2 md:gap-4 text-xs md:text-sm">
                         <div>
                           <div className="text-2xl font-bold">50+</div>
                           <div>Service Centers</div>

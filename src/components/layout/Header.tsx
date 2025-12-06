@@ -89,6 +89,7 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [dropdownPositions, setDropdownPositions] = useState<Record<string, { top: number; left: number }>>({});
   const navItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const isActive = (href: NavHref) => {
     if (typeof href === "string") {
@@ -162,6 +163,14 @@ const Header = () => {
     }
   }, [openDropdown]);
 
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <header
       className={cn(
@@ -199,6 +208,23 @@ const Header = () => {
                   }
                 }}
                 className="relative group dropdown-container"
+                onMouseEnter={() => {
+                  if (hasDropdown) {
+                    if (hoverTimeoutRef.current) {
+                      clearTimeout(hoverTimeoutRef.current);
+                      hoverTimeoutRef.current = null;
+                    }
+                    setOpenDropdown(item.label);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (hasDropdown) {
+                    // Small delay to allow moving to dropdown menu
+                    hoverTimeoutRef.current = setTimeout(() => {
+                      setOpenDropdown(null);
+                    }, 150);
+                  }
+                }}
               >
                 <div className="flex items-center gap-1">
                   <Link
@@ -351,8 +377,18 @@ const Header = () => {
                 top: `${position.top}px`,
                 left: `${position.left}px`,
               }}
-              onMouseEnter={() => setOpenDropdown(item.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => {
+                if (hoverTimeoutRef.current) {
+                  clearTimeout(hoverTimeoutRef.current);
+                  hoverTimeoutRef.current = null;
+                }
+                setOpenDropdown(item.label);
+              }}
+              onMouseLeave={() => {
+                hoverTimeoutRef.current = setTimeout(() => {
+                  setOpenDropdown(null);
+                }, 150);
+              }}
             >
               <div className="p-4 space-y-2">
                 {item.dropdown?.map((link) => (
