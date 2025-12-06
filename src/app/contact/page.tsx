@@ -140,7 +140,6 @@ function ContactForm() {
         const rect = dropdownRef.current.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
         const spaceBelow = viewportHeight - rect.bottom;
-        const spaceAbove = rect.top;
         const footer = document.querySelector('footer');
         const footerTop = footer ? footer.getBoundingClientRect().top : viewportHeight;
         const maxHeight = Math.min(
