@@ -9,7 +9,6 @@ import {
   RiCheckLine,
   RiCalendarLine,
   RiMapPinLine,
-  RiAwardLine,
   RiToolsLine,
   RiCustomerService2Line,
 } from "react-icons/ri";
