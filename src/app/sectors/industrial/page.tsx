@@ -21,7 +21,7 @@ const storageSystems = [
     price: "₱1,823,684.10",
     description:
       "Small commercial / remote facility. Can power 5-10 small houses or a water refilling station, rice mill, small cold room.",
-    image: "/Sector/sampleproducts/12.png",
+    image: "/Product/cabinet/20k.png",
   },
   {
     name: "Off-Grid Power Generation System",
@@ -43,7 +43,7 @@ const storageSystems = [
     price: "₱4,593,349.12",
     description:
       "Microgrid for a barangay center or campus. Suitable for school campus, barangay center + streetlights + market area.",
-    image: "/Sector/sampleproducts/13.png",
+      image: "/Product/cabinet/50k.png",
   },
   {
     name: "Off-Grid Power Generation System",

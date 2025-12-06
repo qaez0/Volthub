@@ -129,7 +129,7 @@ const storageSystems = [
     solarPanel: "670W*30PCS",
     price: "₱1,823,684.10",
     description: "Small commercial / remote facility. Can power 5-10 small houses, or a water refilling station, rice mill, small cold room.",
-    image: "/Sector/sampleproducts/12.png",
+    image: "/Product/cabinet/20k.png",
   },
   {
     name: "Off-Grid Power Generation System",
