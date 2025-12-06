@@ -16,7 +16,7 @@ export default function WhatWeDoSection() {
 
       <div className="grid lg:grid-cols-2 gap-4 lg:gap-6 items-start">
         <div className="grid sm:grid-cols-2 gap-6 lg:gap-4 order-2 lg:order-1">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
               key={service.title}
               className="flex flex-col gap-3 p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1"

@@ -1,6 +1,7 @@
 "use client";
 
 import React, {
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -14,16 +15,16 @@ const useMedia = (
   values: number[],
   defaultValue: number
 ): number => {
-  const get = () => {
-    if (typeof window === "undefined" || !window.matchMedia) {
-      return defaultValue;
-    }
-    return values[queries.findIndex((q) => window.matchMedia(q).matches)] ?? defaultValue;
-  };
-
   const [value, setValue] = useState<number>(defaultValue);
 
   useEffect(() => {
+    const get = () => {
+      if (typeof window === "undefined" || !window.matchMedia) {
+        return defaultValue;
+      }
+      return values[queries.findIndex((q) => window.matchMedia(q).matches)] ?? defaultValue;
+    };
+
     // Set initial value on client side
     setValue(get());
     
@@ -40,7 +41,7 @@ const useMedia = (
         }
       });
     };
-  }, [queries]);
+  }, [queries, values, defaultValue]);
 
   return value;
 };
@@ -128,7 +129,7 @@ const Masonry: React.FC<MasonryProps> = ({
   const [containerRef, { width }] = useMeasure<HTMLDivElement>();
   const [imagesReady, setImagesReady] = useState(false);
 
-  const getInitialPosition = (item: GridItem) => {
+  const getInitialPosition = useCallback((item: GridItem) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
     if (!containerRect) return { x: item.x, y: item.y };
 
@@ -160,7 +161,7 @@ const Masonry: React.FC<MasonryProps> = ({
       default:
         return { x: item.x, y: item.y + 100 };
     }
-  };
+  }, [containerRef, animateFrom]);
 
   useEffect(() => {
     preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
@@ -228,7 +229,7 @@ const Masonry: React.FC<MasonryProps> = ({
     });
 
     hasMounted.current = true;
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease, getInitialPosition]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
     if (scaleOnHover) {
