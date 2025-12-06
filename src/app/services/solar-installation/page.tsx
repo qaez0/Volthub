@@ -622,7 +622,7 @@ export default function SolarInstallation() {
                         {system.price}
                       </div>
                       <Link
-                        href="/contact"
+                        href={`/contact?subject=quote&product=energy-storage&productName=${encodeURIComponent(`${system.name} ${system.kWh}`)}&model=${encodeURIComponent(system.kWh)}`}
                         className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
                       >
                         Request Quote
@@ -763,7 +763,7 @@ export default function SolarInstallation() {
                         {system.price}
                       </div>
                       <Link
-                        href="/contact"
+                        href={`/contact?subject=quote&product=energy-storage&productName=${encodeURIComponent(`${system.name} ${system.kWh}`)}&model=${encodeURIComponent(system.kWh)}`}
                         className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
                       >
                         Request Quote

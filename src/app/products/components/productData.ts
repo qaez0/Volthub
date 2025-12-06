@@ -330,7 +330,7 @@ export const products: Product[] = [
     subtitle: "Village / Industrial-Scale Microgrid",
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
-    image: "/Product/cabinet/14.png",
+    image: "/Product/cabinet/200kwh.png",
     price: "₱7,754,538.15",
   },
   {
@@ -339,7 +339,7 @@ export const products: Product[] = [
     subtitle: "Large-Scale Industrial / Community Microgrid",
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
-    image: "/Product/cabinet/15.png",
+    image: "/Product/cabinet/500kwh.png",
     price: "₱17,256,213.80",
   },
   {
@@ -348,7 +348,7 @@ export const products: Product[] = [
     subtitle: "Village or Island Grid",
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
-    image: "/Product/cabinet/16.png",
+    image: "/Product/cabinet/700kwh.png",
     price: "₱26,311,107.50",
   },
   {
