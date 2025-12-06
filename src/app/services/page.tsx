@@ -77,7 +77,7 @@ export default function Services() {
             </div>
             <div className="grid md:grid-cols-4 gap-8 pt-12 pb-24 md:pb-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary font-orbitron mb-2">
+                {/* <div className="text-3xl font-bold text-secondary font-orbitron mb-2">
                   500+
                 </div>
                 <div className="text-sm text-green-200">
@@ -90,7 +90,7 @@ export default function Services() {
                 </div>
                 <div className="text-sm text-green-200">
                   Customer Satisfaction
-                </div>
+                </div> */}
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary font-orbitron mb-2">
@@ -102,7 +102,7 @@ export default function Services() {
                 <div className="text-3xl font-bold text-secondary font-orbitron mb-2">
                   15+
                 </div>
-                <div className="text-sm text-green-200">Years Experience</div>
+                <div className="text-sm text-green-200">Combined Years of Experience</div>
               </div>
             </div>
           </LayoutContainer>
@@ -556,7 +556,7 @@ export default function Services() {
           <div className="text-center mb-16">
             <SectionHeading
               title="Technical Expertise"
-              description="Industry-leading certifications and technical capabilities"
+              description="Industry-leading and technical capabilities"
             />
           </div>
           <div className="grid lg:grid-cols-3 gap-8">

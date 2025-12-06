@@ -128,10 +128,10 @@ export default function SolarInstallation() {
               {
                 icon: RiCustomerService2Line,
                 title: "Warranty & Maintenance",
-                desc: "25-year performance guarantee with ongoing maintenance support",
+                desc: "3-year performance guarantee with ongoing maintenance support",
                 features: [
-                  "25-year performance warranty",
-                  "12-year product warranty",
+                  "3-year performance warranty",
+                  "3-year product warranty",
                   "Preventive maintenance",
                   "Rapid repair service",
                 ],
@@ -788,26 +788,26 @@ export default function SolarInstallation() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              {
-                stat: "2,500+",
-                label: "Systems Installed",
-                desc: "Successfully deployed across residential and commercial properties",
-              },
+              // {
+              //   stat: "2,500+",
+              //   label: "Systems Installed",
+              //   desc: "Successfully deployed across residential and commercial properties",
+              // },
               {
                 stat: "22.5%",
                 label: "Panel Efficiency",
                 desc: "Premium monocrystalline PERC technology for maximum output",
               },
               {
-                stat: "25 Years",
+                stat: "3 Years",
                 label: "Performance Warranty",
                 desc: "Industry-leading warranty coverage for peace of mind",
               },
-              {
-                stat: "98.5%",
-                label: "Customer Satisfaction",
-                desc: "Rated excellent by our clients for quality and service",
-              },
+              // {
+              //   stat: "98.5%",
+              //   label: "Customer Satisfaction",
+              //   desc: "Rated excellent by our clients for quality and service",
+              // },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
                 <div className="text-4xl font-bold text-primary font-orbitron mb-2">
