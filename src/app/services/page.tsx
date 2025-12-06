@@ -559,22 +559,22 @@ export default function Services() {
               description="Industry-leading and technical capabilities"
             />
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
             {[
-              {
-                icon: RiAwardLine,
-                title: "Certifications",
-                items: [
-                  "NABCEP Solar Installation Professional",
-                  "EVITP EV Infrastructure Training Program",
-                  "OSHA 30-Hour Construction Safety",
-                  "Master Electrician License (All States)",
-                  "Tesla Powerwall Certified Installer",
-                  "ChargePoint Authorized Service Provider",
-                ],
-                bgColor: "bg-primary/10",
-                iconColor: "text-primary",
-              },
+              // {
+              //   icon: RiAwardLine,
+              //   title: "Certifications",
+              //   items: [
+              //     "NABCEP Solar Installation Professional",
+              //     "EVITP EV Infrastructure Training Program",
+              //     "OSHA 30-Hour Construction Safety",
+              //     "Master Electrician License (All States)",
+              //     "Tesla Powerwall Certified Installer",
+              //     "ChargePoint Authorized Service Provider",
+              //   ],
+              //   bgColor: "bg-primary/10",
+              //   iconColor: "text-primary",
+              // },
               {
                 icon: RiToolsLine,
                 title: "Equipment & Tools",

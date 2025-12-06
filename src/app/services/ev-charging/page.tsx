@@ -305,18 +305,18 @@ export default function EVChargingSolutions() {
               description="Industry-leading expertise and unmatched service quality"
             />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             {[
-              {
-                stat: "500+",
-                label: "Installations Completed",
-                desc: "Successfully deployed across commercial and residential properties",
-              },
-              {
-                stat: "98.5%",
-                label: "Customer Satisfaction",
-                desc: "Rated excellent by our clients for quality and service",
-              },
+              // {
+              //   stat: "500+",
+              //   label: "Installations Completed",
+              //   desc: "Successfully deployed across commercial and residential properties",
+              // },
+              // {
+              //   stat: "98.5%",
+              //   label: "Customer Satisfaction",
+              //   desc: "Rated excellent by our clients for quality and service",
+              // },
               {
                 stat: "24/7",
                 label: "Support Available",
@@ -324,7 +324,7 @@ export default function EVChargingSolutions() {
               },
               {
                 stat: "15+",
-                label: "Years Experience",
+                label: "Combined Years of Experience",
                 desc: "Proven track record in EV infrastructure development",
               },
             ].map((item, idx) => (
