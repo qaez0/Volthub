@@ -31,7 +31,7 @@ export default function StatsSection({
               <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 float-animation">
                 <stat.icon className="text-3xl sm:text-3xl md:text-4xl" />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold font-orbitron mb-2 counter break-words" data-target={stat.value}>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold font-orbitron mb-2 break-words">
                 {stat.value}
               </div>
               <div className="text-base sm:text-lg md:text-xl text-white/90 break-words px-2">{stat.label}</div>
