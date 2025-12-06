@@ -65,7 +65,7 @@ export default function EVChargingSolutions() {
               description="From initial consultation to ongoing maintenance, we handle every aspect of your EV charging infrastructure"
             />
           </div>
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: RiMapPinLine,
@@ -136,7 +136,7 @@ export default function EVChargingSolutions() {
             ].map((service, idx) => (
               <div
                 key={idx}
-                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-4 bg-blue-100 rounded-full">
                   <service.icon className="text-3xl text-blue-600" />
@@ -166,7 +166,7 @@ export default function EVChargingSolutions() {
               description="Choose the right charging solution for your needs"
             />
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 model: "DPEV-7k",
@@ -250,7 +250,7 @@ export default function EVChargingSolutions() {
                 purple: "bg-purple-600",
               };
               return (
-                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+                <div key={idx} className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
                   {charger.image && (
                     <div className="w-full h-48 relative bg-slate-50">
                       <Image
@@ -305,7 +305,7 @@ export default function EVChargingSolutions() {
               description="Industry-leading expertise and unmatched service quality"
             />
           </div>
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 stat: "500+",
@@ -328,7 +328,7 @@ export default function EVChargingSolutions() {
                 desc: "Proven track record in EV infrastructure development",
               },
             ].map((item, idx) => (
-              <div key={idx} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] text-center">
+              <div key={idx} className="text-center">
                 <div className="text-4xl font-bold text-primary font-orbitron mb-2">
                   {item.stat}
                 </div>

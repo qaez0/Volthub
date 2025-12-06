@@ -135,7 +135,7 @@ export default function ResidentialSector() {
               description="Whether you need backup power during brownouts or want to reduce your electricity bills, 
               our residential solutions are designed for Filipino homes."
             />
-            <div className="flex flex-wrap justify-center gap-6 mt-12">
+            <div className="grid md:grid-cols-3 gap-6 mt-12">
               {[
                 {
                   icon: RiBatteryChargeLine,
@@ -153,7 +153,7 @@ export default function ResidentialSector() {
                   desc: "Charge your electric vehicle at home with our AC chargers",
                 },
               ].map((feature, idx) => (
-                <div key={idx} className="w-full md:w-[calc(33.333%-1rem)] p-6 bg-slate-50 rounded-2xl">
+                <div key={idx} className="p-6 bg-slate-50 rounded-2xl">
                   <feature.icon className="h-8 w-8 text-primary mb-4 mx-auto" />
                   <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                   <p className="text-sm text-slate-600">{feature.desc}</p>
@@ -171,11 +171,11 @@ export default function ResidentialSector() {
             title="Energy Storage Systems"
             description="Choose the right capacity for your home's energy needs"
           />
-          <div className="flex flex-wrap justify-center gap-6 mt-12">
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
             {storageSystems.map((system, idx) => (
               <div
                 key={idx}
-                className="w-full md:w-[calc(33.333%-1rem)] bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
               >
                 {system.image && (
                   <div className="w-full h-48 relative bg-slate-50">
@@ -278,7 +278,7 @@ export default function ResidentialSector() {
             title="EV Charging Solutions"
             description="Charge your electric vehicle at home"
           />
-          <div className="flex flex-col gap-6 mt-12 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-1 gap-6 mt-12 max-w-2xl mx-auto">
             {evChargers.map((charger, idx) => (
               <div
                 key={idx}
@@ -324,7 +324,7 @@ export default function ResidentialSector() {
               title="Why Choose Our Residential Solutions"
               description="Designed specifically for Filipino homes"
             />
-            <div className="flex flex-wrap justify-center gap-6 mt-12">
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
               {[
                 "3-year warranty on all products",
                 "Professional installation service",
@@ -333,7 +333,7 @@ export default function ResidentialSector() {
                 "Standard export packaging",
                 "Local support and maintenance",
               ].map((benefit, idx) => (
-                <div key={idx} className="w-full md:w-[calc(50%-0.75rem)] flex items-start gap-3">
+                <div key={idx} className="flex items-start gap-3">
                   <RiCheckLine className="h-6 w-6 text-green-500 shrink-0 mt-0.5" />
                   <span className="text-slate-700">{benefit}</span>
                 </div>
