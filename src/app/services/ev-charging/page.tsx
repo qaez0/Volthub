@@ -283,7 +283,7 @@ export default function EVChargingSolutions() {
                       ))}
                     </ul>
                     <Link
-                      href="/contact"
+                      href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(charger.model)}&productName=${encodeURIComponent(charger.type)}`}
                       className={`block w-full ${colorClasses[charger.color as keyof typeof colorClasses]} text-white py-3 rounded-xl font-semibold text-center transition-colors`}
                     >
                       Request Installation
@@ -351,7 +351,7 @@ export default function EVChargingSolutions() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/contact"
+                href="/contact?interest=ev-charging-quote&subject=quote"
                 className="bg-secondary text-black px-10 py-4 rounded-xl font-semibold hover:bg-yellow-300 transition-colors whitespace-nowrap"
               >
                 Get Free Quote

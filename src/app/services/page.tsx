@@ -251,7 +251,7 @@ export default function Services() {
                     Learn More
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/contact?interest=ev-charging-quote&subject=quote"
                     className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-300 whitespace-nowrap text-center"
                   >
                     Get Quote
@@ -370,7 +370,7 @@ export default function Services() {
                     Learn More
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/contact?interest=solar-installation-quote&subject=quote"
                     className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-300 whitespace-nowrap text-center"
                   >
                     Get Quote

@@ -352,7 +352,7 @@ export default function IndustrialSector() {
                   </span>
                 </div>
                 <Link
-                  href="/contact"
+                  href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(charger.model)}&productName=${encodeURIComponent(charger.type)}`}
                   className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Request Installation
@@ -447,7 +447,7 @@ export default function IndustrialSector() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact"
+                href="/contact?interest=industrial-solutions&subject=quote"
                 className="bg-secondary text-black px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 transition-colors"
               >
                 Get Free Quote

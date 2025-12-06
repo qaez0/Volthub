@@ -1236,7 +1236,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           Contact us for pricing, availability, and custom configurations
         </p>
         <Link
-          href="/contact"
+          href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
           className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm md:text-base"
         >
           Get Quote

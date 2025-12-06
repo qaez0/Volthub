@@ -844,3 +844,44 @@ html {
 .shadow-hover:hover {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
+/* Mobile-friendly select dropdown */
+@media (max-width: 768px) {
+  select {
+    font-size: 20px !important;
+    min-height: 60px !important;
+    padding: 20px 56px 20px 20px !important;
+    line-height: 1.6 !important;
+  }
+  
+  select option {
+    font-size: 20px !important;
+    padding: 20px !important;
+    min-height: 56px !important;
+    line-height: 1.6 !important;
+    font-weight: 500 !important;
+  }
+}
+
+/* Custom dropdown scrollbar */
+[data-dropdown-portal] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+[data-dropdown-portal]::-webkit-scrollbar {
+  width: 6px;
+}
+
+[data-dropdown-portal]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-dropdown-portal]::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+[data-dropdown-portal]::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}

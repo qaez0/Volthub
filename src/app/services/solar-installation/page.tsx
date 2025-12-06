@@ -479,7 +479,7 @@ export default function SolarInstallation() {
                       {light.price}
                     </div>
                     <Link
-                      href="/contact"
+                      href={`/contact?subject=installation&product=solar-installation&model=${encodeURIComponent(light.model || light.type)}&productName=${encodeURIComponent(light.type)}`}
                       className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
                     >
                       Request Installation
@@ -830,7 +830,7 @@ export default function SolarInstallation() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/contact"
+                href="/contact?interest=solar-installation-quote&subject=quote"
                 className="bg-secondary text-black px-10 py-4 rounded-xl font-semibold hover:bg-yellow-300 transition-colors whitespace-nowrap"
               >
                 Get Free Quote
