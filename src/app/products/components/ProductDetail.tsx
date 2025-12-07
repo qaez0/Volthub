@@ -200,15 +200,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     key={index}
                     onClick={() => {
                       setSelectedImage(img);
-                      // Open modal when clicking thumbnail (especially useful on mobile)
-                      openImageModal(index);
                     }}
                     className={`relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 rounded-lg overflow-hidden border-2 transition-all bg-white shadow-sm ${
                       isSelected
                         ? "border-primary ring-2 ring-primary/20 scale-105 shadow-md z-10"
                         : "border-slate-200 hover:border-slate-300 hover:scale-105 hover:shadow-md"
                     }`}
-                    aria-label={`View image ${index + 1} of ${allImages.length}`}
+                    aria-label={`Select image ${index + 1} of ${allImages.length}`}
                     aria-pressed={isSelected}
                   >
                     <Image
@@ -231,19 +229,19 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       {/* Top Section - Row 2: Description and Variations */}
       <div className="flex flex-col md:flex-row gap-4 md:gap-8">
         {/* Product Info & Description */}
-        <div className="md:w-[60%] space-y-4 md:space-y-6">
+        <div className="md:w-[60%] space-y-2 md:space-y-3">
           <div>
             <span className="text-xs uppercase tracking-wider text-primary font-semibold">
               {categoryLabel}
             </span>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mt-2">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mt-1">
               {product.name}
             </h1>
-            <p className="text-base md:text-lg text-slate-600 mt-2 md:mt-3">{product.subtitle}</p>
+            <p className="text-base md:text-lg text-slate-600 mt-1">{product.subtitle}</p>
 
             {/* Variant selector buttons (e.g. 60k / 120k / 400k or F2-050 / F2-080) */}
             {pricedVariations.length > 0 && (
-              <div className="flex flex-wrap gap-2 md:gap-3 mt-3 md:mt-4">
+              <div className="flex flex-wrap gap-2 md:gap-3 mt-2">
                 {pricedVariations.map((variant, idx) => {
                   // Extract label: F2-050, F2-080, LVQ2-080, LVXC-120, etc. or 40kWh, 60kWh, etc.
                   let label = variant.name;
@@ -290,7 +288,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 md:gap-4">
+          <div className="flex flex-wrap items-center gap-2 md:gap-3 mt-1">
           {product.tag && (
               <span className="inline-flex items-center rounded-full bg-primary/10 text-primary px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold">
                 {product.tag}
@@ -307,7 +305,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-1">
             <div className="flex items-center gap-2 text-xs md:text-sm text-slate-600">
               <RiShieldCheckLine className="h-4 w-4 text-primary" />
               <span>5-Year Warranty</span>
@@ -323,15 +321,15 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </div>
 
           {/* Get Quote Button - Prominent CTA */}
-          <div className="pt-4 md:pt-6">
+          <div className="pt-2 md:pt-3">
             <Link
               href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
-              className="inline-flex items-center justify-center gap-2 w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 md:px-8 md:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base md:text-lg group"
+              className="inline-flex items-center justify-center gap-2 w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-bold px-6 py-2.5 md:px-8 md:py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base md:text-lg group"
             >
               <span>Get Quote</span>
               <RiArrowRightSLine className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <p className="text-xs md:text-sm text-slate-500 mt-2 text-center md:text-left">
+            <p className="text-xs md:text-sm text-slate-500 mt-1.5 text-center md:text-left">
               Get a personalized quote for this product
             </p>
           </div>
@@ -1290,51 +1288,77 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </>
                 ) : (
                   <>
-                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
-                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                        <Image
-                          src="/Product/EV/small/83.jpg"
-                          alt="Apartment parking spaces"
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Apartment parking spaces</h4>
+                    {/* Dynamically render variations with images for EV products */}
+                    {details?.variations?.filter((v) => v.image).length > 0 ? (
+                      details.variations
+                        .filter((v) => v.image)
+                        .map((space, index) => (
+                          <div key={index} className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)]">
+                            <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                              <Image
+                                src={space.image!}
+                                alt={space.name}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                              <div className="absolute bottom-0 left-0 right-0 p-4">
+                                <h4 className="font-bold text-white text-lg">{space.name}</h4>
+                              </div>
+                            </div>
+                            <p className="text-sm text-slate-600 text-center">{space.description || space.value}</p>
+                          </div>
+                        ))
+                    ) : (
+                      <>
+                        {/* Fallback to default images if no variations with images */}
+                        <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                          <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                            <Image
+                              src="/Product/EV/small/83.jpg"
+                              alt="Apartment parking spaces"
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-4">
+                              <h4 className="font-bold text-white text-lg">Apartment parking spaces</h4>
+                            </div>
+                          </div>
+                          <p className="text-sm text-slate-600 text-center">Ideal for residential complexes and multi-unit buildings</p>
                         </div>
-                      </div>
-                      <p className="text-sm text-slate-600 text-center">Ideal for residential complexes and multi-unit buildings</p>
-                    </div>
-                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
-                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                        <Image
-                          src="/Product/EV/small/84.jpg"
-                          alt="Enterprise parking spaces"
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Enterprise parking spaces</h4>
+                        <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                          <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                            <Image
+                              src="/Product/EV/small/84.jpg"
+                              alt="Enterprise parking spaces"
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-4">
+                              <h4 className="font-bold text-white text-lg">Enterprise parking spaces</h4>
+                            </div>
+                          </div>
+                          <p className="text-sm text-slate-600 text-center">Perfect for commercial and office parking facilities</p>
                         </div>
-                      </div>
-                      <p className="text-sm text-slate-600 text-center">Perfect for commercial and office parking facilities</p>
-                    </div>
-                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
-                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
-                        <Image
-                          src="/Product/EV/small/85.jpg"
-                          alt="Private parking spaces"
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Private parking spaces</h4>
+                        <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                          <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                            <Image
+                              src="/Product/EV/small/85.jpg"
+                              alt="Private parking spaces"
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-4">
+                              <h4 className="font-bold text-white text-lg">Private parking spaces</h4>
+                            </div>
+                          </div>
+                          <p className="text-sm text-slate-600 text-center">Suitable for individual homes and private garages</p>
                         </div>
-                      </div>
-                      <p className="text-sm text-slate-600 text-center">Suitable for individual homes and private garages</p>
-                    </div>
+                      </>
+                    )}
                   </>
                 )}
               </div>
@@ -1366,7 +1390,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <span className="text-primary text-xl">+</span>
             </summary>
             <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
-              All products come with a comprehensive 5-year warranty covering manufacturing defects, parts replacement, and technical support. Extended warranty options are available.
+              All products come with a comprehensive 3-year warranty covering manufacturing defects, parts replacement, and technical support.
             </p>
           </details>
           <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
@@ -1383,9 +1407,20 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <span>What payment and financing options are available?</span>
               <span className="text-primary text-xl">+</span>
             </summary>
-            <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
-              We accept various payment methods and offer flexible financing options including installment plans, lease-to-own programs, and bulk purchase discounts for businesses.
-            </p>
+            <div className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed space-y-2">
+              <p>
+                <strong>Payment Term:</strong> 30% bank transfer in advance, the balance before shipping.
+              </p>
+              <p>
+                <strong>Price Validity:</strong> The price is valid for 15 days since the quotation date.
+              </p>
+              <p>
+                <strong>Production Time:</strong> 20-25 working days after receiving the payment.
+              </p>
+              <p>
+                <strong>Package:</strong> Standard Export package.
+              </p>
+            </div>
           </details>
           <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
             <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
@@ -1395,6 +1430,63 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
               Yes! We offer custom configurations to meet your specific requirements. Contact our sales team to discuss your needs and get a tailored solution.
             </p>
+          </details>
+          <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
+            <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
+              <span>How do I determine what size system I need?</span>
+              <span className="text-primary text-xl">+</span>
+            </summary>
+            <div className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed space-y-4">
+              <div>
+                <p className="font-semibold text-slate-900 mb-2">A simple way to explain to customers:</p>
+                <ul className="list-disc list-inside space-y-2 ml-2 text-slate-500">
+                  <li><strong>kWh (battery):</strong> How long it can run when the sun is gone.</li>
+                  <li><strong>kW (rated power):</strong> How many appliances/machines can run at the same time.</li>
+                  <li><strong>Panels (number of 670W pcs):</strong> How fast you can recharge the batteries each day.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900 mb-2">So:</p>
+                <ul className="list-disc list-inside space-y-1 ml-2 text-slate-500">
+                  <li><strong>Smaller models (40-60 kWh, 20-30 kW):</strong> Single business or small compound.</li>
+                  <li><strong>Mid models (80-100 kWh, 40-50 kW):</strong> School, resort, or barangay center.</li>
+                  <li><strong>Big models (215-261 kWh, 100-110 kW):</strong> Whole small community or industrial site.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900 mb-2">Ask the customer:</p>
+                <ol className="list-decimal list-inside space-y-2 ml-2">
+                  <li>
+                    <strong>What do you want to power?</strong>
+                    <p className="ml-4 text-slate-500">List appliances and their wattage (AC, ref, freezer, pump, computers, etc.).</p>
+                  </li>
+                  <li>
+                    <strong>How many hours per day and during brownouts?</strong>
+                    <p className="ml-4 text-slate-500">More hours needed → higher kWh.</p>
+                  </li>
+                  <li>
+                    <strong>What&apos;s the maximum they might run at the same time?</strong>
+                    <p className="ml-4 text-slate-500">Higher simultaneous load → higher kW.</p>
+                  </li>
+                  <li>
+                    <strong>Is this for backup only or daily off-grid use?</strong>
+                    <ul className="ml-4 list-disc list-inside text-slate-500 mt-1">
+                      <li>Backup only: can choose smaller kWh if outages are short.</li>
+                      <li>Off-grid: usually 15–30 kWh models.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900 mb-2">Rule of thumb for the Philippines:</p>
+                <ul className="list-disc list-inside space-y-1 ml-2 text-slate-500">
+                  <li><strong>Basic rural home (no AC)</strong> – 5 kWh or 10 kWh</li>
+                  <li><strong>Middle-class home with 1–2 AC units</strong> – 10–20 kWh</li>
+                  <li><strong>Large house / small business</strong> – 20–30 kWh</li>
+                  <li><strong>Resort, small factory, island microgrid</strong> – 20–30 kWh (maybe multiple units)</li>
+                </ul>
+              </div>
+            </div>
           </details>
         </div>
       </div>
