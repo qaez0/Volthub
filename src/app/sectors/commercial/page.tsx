@@ -170,7 +170,7 @@ export default function CommercialSector() {
   return (
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
+      <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[550px] flex items-center">
         <div className="absolute inset-0">
           <Image
             src="/HomeBanner/banner3.jpg"
@@ -180,14 +180,13 @@ export default function CommercialSector() {
           />
         </div>
         <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40 z-10" />
-        <div className="absolute inset-0 z-20">
+        <div className=" z-20 px-2 md:px-16 lg:px-24">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-20">
-        
             <div className="max-w-3xl space-y-4">
-              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-center md:text-left">
                 Commercial Energy Solutions
               </h1>
-              <p className="text-lg md:text-xl text-white/90">
+              <p className="text-lg md:text-xl text-white/90 text-center md:text-left">
                 Power your business with reliable solar energy storage and EV charging infrastructure. 
                 From small offices to large commercial establishments.
               </p>

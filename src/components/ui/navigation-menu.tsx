@@ -36,7 +36,7 @@ function NavigationMenuList({
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
       className={cn(
-        "group flex flex-1 list-none items-center justify-center gap-1",
+        "flex flex-1 list-none items-center justify-center gap-1",
         className
       )}
       {...props}
@@ -58,25 +58,131 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group text-[#fff] inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-md font-medium hover:text-primary disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-primary focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+  "group text-[#fff] inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-md font-medium hover:text-secondary disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-secondary focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
 );
 
 function NavigationMenuTrigger({
   className,
   children,
+  showChevron = true,
+  active,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger> & {
+  showChevron?: boolean;
+  active?: boolean;
+}) {
+  const { asChild, ...restProps } = props;
+
+  if (asChild) {
+    if (showChevron && React.isValidElement(children)) {
+      const child = React.Children.only(children) as React.ReactElement<
+        Record<string, unknown>
+      >;
+      const originalChildren = (child.props as { children?: React.ReactNode })
+        .children;
+      return (
+        <NavigationMenuPrimitive.Trigger
+          data-slot="navigation-menu-trigger"
+          className={cn(
+            navigationMenuTriggerStyle(),
+            "group/trigger",
+            active && "text-secondary",
+            className
+          )}
+          asChild
+          {...restProps}
+        >
+          {React.cloneElement(child, {
+            ...child.props,
+            children: (
+              <>
+                {originalChildren}
+                <ChevronDownIcon
+                  className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+                  aria-hidden="true"
+                />
+                <span
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300",
+                    active ? "w-full" : "w-0 group-hover/trigger:w-full"
+                  )}
+                />
+              </>
+            ),
+          } as Record<string, unknown>)}
+        </NavigationMenuPrimitive.Trigger>
+      );
+    }
+    if (React.isValidElement(children)) {
+      const child = React.Children.only(children) as React.ReactElement<
+        Record<string, unknown>
+      >;
+      const originalChildren = (child.props as { children?: React.ReactNode })
+        .children;
+      return (
+        <NavigationMenuPrimitive.Trigger
+          data-slot="navigation-menu-trigger"
+          className={cn(
+            navigationMenuTriggerStyle(),
+            "group/trigger",
+            active && "text-secondary",
+            className
+          )}
+          asChild
+          {...restProps}
+        >
+          {React.cloneElement(child, {
+            ...child.props,
+            children: (
+              <>
+                {originalChildren}
+                <span
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300",
+                    active ? "w-full" : "w-0 group-hover/trigger:w-full"
+                  )}
+                />
+              </>
+            ),
+          } as Record<string, unknown>)}
+        </NavigationMenuPrimitive.Trigger>
+      );
+    }
+    return (
+      <NavigationMenuPrimitive.Trigger
+        data-slot="navigation-menu-trigger"
+        className={cn(
+          navigationMenuTriggerStyle(),
+          "group/trigger",
+          active && "text-secondary",
+          className
+        )}
+        asChild
+        {...restProps}
+      >
+        {children}
+      </NavigationMenuPrimitive.Trigger>
+    );
+  }
+
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
-      className={cn(navigationMenuTriggerStyle(), "group", className)}
+      className={cn(
+        navigationMenuTriggerStyle(),
+        "group/trigger",
+        active && "text-secondary",
+        className
+      )}
       {...props}
     >
       {children}{" "}
-      <ChevronDownIcon
-        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
-        aria-hidden="true"
-      />
+      {showChevron && (
+        <ChevronDownIcon
+          className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+          aria-hidden="true"
+        />
+      )}
     </NavigationMenuPrimitive.Trigger>
   );
 }
@@ -128,7 +234,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "text-primary hover:scale-102 hover:bg-gray-200/50 focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-md transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4 ",
+        "text-secondary hover:scale-102 hover:bg-gray-200/50 focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-md transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4 ",
         className
       )}
       {...props}

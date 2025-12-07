@@ -62,7 +62,8 @@ const storageSystems = [
     battery: "5.3kWh",
     solarPanel: "36V670W*4",
     price: "₱255,502.45",
-    description: "Small home / backup kit. Can run 1 HP aircon plus lights, fans, TV, laptop. About 4-5 hours usable.",
+    description:
+      "Small home / backup kit. Can run 1 HP aircon plus lights, fans, TV, laptop. About 4-5 hours usable.",
     image: "/Product/SmartHome/SMP2.png",
   },
   {
@@ -72,7 +73,8 @@ const storageSystems = [
     battery: "10.6kWh",
     solarPanel: "36V670W*6",
     price: "₱388,122.65",
-    description: "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers. Around 5-6 hours usable.",
+    description:
+      "Standard home / small business. Can run 1-2 HP aircon, refrigerator, lights, fans, TV, computers. Around 5-6 hours usable.",
     image: "/Product/SmartHome/SMP3.png",
   },
   {
@@ -82,7 +84,8 @@ const storageSystems = [
     battery: "15.9kWh",
     solarPanel: "36V670W*8",
     price: "₱526,117.75",
-    description: "Longer backup, same power. Good for rural homes with frequent long outages or stores with freezers.",
+    description:
+      "Longer backup, same power. Good for rural homes with frequent long outages or stores with freezers.",
     image: "/Product/SmartHome/SMP4.png",
   },
 ];
@@ -92,7 +95,8 @@ const evChargers = [
     model: "DPEV-7k",
     type: "7 kW Single-gun AC Charging Pile",
     price: "₱18,062.50",
-    description: "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger.",
+    description:
+      "AC 'slow' charger for residential, office, hotel parking. Low installation cost, suitable as basic amenity charger.",
     image: "/Product/EV/59.png",
   },
 ];
@@ -101,7 +105,7 @@ export default function ResidentialSector() {
   return (
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
+      <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[550px] flex items-center">
         <div className="absolute inset-0">
           <Image
             src="/HomeBanner/banner3.jpg"
@@ -111,16 +115,16 @@ export default function ResidentialSector() {
           />
         </div>
         <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40 z-10" />
-        <div className="absolute inset-0 z-20">
+        <div className=" z-20 px-2 md:px-16 lg:px-24">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-20">
-           
             <div className="max-w-3xl space-y-4">
-              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-center md:text-left">
                 Residential Energy Solutions
               </h1>
-              <p className="text-lg md:text-xl text-white/90">
-                Power your home with reliable solar energy storage and backup systems. 
-                From small backup kits to complete home energy independence.
+              <p className="text-lg md:text-xl text-white/90 text-center md:text-left">
+                Power your home with reliable solar energy storage and backup
+                systems. From small backup kits to complete home energy
+                independence.
               </p>
             </div>
           </LayoutContainer>
@@ -156,7 +160,9 @@ export default function ResidentialSector() {
               ].map((feature, idx) => (
                 <div key={idx} className="p-6 bg-slate-50 rounded-2xl">
                   <feature.icon className="h-8 w-8 text-primary mb-4 mx-auto" />
-                  <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                  <h3 className="font-semibold text-lg mb-2">
+                    {feature.title}
+                  </h3>
                   <p className="text-sm text-slate-600">{feature.desc}</p>
                 </div>
               ))}
@@ -191,7 +197,9 @@ export default function ResidentialSector() {
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{system.kWh}</h3>
-                    <span className="text-2xl font-bold text-primary">{system.price}</span>
+                    <span className="text-2xl font-bold text-primary">
+                      {system.price}
+                    </span>
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
@@ -235,12 +243,22 @@ export default function ResidentialSector() {
               <thead className="bg-primary text-white">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold">Image</th>
-                  <th className="px-6 py-4 text-left font-semibold">Item No.</th>
-                  <th className="px-6 py-4 text-left font-semibold">Pole Height</th>
-                  <th className="px-6 py-4 text-left font-semibold">LED Light</th>
+                  <th className="px-6 py-4 text-left font-semibold">
+                    Item No.
+                  </th>
+                  <th className="px-6 py-4 text-left font-semibold">
+                    Pole Height
+                  </th>
+                  <th className="px-6 py-4 text-left font-semibold">
+                    LED Light
+                  </th>
                   <th className="px-6 py-4 text-left font-semibold">Battery</th>
-                  <th className="px-6 py-4 text-left font-semibold">Solar Panel</th>
-                  <th className="px-6 py-4 text-left font-semibold">Unit Price</th>
+                  <th className="px-6 py-4 text-left font-semibold">
+                    Solar Panel
+                  </th>
+                  <th className="px-6 py-4 text-left font-semibold">
+                    Unit Price
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -259,11 +277,21 @@ export default function ResidentialSector() {
                       )}
                     </td>
                     <td className="px-6 py-4 font-medium">{light.itemNo}</td>
-                    <td className="px-6 py-4 text-slate-600">{light.poleHeight}</td>
-                    <td className="px-6 py-4 text-slate-600">{light.ledLight}</td>
-                    <td className="px-6 py-4 text-slate-600">{light.battery}</td>
-                    <td className="px-6 py-4 text-slate-600">{light.solarPanel}</td>
-                    <td className="px-6 py-4 font-semibold text-primary">{light.price}</td>
+                    <td className="px-6 py-4 text-slate-600">
+                      {light.poleHeight}
+                    </td>
+                    <td className="px-6 py-4 text-slate-600">
+                      {light.ledLight}
+                    </td>
+                    <td className="px-6 py-4 text-slate-600">
+                      {light.battery}
+                    </td>
+                    <td className="px-6 py-4 text-slate-600">
+                      {light.solarPanel}
+                    </td>
+                    <td className="px-6 py-4 font-semibold text-primary">
+                      {light.price}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -297,16 +325,26 @@ export default function ResidentialSector() {
                 )}
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-2">{charger.type}</h3>
-                    <p className="text-sm text-slate-600">{charger.description}</p>
+                    <h3 className="text-2xl font-semibold mb-2">
+                      {charger.type}
+                    </h3>
+                    <p className="text-sm text-slate-600">
+                      {charger.description}
+                    </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-bold text-primary">{charger.price}</div>
-                    <div className="text-sm text-slate-500">Model: {charger.model}</div>
+                    <div className="text-3xl font-bold text-primary">
+                      {charger.price}
+                    </div>
+                    <div className="text-sm text-slate-500">
+                      Model: {charger.model}
+                    </div>
                   </div>
                 </div>
                 <Link
-                  href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(charger.model)}&productName=${encodeURIComponent(charger.type)}`}
+                  href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(
+                    charger.model
+                  )}&productName=${encodeURIComponent(charger.type)}`}
                   className="block w-full text-center bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Request Installation
@@ -352,7 +390,8 @@ export default function ResidentialSector() {
               Ready to Power Your Home?
             </h2>
             <p className="text-lg text-white/90">
-              Get a free consultation and discover the perfect energy solution for your home.
+              Get a free consultation and discover the perfect energy solution
+              for your home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -374,5 +413,3 @@ export default function ResidentialSector() {
     </main>
   );
 }
-
-
