@@ -18,7 +18,16 @@ import {
   RiThumbUpLine,
   RiStarLine,
   RiRulerLine,
-  RiSunLine
+  RiSunLine,
+  RiShieldCheckLine,
+  RiAwardLine,
+  RiDownloadLine,
+  RiCalendarLine,
+  RiQuestionLine,
+  RiTimeLine,
+  RiCloseLine,
+  RiArrowLeftSLine,
+  RiArrowRightSLine
 } from "react-icons/ri";
 import { Product, categories, productDetails, products } from "./productData";
 
@@ -47,7 +56,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     [product.images, product.image]
   );
   const [selectedImage, setSelectedImage] = useState(allImages[0]);
-  const [activeTab, setActiveTab] = useState<"stats" | "comments" | "projects">("stats");
+  const [activeTab, setActiveTab] = useState<"overview" | "specifications" | "reviews" | "projects">("overview");
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   // Variant-based pricing (for products that define prices on variations)
   const pricedVariations =
@@ -107,12 +118,44 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [totalRatings, setTotalRatings] = useState(856);
   const [positiveReviews, setPositiveReviews] = useState(856);
 
+  // Handle image modal
+  const openImageModal = (index: number) => {
+    setModalImageIndex(index);
+    setIsImageModalOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const navigateModalImage = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setModalImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+    } else {
+      setModalImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+    }
+  };
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isImageModalOpen) {
+        closeImageModal();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isImageModalOpen]);
+
+
   return (
-    <div className="space-y-4 md:space-y-8 w-full md:w-3/4">
+    <div className="space-y-4 md:space-y-8 w-full md:w-3/4 md:mx-auto ">
       {/* Back Button */}
       <Link
         href="/products"
-        className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-primary transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-primary transition-colors "
       >
         <RiArrowLeftLine className="h-4 w-4" />
         <span>Back to Products</span>
@@ -121,7 +164,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       {/* Top Section - Row 1: Image and Image Selector */}
       <div className="flex flex-col lg:flex-row gap-3 md:gap-4 lg:gap-6 items-start">
         {/* Main Product Image - First on mobile, second on desktop */}
-        <div className="relative aspect-square bg-white lg:aspect-[3/2] w-full lg:w-[80%] order-1 lg:order-2 rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 shadow-lg">
+        <button
+          onClick={() => openImageModal(allImages.findIndex(img => img === selectedImage))}
+          className="relative aspect-square bg-white lg:aspect-[3/2] w-full lg:w-[80%] order-1 lg:order-2 rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+          aria-label="Click to view larger image"
+        >
           <Image
             src={selectedImage}
             alt={product.name}
@@ -134,7 +181,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {allImages.findIndex(img => img === selectedImage) + 1} / {allImages.length}
             </div>
           )}
-        </div>
+          {/* Mobile-only overlay hint */}
+          <div className="absolute inset-0 bg-black/0 hover:bg-black/5 md:hover:bg-black/0 transition-colors flex items-center justify-center md:hidden">
+            <span className="text-xs text-slate-600 bg-white/90 px-3 py-1.5 rounded-full font-medium shadow-md opacity-0 hover:opacity-100 transition-opacity">
+              Tap to enlarge
+            </span>
+          </div>
+        </button>
 
         {/* Image Selection Thumbnails - Below image on mobile, left side on desktop */}
         {allImages.length > 1 && (
@@ -145,7 +198,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 return (
                   <button
                     key={index}
-                    onClick={() => setSelectedImage(img)}
+                    onClick={() => {
+                      setSelectedImage(img);
+                      // Open modal when clicking thumbnail (especially useful on mobile)
+                      openImageModal(index);
+                    }}
                     className={`relative flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 rounded-lg overflow-hidden border-2 transition-all bg-white shadow-sm ${
                       isSelected
                         ? "border-primary ring-2 ring-primary/20 scale-105 shadow-md z-10"
@@ -174,7 +231,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       {/* Top Section - Row 2: Description and Variations */}
       <div className="flex flex-col md:flex-row gap-4 md:gap-8">
         {/* Product Info & Description */}
-        <div className="flex-1 space-y-4 md:space-y-6">
+        <div className="md:w-[60%] space-y-4 md:space-y-6">
           <div>
             <span className="text-xs uppercase tracking-wider text-primary font-semibold">
               {categoryLabel}
@@ -249,6 +306,36 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           )}
           </div>
 
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-2">
+            <div className="flex items-center gap-2 text-xs md:text-sm text-slate-600">
+              <RiShieldCheckLine className="h-4 w-4 text-primary" />
+              <span>5-Year Warranty</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs md:text-sm text-slate-600">
+              <RiAwardLine className="h-4 w-4 text-primary" />
+              <span>Certified Quality</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs md:text-sm text-slate-600">
+              <RiCheckLine className="h-4 w-4 text-primary" />
+              <span>500+ Installations</span>
+            </div>
+          </div>
+
+          {/* Get Quote Button - Prominent CTA */}
+          <div className="pt-4 md:pt-6">
+            <Link
+              href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+              className="inline-flex items-center justify-center gap-2 w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 md:px-8 md:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base md:text-lg group"
+            >
+              <span>Get Quote</span>
+              <RiArrowRightSLine className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <p className="text-xs md:text-sm text-slate-500 mt-2 text-center md:text-left">
+              Get a personalized quote for this product
+            </p>
+          </div>
+
           {details && (
               <div>
                 <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-2 md:mb-3">
@@ -263,7 +350,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
               {/* Product Specifications */}
         {((details && details.specifications && details.specifications.length > 0) || (variantInfo.led || variantInfo.size || variantInfo.battery || variantInfo.solar)) && (
-                <div>
+                <div className="md:w-[40%]">
             <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-3 md:mb-4">
               Product Specifications
                   </h2>
@@ -432,30 +519,42 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         <div className="border-b border-slate-200 mb-4 md:mb-6">
           <nav className="flex gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             <button
-              onClick={() => setActiveTab("stats")}
+              onClick={() => setActiveTab("overview")}
               className={`px-3 md:px-6 py-2 md:py-3 font-semibold text-xs md:text-sm transition-colors border-b-2 whitespace-nowrap ${
-                activeTab === "stats"
+                activeTab === "overview"
                   ? "border-primary text-primary"
                   : "border-transparent text-slate-600 hover:text-slate-900"
               }`}
             >
               <span className="flex items-center gap-1 md:gap-2">
-                <RiThumbUpLine className="h-3 w-3 md:h-4 md:w-4" />
-                <span className="hidden sm:inline">Stats & Reacts</span>
-                <span className="sm:hidden">Stats</span>
+                <RiFileList3Line className="h-3 w-3 md:h-4 md:w-4" />
+                Overview
               </span>
             </button>
             <button
-              onClick={() => setActiveTab("comments")}
+              onClick={() => setActiveTab("specifications")}
               className={`px-3 md:px-6 py-2 md:py-3 font-semibold text-xs md:text-sm transition-colors border-b-2 whitespace-nowrap ${
-                activeTab === "comments"
+                activeTab === "specifications"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              <span className="flex items-center gap-1 md:gap-2">
+                <RiSettings3Line className="h-3 w-3 md:h-4 md:w-4" />
+                Specifications
+              </span>
+            </button>
+            <button
+              onClick={() => setActiveTab("reviews")}
+              className={`px-3 md:px-6 py-2 md:py-3 font-semibold text-xs md:text-sm transition-colors border-b-2 whitespace-nowrap ${
+                activeTab === "reviews"
                   ? "border-primary text-primary"
                   : "border-transparent text-slate-600 hover:text-slate-900"
               }`}
             >
               <span className="flex items-center gap-1 md:gap-2">
                 <RiChat3Line className="h-3 w-3 md:h-4 md:w-4" />
-                Comments
+                Reviews
               </span>
             </button>
             <button
@@ -477,141 +576,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
         {/* Tab Content */}
         <div className="bg-white rounded-xl border border-slate-200 p-4 md:p-6 lg:p-8">
-          {activeTab === "stats" && (
+          {activeTab === "overview" && (
             <div className="space-y-4 md:space-y-6">
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Product Stats & Reactions</h3>
-              <div className="flex flex-wrap gap-3 md:gap-6">
-                {/* Likes Card - Clickable */}
-                <button
-                  onClick={() => {
-                    setIsLiked(!isLiked);
-                    setLikes(prev => isLiked ? prev - 1 : prev + 1);
-                  }}
-                  className="w-full md:w-[calc(33.333%-1rem)] group text-center p-4 md:p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl border-2 border-slate-200 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
-                >
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    {isLiked ? (
-                      <RiHeartFill className="h-5 w-5 md:h-7 md:w-7 text-red-500 animate-pulse" />
-                    ) : (
-                      <RiHeartLine className="h-5 w-5 md:h-7 md:w-7 text-slate-400 group-hover:text-red-400 transition-colors" />
-                    )}
-                  </div>
-                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1 transition-all">
-                    {likes.toLocaleString()}
-                  </div>
-                  <div className="text-xs md:text-sm text-slate-600 font-medium">Likes</div>
-                  <div className="text-xs text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {isLiked ? "Click to unlike" : "Click to like"}
-                  </div>
-                </button>
-
-                {/* Rating Card - Interactive Stars */}
-                <div className="w-full md:w-[calc(33.333%-1rem)] text-center p-4 md:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 hover:border-green-300 transition-all hover:shadow-lg">
-                  <div className="flex items-center justify-center gap-2 text-green-600 mb-2 md:mb-3">
-                    <RiStarLine className="h-5 w-5 md:h-6 md:w-6" />
-                  </div>
-                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 md:mb-3">{averageRating.toFixed(1)}</div>
-                  <div className="text-xs md:text-sm text-slate-600 font-medium mb-3 md:mb-4">Average Rating</div>
-                  
-                  {/* Interactive Star Rating */}
-                  <div 
-                    className="flex items-center justify-center gap-1 mb-2"
-                    onMouseLeave={() => setHoveredStar(0)}
-                  >
-                    {[1, 2, 3, 4, 5].map((star) => {
-                      const isActive = star <= (hoveredStar || (hasRated ? userRating : Math.round(averageRating)));
-                      return (
-                        <button
-                          key={star}
-                          onClick={() => {
-                            if (!hasRated) {
-                              setUserRating(star);
-                              setHasRated(true);
-                              // Update average rating calculation
-                              const newTotal = totalRatings + 1;
-                              const newAvg = ((averageRating * totalRatings) + star) / newTotal;
-                              setAverageRating(newAvg);
-                              setTotalRatings(newTotal);
-                              setPositiveReviews(prev => prev + 1);
-                            }
-                          }}
-                          onMouseEnter={() => setHoveredStar(star)}
-                          className="transition-transform hover:scale-125 active:scale-95"
-                        >
-                          <RiStarLine
-                            className={`h-4 w-4 md:h-5 md:w-5 transition-all duration-200 ${
-                              isActive
-                                ? "fill-yellow-400 text-yellow-400"
-                                : "text-slate-300 hover:text-yellow-300"
-                            }`}
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div className="text-xs text-slate-500">
-                    {hasRated 
-                      ? `You rated: ${userRating} stars` 
-                      : hoveredStar > 0 
-                        ? `Rate: ${hoveredStar} stars` 
-                        : "Hover to rate"}
-                  </div>
-                </div>
-
-                {/* Positive Reviews Card - Clickable */}
-                <button
-                  onClick={() => {
-                    setPositiveReviews(prev => prev + 1);
-                  }}
-                  className="w-full md:w-[calc(33.333%-1rem)] group text-center p-4 md:p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
-                >
-                  <div className="flex items-center justify-center gap-2 text-blue-600 mb-2">
-                    <RiThumbUpLine className="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" />
-                  </div>
-                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1 transition-all">
-                    {positiveReviews.toLocaleString()}
-                  </div>
-                  <div className="text-xs md:text-sm text-slate-600 font-medium">Positive Reviews</div>
-                  <div className="text-xs text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    Click to add review
-        </div>
-                </button>
-      </div>
-              {details && details.specifications && details.specifications.length > 0 && (
-                <div className="mt-6 md:mt-8">
-                  <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Technical Specifications</h4>
-                  <div className="flex flex-wrap gap-3 md:gap-4">
-                {details.specifications.map((spec, index) => (
-                  <div
-                    key={index}
-                        className="flex justify-between items-center py-2 px-3 md:py-3 md:px-4 bg-slate-50 rounded-lg w-full md:w-[calc(50%-0.5rem)]"
-                  >
-                    <span className="text-sm md:text-base text-slate-600">{spec.label}</span>
-                    <span className="text-sm md:text-base font-semibold text-slate-900">
-                      {spec.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-              {details && details.features && details.features.length > 0 && (
-                <div className="mt-4 md:mt-6">
-                  <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Key Features</h4>
-                  <div className="flex flex-wrap gap-2 md:gap-3">
-                {details.features.map((feature, index) => (
-                      <div key={index} className="flex items-start gap-2 md:gap-3 p-2 md:p-3 bg-slate-50 rounded-lg w-full md:w-[calc(50%-0.375rem)]">
-                    <RiCheckLine className="h-4 w-4 md:h-5 md:w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-sm md:text-base text-slate-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Product Overview</h3>
               
               {/* Product Images Gallery */}
               {product.images && product.images.length > 0 && (
-                <div className="mt-6 md:mt-8">
+                <div>
                   <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Product Images</h4>
                   <div className="flex flex-wrap gap-3 md:gap-4">
                     {product.images.map((img, index) => (
@@ -630,81 +601,270 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </div>
                 </div>
               )}
+
+              {/* Key Features */}
+              {details && details.features && details.features.length > 0 && (
+                <div className="mt-6 md:mt-8">
+                  <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Key Features</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+                    {details.features.map((feature, index) => (
+                      <div key={index} className="flex items-start gap-2 md:gap-3 p-2 md:p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <RiCheckLine className="h-4 w-4 md:h-5 md:w-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-sm md:text-base text-slate-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
-          {activeTab === "comments" && (
+          {activeTab === "specifications" && (
             <div className="space-y-4 md:space-y-6">
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Customer Comments & Reviews</h3>
-              <div className="space-y-3 md:space-y-4">
-                <div className="p-3 md:p-5 bg-slate-50 rounded-xl border border-slate-200">
-                  <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs md:text-sm text-primary font-semibold">JD</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm md:text-base font-semibold text-slate-900 truncate">John Doe</div>
-                      <div className="text-xs md:text-sm text-slate-500">Verified Customer</div>
-                    </div>
-                    <div className="ml-auto flex items-center gap-0.5 md:gap-1 text-yellow-500 flex-shrink-0">
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                    </div>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Technical Specifications</h3>
+              {details && details.specifications && details.specifications.length > 0 && (
+                <div className="overflow-x-auto">
+                  {/* Mobile: 1 column, Desktop: 3 columns */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 rounded-xl bg-white overflow-hidden">
+                    {details.specifications.map((spec, index) => {
+                      const isLastItem = index === details.specifications.length - 1;
+                      const isNotFirstColumn = index % 3 !== 0;
+                      return (
+                        <div 
+                          key={index} 
+                          className={`p-3 md:p-4 ${
+                            !isLastItem ? 'border-b md:border-b-0 border-slate-200' : ''
+                          } ${
+                            isNotFirstColumn ? 'md:border-l border-slate-200' : ''
+                          }`}
+                        >
+                          <div className="text-xs text-slate-500 font-medium mb-1">{spec.label}</div>
+                          <div className="text-sm text-slate-900">{spec.value}</div>
+                        </div>
+                      );
+                    })}
                   </div>
-                  <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                    &quot;Excellent charging station! Fast charging speed and very reliable. 
-                    Perfect for our commercial parking lot. Highly recommend!&quot;
-                  </p>
-                  <div className="mt-2 md:mt-3 text-xs md:text-sm text-slate-500">2 days ago</div>
                 </div>
-                <div className="p-3 md:p-5 bg-slate-50 rounded-xl border border-slate-200">
-                  <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs md:text-sm text-blue-700 font-semibold">SM</span>
+              )}
+            </div>
+          )}
+
+          {activeTab === "reviews" && (
+            <div className="space-y-4 md:space-y-6">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Reviews & Community</h3>
+              
+              {/* Stats Section - Enhanced */}
+              <div className="grid grid-cols-3 gap-2 md:gap-5 mb-6 md:mb-8">
+                {/* Likes - Compact on mobile, Enhanced on desktop */}
+                <button
+                  onClick={() => {
+                    setIsLiked(!isLiked);
+                    setLikes(prev => isLiked ? prev - 1 : prev + 1);
+                  }}
+                  className="group flex flex-col items-center gap-1.5 md:block md:relative md:overflow-hidden md:bg-gradient-to-br md:from-white md:to-slate-50 rounded-lg md:rounded-xl md:border-2 md:border-slate-200 hover:border-red-300 md:hover:shadow-lg transition-all duration-300 py-2 md:p-5 md:p-6 text-center md:text-left"
+                >
+                  <div className={`p-1.5 md:p-2.5 rounded-lg md:rounded-xl transition-all duration-300 ${
+                    isLiked 
+                      ? 'bg-red-100 text-red-600' 
+                      : 'bg-slate-100 text-slate-400 group-hover:bg-red-50 group-hover:text-red-500'
+                  }`}>
+                    {isLiked ? (
+                      <RiHeartFill className="h-4 w-4 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+                    ) : (
+                      <RiHeartLine className="h-4 w-4 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+                    )}
+                  </div>
+                  <div className="md:relative md:z-10">
+                    <div className="text-sm md:text-2xl lg:text-3xl font-bold text-slate-900 mb-0 md:mb-1 transition-all md:group-hover:scale-105">
+                      {likes.toLocaleString()}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm md:text-base font-semibold text-slate-900 truncate">Sarah Miller</div>
-                      <div className="text-xs md:text-sm text-slate-500">Business Owner</div>
-                    </div>
-                    <div className="ml-auto flex items-center gap-0.5 md:gap-1 text-yellow-500 flex-shrink-0">
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
+                    <div className="text-xs md:text-sm text-slate-600 font-medium">Likes</div>
+                  </div>
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-br from-red-50/0 to-red-50/0 group-hover:from-red-50/50 group-hover:to-transparent transition-all duration-300" />
+                </button>
+
+                {/* Rating - Compact on mobile, Enhanced on desktop */}
+                <div 
+                  className="flex flex-col items-center gap-1.5 md:block md:relative md:overflow-hidden md:bg-gradient-to-br md:from-white md:to-slate-50 rounded-lg md:rounded-xl md:border-2 md:border-slate-200 hover:border-yellow-300 md:hover:shadow-lg transition-all duration-300 py-2 md:p-5 md:p-6 text-center"
+                  onMouseLeave={() => setHoveredStar(0)}
+                >
+                  <div className="p-1.5 md:p-2.5 rounded-lg md:rounded-xl bg-yellow-50">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((star) => {
+                        const isActive = star <= (hoveredStar || (hasRated ? userRating : Math.round(averageRating)));
+                        return (
+                          <button
+                            key={star}
+                            onClick={() => {
+                              if (!hasRated) {
+                                setUserRating(star);
+                                setHasRated(true);
+                                const newTotal = totalRatings + 1;
+                                const newAvg = ((averageRating * totalRatings) + star) / newTotal;
+                                setAverageRating(newAvg);
+                                setTotalRatings(newTotal);
+                                setPositiveReviews(prev => prev + 1);
+                              }
+                            }}
+                            onMouseEnter={() => setHoveredStar(star)}
+                            className="transition-transform hover:scale-125 active:scale-95"
+                          >
+                            <RiStarLine
+                              className={`h-3 w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 transition-all ${
+                                isActive
+                                  ? "fill-yellow-400 text-yellow-400"
+                                  : "text-slate-300 hover:text-yellow-300"
+                              }`}
+                            />
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
-                  <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                    &quot;Installed 5 units at our expressway service area. Great performance 
-                    and customer satisfaction. The dual-gun feature is a game-changer!&quot;
-                  </p>
-                  <div className="mt-2 md:mt-3 text-xs md:text-sm text-slate-500">1 week ago</div>
+                  <div className="md:relative md:z-10">
+                    <div className="text-sm md:text-2xl lg:text-3xl font-bold text-slate-900 mb-0 md:mb-1">
+                      {averageRating.toFixed(1)}
+                    </div>
+                    <div className="text-xs md:text-sm text-slate-600 font-medium">{totalRatings.toLocaleString()} ratings</div>
+                  </div>
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-br from-yellow-50/0 to-yellow-50/0 hover:from-yellow-50/50 hover:to-transparent transition-all duration-300" />
                 </div>
-                <div className="p-3 md:p-5 bg-slate-50 rounded-xl border border-slate-200">
-                  <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs md:text-sm text-green-700 font-semibold">MC</span>
+
+                {/* Positive Reviews - Compact on mobile, Enhanced on desktop */}
+                <button
+                  onClick={() => {
+                    setPositiveReviews(prev => prev + 1);
+                  }}
+                  className="group flex flex-col items-center gap-1.5 md:block md:relative md:overflow-hidden md:bg-gradient-to-br md:from-white md:to-slate-50 rounded-lg md:rounded-xl md:border-2 md:border-slate-200 hover:border-blue-300 md:hover:shadow-lg transition-all duration-300 py-2 md:p-5 md:p-6 text-center md:text-left"
+                >
+                  <div className="p-1.5 md:p-2.5 rounded-lg md:rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-100 transition-all duration-300">
+                    <RiThumbUpLine className="h-4 w-4 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+                  </div>
+                  <div className="md:relative md:z-10">
+                    <div className="text-sm md:text-2xl lg:text-3xl font-bold text-slate-900 mb-0 md:mb-1 transition-all md:group-hover:scale-105">
+                      {positiveReviews.toLocaleString()}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm md:text-base font-semibold text-slate-900 truncate">Mike Chen</div>
-                      <div className="text-xs md:text-sm text-slate-500">Fleet Manager</div>
+                    <div className="text-xs md:text-sm text-slate-600 font-medium">Positive Reviews</div>
+                  </div>
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-transparent transition-all duration-300" />
+                </button>
+              </div>
+
+              {/* Customer Comments - Enhanced */}
+              <div className="mt-8 md:mt-10">
+                <h4 className="text-lg md:text-xl font-semibold text-slate-900 mb-5 md:mb-6 flex items-center gap-2">
+                  <RiStarLine className="h-5 w-5 text-yellow-500 fill-current" />
+                  Customer Comments & Reviews
+                </h4>
+                <div className="space-y-4 md:space-y-5">
+                  <div className="group p-4 md:p-6 bg-white rounded-xl border-2 border-slate-200 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0 ring-2 ring-primary/10">
+                        <span className="text-sm md:text-base text-primary font-bold">JD</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="text-sm md:text-base font-bold text-slate-900">John Doe</div>
+                          <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Verified</span>
+                        </div>
+                        <div className="text-xs md:text-sm text-slate-500">Verified Customer</div>
+                      </div>
+                      <div className="flex items-center gap-0.5 md:gap-1 text-yellow-500 flex-shrink-0">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <RiStarLine key={star} className="h-4 w-4 md:h-5 md:w-5 fill-current" />
+                        ))}
+                      </div>
                     </div>
-                    <div className="ml-auto flex items-center gap-0.5 md:gap-1 text-yellow-500 flex-shrink-0">
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4 fill-current" />
-                      <RiStarLine className="h-3 w-3 md:h-4 md:w-4" />
+                    <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-3 md:mb-4 pl-0 md:pl-14">
+                      &quot;Excellent charging station! Fast charging speed and very reliable. 
+                      Perfect for our commercial parking lot. Highly recommend!&quot;
+                    </p>
+                    <div className="flex items-center justify-between pl-0 md:pl-14">
+                      <div className="text-xs md:text-sm text-slate-500 flex items-center gap-1">
+                        <RiTimeLine className="h-3 w-3" />
+                        2 days ago
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+                          <RiThumbUpLine className="h-3 w-3" />
+                          Helpful
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                    &quot;Future-proof design with excellent build quality. Our EV fleet 
-                    charges efficiently. Weather resistance is impressive.&quot;
-                  </p>
-                  <div className="mt-2 md:mt-3 text-xs md:text-sm text-slate-500">2 weeks ago</div>
+                  
+                  <div className="group p-4 md:p-6 bg-white rounded-xl border-2 border-slate-200 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center flex-shrink-0 ring-2 ring-blue-100">
+                        <span className="text-sm md:text-base text-blue-700 font-bold">SM</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="text-sm md:text-base font-bold text-slate-900">Sarah Miller</div>
+                          <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Business</span>
+                        </div>
+                        <div className="text-xs md:text-sm text-slate-500">Business Owner</div>
+                      </div>
+                      <div className="flex items-center gap-0.5 md:gap-1 text-yellow-500 flex-shrink-0">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <RiStarLine key={star} className="h-4 w-4 md:h-5 md:w-5 fill-current" />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-3 md:mb-4 pl-0 md:pl-14">
+                      &quot;Installed 5 units at our expressway service area. Great performance 
+                      and customer satisfaction. The dual-gun feature is a game-changer!&quot;
+                    </p>
+                    <div className="flex items-center justify-between pl-0 md:pl-14">
+                      <div className="text-xs md:text-sm text-slate-500 flex items-center gap-1">
+                        <RiTimeLine className="h-3 w-3" />
+                        1 week ago
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+                          <RiThumbUpLine className="h-3 w-3" />
+                          Helpful
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="group p-4 md:p-6 bg-white rounded-xl border-2 border-slate-200 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center flex-shrink-0 ring-2 ring-green-100">
+                        <span className="text-sm md:text-base text-green-700 font-bold">MC</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="text-sm md:text-base font-bold text-slate-900">Mike Chen</div>
+                          <span className="px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Fleet</span>
+                        </div>
+                        <div className="text-xs md:text-sm text-slate-500">Fleet Manager</div>
+                      </div>
+                      <div className="flex items-center gap-0.5 md:gap-1 text-yellow-500 flex-shrink-0">
+                        {[1, 2, 3, 4].map((star) => (
+                          <RiStarLine key={star} className="h-4 w-4 md:h-5 md:w-5 fill-current" />
+                        ))}
+                        <RiStarLine className="h-4 w-4 md:h-5 md:w-5 text-slate-300" />
+                      </div>
+                    </div>
+                    <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-3 md:mb-4 pl-0 md:pl-14">
+                      &quot;Future-proof design with excellent build quality. Our EV fleet 
+                      charges efficiently. Weather resistance is impressive.&quot;
+                    </p>
+                    <div className="flex items-center justify-between pl-0 md:pl-14">
+                      <div className="text-xs md:text-sm text-slate-500 flex items-center gap-1">
+                        <RiTimeLine className="h-3 w-3" />
+                        2 weeks ago
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button className="text-xs text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+                          <RiThumbUpLine className="h-3 w-3" />
+                          Helpful
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1184,6 +1344,61 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </div>
       </div>
 
+      {/* FAQ Section - Before CTA */}
+      <div className="mt-8 md:mt-12 space-y-4 md:space-y-6">
+        <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6 flex items-center gap-2">
+          <RiQuestionLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+          Frequently Asked Questions
+        </h3>
+        <div className="space-y-3 md:space-y-4">
+          <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
+            <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
+              <span>What is the installation time for this product?</span>
+              <span className="text-primary text-xl">+</span>
+            </summary>
+            <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
+              Installation typically takes 2-4 hours for standard setups. Our certified technicians handle the entire process, including site assessment, mounting, and system configuration.
+            </p>
+          </details>
+          <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
+            <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
+              <span>What warranty coverage is included?</span>
+              <span className="text-primary text-xl">+</span>
+            </summary>
+            <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
+              All products come with a comprehensive 5-year warranty covering manufacturing defects, parts replacement, and technical support. Extended warranty options are available.
+            </p>
+          </details>
+          <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
+            <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
+              <span>Is maintenance required?</span>
+              <span className="text-primary text-xl">+</span>
+            </summary>
+            <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
+              Our products are designed for minimal maintenance. We recommend annual inspections and cleaning. Our maintenance service packages are available for hassle-free upkeep.
+            </p>
+          </details>
+          <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
+            <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
+              <span>What payment and financing options are available?</span>
+              <span className="text-primary text-xl">+</span>
+            </summary>
+            <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
+              We accept various payment methods and offer flexible financing options including installment plans, lease-to-own programs, and bulk purchase discounts for businesses.
+            </p>
+          </details>
+          <details className="group bg-slate-50 rounded-lg border border-slate-200 p-4 md:p-5">
+            <summary className="font-semibold text-slate-900 cursor-pointer text-sm md:text-base flex items-center justify-between">
+              <span>Can I get a custom configuration?</span>
+              <span className="text-primary text-xl">+</span>
+            </summary>
+            <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
+              Yes! We offer custom configurations to meet your specific requirements. Contact our sales team to discuss your needs and get a tailored solution.
+            </p>
+          </details>
+        </div>
+      </div>
+
       {/* Related Products Section */}
       {relatedProducts.length > 0 && (
         <div className="space-y-4 md:space-y-6">
@@ -1235,13 +1450,124 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         <p className="text-sm md:text-base text-blue-100 mb-4 md:mb-6">
           Contact us for pricing, availability, and custom configurations
         </p>
-        <Link
-          href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
-          className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm md:text-base"
-        >
-          Get Quote
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
+          <Link
+            href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+            className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm md:text-base"
+          >
+            Get Quote
+          </Link>
+          <Link
+            href={`/contact?subject=demo&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-white/20 transition-colors text-sm md:text-base"
+          >
+            <RiCalendarLine className="h-4 w-4" />
+            Request Demo
+          </Link>
+          <Link
+            href={`/contact?subject=brochure&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-white/20 transition-colors text-sm md:text-base"
+          >
+            <RiDownloadLine className="h-4 w-4" />
+            Download Brochure
+          </Link>
+        </div>
       </div>
+
+      {/* Image Modal - Mobile & Desktop */}
+      {isImageModalOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8"
+          onClick={closeImageModal}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeImageModal}
+            className="absolute top-4 right-4 z-10 p-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors"
+            aria-label="Close image modal"
+          >
+            <RiCloseLine className="h-6 w-6 md:h-8 md:w-8" />
+          </button>
+
+          {/* Navigation Arrows */}
+          {allImages.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateModalImage('prev');
+                }}
+                className="absolute left-4 md:left-8 z-10 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors"
+                aria-label="Previous image"
+              >
+                <RiArrowLeftSLine className="h-6 w-6 md:h-8 md:w-8" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateModalImage('next');
+                }}
+                className="absolute right-4 md:right-8 z-10 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors"
+                aria-label="Next image"
+              >
+                <RiArrowRightSLine className="h-6 w-6 md:h-8 md:w-8" />
+              </button>
+            </>
+          )}
+
+          {/* Image Counter */}
+          {allImages.length > 1 && (
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">
+              {modalImageIndex + 1} / {allImages.length}
+            </div>
+          )}
+
+          {/* Image Container */}
+          <div 
+            className="relative w-full h-full max-w-7xl max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative w-full h-full">
+              <Image
+                src={allImages[modalImageIndex]}
+                alt={`${product.name} - Image ${modalImageIndex + 1}`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 90vw"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Thumbnail Navigation (Desktop) */}
+          {allImages.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden md:flex gap-2 max-w-[90vw] overflow-x-auto px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg">
+              {allImages.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setModalImageIndex(index);
+                  }}
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                    modalImageIndex === index
+                      ? "border-white ring-2 ring-white/50 scale-110"
+                      : "border-white/30 hover:border-white/60"
+                  }`}
+                  aria-label={`View image ${index + 1}`}
+                >
+                  <Image
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    fill
+                    className="object-contain p-1"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
