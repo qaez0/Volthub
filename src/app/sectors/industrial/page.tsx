@@ -137,15 +137,16 @@ export default function IndustrialSector() {
     <main className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-slate-100 min-h-[300px] md:min-h-[320px]">
-        <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40" />
-        <Image
-          src="/HomeBanner/banner3.jpg"
-          alt="Industrial Energy Solutions"
-          width={1600}
-          height={400}
-          className="w-full h-[260px] md:h-[320px] object-cover"
-        />
         <div className="absolute inset-0">
+          <Image
+            src="/HomeBanner/banner3.jpg"
+            alt="Industrial Energy Solutions"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900 via-slate-900/80 to-slate-900/40 z-10" />
+        <div className="absolute inset-0 z-20">
           <LayoutContainer className="h-full flex flex-col justify-center gap-4 text-white pt-20">
            
             <div className="max-w-3xl space-y-4">

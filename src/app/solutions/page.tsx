@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "Energy Solutions - VoltHub",
+  description: "Comprehensive energy solutions from solar generation to smart storage. Discover how VoltHub's integrated systems power homes, businesses, and communities with clean, reliable energy.",
+};
 import {
   RiSunLine,
   RiCpuLine,

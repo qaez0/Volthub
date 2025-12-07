@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import OverviewSection from "./components/OverviewSection";
 import MissionVisionSection from "./components/MissionVisionSection";
@@ -9,6 +10,11 @@ import MarketInsightsSection from "./components/MarketInsightsSection";
 import OperationsCarouselSection from "./components/OperationsCarouselSection";
 import PartnershipsSection from "./components/PartnershipsSection";
 import SectionHeading from "@/components/marketing/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "About Us - VoltHub",
+  description: "Learn about VoltHub's mission to build a cleaner energy economy. Discover our history, values, leadership, and commitment to sustainable energy solutions.",
+};
 
 export default function About() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import ProductDetail from "../components/ProductDetail";
@@ -6,6 +7,24 @@ import { getProductById } from "../components/productData";
 interface ProductPageProps {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const product = getProductById(params.id);
+
+  if (!product) {
+    return {
+      title: "Product Not Found - VoltHub",
+      description: "The requested product could not be found.",
+    };
+  }
+
+  return {
+    title: `${product.name} - VoltHub`,
+    description: product.description || `Learn more about ${product.name} from VoltHub. ${product.category} energy solution with specifications and pricing.`,
   };
 }
 

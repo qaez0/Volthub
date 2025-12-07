@@ -1,5 +1,11 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import ProductsClient from "./ProductsClient";
+
+export const metadata: Metadata = {
+  title: "Products - VoltHub",
+  description: "Explore VoltHub's complete range of energy solutions including EV charging stations, solar street lights, smart home IPS, cabinet and container power systems.",
+};
 
 export default function ProductsPage() {
   return (

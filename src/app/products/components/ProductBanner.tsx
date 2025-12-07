@@ -17,7 +17,7 @@ export default function ProductBanner({ activeCategory }: ProductBannerProps) {
 
   useEffect(() => {
     if (videoRef.current && banner.video) {
-      videoRef.current.playbackRate = 0.20; // Set to 25% speed (super slow motion)
+      videoRef.current.playbackRate = 0.5; // Set to 25% speed (super slow motion)
     }
   }, [banner.video, activeCategory]);
 
@@ -31,6 +31,7 @@ export default function ProductBanner({ activeCategory }: ProductBannerProps) {
           autoPlay
           muted
           playsInline
+          {...(activeCategory === "smart-home" && { loop: true })}
           className="w-full h-full md:h-[550px] object-cover"
         />
       ) : (

@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import CarbonChart from "@/components/marketing/CarbonChart";
+
+export const metadata: Metadata = {
+  title: "Case Studies - VoltHub",
+  description: "Explore real-world success stories of VoltHub's energy solutions. See how our products and services have transformed homes, businesses, and communities with clean, reliable power.",
+};
 
 const caseStudies = [
   {
