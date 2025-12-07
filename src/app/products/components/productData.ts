@@ -357,7 +357,7 @@ export const products: Product[] = [
     subtitle: "Small Commercial / Remote Facility",
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
-    image: "/Product/cabinet/item4.png",
+    image: "/Product/cabinet/20k.png",
     images: [
       "/Product/cabinet/item4.png",
       "/Product/cabinet/disc1.png",
