@@ -2,7 +2,8 @@
 
 import CarouselBanner from "@/components/home/CarouselBanner";
 import HoverEffects from "@/components/home/HoverEffects";
-import ProductShowcase from "./components/ProductShowcase";
+// import ProductShowcase from "./components/ProductShowcase";
+import ProductGridShowcase from "./components/ProductGridShowcase";
 import FeaturesSection from "./components/FeaturesSection";
 import StatsSection from "./components/StatsSection";
 import HowItWorksSection from "./components/HowItWorksSection";
@@ -29,10 +30,21 @@ export default function Home() {
       {/* Carousel Banner */}
       <CarouselBanner slides={carouselSlides} autoPlay={true} autoPlayInterval={6000} />
 
-      {/* Product Showcases */}
-      {productShowcases.map((showcase, index) => (
-        <ProductShowcase key={index} {...showcase} />
-      ))}
+      {/* Product Grid Showcase - Combined Section */}
+      <ProductGridShowcase
+        products={productShowcases.map((showcase) => ({
+          badge: showcase.badge,
+          badgeColor: showcase.badgeColor,
+          title: showcase.title,
+          titleParts: showcase.titleParts,
+          description: showcase.description,
+          image: showcase.image,
+          imageAlt: showcase.imageAlt,
+          ctaLink: showcase.ctas[0].href,
+          ctaText: showcase.ctas[0].text,
+          gradientColors: showcase.gradientColors,
+        }))}
+      />
 
     
 

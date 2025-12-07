@@ -66,7 +66,7 @@ export default function ProductShowcase({
       <LayoutContainer>
         <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 items-center">
           {/* Product Image */}
-          <div className={`hidden md:block w-full lg:w-1/2 reveal-on-scroll ${isImageLeft ? "order-1" : "order-2 lg:order-1"}`}>
+          <div className={`block w-full lg:w-1/2 reveal-on-scroll ${isImageLeft ? "order-1" : "order-2 lg:order-1"}`}>
             <div className="relative group">
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${gradientColors.from} ${gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500`}
