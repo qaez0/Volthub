@@ -34,8 +34,14 @@ const navItems: NavItem[] = [
       { label: "Solar Systems", href: "/products?category=solar-street" },
       { label: "EV Chargers", href: "/products?category=ev-charging" },
       { label: "Energy Storage", href: "/products?category=smart-home" },
-      { label: "Cabinet Type Power Supplies", href: "/products?category=cabinet" },
-      { label: "Container Type Power Supplies", href: "/products?category=container" },
+      {
+        label: "Cabinet Type Power Supplies",
+        href: "/products?category=cabinet",
+      },
+      {
+        label: "Container Type Power Supplies",
+        href: "/products?category=container",
+      },
     ],
   },
   {
@@ -57,7 +63,10 @@ const navItems: NavItem[] = [
     dropdown: [
       { label: "Overview", href: "/services" },
       { label: "EV Charging Solutions", href: "/services/ev-charging" },
-      { label: "Solar Energy Installation", href: "/services/solar-installation" },
+      {
+        label: "Solar Energy Installation",
+        href: "/services/solar-installation",
+      },
     ],
   },
   {
@@ -87,7 +96,9 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [dropdownPositions, setDropdownPositions] = useState<Record<string, { top: number; left: number }>>({});
+  const [dropdownPositions, setDropdownPositions] = useState<
+    Record<string, { top: number; left: number }>
+  >({});
   const navItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -127,7 +138,7 @@ const Header = () => {
         const ref = navItemRefs.current[label];
         if (ref) {
           const rect = ref.getBoundingClientRect();
-          const header = document.querySelector('header');
+          const header = document.querySelector("header");
           const headerBottom = header?.getBoundingClientRect().bottom || 0;
           positions[label] = {
             top: headerBottom + 8,
@@ -140,11 +151,11 @@ const Header = () => {
 
     if (openDropdown) {
       updatePositions();
-      window.addEventListener('resize', updatePositions);
-      window.addEventListener('scroll', updatePositions);
+      window.addEventListener("resize", updatePositions);
+      window.addEventListener("scroll", updatePositions);
       return () => {
-        window.removeEventListener('resize', updatePositions);
-        window.removeEventListener('scroll', updatePositions);
+        window.removeEventListener("resize", updatePositions);
+        window.removeEventListener("scroll", updatePositions);
       };
     }
   }, [openDropdown]);
@@ -152,7 +163,10 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (!target.closest(".dropdown-container") && !target.closest(".dropdown-menu")) {
+      if (
+        !target.closest(".dropdown-container") &&
+        !target.closest(".dropdown-menu")
+      ) {
         setOpenDropdown(null);
       }
     };
@@ -228,7 +242,11 @@ const Header = () => {
               >
                 <div className="flex items-center gap-1">
                   <Link
-                    href={hasDropdown && item.dropdown?.[0] ? item.dropdown[0].href : item.href}
+                    href={
+                      hasDropdown && item.dropdown?.[0]
+                        ? item.dropdown[0].href
+                        : item.href
+                    }
                     className={cn(
                       "font-medium transition-all duration-300 relative flex items-center gap-1",
                       isActive(item.href)
@@ -240,7 +258,9 @@ const Header = () => {
                     <span
                       className={cn(
                         "absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300",
-                        isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                        isActive(item.href)
+                          ? "w-full"
+                          : "w-0 group-hover:w-full"
                       )}
                     />
                   </Link>
@@ -248,7 +268,9 @@ const Header = () => {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        setOpenDropdown(openDropdown === item.label ? null : item.label);
+                        setOpenDropdown(
+                          openDropdown === item.label ? null : item.label
+                        );
                       }}
                       className="flex items-center"
                       aria-label="Toggle dropdown"
@@ -269,7 +291,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center space-x-6 ml-8">
           <span className="text-sm font-orbitron text-emerald-200 tracking-widest">
-          +63 9659700823
+            +63 9659700823
           </span>
           <Link
             href="/contact"
@@ -324,6 +346,7 @@ const Header = () => {
             {navItems.map((item) => (
               <div key={item.label}>
                 <Link
+                  onClick={() => setMobileOpen(false)}
                   href={item.href}
                   className="block text-white text-lg font-semibold mb-3"
                 >
@@ -333,6 +356,7 @@ const Header = () => {
                   <div className="pl-4 space-y-2">
                     {item.dropdown.map((link) => (
                       <Link
+                        onClick={() => setMobileOpen(false)}
                         key={getHrefKey(link.href)}
                         href={link.href}
                         className="block text-white/80 hover:text-secondary transition-colors"
@@ -358,53 +382,55 @@ const Header = () => {
       </div>
 
       {/* Dropdowns rendered outside header using portal */}
-      {typeof window !== 'undefined' && openDropdown && navItems
-        .filter(item => item.dropdown && openDropdown === item.label)
-        .map((item) => {
-          const position = dropdownPositions[item.label];
-          if (!position) return null;
+      {typeof window !== "undefined" &&
+        openDropdown &&
+        navItems
+          .filter((item) => item.dropdown && openDropdown === item.label)
+          .map((item) => {
+            const position = dropdownPositions[item.label];
+            if (!position) return null;
 
-          return createPortal(
-            <div
-              key={item.label}
-              className={cn(
-                "fixed w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300 z-9999 dropdown-menu",
-                openDropdown === item.label
-                  ? "opacity-100 visible translate-y-0"
-                  : "opacity-0 invisible translate-y-2"
-              )}
-              style={{
-                top: `${position.top}px`,
-                left: `${position.left}px`,
-              }}
-              onMouseEnter={() => {
-                if (hoverTimeoutRef.current) {
-                  clearTimeout(hoverTimeoutRef.current);
-                  hoverTimeoutRef.current = null;
-                }
-                setOpenDropdown(item.label);
-              }}
-              onMouseLeave={() => {
-                hoverTimeoutRef.current = setTimeout(() => {
-                  setOpenDropdown(null);
-                }, 150);
-              }}
-            >
-              <div className="p-4 space-y-2">
-                {item.dropdown?.map((link) => (
-                  <Link
-                    key={getHrefKey(link.href)}
-                    href={link.href}
-                    className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>,
-            document.body
-          );
-        })}
+            return createPortal(
+              <div
+                key={item.label}
+                className={cn(
+                  "fixed w-64 glass-morphism rounded-2xl shadow-xl transition-all duration-300 z-9999 dropdown-menu",
+                  openDropdown === item.label
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible translate-y-2"
+                )}
+                style={{
+                  top: `${position.top}px`,
+                  left: `${position.left}px`,
+                }}
+                onMouseEnter={() => {
+                  if (hoverTimeoutRef.current) {
+                    clearTimeout(hoverTimeoutRef.current);
+                    hoverTimeoutRef.current = null;
+                  }
+                  setOpenDropdown(item.label);
+                }}
+                onMouseLeave={() => {
+                  hoverTimeoutRef.current = setTimeout(() => {
+                    setOpenDropdown(null);
+                  }, 150);
+                }}
+              >
+                <div className="p-4 space-y-2">
+                  {item.dropdown?.map((link) => (
+                    <Link
+                      key={getHrefKey(link.href)}
+                      href={link.href}
+                      className="block px-3 py-2 rounded-lg text-sm text-black hover:bg-white/10 hover:text-secondary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>,
+              document.body
+            );
+          })}
     </header>
   );
 };
