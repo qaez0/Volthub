@@ -361,7 +361,7 @@ export const products: Product[] = [
     tag: "Off-Grid Power Generation System",
     image: "/Product/cabinet/20k.png",
     images: [
-      "/Product/cabinet/item4.png",
+      "/Product/cabinet/30k.png",
       "/Product/cabinet/disc1.png",
       "/Product/cabinet/disc2.png",
       "/Product/cabinet/disc3.png",

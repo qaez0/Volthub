@@ -657,7 +657,7 @@ export default function SolarInstallation() {
                   solarPanel: "670W*40PCS",
                   price: "₱2,694,050.62",
                   description: "Small community or larger business. Can power small resort (10+ rooms), medium agricultural facility, or cluster of 10-20 households.",
-                  image: "/Product/cabinet/item4.png",
+                  image: "/Product/cabinet/30k.png",
                 },
                 {
                   name: "Off-Grid Power Generation System",
