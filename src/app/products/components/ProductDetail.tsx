@@ -59,6 +59,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "specifications" | "reviews" | "projects">("overview");
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   // Variant-based pricing (for products that define prices on variations)
   const pricedVariations =
@@ -320,10 +321,45 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </div>
           </div>
 
+          {/* Quantity Input */}
+          <div className="pt-2 md:pt-3">
+            <label className="block text-sm md:text-base font-semibold text-slate-900 mb-2">
+              Quantity
+            </label>
+            <div className="flex items-center gap-2 md:gap-3">
+              <button
+                type="button"
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-slate-300 hover:border-primary hover:bg-primary/5 text-slate-700 hover:text-primary transition-all font-bold text-lg"
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value) || 1;
+                  setQuantity(Math.max(1, value));
+                }}
+                className="w-20 md:w-24 h-10 md:h-12 text-center text-base md:text-lg font-semibold border-2 border-slate-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setQuantity((prev) => prev + 1)}
+                className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-slate-300 hover:border-primary hover:bg-primary/5 text-slate-700 hover:text-primary transition-all font-bold text-lg"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
           {/* Get Quote Button - Prominent CTA */}
           <div className="pt-2 md:pt-3">
             <Link
-              href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+              href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}&quantity=${quantity}`}
               className="inline-flex items-center justify-center gap-2 w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-bold px-6 py-2.5 md:px-8 md:py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base md:text-lg group"
             >
               <span>Get Quote</span>
@@ -1559,7 +1595,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
           <Link
-            href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+            href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}&quantity=${quantity}`}
             className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm md:text-base"
           >
             Get Quote
