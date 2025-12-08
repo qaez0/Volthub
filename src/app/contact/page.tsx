@@ -22,6 +22,133 @@ const socialIcons = [
   { icon: RiInstagramLine, href: "https://instagram.com", label: "Visit VoltHub on Instagram" },
 ];
 
+// Philippine Regions, Provinces, and Cities
+// Data based on PhilAtlas (https://www.philatlas.com/)
+const philippineRegions: Record<string, Record<string, string[]>> = {
+  "National Capital Region (NCR)": {
+    "Metro Manila": [
+      "Manila", "Quezon City", "Caloocan", "Las Piñas", "Makati", "Malabon", "Mandaluyong",
+      "Marikina", "Muntinlupa", "Navotas", "Parañaque", "Pasay", "Pasig", "Pateros", "San Juan", "Taguig", "Valenzuela"
+    ]
+  },
+  "Cordillera Administrative Region (CAR)": {
+    "Abra": ["Bangued", "Boliney", "Bucay", "Dolores", "La Paz"],
+    "Apayao": ["Kabugao", "Luna", "Pudtol", "Calanasan", "Conner"],
+    "Benguet": ["Baguio", "La Trinidad", "Itogon", "Mankayan", "Buguias"],
+    "Ifugao": ["Lagawe", "Banaue", "Kiangan", "Hungduan", "Mayoyao"],
+    "Kalinga": ["Tabuk", "Rizal", "Pinukpuk", "Balbalan", "Lubuagan"],
+    "Mountain Province": ["Bontoc", "Barlig", "Bauko", "Besao", "Natonin"]
+  },
+  "Ilocos Region (Region I)": {
+    "Ilocos Norte": ["Laoag", "Batac", "Pagudpud", "San Nicolas", "Vintar"],
+    "Ilocos Sur": ["Vigan", "Candon", "Narvacan", "Santa", "Santiago"],
+    "La Union": ["San Fernando", "Bauang", "Agoo", "Aringay", "Bacnotan"],
+    "Pangasinan": ["Dagupan", "Urdaneta", "Alaminos", "San Carlos", "Lingayen", "Mangaldan", "Calasiao"]
+  },
+  "Cagayan Valley (Region II)": {
+    "Batanes": ["Basco", "Mahatao", "Ivana", "Uyugan", "Sabtang"],
+    "Cagayan": ["Tuguegarao", "Aparri", "Gonzaga", "Ilagan", "Santiago"],
+    "Isabela": ["Ilagan", "Santiago", "Cauayan", "Roxas", "Alicia", "Echague"],
+    "Nueva Vizcaya": ["Bayombong", "Solano", "Bambang", "Diadi", "Villaverde"],
+    "Quirino": ["Cabarroguis", "Maddela", "Diffun", "Saguday", "Nagtipunan"]
+  },
+  "Central Luzon (Region III)": {
+    "Aurora": ["Baler", "Maria Aurora", "Dipaculao", "Dingalan", "San Luis"],
+    "Bataan": ["Balanga", "Mariveles", "Orani", "Dinalupihan", "Limay"],
+    "Bulacan": ["Malolos", "Meycauayan", "Baliuag", "San Jose del Monte", "Marilao", "Santa Maria", "Plaridel"],
+    "Nueva Ecija": ["Cabanatuan", "Gapan", "Muñoz", "Palayan", "San Jose", "Talavera", "Guimba"],
+    "Pampanga": ["Angeles", "San Fernando", "Mabalacat", "Mexico", "Apalit", "Arayat", "Bacolor"],
+    "Tarlac": ["Tarlac", "Concepcion", "Capas", "Paniqui", "Camiling", "Gerona"],
+    "Zambales": ["Olongapo", "Iba", "Subic", "Castillejos", "San Marcelino", "Botolan"]
+  },
+  "CALABARZON (Region IV-A)": {
+    "Batangas": ["Batangas", "Lipa", "Tanauan", "Calaca", "Lemery", "Nasugbu", "Bauan"],
+    "Cavite": ["Cavite", "Dasmariñas", "Tagaytay", "Imus", "Bacoor", "General Trias", "Silang"],
+    "Laguna": ["Calamba", "San Pablo", "Santa Rosa", "Los Baños", "Biñan", "San Pedro", "Cabuyao"],
+    "Quezon": ["Lucena", "Tayabas", "Gumaca", "Infanta", "Sariaya", "Candelaria", "Tiaong"],
+    "Rizal": ["Antipolo", "Cainta", "Taytay", "Angono", "Binangonan", "San Mateo", "Rodriguez"]
+  },
+  "MIMAROPA Region": {
+    "Marinduque": ["Boac", "Gasan", "Mogpog", "Santa Cruz", "Torrijos", "Buenavista"],
+    "Occidental Mindoro": ["Mamburao", "San Jose", "Sablayan", "Calintaan", "Rizal"],
+    "Oriental Mindoro": ["Calapan", "Roxas", "Pinamalayan", "Bongabong", "Bansud", "Gloria"],
+    "Palawan": ["Puerto Princesa", "Coron", "El Nido", "Roxas", "Taytay", "Brooke's Point"],
+    "Romblon": ["Romblon", "Odiongan", "San Fernando", "San Agustin", "Looc", "Santa Fe"]
+  },
+  "Bicol Region (Region V)": {
+    "Albay": ["Legazpi", "Tabaco", "Ligao", "Daraga", "Guinobatan", "Camalig", "Polangui"],
+    "Camarines Norte": ["Daet", "Labo", "Basud", "Jose Panganiban", "Paracale", "Mercedes"],
+    "Camarines Sur": ["Naga", "Iriga", "Pili", "Calabanga", "Sipocot", "Libmanan", "Canaman"],
+    "Catanduanes": ["Virac", "San Andres", "Bato", "Baras", "Caramoran", "Pandan"],
+    "Masbate": ["Masbate", "Mobo", "Aroroy", "Cataingan", "Placer", "Milagros"],
+    "Sorsogon": ["Sorsogon", "Bulan", "Gubat", "Irosin", "Juban", "Magallanes", "Pilar"]
+  },
+  "Western Visayas (Region VI)": {
+    "Aklan": ["Kalibo", "Banga", "New Washington", "Buruanga", "Ibajay", "Makato"],
+    "Antique": ["San Jose de Buenavista", "Culasi", "Tibiao", "Hamtic", "Sibalom", "Patnongon"],
+    "Capiz": ["Roxas", "Dao", "Pilar", "Panay", "Sigma", "Mambusao", "Sapian"],
+    "Guimaras": ["Jordan", "Buenavista", "Nueva Valencia", "San Lorenzo", "Sibunag"],
+    "Iloilo": ["Iloilo", "Passi", "Oton", "Dingle", "Dumangas", "Pavia", "Santa Barbara"]
+  },
+  "Central Visayas (Region VII)": {
+    "Bohol": ["Tagbilaran", "Jagna", "Tubigon", "Carmen", "Dauis", "Panglao", "Corella"],
+    "Cebu": ["Cebu", "Lapu-Lapu", "Mandaue", "Talisay", "Toledo", "Danao", "Carcar", "Naga"]
+  },
+  "Eastern Visayas (Region VIII)": {
+    "Biliran": ["Naval", "Almeria", "Biliran", "Cabucgayan", "Caibiran", "Culaba"],
+    "Eastern Samar": ["Borongan", "Guiuan", "Dolores", "Maydolong", "Quinapondan", "Salcedo"],
+    "Leyte": ["Tacloban", "Ormoc", "Baybay", "Maasin", "Carigara", "Palo", "Tanauan"],
+    "Northern Samar": ["Catarman", "Laoang", "Allen", "Bobon", "Capul", "Lavezares"],
+    "Samar": ["Calbayog", "Catbalogan", "Basey", "Paranas", "Gandara", "Tarangnan"],
+    "Southern Leyte": ["Maasin", "Sogod", "Hinunangan", "Hinunangan", "Malitbog", "Padre Burgos"]
+  },
+  "Zamboanga Peninsula (Region IX)": {
+    "Zamboanga del Norte": ["Dipolog", "Dapitan", "Roxas", "Polanco", "Katipunan", "Sindangan"],
+    "Zamboanga del Sur": ["Zamboanga", "Pagadian", "Molave", "Aurora", "Dimataling", "Dinas"],
+    "Zamboanga Sibugay": ["Ipil", "Titay", "Tungawan", "R.T. Lim", "Alicia", "Buug"]
+  },
+  "Northern Mindanao (Region X)": {
+    "Bukidnon": ["Malaybalay", "Valencia", "Manolo Fortich", "Maramag", "Quezon", "Don Carlos"],
+    "Camiguin": ["Mambajao", "Mahinog", "Guinsiliban", "Sagay", "Catarman"],
+    "Lanao del Norte": ["Iligan", "Tubod", "Baroy", "Kapatagan", "Lala", "Sultan Naga Dimaporo"],
+    "Misamis Occidental": ["Oroquieta", "Ozamiz", "Tangub", "Plaridel", "Clarin", "Jimenez"],
+    "Misamis Oriental": ["Cagayan de Oro", "Gingoog", "El Salvador", "Tagoloan", "Villanueva", "Opol"]
+  },
+  "Davao Region (Region XI)": {
+    "Davao de Oro": ["Nabunturan", "Monkayo", "Compostela", "Maco", "Mawab", "New Bataan"],
+    "Davao del Norte": ["Tagum", "Panabo", "Island Garden City of Samal", "Carmen", "Asuncion", "Kapalong"],
+    "Davao del Sur": ["Davao", "Digos", "Santa Cruz", "Bansalan", "Magsaysay", "Matanao"],
+    "Davao Occidental": ["Malita", "Don Marcelino", "Jose Abad Santos", "Santa Maria", "Sarangani"],
+    "Davao Oriental": ["Mati", "Lupon", "Banaybanay", "Caraga", "Cateel", "Manay", "Baganga"]
+  },
+  "SOCCSKSARGEN (Region XII)": {
+    "Cotabato": ["Kidapawan", "Midsayap", "Kabacan", "Koronadal", "Tulunan", "Makilala"],
+    "Sarangani": ["Alabel", "Glan", "Malapatan", "Malungon", "Maasim", "Kiamba"],
+    "South Cotabato": ["Koronadal", "General Santos", "Tacurong", "Tupi", "Polomolok", "Surallah"],
+    "Sultan Kudarat": ["Isulan", "Tacurong", "Esperanza", "Bagumbayan", "Columbio", "Lutayan"]
+  },
+  "Caraga (Region XIII)": {
+    "Agusan del Norte": ["Butuan", "Cabadbaran", "Nasipit", "Carmen", "Buenavista", "Magallanes"],
+    "Agusan del Sur": ["Prosperidad", "Bayugan", "San Francisco", "Bunawan", "La Paz", "Rosario"],
+    "Dinagat Islands": ["San Jose", "Tubajon", "Basilisa", "Cagdianao", "Dinagat", "Libjo"],
+    "Surigao del Norte": ["Surigao", "Placer", "Bacuag", "Claver", "Gigaquit", "Mainit"],
+    "Surigao del Sur": ["Tandag", "Bislig", "Lianga", "Barobo", "Cagwait", "Cantilan"]
+  },
+  "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)": {
+    "Basilan": ["Lamitan", "Isabela", "Maluso", "Tipo-Tipo", "Sumisip", "Lantawan"],
+    "Lanao del Sur": ["Marawi", "Malabang", "Wao", "Balabagan", "Bayang", "Binidayan"],
+    "Maguindanao del Norte": ["Datu Odin Sinsuat", "Buluan", "Datu Piang", "Matanog", "Parang"],
+    "Maguindanao del Sur": ["Buluan", "Datu Paglas", "Shariff Aguak", "Ampatuan", "Datu Hoffer"],
+    "Sulu": ["Jolo", "Patikul", "Indanan", "Luuk", "Maimbung", "Parang"],
+    "Tawi-Tawi": ["Bongao", "Sitangkai", "Tandubas", "Languyan", "Panglima Sugala", "Sapa-Sapa"]
+  },
+  "Negros Island Region (NIR)": {
+    "Negros Occidental": ["Bacolod", "Cadiz", "San Carlos", "Sagay", "Silay", "Talisay", "Bago", "Escalante"],
+    "Negros Oriental": ["Dumaguete", "Bais", "Bayawan", "Canlaon", "Guihulngan", "Tanjay", "Valencia"],
+    "Siquijor": ["Siquijor", "Larena", "Lazi", "Enrique Villanueva", "Maria", "San Juan"]
+  }
+};
+
 function ContactForm() {
   const searchParams = useSearchParams();
   const [formState, setFormState] = useState({
@@ -29,6 +156,9 @@ function ContactForm() {
     lastName: "",
     email: "",
     phone: "",
+    region: "",
+    province: "",
+    city: "",
     interest: "",
     details: "",
   });
@@ -44,6 +174,8 @@ function ContactForm() {
     const product = searchParams.get("product");
     const model = searchParams.get("model");
     const productName = searchParams.get("productName");
+    const quantity = searchParams.get("quantity");
+    const price = searchParams.get("price");
 
     // If interest is directly provided, use it
     if (interest) {
@@ -121,10 +253,25 @@ function ContactForm() {
         detailsText += ` (Model: ${model})`;
       }
       
+      // Add the details text sentence
       if (subject === "installation") {
         detailsText += ". Please contact me to discuss installation options and scheduling.";
       } else {
         detailsText += ". Please contact me with pricing and availability information.";
+      }
+      
+      // Add quantity and price below the details text
+      if (quantity || price) {
+        detailsText += "\n\n";
+        if (quantity) {
+          detailsText += `Quantity: ${quantity}`;
+        }
+        if (quantity && price) {
+          detailsText += "\n";
+        }
+        if (price) {
+          detailsText += `Starting Price: ${price}`;
+        }
       }
       
       setFormState((prev) => ({ ...prev, details: detailsText }));
@@ -186,11 +333,27 @@ function ContactForm() {
   }, [isDropdownOpen]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormState((prev) => ({ ...prev, [name]: value }));
+    if (name === "region") {
+      // Reset province and city when region changes
+      setFormState((prev) => ({ ...prev, [name]: value, province: "", city: "" }));
+    } else if (name === "province") {
+      // Reset city when province changes
+      setFormState((prev) => ({ ...prev, [name]: value, city: "" }));
+    } else {
+      setFormState((prev) => ({ ...prev, [name]: value }));
+    }
   };
+
+  const availableProvinces = formState.region 
+    ? Object.keys(philippineRegions[formState.region] || {})
+    : [];
+
+  const availableCities = (formState.region && formState.province)
+    ? philippineRegions[formState.region]?.[formState.province] || []
+    : [];
 
   const interestOptions = [
     { value: "", label: "Select Interest" },
@@ -255,6 +418,9 @@ function ContactForm() {
         lastName: "",
         email: "",
         phone: "",
+        region: "",
+        province: "",
+        city: "",
         interest: "",
         details: "",
       });
@@ -324,6 +490,56 @@ function ContactForm() {
                       className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-secondary"
                     />
                   ))}
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <select
+                      name="region"
+                      value={formState.region}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+                    >
+                      <option value="" className="bg-gray-800">Select Region</option>
+                      {Object.keys(philippineRegions).map((region) => (
+                        <option key={region} value={region} className="bg-gray-800">
+                          {region}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      name="province"
+                      value={formState.province}
+                      onChange={handleChange}
+                      required
+                      disabled={!formState.region}
+                      className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <option value="" className="bg-gray-800">
+                        {formState.region ? "Select Province" : "Select Region First"}
+                      </option>
+                      {availableProvinces.map((province) => (
+                        <option key={province} value={province} className="bg-gray-800">
+                          {province}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      name="city"
+                      value={formState.city}
+                      onChange={handleChange}
+                      required
+                      disabled={!formState.province}
+                      className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <option value="" className="bg-gray-800">
+                        {formState.province ? "Select City" : "Select Province First"}
+                      </option>
+                      {availableCities.map((city) => (
+                        <option key={city} value={city} className="bg-gray-800">
+                          {city}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div className="relative overflow-visible z-50" ref={dropdownRef}>
                     <button
                       type="button"

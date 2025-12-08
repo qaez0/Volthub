@@ -70,7 +70,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                     {commercialProduct.description}
                   </p>
                   <Link
-                    href={commercialProduct.ctaLink}
+                    href="/products?category=cabinet"
                     className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     {commercialProduct.ctaText}
@@ -112,10 +112,10 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   {residentialProduct.description}
                 </p>
                 <Link
-                  href={residentialProduct.ctaLink}
+                  href="/products?category=ev-charging"
                   className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Learn More
+                  View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
                 </Link>
               </div>
@@ -153,10 +153,10 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   {advancedProduct.description}
                 </p>
                 <Link
-                  href={advancedProduct.ctaLink}
+                  href="/products?category=solar-street"
                   className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Learn More
+                  View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
                 </Link>
               </div>
@@ -194,10 +194,10 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   {homeProduct.description}
                 </p>
                 <Link
-                  href={homeProduct.ctaLink}
+                  href="/products?category=smart-home"
                   className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Learn More
+                  View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
                 </Link>
               </div>

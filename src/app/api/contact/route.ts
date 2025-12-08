@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
-    const { firstName, lastName, email, phone, interest, details } =
+    const { firstName, lastName, email, phone, region, province, city, interest, details } =
       await request.json();
 
     const interestLabels: Record<string, string> = {
@@ -44,13 +44,16 @@ export async function POST(request: Request) {
     const subject = `${interestLabel} - ${firstName} ${lastName}`;
 
     const bodyLines = [
-      "Tell us about your project details:",
+      "",
       "",
       details || "",
       "",
       `${firstName} ${lastName}`,
       phone ? `Phone Number: ${phone}` : "",
       email ? `Email Address: ${email}` : "",
+      region ? `Region: ${region}` : "",
+      province ? `Province: ${province}` : "",
+      city ? `City: ${city}` : "",
     ].filter(Boolean);
 
     const body = bodyLines.join("\n");
