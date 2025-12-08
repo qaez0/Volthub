@@ -479,7 +479,7 @@ export default function SolarInstallation() {
                       {light.price}
                     </div>
                     <Link
-                      href={`/contact?subject=installation&product=solar-installation&model=${encodeURIComponent(light.model || light.type)}&productName=${encodeURIComponent(light.type)}`}
+                      href={`/contact?subject=installation&product=solar-installation&model=${encodeURIComponent(light.model || light.type)}&productName=${encodeURIComponent(light.type)}&price=${encodeURIComponent(light.price)}`}
                       className="block w-full bg-green-600 text-white py-2 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors text-sm"
                     >
                       Request Installation

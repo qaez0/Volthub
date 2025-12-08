@@ -283,7 +283,7 @@ export default function EVChargingSolutions() {
                       ))}
                     </ul>
                     <Link
-                      href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(charger.model)}&productName=${encodeURIComponent(charger.type)}`}
+                      href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(charger.model)}&productName=${encodeURIComponent(charger.type)}&price=${encodeURIComponent(charger.price)}`}
                       className={`block w-full ${colorClasses[charger.color as keyof typeof colorClasses]} text-white py-3 rounded-xl font-semibold text-center transition-colors`}
                     >
                       Request Installation

@@ -166,6 +166,7 @@ function ContactForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
+  const [isDetailsReadOnly, setIsDetailsReadOnly] = useState(false);
 
   // Pre-fill form based on URL parameters
   useEffect(() => {
@@ -270,13 +271,33 @@ function ContactForm() {
           detailsText += "\n";
         }
         if (price) {
-          detailsText += `Starting Price: ${price}`;
+          // For installation, use "Price" instead of "Starting Price"
+          const priceLabel = subject === "installation" ? "Unit Price" : "Starting Price";
+          detailsText += `${priceLabel}: ${price}`;
         }
       }
       
       setFormState((prev) => ({ ...prev, details: detailsText }));
+      
+      // Make details and interest readonly if price is present (came from product/installation page)
+      if (price) {
+        setIsDetailsReadOnly(true);
+      } else {
+        setIsDetailsReadOnly(false);
+      }
+    } else {
+      // If no product page parameters, allow editing
+      setIsDetailsReadOnly(false);
     }
   }, [searchParams]);
+
+  // Clear details when component unmounts or user navigates away
+  useEffect(() => {
+    return () => {
+      setFormState((prev) => ({ ...prev, details: "" }));
+      setIsDetailsReadOnly(false);
+    };
+  }, []);
 
   // Calculate dropdown position and max height
   useEffect(() => {
@@ -543,8 +564,11 @@ function ContactForm() {
                   <div className="relative overflow-visible z-50" ref={dropdownRef}>
                     <button
                       type="button"
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="w-full px-4 py-5 md:py-3 pr-14 md:pr-10 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-secondary text-left text-xl md:text-base touch-manipulation min-h-[60px] md:min-h-[48px] flex items-center justify-between"
+                      onClick={() => !isDetailsReadOnly && setIsDropdownOpen(!isDropdownOpen)}
+                      disabled={isDetailsReadOnly}
+                      className={`w-full px-4 py-5 md:py-3 pr-14 md:pr-10 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-secondary text-left text-xl md:text-base touch-manipulation min-h-[60px] md:min-h-[48px] flex items-center justify-between ${
+                        isDetailsReadOnly ? "opacity-70 cursor-not-allowed" : ""
+                      }`}
                       style={{
                         fontSize: '20px',
                         lineHeight: '1.6',
@@ -570,12 +594,13 @@ function ContactForm() {
                           <button
                             key={option.value}
                             type="button"
-                            onClick={() => handleInterestChange(option.value)}
+                            onClick={() => !isDetailsReadOnly && handleInterestChange(option.value)}
+                            disabled={isDetailsReadOnly}
                             className={`w-full px-5 py-4 md:py-3 text-left text-xl md:text-base transition-colors touch-manipulation min-h-[56px] md:min-h-[48px] flex items-center ${
                               formState.interest === option.value
                                 ? 'bg-primary/30 text-secondary font-semibold'
                                 : 'text-white hover:bg-white/10'
-                            }`}
+                            } ${isDetailsReadOnly ? 'opacity-50 cursor-not-allowed' : ''}`}
                             style={{
                               fontSize: '20px',
                               lineHeight: '1.6',
@@ -597,9 +622,13 @@ function ContactForm() {
                     name="details"
                     value={formState.details}
                     onChange={handleChange}
+                    readOnly={isDetailsReadOnly}
+                    disabled={isDetailsReadOnly}
                     rows={4}
                     placeholder="Tell us about your project..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-secondary resize-none"
+                    className={`w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-secondary resize-none ${
+                      isDetailsReadOnly ? "opacity-70 cursor-not-allowed" : ""
+                    }`}
                   />
                   <button
                     type="submit"
