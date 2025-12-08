@@ -565,8 +565,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             >
               <span className="flex items-center gap-1 md:gap-2">
                 <RiMapPinLine className="h-3 w-3 md:h-4 md:w-4" />
-                <span className="hidden sm:inline">{isEVProduct || isCabinetProduct ? "Applicable Spaces" : "Sample Projects"}</span>
-                <span className="sm:hidden">{isEVProduct || isCabinetProduct ? "Spaces" : "Projects"}</span>
+                <span className="hidden sm:inline">{isEVProduct || isCabinetProduct || isSmartHomeProduct ? "Applicable Spaces" : "Sample Projects"}</span>
+                <span className="sm:hidden">{isEVProduct || isCabinetProduct || isSmartHomeProduct ? "Spaces" : "Projects"}</span>
               </span>
             </button>
           </nav>
@@ -871,7 +871,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {activeTab === "projects" && (
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">
-                {isEVProduct || isCabinetProduct ? "Applicable Spaces" : (isSmartHomeProduct || isContainerProduct) ? "Applicable Scenarios" : "Sample Projects"}
+                {isEVProduct || isCabinetProduct || isSmartHomeProduct ? "Applicable Spaces" : isContainerProduct ? "Applicable Scenarios" : "Sample Projects"}
               </h3>
               {isContainerProduct ? (
                 <div className="space-y-4 md:space-y-6">
@@ -1038,64 +1038,63 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       : product.id === "smart-home-smp6"
                       ? "Suitable for off-grid homes or lodges that must run all night, cold storage rooms for small agri businesses, and small hospitals/clinics needing longer uptime."
                       : product.id === "smart-home-smp7"
-                      ? "Suitable for off-grid communities, remote resorts, island communities, telecom towers, and farms with integrated systems."
+                      ? "Suitable for off-grid homes or lodges that must run all night, cold storage rooms for small agri businesses, and small hospitals/clinics needing longer uptime."
                       : "Suitable for various places such as villas, small businesses, construction sites, farmer breeding, remote pastoral areas, islands, communication base stations, etc."
                     }
                   </p>
                   <div className="flex flex-wrap gap-3 md:gap-4">
                     {(product.id === "smart-home-smp2" 
                       ? [
-                          { title: "Small Houses", description: "Backup power for small houses during brownouts" },
-                          { title: "Small Businesses", description: "Sari-sari store lights + small freezer for a few hours" },
-                          { title: "Construction Sites", description: "Construction site office power supply" },
-                          { title: "Off-Grid Tiny Homes", description: "Power for off-grid tiny homes and farm huts" },
-                          { title: "Farm Huts", description: "Rural farm hut power solutions" },
-                          { title: "Power Shortage Areas", description: "Backup power for areas with unreliable grid" },
+                          { title: "Small Houses", description: "Backup power for small houses during brownouts", image: "/Product/SmartHome/2B/loc1.png" },
+                          { title: "Small Businesses", description: "Sari-sari store lights + small freezer for a few hours", image: "/Product/SmartHome/2B/loc2.png" },
+                          { title: "Construction Sites", description: "Construction site office power supply", image: "/Product/SmartHome/2B/loc3.png" },
+                          { title: "Off-Grid Tiny Homes", description: "Power for off-grid tiny homes and farm huts", image: "/Product/SmartHome/2B/loc4.png" },
+                          { title: "Farm Huts", description: "Rural farm hut power solutions", image: "/Product/SmartHome/2B/loc5.png" },
                         ]
                       : product.id === "smart-home-smp3"
                       ? [
-                          { title: "Urban Homes", description: "Backup power for urban homes during long brownouts" },
-                          { title: "Small Clinics", description: "Power supply for small medical clinics" },
-                          { title: "Small Offices", description: "Backup power for small office spaces" },
-                          { title: "BPO Satellite Offices", description: "Power for BPO satellite office locations" },
-                          { title: "Internet Cafés", description: "Reliable power for internet café operations" },
-                          { title: "Resort Cottages", description: "Small resort cottage / Airbnb unit power supply" },
+                          { title: "Urban Homes", description: "Backup power for urban homes during long brownouts", image: "/Product/SmartHome/3B/loc1.png" },
+                          { title: "Small Clinics", description: "Power supply for small medical clinics", image: "/Product/SmartHome/3B/loc2.png" },
+                          { title: "Small Offices", description: "Backup power for small office spaces", image: "/Product/SmartHome/3B/loc3.png" },
+                          { title: "BPO Satellite Offices", description: "Power for BPO satellite office locations", image: "/Product/SmartHome/3B/loc4.png" },
+                          { title: "Internet Cafés", description: "Reliable power for internet café operations", image: "/Product/SmartHome/3B/loc5.png" },
+                          { title: "Resort Cottages", description: "Small resort cottage / Airbnb unit power supply", image: "/Product/SmartHome/3B/loc6.png" },
                         ]
                       : product.id === "smart-home-smp4"
                       ? [
-                          { title: "Rural Homes", description: "Rural homes with frequent long outages" },
-                          { title: "Stores with Freezers", description: "Stores with freezers (meat, ice cream) that must stay cold overnight" },
-                          { title: "Cell Sites", description: "Small cell sites/telecom repeaters wanting longer autonomy" },
-                          { title: "Telecom Repeaters", description: "Telecom infrastructure requiring extended backup power" },
-                          { title: "Long Outage Areas", description: "Areas with frequent and extended power outages" },
-                          { title: "Cold Storage", description: "Commercial applications requiring overnight refrigeration" },
+                          { title: "Rural Homes", description: "Rural homes with frequent long outages", image: "/Product/SmartHome/4B/loc1.png" },
+                          { title: "Stores with Freezers", description: "Stores with freezers (meat, ice cream) that must stay cold overnight", image: "/Product/SmartHome/4B/loc2.png" },
+                          { title: "Cell Sites", description: "Small cell sites/telecom repeaters wanting longer autonomy", image: "/Product/SmartHome/4B/loc3.png" },
+                          { title: "Telecom Repeaters", description: "Telecom infrastructure requiring extended backup power", image: "/Product/SmartHome/4B/loc4.png" },
+                          { title: "Long Outage Areas", description: "Areas with frequent and extended power outages", image: "/Product/SmartHome/4B/loc5.png" },
+                          { title: "Cold Storage", description: "Commercial applications requiring overnight refrigeration", image: "/Product/SmartHome/4B/loc6.png" },
                         ]
                       : product.id === "smart-home-smp5"
                       ? [
-                          { title: "Large Homes", description: "Large homes with multiple AC units" },
-                          { title: "Resorts & Beach Houses", description: "Small resorts or beach houses (several rooms + common area)" },
-                          { title: "Restaurants", description: "Restaurants requiring reliable power for operations" },
-                          { title: "Bakeries", description: "Bakeries with light machinery and equipment" },
-                          { title: "Small Manufacturing", description: "Small manufacturing with light machinery" },
-                          { title: "Community Facilities", description: "Barangay halls, schools, classrooms, and evacuation centers" },
+                          { title: "Large Homes", description: "Large homes with multiple AC units", image: "/Product/SmartHome/5B/loc1.png" },
+                          { title: "Resorts & Beach Houses", description: "Small resorts or beach houses (several rooms + common area)", image: "/Product/SmartHome/5B/loc2.png" },
+                          { title: "Restaurants", description: "Restaurants requiring reliable power for operations", image: "/Product/SmartHome/5B/loc3.png" },
+                          { title: "Bakeries", description: "Bakeries with light machinery and equipment", image: "/Product/SmartHome/5B/loc4.png" },
+                          { title: "Small Manufacturing", description: "Small manufacturing with light machinery", image: "/Product/SmartHome/5B/loc5.png" },
+                          { title: "Community Facilities", description: "Barangay halls, schools, classrooms, and evacuation centers", image: "/Product/SmartHome/5B/loc6.png" },
                         ]
                       : product.id === "smart-home-smp6"
                       ? [
-                          { title: "Off-Grid Homes", description: "Off-grid homes or lodges that must run all night" },
-                          { title: "Cold Storage", description: "Cold storage rooms for small agri businesses" },
-                          { title: "Small Hospitals", description: "Small hospitals/clinics needing longer uptime for equipment" },
-                          { title: "Clinics", description: "Small-scale medical facilities requiring extended backup" },
-                          { title: "All-Night Operations", description: "Applications requiring full day-night cycle backup" },
-                          { title: "Extended Backup", description: "Systems needing longer-lasting storage for moderate loads" },
+                          { title: "Off-Grid Homes", description: "Off-grid homes or lodges that must run all night", image: "/Product/SmartHome/6B/loc1.png" },
+                          { title: "Cold Storage", description: "Cold storage rooms for small agri businesses", image: "/Product/SmartHome/6B/loc2.png" },
+                          { title: "Small Hospitals", description: "Small hospitals/clinics needing longer uptime for equipment", image: "/Product/SmartHome/6B/loc3.png" },
+                          { title: "Clinics", description: "Small-scale medical facilities requiring extended backup", image: "/Product/SmartHome/6B/loc4.png" },
+                          { title: "All-Night Operations", description: "Applications requiring full day-night cycle backup", image: "/Product/SmartHome/6B/loc5.png" },
+                          { title: "Extended Backup", description: "Systems needing longer-lasting storage for moderate loads", image: "/Product/SmartHome/6B/loc6.png" },
                         ]
                       : product.id === "smart-home-smp7"
                       ? [
-                          { title: "Off-Grid Communities", description: "Off-grid communities (several houses sharing one system)" },
-                          { title: "Remote Resorts", description: "Remote resorts and island communities" },
-                          { title: "Island Communities", description: "Island communities requiring mini-microgrid solutions" },
-                          { title: "Telecom Towers", description: "Telecom towers + equipment shelters" },
-                          { title: "Integrated Farms", description: "Farms with pumps, cold storage, and house all in one system" },
-                          { title: "Mini-Microgrids", description: "Shared energy systems for multiple users" },
+                          { title: "Off-Grid Homes", description: "Off-grid homes or lodges that must run all night", image: "/Product/SmartHome/6B/loc1.png" },
+                          { title: "Cold Storage", description: "Cold storage rooms for small agri businesses", image: "/Product/SmartHome/6B/loc2.png" },
+                          { title: "Small Hospitals", description: "Small hospitals/clinics needing longer uptime for equipment", image: "/Product/SmartHome/6B/loc3.png" },
+                          { title: "Clinics", description: "Small-scale medical facilities requiring extended backup", image: "/Product/SmartHome/6B/loc4.png" },
+                          { title: "All-Night Operations", description: "Applications requiring full day-night cycle backup", image: "/Product/SmartHome/6B/loc5.png" },
+                          { title: "Extended Backup", description: "Systems needing longer-lasting storage for moderate loads", image: "/Product/SmartHome/6B/loc6.png" },
                         ]
                       : [
                           { title: "Villas", description: "Residential solar power for luxury homes" },
@@ -1114,12 +1113,28 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         key={index}
                         className="w-full md:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)] group bg-white rounded-xl p-4 md:p-5 border border-slate-200 hover:border-primary/50 hover:shadow-md transition-all cursor-pointer"
                       >
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
-                          </div>
-                          <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
-                        </div>
+                        {('image' in scenario && scenario.image && (product.id === "smart-home-smp2" || product.id === "smart-home-smp3" || product.id === "smart-home-smp4" || product.id === "smart-home-smp5" || product.id === "smart-home-smp6" || product.id === "smart-home-smp7")) ? (
+                          <>
+                            <div className="relative w-full h-32 md:h-40 mb-3 rounded-lg overflow-hidden bg-slate-100">
+                              <Image
+                                src={scenario.image}
+                                alt={scenario.title}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                            </div>
+                            <h4 className="font-semibold text-sm md:text-base text-slate-900 mb-2">{scenario.title}</h4>
+                          </>
+                        ) : (
+                          <>
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                <RiMapPinLine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                              </div>
+                              <h4 className="font-semibold text-sm md:text-base text-slate-900">{scenario.title}</h4>
+                            </div>
+                          </>
+                        )}
                         <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{scenario.description}</p>
                       </div>
                     ))}
