@@ -51,7 +51,7 @@ export default function Services() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href="/contact?interest=general-inquiry&subject=quote"
+                href="/contact?interest=general-inquiry&subject=consultation"
                 className="group bg-linear-to-r from-secondary to-yellow-400 text-black px-10 py-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap transform hover:scale-105 glow-effect"
               >
                 <span className="flex items-center justify-center space-x-2">

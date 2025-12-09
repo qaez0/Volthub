@@ -248,7 +248,10 @@ const Header = () => {
                 </Link>
                 {item.dropdown ? (
                   <div className="pl-4 space-y-2">
-                    {item.dropdown.map((link) => (
+                    {(item.label === "Services"
+                      ? item.dropdown.filter((link) => link.label !== "Overview")
+                      : item.dropdown
+                    ).map((link) => (
                       <Link
                         onClick={() => setMobileOpen(false)}
                         key={getHrefKey(link.href)}

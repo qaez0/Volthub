@@ -66,7 +66,7 @@ const footerColumns = [
   {
     heading: "Services",
     links: [
-      { label: "Overview", href: "/services" },
+      // { label: "Overview", href: "/services" },
       { label: "EV Charging Solutions", href: "/services/ev-charging" },
       {
         label: "Solar Energy Installation",
@@ -101,12 +101,12 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white py-8 md:py-16">
-      <LayoutContainer>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-8 md:mb-12">
+      <LayoutContainer >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[25%_21%_1fr_20%_1fr] gap-2 md:gap-3 lg:gap-2 mb-8 md:mb-12">
           {/* Brand Section - Always visible */}
-          <div className="md:col-span-2 lg:col-span-1">
+          <div>
             <div className="flex items-center space-x-3 mb-4 md:mb-6">
-              <span className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden bg-white flex items-center justify-center flex-shrink-0">
+              <span className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
                 <Image
                   src="/logo.jpg"
                   alt="VoltHub logo"
@@ -171,7 +171,7 @@ const Footer = () => {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm md:text-base hover:text-white transition-colors block py-1 md:py-0"
+                        className="text-sm md:text-base hover:text-white transition-colors inline-block"
                       >
                         {link.label}
                       </Link>

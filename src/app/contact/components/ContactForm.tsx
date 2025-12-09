@@ -83,8 +83,21 @@ export default function ContactForm() {
         const interestLabel = interestLabels[interest] || interest.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
         const detailsText = `I would like to request installation for ${interestLabel}. Please contact me to discuss installation options and scheduling.`;
         setFormState((prev) => ({ ...prev, details: detailsText }));
+      } else if (subject === "consultation") {
+        // const interestLabels: Record<string, string> = {
+        //   "general-inquiry": "General Inquiry",
+        //   "residential-solutions": "Residential Solutions",
+        //   "commercial-solutions": "Commercial Solutions",
+        //   "industrial-solutions": "Industrial Solutions",
+        //   "rural-projects": "Rural Projects",
+        //   "ev-charging-installation": "EV Charging Installation",
+        //   "solar-energy-installation": "Solar Energy Installation",
+        // };
+        // const interestLabel = interestLabels[interest] || interest.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
+        const detailsText = `I would like to schedule a consultation. Please contact me to arrange a meeting.`;
+        setFormState((prev) => ({ ...prev, details: detailsText }));
       }
-    } else if (subject === "installation" || subject === "quote") {
+    } else if (subject === "installation" || subject === "quote" || subject === "consultation") {
       // Set interest based on product type
       if (product) {
         let interestValue = "";
@@ -112,6 +125,8 @@ export default function ContactForm() {
       let detailsText = "";
       if (subject === "installation") {
         detailsText = "I would like to request installation for ";
+      } else if (subject === "consultation") {
+        detailsText = "I would like to schedule a consultation for ";
       } else {
         detailsText = "I would like to request a quote for ";
       }
@@ -131,6 +146,8 @@ export default function ContactForm() {
       // Add the details text sentence
       if (subject === "installation") {
         detailsText += ". Please contact me to discuss installation options and scheduling.";
+      } else if (subject === "consultation") {
+        detailsText += ". Please contact me to arrange a meeting.";
       } else {
         detailsText += ". Please contact me with pricing and availability information.";
       }
