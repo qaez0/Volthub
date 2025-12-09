@@ -48,19 +48,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     (p) => p.category === product.category && p.id !== product.id
   );
   
-  // Get all images (main image + additional images)
-  const allImages = useMemo(() => 
-    product.images && product.images.length > 0 
-      ? product.images 
-      : [product.image],
-    [product.images, product.image]
-  );
-  const [selectedImage, setSelectedImage] = useState(allImages[0]);
-  const [activeTab, setActiveTab] = useState<"overview" | "specifications" | "reviews" | "projects">("overview");
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [modalImageIndex, setModalImageIndex] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-
   // Variant-based pricing (for products that define prices on variations)
   const pricedVariations =
     details?.variations?.filter(
@@ -73,6 +60,45 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const selectedVariant =
     pricedVariations.length > 0 ? pricedVariations[selectedVariantIndex] : undefined;
+
+  // Get all images (main image + additional images + variant image if selected)
+  const allImages = useMemo(() => {
+    const baseImages = product.images && product.images.length > 0 
+      ? product.images 
+      : [product.image];
+
+    // For cabinet-item4: show the selected variant image + disc images only
+    if (product.id === "cabinet-item4" && selectedVariant?.image) {
+      const discImages = baseImages.filter((img) => img.includes("disc"));
+      return [selectedVariant.image, ...discImages];
+    }
+    
+    // For cabinet-14: filter out variant-specific images and show only the selected variant's image
+    if (product.id === "cabinet-14" && selectedVariant?.image) {
+      const filteredImages = baseImages.filter((img) => 
+        !img.includes("/cb14/215.png") &&
+        !img.includes("/cb14/233.png") &&
+        !img.includes("/cb14/261.png")
+      );
+      return [selectedVariant.image, ...filteredImages];
+    }
+    
+    // For cabinet-15: filter out variant-specific images and show only the selected variant's image
+    if (product.id === "cabinet-15" && selectedVariant?.image) {
+      const filteredImages = baseImages.filter((img) => 
+        !img.includes("/cb15/466.png") &&
+        !img.includes("/cb15/522.png")
+      );
+      return [selectedVariant.image, ...filteredImages];
+    }
+    
+    return baseImages;
+  }, [product.images, product.image, product.id, selectedVariant?.image]);
+  const [selectedImage, setSelectedImage] = useState(() => allImages[0] || product.image);
+  const [activeTab, setActiveTab] = useState<"overview" | "specifications" | "reviews" | "projects">("overview");
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const currentPrice =
     pricedVariations.length > 0
       ? pricedVariations[selectedVariantIndex]?.price ?? product.price

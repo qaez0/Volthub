@@ -295,6 +295,7 @@ export const products: Product[] = [
       "/Product/SmartHome/disc4.png",
       "/Product/SmartHome/5B/prod1.png",
       "/Product/SmartHome/5B/prod2.png",
+      "/Product/SmartHome/5B/prod9.png",
     ],
     price: "₱838,344.15",
   },
@@ -340,6 +341,12 @@ export const products: Product[] = [
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
     image: "/Product/cabinet/200kwh.png",
+    images: [
+      "/Product/cabinet/200kwh.png",
+      "/Product/cabinet/cb14/prod2.png",
+      "/Product/cabinet/cb14/prod3.png",
+      "/Product/cabinet/cb14/prod4.png",
+    ],
     price: "₱7,754,538.15",
   },
   {
@@ -349,6 +356,12 @@ export const products: Product[] = [
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
     image: "/Product/cabinet/500kwh.png",
+    images: [
+      "/Product/cabinet/500kwh.png",
+      "/Product/cabinet/cb15/prod1.png",
+      "/Product/cabinet/cb15/prod2.png",
+      "/Product/cabinet/cb14/prod2.png",
+    ],
     price: "₱17,256,213.80",
   },
   {
@@ -358,6 +371,13 @@ export const products: Product[] = [
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
     image: "/Product/cabinet/700kwh.png",
+    images: [
+      "/Product/cabinet/700kwh.png",
+      "/Product/cabinet/cb16/prod1.png",
+      "/Product/cabinet/cb16/prod2.png",
+      "/Product/cabinet/cb16/prod3.png",
+      "/Product/cabinet/cb14/prod2.png",
+    ],
     price: "₱26,311,107.50",
   },
   {
@@ -366,13 +386,15 @@ export const products: Product[] = [
     subtitle: "Small Commercial / Remote Facility",
     category: "cabinet",
     tag: "Off-Grid Power Generation System",
-    image: "/Product/cabinet/20k.png",
+    image: "/Product/cabinet/20.png",
     images: [
-      "/Product/cabinet/30k.png",
+      "/Product/cabinet/20.png",
+      "/Product/cabinet/30.png",
+      "/Product/cabinet/40.png",
+      "/Product/cabinet/50.png",
       "/Product/cabinet/disc1.png",
       "/Product/cabinet/disc2.png",
       "/Product/cabinet/disc3.png",
-      "/Product/cabinet/disc4.png",
     ],
     price: "₱1,823,684.10",
   },
@@ -935,19 +957,22 @@ export const productDetails: Record<string, {
         name: "215kWh / 100kW", 
         value: "Village / Industrial-Scale Microgrid",
         description: "215.04kWh battery, 100kW rated power, 400V/220V output. Includes 144×670W solar panels (96.48kW total). Can supply tens of houses plus businesses, or one small industrial plant.",
-        price: "₱7,754,538.15"
+        price: "₱7,754,538.15",
+        image: "/Product/cabinet/cb14/215.png"
       },
       { 
         name: "233kWh / 110kW", 
         value: "Advanced Village / Industrial-Scale Microgrid",
         description: "232.9kWh battery, 110kW rated power, 400V/220V output. Includes 144×670W solar panels (96.48kW total). Enhanced capacity for whole small communities or industrial sites.",
-        price: "₱8,148,259.90"
+        price: "₱8,148,259.90",
+        image: "/Product/cabinet/cb14/233.png"
       },
       { 
         name: "261kWh / 110kW", 
         value: "Maximum Capacity Village / Industrial-Scale Microgrid",
         description: "261.2kWh battery, 110kW rated power, 400V/220V output. Includes 144×670W solar panels (96.48kW total). Maximum capacity for the most demanding village or industrial applications.",
-        price: "₱8,714,233.62"
+        price: "₱8,714,233.62",
+        image: "/Product/cabinet/cb14/261.png"
       },
       { name: "Type", value: "Off-Grid Power Generation System" },
       { name: "Included Components", value: "Splice bracket + wiring" },
@@ -968,6 +993,10 @@ export const productDetails: Record<string, {
       { label: "Included Components", value: "Splice bracket + wiring" },
     ],
     features: [
+      "Safe and stable: Equipped with a three-level fire protection system, achieving comprehensive protection of the system, precision liquid cooling temperature control design, and achieving long-term stability",
+      "Multiple benefits: Support demand response, virtual power plants, achieve multiple benefits, and support dynamic switching of energy regulation strategies",
+      "Flexible and efficient: AC/DC can be independently designed for flexible configuration, with small individual weight and convenient installation",
+      "Intelligent collaboration: Intelligent switching strategies for different scenarios: peak shaving and valley filling, capacity management, dynamic capacity expansion, new energy consumption, plan curve response, local and cloud monitoring linkage",
       "Modular cabinet design",
       "Scalable capacity",
       "Remote monitoring",
@@ -986,19 +1015,21 @@ export const productDetails: Record<string, {
     ],
   },
   "cabinet-15": {
-    description: "Large-scale industrial / community microgrid cabinet-type energy storage system (522-783 kWh / 220-300 kW). Ultra-high capacity and power output for large-scale operations. Can power large industrial complexes, multiple commercial facilities, or entire communities. Ideal for utility-scale applications, large manufacturing facilities, and major infrastructure projects requiring massive energy storage capacity.",
+    description: "Large-scale industrial / community microgrid cabinet-type energy storage system (466-522 kWh / 220 kW). Ultra-high capacity and power output for large-scale operations. Can power large industrial complexes, multiple commercial facilities, or entire communities. Ideal for utility-scale applications, large manufacturing facilities, and major infrastructure projects requiring massive energy storage capacity.",
     variations: [
       { 
-        name: "522kWh / 220kW", 
+        name: "466kWh / 220kW", 
         value: "Large-Scale Industrial / Community Microgrid",
-        description: "522.4kWh battery, 220kW rated power, 400V/220V output. Includes 288×670W solar panels (192.96kW total). Ultra-high capacity for large-scale industrial and community applications.",
-        price: "₱17,256,213.80"
+        description: "465.8kWh battery, 220kW rated power, 400V/220V output. Includes 288×670W solar panels (192.96kW total). Ultra-high capacity for large-scale industrial and community applications.",
+        price: "₱16,173,481.20",
+        image: "/Product/cabinet/cb15/466.png"
       },
       { 
-        name: "783kWh / 300kW", 
+        name: "522kWh / 220kW", 
         value: "Maximum Capacity Industrial / Community Microgrid",
-        description: "783.6kWh battery, 300kW rated power, 400V/220V output. Includes 444×670W solar panels (297.48kW total). Maximum capacity for the most demanding large-scale applications.",
-        price: "₱26,311,107.50"
+        description: "522.4kWh battery, 220kW rated power, 400V/220V output. Includes 288×670W solar panels (192.96kW total). Maximum capacity for the most demanding large-scale applications.",
+        price: "₱17,256,213.80",
+        image: "/Product/cabinet/cb15/522.png"
       },
       { name: "Type", value: "Off-Grid Power Generation System" },
       { name: "Included Components", value: "Splice bracket + wiring" },
@@ -1006,9 +1037,9 @@ export const productDetails: Record<string, {
       { name: "Notes", value: "Considered serious microgrid or mini power plant. Much higher power (kW) can feed many buildings/machines. Higher battery capacity (kWh) can run a site for many hours. Output at 400V/380V three-phase + 220V suitable for commercial/industrial loads, pumps, motors, etc. Can power a barangay or a small business commercial." },
     ],
     specifications: [
-      { label: "Rated Power", value: "220kW / 300kW (AC)" },
-      { label: "Battery Capacity", value: "522.4kWh / 783.6kWh (Lithium Battery)" },
-      { label: "Solar Panel", value: "670W × 288 panels (192.96kW) / 670W × 444 panels (297.48kW)" },
+      { label: "Rated Power", value: "220kW (AC)" },
+      { label: "Battery Capacity", value: "465.8kWh / 522.4kWh (Lithium Battery)" },
+      { label: "Solar Panel", value: "670W × 288 panels (192.96kW)" },
       { label: "Voltage", value: "400V / 220V" },
       { label: "Battery Type", value: "LiFePO4" },
       { label: "Cycle Life", value: "6000+ cycles" },
@@ -1017,6 +1048,10 @@ export const productDetails: Record<string, {
       { label: "Included Components", value: "Splice bracket + wiring" },
     ],
     features: [
+      "Safe and stable: Equipped with a three-level fire protection system, achieving comprehensive protection of the system, precision liquid cooling temperature control design, and achieving long-term stability",
+      "Multiple benefits: Support demand response, virtual power plants, achieve multiple benefits, and support dynamic switching of energy regulation strategies",
+      "Flexible and efficient: AC/DC can be independently designed for flexible configuration, with small individual weight and convenient installation",
+      "Intelligent collaboration: Intelligent switching strategies for different scenarios: peak shaving and valley filling, capacity management, dynamic capacity expansion, new energy consumption, plan curve response, local and cloud monitoring linkage",
       "Modular cabinet design",
       "Scalable capacity",
       "Remote monitoring",
@@ -1054,6 +1089,10 @@ export const productDetails: Record<string, {
       { label: "Included Components", value: "Splice bracket + wiring" },
     ],
     features: [
+      "Safe and stable: Equipped with a three-level fire protection system, achieving comprehensive protection of the system, precision liquid cooling temperature control design, and achieving long-term stability",
+      "Multiple benefits: Support demand response, virtual power plants, achieve multiple benefits, and support dynamic switching of energy regulation strategies",
+      "Flexible and efficient: AC/DC can be independently designed for flexible configuration, with small individual weight and convenient installation",
+      "Intelligent collaboration: Intelligent switching strategies for different scenarios: peak shaving and valley filling, capacity management, dynamic capacity expansion, new energy consumption, plan curve response, local and cloud monitoring linkage",
       "Modular cabinet design",
       "Scalable capacity",
       "Remote monitoring",
@@ -1078,28 +1117,28 @@ export const productDetails: Record<string, {
         value: "Small Commercial / Remote Facility",
         description: "40.96kWh battery, 20kW rated power, 380V/220V output. Includes 30×670W solar panels (20.1kW total). Can power: 5-10 small houses, or a water refilling station, rice mill, small cold room, plus office & lighting, or a cell tower + equipment shelter with extra capacity. Market: Off-grid tourist sites with a few cottages, poultry/piggery/fish farms (lighting, blowers, small machinery), telecom sites that want to reduce diesel use.",
         price: "₱1,823,684.10",
-        image: "/Product/cabinet/20k.png"
+        image: "/Product/cabinet/20.png"
       },
       { 
         name: "60kWh / 30kW", 
         value: "Small Community or Larger Business",
         description: "61.4kWh battery, 30kW rated power, 380V/220V output. Includes 40×670W solar panels (26.8kW total). Can power: a small resort (10+ rooms, kitchen, bar, pool pump), a medium agricultural facility (irrigation pumps, storage, office), or a cluster of 10-20 households with controlled use. Market: Island barangays, remote mountain communities, bigger manufacturing workshops (welding, small machines).",
         price: "₱2,694,050.62",
-        image: "/Product/cabinet/30k.png"
+        image: "/Product/cabinet/30.png"
       },
       { 
         name: "80kWh / 40kW", 
         value: "Microgrid for a Barangay Center or Campus",
         description: "83.2kWh battery, 40kW rated power, 380V/220V output. Includes 60×670W solar panels (40.2kW total). Suitable for: school campus (several buildings, lights, fans, computers), barangay center + streetlights + market area, or medium resort or eco-park with many cottages plus common facilities. Good where diesel gensets are currently used daily, and fuel is expensive. Many loads are running at the same time (kitchen, laundry, ACs, pumps).",
         price: "₱3,918,051.35",
-        image: "/Product/cabinet/40k.png"
+        image: "/Product/cabinet/40.png"
       },
       { 
         name: "100kWh / 50kW", 
         value: "Microgrid for a Barangay Center or Campus",
         description: "100.3kWh battery, 50kW rated power, 380V/220V output. Includes 72×670W solar panels (48.24kW total). Suitable for: school campus (several buildings, lights, fans, computers), barangay center + streetlights + market area, or medium resort or eco-park with many cottages plus common facilities. Good where diesel gensets are currently used daily, and fuel is expensive. Many loads are running at the same time (kitchen, laundry, ACs, pumps).",
         price: "₱4,593,349.12",
-        image: "/Product/cabinet/50k.png"
+        image: "/Product/cabinet/50.png"
       },
       { name: "Type", value: "Off-Grid Power Generation System" },
       { name: "Included Components", value: "Splice bracket + wiring" },
@@ -1116,6 +1155,10 @@ export const productDetails: Record<string, {
       { label: "Output Voltage", value: "380V/400V three-phase + 220V" },
     ],
     features: [
+      "Safe and stable: Equipped with a three-level fire protection system, achieving comprehensive protection of the system, precision liquid cooling temperature control design, and achieving long-term stability",
+      "Multiple benefits: Support demand response, virtual power plants, achieve multiple benefits, and support dynamic switching of energy regulation strategies",
+      "Flexible and efficient: AC/DC can be independently designed for flexible configuration, with small individual weight and convenient installation",
+      "Intelligent collaboration: Intelligent switching strategies for different scenarios: peak shaving and valley filling, capacity management, dynamic capacity expansion, new energy consumption, plan curve response, local and cloud monitoring linkage",
       "Modular cabinet design",
       "Scalable capacity",
       "Remote monitoring",
