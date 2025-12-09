@@ -323,23 +323,11 @@ export default function ResidentialSector() {
                     />
                   </div>
                 )}
+                <h3 className="text-xl font-semibold mb-2">{charger.type}</h3>
+                <p className="text-sm text-slate-600 mb-4">{charger.description}</p>
                 <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-2">
-                      {charger.type}
-                    </h3>
-                    <p className="text-sm text-slate-600">
-                      {charger.description}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold text-primary">
-                      {charger.price}
-                    </div>
-                    <div className="text-sm text-slate-500">
-                      Model: {charger.model}
-                    </div>
-                  </div>
+                  <span className="text-sm text-slate-500">Model: {charger.model}</span>
+                  <span className="text-2xl font-bold text-primary">{charger.price}</span>
                 </div>
                 <Link
                   href={`/contact?subject=installation&product=ev-charging&model=${encodeURIComponent(

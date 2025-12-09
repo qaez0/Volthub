@@ -144,10 +144,7 @@ export default function Services() {
           </div>
           <div className="grid lg:grid-cols-2 gap-12">
             {/* EV Charging Solutions */}
-            <div
-              id="ev-charging-service"
-              className="service-section bg-white rounded-2xl shadow-xl overflow-hidden"
-            >
+            <div className="service-section bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="relative">
                 <Image
                   src="https://readdy.ai/api/search-image?query=modern%20electric%20vehicle%20charging%20installation%20site%20with%20professional%20technicians%20installing%20multiple%20EV%20charging%20stations%2C%20clean%20commercial%20setting%2C%20advanced%20charging%20infrastructure%2C%20blue%20and%20white%20color%20scheme%2C%20professional%20service%20quality&width=800&height=400&seq=evservice001&orientation=landscape"
@@ -158,7 +155,7 @@ export default function Services() {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-blue-900/80 to-transparent" />
                 <div className="absolute bottom-6 left-6">
-                  <h3 className="text-3xl font-bold text-white mb-2">
+                  <h3 className="text-3xl font-bold text-white mb-2" id="ev-charging-service">
                     EV Charging Solutions
                   </h3>
                   <p className="text-blue-200">
@@ -263,10 +260,7 @@ export default function Services() {
             </div>
 
             {/* Solar Energy Installation */}
-            <div
-              id="solar-installation-service"
-              className="service-section bg-white rounded-2xl shadow-xl overflow-hidden"
-            >
+            <div className="service-section bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="relative">
                 <Image
                   src="https://readdy.ai/api/search-image?query=professional%20solar%20panel%20installation%20team%20working%20on%20residential%20rooftop%2C%20modern%20house%20with%20blue%20solar%20panels%20being%20installed%2C%20safety%20equipment%2C%20professional%20installation%20process%2C%20clear%20blue%20sky%2C%20high-quality%20workmanship&width=800&height=400&seq=solarservice001&orientation=landscape"
@@ -277,7 +271,7 @@ export default function Services() {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-green-900/80 to-transparent" />
                 <div className="absolute bottom-6 left-6">
-                  <h3 className="text-3xl font-bold text-white mb-2">
+                  <h3 className="text-3xl font-bold text-white mb-2" id="solar-installation-service">
                     Solar Energy Installation
                   </h3>
                   <p className="text-green-200">

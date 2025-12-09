@@ -31,7 +31,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
   const residentialProduct = products[0]; // Residential Energy Storage
 
   return (
-    <section className="section-spacing bg-gradient-to-br from-white via-gray-50 to-white overflow-x-hidden">
+    <section className="section-spacing bg-linear-to-br from-white via-gray-50 to-white overflow-x-hidden">
       <LayoutContainer>
         {/* Grid Layout: 
             Top: Commercial (2 cols wide) | Residential (2 rows tall on right)
@@ -41,12 +41,12 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
           {/* Top Left - Commercial (Wide Card) - Spans 2 columns */}
           <div className="relative group md:col-span-2">
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${commercialProduct.gradientColors.from} ${commercialProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
+              className={`absolute inset-0 bg-linear-to-br ${commercialProduct.gradientColors.from} ${commercialProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
             />
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl h-full flex flex-col md:block">
               <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center h-full md:auto">
                 {/* Image */}
-                <div className="relative h-48 md:h-80 lg:h-96 bg-gradient-to-br from-gray-50 to-white">
+                <div className="relative h-48 md:h-80 lg:h-96 bg-linear-to-br from-gray-50 to-white">
                   <Image
                     src={commercialProduct.image}
                     alt={commercialProduct.imageAlt}
@@ -71,7 +71,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   </p>
                   <Link
                     href="/products?category=cabinet"
-                    className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl"
                   >
                     {commercialProduct.ctaText}
                     <RiArrowRightLine className="text-base md:text-lg lg:text-xl" />
@@ -84,11 +84,11 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
           {/* Top Right - Residential (Tall Card) - Spans 2 rows */}
           <div className="relative group md:col-start-3 md:row-start-1 md:row-span-2">
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${residentialProduct.gradientColors.from} ${residentialProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
+              className={`absolute inset-0 bg-linear-to-br ${residentialProduct.gradientColors.from} ${residentialProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
             />
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col md:min-h-[880px] lg:min-h-[980px]">
               {/* Image */}
-              <div className="relative bg-gradient-to-br from-gray-50 to-white h-48 md:min-h-[820px] lg:min-h-[900px] md:h-full flex items-center justify-center">
+              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:min-h-[820px] lg:min-h-[900px] md:h-full flex items-center justify-center">
                 <Image
                   src={residentialProduct.image}
                   alt={residentialProduct.imageAlt}
@@ -116,7 +116,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                 </div>
                 <Link
                   href="/products?category=ev-charging"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
@@ -128,11 +128,11 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
           {/* Bottom Left - Advanced (Small Card) */}
           <div className="relative group md:row-start-2">
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${advancedProduct.gradientColors.from} ${advancedProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
+              className={`absolute inset-0 bg-linear-to-br ${advancedProduct.gradientColors.from} ${advancedProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
             />
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col">
               {/* Image */}
-              <div className="relative bg-gradient-to-br from-gray-50 to-white h-48 md:h-56">
+              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:h-56">
                 <Image
                   src={advancedProduct.image}
                   alt={advancedProduct.imageAlt}
@@ -157,7 +157,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                 </p>
                 <Link
                   href="/products?category=solar-street"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
@@ -169,11 +169,11 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
           {/* Bottom Middle - Home (Small Card) */}
           <div className="relative group md:row-start-2">
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${homeProduct.gradientColors.from} ${homeProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
+              className={`absolute inset-0 bg-linear-to-br ${homeProduct.gradientColors.from} ${homeProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
             />
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col">
               {/* Image */}
-              <div className="relative bg-gradient-to-br from-gray-50 to-white h-48 md:h-56">
+              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:h-56">
                 <Image
                   src={homeProduct.image}
                   alt={homeProduct.imageAlt}
@@ -198,7 +198,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                 </p>
                 <Link
                   href="/products?category=smart-home"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
