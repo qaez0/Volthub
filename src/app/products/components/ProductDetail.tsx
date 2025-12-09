@@ -61,6 +61,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const selectedVariant =
     pricedVariations.length > 0 ? pricedVariations[selectedVariantIndex] : undefined;
 
+  // Get current specifications (use variant-specific if available, otherwise use default)
+  const currentSpecifications = useMemo(() => {
+    if (selectedVariant?.specifications && selectedVariant.specifications.length > 0) {
+      return selectedVariant.specifications;
+    }
+    return details?.specifications ?? [];
+  }, [selectedVariant, details?.specifications]);
+
   // Get all images (main image + additional images + variant image if selected)
   const allImages = useMemo(() => {
     const baseImages = product.images && product.images.length > 0 
@@ -682,12 +690,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {activeTab === "specifications" && (
             <div className="space-y-4 md:space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Technical Specifications</h3>
-              {details && details.specifications && details.specifications.length > 0 && (
+              {currentSpecifications && currentSpecifications.length > 0 && (
                 <div className="overflow-x-auto">
                   {/* Mobile: 1 column, Desktop: 3 columns */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 rounded-xl bg-white overflow-hidden">
-                    {details.specifications.map((spec, index) => {
-                      const isLastItem = index === details.specifications.length - 1;
+                    {currentSpecifications.map((spec, index) => {
+                      const isLastItem = index === currentSpecifications.length - 1;
                       const isNotFirstColumn = index % 3 !== 0;
                       return (
                         <div 

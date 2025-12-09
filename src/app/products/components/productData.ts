@@ -12,6 +12,7 @@ export type ProductVariation = {
   description?: string;
   price?: string; // Optional price for this variation
   image?: string; // Optional image for this variation
+  specifications?: { label: string; value: string }[]; // Optional specifications for this variation
 };
 
 export type Product = {
@@ -408,16 +409,12 @@ export const products: Product[] = [
     image: "/Product/containertype/con1.png",
     images: [
       "/Product/containertype/con1.png",
-      "/Product/containertype/disc1.png",
-      "/Product/containertype/disc2.png",
-      "/Product/containertype/disc3.png",
-      "/Product/containertype/disc4.png",
-      "/Product/containertype/disc5.png",
-      "/Product/containertype/disc6.png",
-      "/Product/containertype/disc7.png",
-      "/Product/containertype/disc8.png",
-      "/Product/containertype/disc9.png",
-      "/Product/containertype/disc10.png",
+      "/Product/containertype/prod1.png",
+      "/Product/containertype/prod2.png",
+      "/Product/containertype/prod3.png",
+      "/Product/containertype/prod4.png",
+      "/Product/containertype/prod5.png",
+      "/Product/containertype/prod6.png",
     ],
     price: "₱42,239,802.20",
   },
@@ -1432,36 +1429,78 @@ export const productDetails: Record<string, {
         value: "500KW/AC, 1075.2kWh Battery, 728×670W Solar Panels",
         price: "₱42,239,802.20",
         description: "Rated Power: 500KW/AC | Voltage: 400V/220V | Lithium Battery Capacity: 1075.2kWh | Solar Panel: 670W × 728PCS (487.76kW total) | Included Components: Splice bracket + wiring",
+        specifications: [
+          { label: "Rated Power", value: "500kW (AC)" },
+          { label: "Battery Capacity", value: "1075.2kWh (Lithium Battery)" },
+          { label: "Solar Panel", value: "670W × 728 panels (487.76kW total)" },
+          { label: "Output Voltage", value: "400V/380V three-phase + 220V" },
+          { label: "Warranty", value: "3 Years" },
+        ],
       },
       {
         name: "1205kWh System",
         value: "500KW/AC, 1205.76kWh Battery, 728×670W Solar Panels",
         price: "₱46,423,089.50",
         description: "Rated Power: 500KW/AC | Voltage: 400V/220V | Lithium Battery Capacity: 1205.76kWh | Solar Panel: 670W × 728PCS (487.76kW total) | Included Components: Splice bracket + wiring",
+        specifications: [
+          { label: "Rated Power", value: "500kW (AC)" },
+          { label: "Battery Capacity", value: "1205.76kWh (Lithium Battery)" },
+          { label: "Solar Panel", value: "670W × 728 panels (487.76kW total)" },
+          { label: "Output Voltage", value: "400V/380V three-phase + 220V" },
+          { label: "Warranty", value: "3 Years" },
+        ],
       },
       {
         name: "1800kWh System",
         value: "1000KW/AC, 1806.3kWh Battery, 1484×670W Solar Panels",
         price: "₱71,207,141.30",
         description: "Rated Power: 1000KW/AC | Voltage: 400V/220V | Lithium Battery Capacity: 1806.3kWh | Solar Panel: 670W × 1484PCS (994.28kW total) | Included Components: Splice bracket + wiring",
+        specifications: [
+          { label: "Rated Power", value: "1000kW (AC)" },
+          { label: "Battery Capacity", value: "1806.3kWh (Lithium Battery)" },
+          { label: "Solar Panel", value: "670W × 1484 panels (994.28kW total)" },
+          { label: "Output Voltage", value: "400V/380V three-phase + 220V" },
+          { label: "Warranty", value: "3 Years" },
+        ],
       },
       {
         name: "2000kWh System",
         value: "1000KW/AC, 2025.67kWh Battery, 1484×670W Solar Panels",
         price: "₱76,276,300.40",
         description: "Rated Power: 1000KW/AC | Voltage: 400V/220V | Lithium Battery Capacity: 2025.67kWh | Solar Panel: 670W × 1484PCS (994.28kW total) | Included Components: Splice bracket + wiring",
+        specifications: [
+          { label: "Rated Power", value: "1000kW (AC)" },
+          { label: "Battery Capacity", value: "2025.67kWh (Lithium Battery)" },
+          { label: "Solar Panel", value: "670W × 1484 panels (994.28kW total)" },
+          { label: "Output Voltage", value: "400V/380V three-phase + 220V" },
+          { label: "Warranty", value: "3 Years" },
+        ],
       },
       {
         name: "2300kWh System",
         value: "1000KW/AC, 2362.28kWh Battery, 1484×670W Solar Panels",
         price: "₱81,766,894.90",
         description: "Rated Power: 1000KW/AC | Voltage: 400V/220V | Lithium Battery Capacity: 2362.28kWh | Solar Panel: 670W × 1484PCS (994.28kW total) | Included Components: Splice bracket + wiring",
+        specifications: [
+          { label: "Rated Power", value: "1000kW (AC)" },
+          { label: "Battery Capacity", value: "2362.28kWh (Lithium Battery)" },
+          { label: "Solar Panel", value: "670W × 1484 panels (994.28kW total)" },
+          { label: "Output Voltage", value: "400V/380V three-phase + 220V" },
+          { label: "Warranty", value: "3 Years" },
+        ],
       },
       {
         name: "2700kWh System",
         value: "1000KW/AC, 2700.9kWh Battery, 1484×670W Solar Panels",
         price: "₱85,828,342.80",
         description: "Rated Power: 1000KW/AC | Voltage: 400V/220V | Lithium Battery Capacity: 2700.9kWh | Solar Panel: 670W × 1484PCS (994.28kW total) | Included Components: Splice bracket + wiring",
+        specifications: [
+          { label: "Rated Power", value: "1000kW (AC)" },
+          { label: "Battery Capacity", value: "2700.9kWh (Lithium Battery)" },
+          { label: "Solar Panel", value: "670W × 1484 panels (994.28kW total)" },
+          { label: "Output Voltage", value: "400V/380V three-phase + 220V" },
+          { label: "Warranty", value: "3 Years" },
+        ],
       },
       { name: "Available Capacities", value: "1075kWh / 1205kWh / 1800kWh / 2000kWh / 2300kWh / 2700kWh" },
       { name: "Rated Power", value: "500KW/AC (1075kWh, 1205kWh) / 1000KW/AC (1800kWh, 2000kWh, 2300kWh, 2700kWh)" },

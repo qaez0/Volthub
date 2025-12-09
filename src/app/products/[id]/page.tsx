@@ -4,16 +4,17 @@ import LayoutContainer from "@/components/layout/LayoutContainer";
 import ProductDetail from "../components/ProductDetail";
 import { getProductById } from "../components/productData";
 
-interface ProductPageProps {
-  params: {
+type ProductPageProps = {
+  params: Promise<{
     id: string;
-  };
-}
+  }>;
+};
 
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const product = getProductById(params.id);
+  const { id } = await params;
+  const product = getProductById(id);
 
   if (!product) {
     return {
@@ -24,12 +25,15 @@ export async function generateMetadata({
 
   return {
     title: `${product.name} - VoltHub`,
-    description: product.description || `Learn more about ${product.name} from VoltHub. ${product.category} energy solution with specifications and pricing.`,
+    description:
+      product.description ||
+      `Learn more about ${product.name} from VoltHub. ${product.category} energy solution with specifications and pricing.`,
   };
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = getProductById(params.id);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params;
+  const product = getProductById(id);
 
   if (!product) {
     notFound();
