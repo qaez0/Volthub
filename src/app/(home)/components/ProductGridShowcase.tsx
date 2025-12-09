@@ -46,12 +46,12 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl h-full flex flex-col md:block">
               <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center h-full md:auto">
                 {/* Image */}
-                <div className="relative h-48 md:h-80 lg:h-96 bg-linear-to-br from-gray-50 to-white">
+                <div className="relative h-48 md:h-80 lg:h-140 lg:min-h-[600px] bg-linear-to-br from-gray-50 to-white">
                   <Image
                     src={commercialProduct.image}
                     alt={commercialProduct.imageAlt}
                     fill
-                    className="object-contain p-4 md:p-8"
+                    className="object-cover pt-5 md:pt-10 lg:pt-16"
                   />
                 </div>
                 {/* Content */}
@@ -94,7 +94,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   alt={residentialProduct.imageAlt}
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-contain p-4 md:p-6 lg:p-8"
+                  className="object-cover p-4 md:p-6 lg:p-8"
                 />
               </div>
               {/* Content */}
@@ -132,32 +132,32 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
             />
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col">
               {/* Image */}
-              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:h-56">
+              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:h-[52%] ">
                 <Image
                   src={advancedProduct.image}
                   alt={advancedProduct.imageAlt}
                   fill
-                  className="object-contain p-4 md:p-6"
+                  className="object-cover p-4 md:p-6"
                 />
               </div>
               {/* Content */}
-              <div className="p-4 md:p-6 flex-1 flex flex-col">
-                <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${advancedProduct.badgeColor} uppercase mb-2`}>
+              <div className="p-4 md:p-6 flex-1 flex flex-col gap-3 md:gap-4 bo">
+                <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${advancedProduct.badgeColor} uppercase`}>
                   {advancedProduct.badge}
                 </p>
-                <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3 leading-tight">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
                   {advancedProduct.titleParts.map((part, idx) => (
                     <span key={idx} className={part.color}>
                       {part.text}{" "}
                     </span>
                   ))}
                 </h3>
-                <p className="text-xs md:text-sm text-gray-600 mb-4 md:mb-6 flex-1 line-clamp-3">
+                <p className="text-xs md:text-sm text-gray-600 flex-1 line-clamp-2">
                   {advancedProduct.description}
                 </p>
                 <Link
                   href="/products?category=solar-street"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
@@ -173,32 +173,32 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
             />
             <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col">
               {/* Image */}
-              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:h-56">
+              <div className="relative bg-linear-to-br from-gray-50 to-white h-48 md:h-80">
                 <Image
                   src={homeProduct.image}
                   alt={homeProduct.imageAlt}
                   fill
-                  className="object-contain p-4 md:p-6"
+                  className="object-cover "
                 />
               </div>
               {/* Content */}
-              <div className="p-4 md:p-6 flex-1 flex flex-col">
-                <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${homeProduct.badgeColor} uppercase mb-2`}>
+              <div className="p-4 md:p-6 flex-1 flex flex-col gap-3 md:gap-4 ">
+                <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${homeProduct.badgeColor} uppercase`}>
                   {homeProduct.badge}
                 </p>
-                <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3 leading-tight">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
                   {homeProduct.titleParts.map((part, idx) => (
                     <span key={idx} className={part.color}>
                       {part.text}{" "}
                     </span>
                   ))}
                 </h3>
-                <p className="text-xs md:text-sm text-gray-600 mb-4 md:mb-6 flex-1 line-clamp-3">
+                <p className="text-xs md:text-sm text-gray-600 flex-1 line-clamp-3">
                   {homeProduct.description}
                 </p>
                 <Link
                   href="/products?category=smart-home"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
