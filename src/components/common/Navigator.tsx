@@ -198,8 +198,16 @@ function NavigationMenuItemWithHover({
   items: MenuItem[];
   isActive: boolean;
 }) {
+  const renderedItems =
+    menuKey === "services"
+      ? items.filter((item) => item.title !== "Overview")
+      : items;
   const [hoveredIndex, setHoveredIndex] = useState<number>(0);
-  const featuredItem = items[hoveredIndex] || items[0];
+  const featuredItem =
+    renderedItems[hoveredIndex] ||
+    renderedItems[0] ||
+    items[hoveredIndex] ||
+    items[0];
 
   return (
     <NavigationMenuItem>
@@ -228,7 +236,7 @@ function NavigationMenuItemWithHover({
               </a>
             </NavigationMenuLink>
           </li>
-          {items.map((item, index) => (
+          {renderedItems.map((item, index) => (
             <ListItem
               key={item.title}
               title={item.title}

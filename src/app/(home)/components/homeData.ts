@@ -74,7 +74,7 @@ export const carouselSlides = [
       "Fast charging networks for electric vehicles. Build comprehensive EV charging infrastructure with smart grid integration and seamless user experience.",
     image:
       "https://readdy.ai/api/search-image?query=electric%20vehicle%20charging%20station%20network%2C%20modern%20EV%20charging%20infrastructure%2C%20smart%20grid%20technology%2C%20sustainable%20transportation%2C%20clean%20mobility%20future&width=1920&height=1080&seq=hero004&orientation=landscape",
-    backgroundImage: "/HomeBanner/commercial.png",
+    backgroundImage: "/HomeBanner/banner1.jpg",
     buttonText: "Explore EV Solutions",
     buttonLink: "/services/ev-charging",
     gradient: "bg-gradient-to-br from-secondary/80 via-primary/70 to-transparent",
