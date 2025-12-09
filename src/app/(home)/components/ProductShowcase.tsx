@@ -71,7 +71,7 @@ export default function ProductShowcase({
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${gradientColors.from} ${gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500`}
               />
-              <div className="relative image-hover-zoom card-hover-3d rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-white p-4 sm:p-6 md:p-8 lg:p-12">
+              <div className="relative image-hover-zoom card-hover-3d rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-white p-4 sm:p-6 md:p-8 lg:p-12 min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center">
                 <Image
                   src={image}
                   alt={imageAlt}
@@ -87,8 +87,8 @@ export default function ProductShowcase({
           </div>
 
           {/* Product Information */}
-          <div className={`w-full lg:w-1/2 space-y-3 md:space-y-6 reveal-on-scroll ${isImageLeft ? "order-2 md:order-2" : "order-1 md:order-1 lg:order-2"}`}>
-            <div>
+          <div className={`w-full lg:w-1/2 space-y-3 md:space-y-6 reveal-on-scroll ${isImageLeft ? "order-2 md:order-2" : "order-1 md:order-1 lg:order-2"} pt-8 md:pt-12 lg:pt-16`}>
+            <div className="mt-8 md:mt-12 lg:mt-16">
               <p className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.15em] md:tracking-[0.3em] ${badgeColor} uppercase mb-2 md:mb-4`}>
                 {badge}
               </p>
