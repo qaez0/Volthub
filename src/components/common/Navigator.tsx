@@ -156,7 +156,7 @@ export default function Navigator() {
 
   return (
     <NavigationMenu viewport={false} className="hidden lg:block">
-      <NavigationMenuList className="flex-wrap">
+      <NavigationMenuList className="flex-wrap justify-center">
         {Object.entries(menu).map(([key, items]) => {
           if (Array.isArray(items)) {
             const isActive = isRouteActive(items[0]?.href || "", key);
@@ -208,18 +208,34 @@ function NavigationMenuItemWithHover({
     renderedItems[0] ||
     items[hoveredIndex] ||
     items[0];
+  
+  const itemCount = renderedItems.length;
+  const isTwoColumn = itemCount < 4;
+  const gridCols = isTwoColumn ? "md:grid-cols-2" : "md:grid-cols-3";
+  const dropdownWidth = isTwoColumn ? "500px" : "700px";
+  const getImageRowSpan = () => {
+    if (!isTwoColumn) return "row-span-3";
+    if (itemCount === 1) return "row-span-1";
+    if (itemCount === 2) return "row-span-2";
+    if (itemCount === 3) return "row-span-3";
+    return "row-span-3";
+  };
 
   return (
-    <NavigationMenuItem>
+    <NavigationMenuItem className="relative flex items-center">
       <NavigationMenuTrigger asChild className="capitalize" active={isActive}>
         <Link href={items[0]?.href as Route}>{menuKey}</Link>
       </NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2">
-          <li className="row-span-3">
+      <NavigationMenuContent 
+        style={{ 
+          minWidth: dropdownWidth,
+        }}
+      >
+        <ul className={`grid gap-2 w-full ${isTwoColumn ? `md:w-[500px]` : `md:w-[700px]`} ${gridCols}`}>
+          <li className={getImageRowSpan()}>
             <NavigationMenuLink asChild>
               <a
-                className="relative flex h-full w-full flex-col justify-end rounded-md bg-cover bg-center bg-no-repeat p-2 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md"
+                className="relative flex h-full w-full flex-col justify-end rounded-md bg-cover bg-center bg-no-repeat p-2 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md min-h-[240px]"
                 style={{
                   backgroundImage: `url(${featuredItem?.image || ""})`,
                 }}
@@ -266,9 +282,9 @@ function ListItem({
   onMouseLeave?: () => void;
 }) {
   return (
-    <li {...props} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <NavigationMenuLink asChild>
-        <Link href={href as Route} className="flex flex-col gap-1">
+    <li {...props} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="relative overflow-hidden rounded-sm min-w-0 max-w-full">
+      <NavigationMenuLink asChild className="block overflow-hidden rounded-sm h-full w-[93%] ">
+        <Link href={href as Route} className="group/link relative flex flex-col gap-1  rounded-sm h-full w-[93%]  mx-1 hover:bg-[#959aa2]">
           <div className="text-sm font-bold leading-none">{title}</div>
           <p className="text-muted-foreground text-sm leading-snug line-clamp-2">
             {children}
