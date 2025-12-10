@@ -61,6 +61,47 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const selectedVariant =
     pricedVariations.length > 0 ? pricedVariations[selectedVariantIndex] : undefined;
 
+  // Get display name with variation
+  const displayProductName = useMemo(() => {
+    if (!selectedVariant) return product.name;
+    
+    // Extract label: F2-050, F2-080, LVQ2-080, LVXC-120, etc. or 40kWh, 60kWh, etc.
+    let label = selectedVariant.name;
+    const f2Match = selectedVariant.name.match(/(F2-\d+)/i);
+    const lvq2Match = selectedVariant.name.match(/(LVQ2-\d+)/i);
+    const lvxcMatch = selectedVariant.name.match(/(LVXC-\d+)/i);
+    const kWhMatch = selectedVariant.name.match(/(\d+\s*kWh)/i);
+    const kwMatch = selectedVariant.name.match(/(\d+\s*kW?)/i);
+    
+    if (f2Match) {
+      label = f2Match[1].toUpperCase();
+      // Replace "F2 Series" with the variation name
+      return product.name.replace(/F2\s+Series/i, label);
+    } else if (lvq2Match) {
+      label = lvq2Match[1].toUpperCase();
+      // Replace "LVQ2 Series" or "LV02" with the variation name
+      return product.name.replace(/LVQ2\s+Series/i, label).replace(/LV02/i, label);
+    } else if (lvxcMatch) {
+      label = lvxcMatch[1].toUpperCase();
+      // Replace "LVXC Series", "LV02", "LVXC2", or "LVXC3" with the variation name
+      return product.name.replace(/LVXC\s+Series/i, label).replace(/LV02/i, label).replace(/LVXC2/i, label).replace(/LVXC3/i, label);
+    } else if (kWhMatch) {
+      label = kWhMatch[1];
+      // Replace any existing kWh values in the product name with the selected variation
+      // If no kWh values exist, append the variation
+      const hasKWh = /\d+\s*kWh/gi.test(product.name);
+      return hasKWh 
+        ? product.name.replace(/\d+\s*kWh/gi, label)
+        : `${product.name} ${label}`;
+    } else if (kwMatch) {
+      label = kwMatch[1];
+      return `${product.name} ${label}`;
+    } else {
+      label = selectedVariant.name.split("–")[0]?.trim() || selectedVariant.name;
+      return `${product.name} ${label}`;
+    }
+  }, [product.name, selectedVariant]);
+
   // Get current specifications (use variant-specific if available, otherwise use default)
   const currentSpecifications = useMemo(() => {
     if (selectedVariant?.specifications && selectedVariant.specifications.length > 0) {
@@ -270,7 +311,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {categoryLabel}
             </span>
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mt-1">
-              {product.name}
+              {displayProductName}
             </h1>
             <p className="text-base md:text-lg text-slate-600 mt-1">{product.subtitle}</p>
 
@@ -645,24 +686,25 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         {/* Tab Content */}
         <div className="bg-white rounded-xl border border-slate-200 p-4 md:p-6 lg:p-8">
           {activeTab === "overview" && (
-            <div className="space-y-4 md:space-y-6">
+            <div className=" ">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Product Overview</h3>
               
               {/* Product Images Gallery */}
               {product.images && product.images.length > 0 && (
                 <div>
-                  <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4">Product Images</h4>
-                  <div className="flex flex-wrap gap-3 md:gap-4">
+                  <h4 className="text-base md:text-lg font-semibold text-slate-900 mb-3 md:mb-4 border-b border-slate-200 pb-2">Product Images</h4>
+                  <div className="flex flex-col">
                     {product.images.map((img, index) => (
                       <div
                         key={index}
-                        className="relative aspect-square rounded-lg overflow-hidden border border-slate-200 bg-slate-100 hover:border-primary/50 transition-all hover:shadow-md w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.667rem)]"
+                        className="relative w-full"
                       >
                         <Image
                           src={img}
                           alt={`${product.name} - Image ${index + 1}`}
-                          fill
-                          className="object-contain p-2"
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-contain"
                         />
                       </div>
                     ))}

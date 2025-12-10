@@ -7,8 +7,6 @@ import WhatWeDoSection from "./components/WhatWeDoSection";
 import HistorySection from "./components/HistorySection";
 import LeadershipStatsSection from "./components/LeadershipStatsSection";
 import MarketInsightsSection from "./components/MarketInsightsSection";
-import OperationsCarouselSection from "./components/OperationsCarouselSection";
-import PartnershipsSection from "./components/PartnershipsSection";
 import SectionHeading from "@/components/marketing/SectionHeading";
 
 export const metadata: Metadata = {
