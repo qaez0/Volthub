@@ -8,6 +8,7 @@ import HistorySection from "./components/HistorySection";
 import LeadershipStatsSection from "./components/LeadershipStatsSection";
 import MarketInsightsSection from "./components/MarketInsightsSection";
 import SectionHeading from "@/components/marketing/SectionHeading";
+import BackToTopButton from "@/components/common/BackToTopButton";
 
 export const metadata: Metadata = {
   title: "About Us - VoltHub",
@@ -36,6 +37,7 @@ export default function About() {
         <HistorySection />
         {/* <PartnershipsSection /> */}
       </LayoutContainer>
+      <BackToTopButton />
     </main>
   );
 }

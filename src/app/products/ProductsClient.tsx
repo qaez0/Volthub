@@ -7,6 +7,7 @@ import ProductBanner from "./components/ProductBanner";
 import ProductSidebar from "./components/ProductSidebar";
 import ProductGrid from "./components/ProductGrid";
 import { ProductCategory, products } from "./components/productData";
+import BackToTopButton from "@/components/common/BackToTopButton";
 
 export default function ProductsClient() {
   const searchParams = useSearchParams();
@@ -47,6 +48,8 @@ export default function ProductsClient() {
       ? products
       : products.filter((p) => p.category === activeCategory);
 
+  const showBackToTop = activeCategory === "all";
+
   return (
     <main className="bg-slate-50 min-h-screen overflow-x-hidden">
       {/* Hero / banner (changes with category) */}
@@ -70,6 +73,8 @@ export default function ProductsClient() {
           </div>
         </LayoutContainer>
       </section>
+
+      {showBackToTop && <BackToTopButton />}
     </main>
   );
 }

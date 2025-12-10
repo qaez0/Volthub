@@ -3,6 +3,7 @@
 import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
+import BackToTopButton from "@/components/common/BackToTopButton";
 import Link from "next/link";
 import {
   RiBatteryChargeLine,
@@ -476,6 +477,7 @@ export default function RuralProjectsSector() {
           </div>
         </LayoutContainer>
       </section>
+      <BackToTopButton />
     </main>
   );
 }

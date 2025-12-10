@@ -3,6 +3,7 @@
 import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
+import BackToTopButton from "@/components/common/BackToTopButton";
 import Link from "next/link";
 import {
   RiChargingPile2Line,
@@ -490,7 +491,7 @@ export default function SmartCitiesSector() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-16 bg-linear-to-r from-primary to-primary/80 text-white">
         <LayoutContainer>
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-semibold">
@@ -516,6 +517,7 @@ export default function SmartCitiesSector() {
           </div>
         </LayoutContainer>
       </section>
+      <BackToTopButton />
     </main>
   );
 }

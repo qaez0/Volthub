@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import SplitText, { SplitTextProps } from "@/components/ui/split-text";
 import { Check, Zap, DollarSign, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BackToTopButton from "@/components/common/BackToTopButton";
 
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState("monthly");
@@ -214,7 +215,7 @@ export default function Pricing() {
                       </h4>
                       {plan.features.map((feature, index) => (
                         <div key={index} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                          <Check className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                           <span className="text-sm text-primary">
                             {feature}
                           </span>
@@ -306,6 +307,7 @@ export default function Pricing() {
           </div>
         </LayoutContainer>
       </section>
+      <BackToTopButton />
     </main>
   );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import CarbonChart from "@/components/marketing/CarbonChart";
+import BackToTopButton from "@/components/common/BackToTopButton";
 
 export const metadata: Metadata = {
   title: "Case Studies - VoltHub",
@@ -148,6 +149,7 @@ export default function CaseStudies() {
           </div>
         </LayoutContainer>
       </section>
+      <BackToTopButton />
     </main>
   );
 }

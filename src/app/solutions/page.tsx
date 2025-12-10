@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
+import BackToTopButton from "@/components/common/BackToTopButton";
 
 export const metadata: Metadata = {
   title: "Energy Solutions - VoltHub",
@@ -177,6 +178,7 @@ export default function Solutions() {
           </div>
         </LayoutContainer>
       </section>
+      <BackToTopButton />
     </main>
   );
 }

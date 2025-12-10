@@ -5,6 +5,7 @@ import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import Image from "next/image";
 import Link from "next/link";
+import BackToTopButton from "@/components/common/BackToTopButton";
 import {
   RiCheckLine,
   RiCalendarLine,
@@ -621,6 +622,7 @@ export default function Services() {
           </div>
         </LayoutContainer>
       </section>
+      <BackToTopButton />
     </main>
   );
 }
