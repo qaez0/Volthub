@@ -32,11 +32,11 @@ export default function About() {
         </div>
         <WhoWeAreSection />
         <WhatWeDoSection />
-        <HistorySection />
         <LeadershipStatsSection />
+        {/* <OperationsCarouselSection /> */}
         <MarketInsightsSection />
-        <OperationsCarouselSection />
-        <PartnershipsSection />
+        <HistorySection />
+        {/* <PartnershipsSection /> */}
       </LayoutContainer>
     </main>
   );

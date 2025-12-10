@@ -212,7 +212,7 @@ function NavigationMenuItemWithHover({
   const itemCount = renderedItems.length;
   const isTwoColumn = itemCount < 4;
   const gridCols = isTwoColumn ? "md:grid-cols-2" : "md:grid-cols-3";
-  const dropdownWidth = isTwoColumn ? "500px" : "700px";
+  const dropdownWidth = isTwoColumn ? "467px" : "700px";
   const getImageRowSpan = () => {
     if (!isTwoColumn) return "row-span-3";
     if (itemCount === 1) return "row-span-1";
@@ -231,7 +231,7 @@ function NavigationMenuItemWithHover({
           minWidth: dropdownWidth,
         }}
       >
-        <ul className={`grid gap-2 w-full ${isTwoColumn ? `md:w-[500px]` : `md:w-[700px]`} ${gridCols}`}>
+        <ul className={`grid gap-2 w-full ${isTwoColumn ? `md:w-[467px]` : `md:w-[700px]`} ${gridCols}`}>
           <li className={getImageRowSpan()}>
             <NavigationMenuLink asChild>
               <a
