@@ -434,7 +434,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {/* Get Quote Button - Prominent CTA */}
           <div className="pt-2 md:pt-3">
             <Link
-              href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}&quantity=${quantity}&price=${encodeURIComponent(currentPrice || '')}`}
+              href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(displayProductName)}&quantity=${quantity}&price=${encodeURIComponent(currentPrice || '')}`}
               className="inline-flex items-center justify-center gap-2 w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-bold px-6 py-2.5 md:px-8 md:py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base md:text-lg group"
             >
               <span>Get Quote</span>
@@ -1671,20 +1671,20 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
           <Link
-            href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}&quantity=${quantity}`}
+            href={`/contact?subject=quote&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(displayProductName)}&quantity=${quantity}`}
             className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm md:text-base"
           >
             Get Quote
           </Link>
           <Link
-            href={`/contact?subject=demo&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+            href={`/contact?subject=demo&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(displayProductName)}`}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-white/20 transition-colors text-sm md:text-base"
           >
             <RiCalendarLine className="h-4 w-4" />
             Request Demo
           </Link>
           <Link
-            href={`/contact?subject=brochure&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(product.name)}`}
+            href={`/contact?subject=brochure&product=${encodeURIComponent(product.category)}&productName=${encodeURIComponent(displayProductName)}`}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-semibold hover:bg-white/20 transition-colors text-sm md:text-base"
           >
             <RiDownloadLine className="h-4 w-4" />
