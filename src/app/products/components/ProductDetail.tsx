@@ -1260,46 +1260,46 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/f2/proj1.png"
-                          alt="Sample Project 1"
+                          alt="City Arterial Safety Lighting"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Sample Project 1</h4>
+                          <h4 className="font-bold text-white text-lg">City Arterial Safety Lighting</h4>
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 text-center">Real-world installation showcase</p>
+                      <p className="text-sm text-slate-600 text-center">Bright, even illumination for wide municipal roads and night traffic.</p>
                     </div>
                     <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/f2/proj2.png"
-                          alt="Sample Project 2"
+                          alt="Industrial Access Road Retrofit"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Sample Project 2</h4>
+                          <h4 className="font-bold text-white text-lg">Industrial Access Road Retrofit</h4>
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 text-center">Professional installation example</p>
+                      <p className="text-sm text-slate-600 text-center">Reliable solar lighting that secures logistics lanes and factory perimeters.</p>
                     </div>
                     <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/f2/proj3.png"
-                          alt="Sample Project 3"
+                          alt="Residential Boulevard Comfort"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Sample Project 3</h4>
+                          <h4 className="font-bold text-white text-lg">Residential Boulevard Comfort</h4>
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 text-center">Completed project demonstration</p>
+                      <p className="text-sm text-slate-600 text-center">Inviting, well-lit neighborhood streets that feel safe for evening walks.</p>
                     </div>
                   </>
                 ) : product.id === "solar-street-rklv02" ? (
@@ -1308,46 +1308,247 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/lvq2/proj1.png"
-                          alt="Sample Project 1"
+                          alt="Township Main Road Upgrade"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Sample Project 1</h4>
+                          <h4 className="font-bold text-white text-lg">Township Main Road Upgrade</h4>
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 text-center">Real-world installation showcase</p>
+                      <p className="text-sm text-slate-600 text-center">Daytime-ready solar lighting for growing residential corridors.</p>
                     </div>
                     <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/lvq2/proj2.png"
-                          alt="Sample Project 2"
+                          alt="Palm Boulevard Showcase"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Sample Project 2</h4>
+                          <h4 className="font-bold text-white text-lg">Palm Boulevard Showcase</h4>
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 text-center">Professional installation example</p>
+                      <p className="text-sm text-slate-600 text-center">Elegant warm lighting for landscaped driveways and resort entries.</p>
                     </div>
                     <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
                         <Image
                           src="/Product/StreetLamp/lvq2/proj3.png"
-                          alt="Sample Project 3"
+                          alt="Parkside Night Safety"
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h4 className="font-bold text-white text-lg">Sample Project 3</h4>
+                          <h4 className="font-bold text-white text-lg">Parkside Night Safety</h4>
                         </div>
                       </div>
-                      <p className="text-sm text-slate-600 text-center">Completed project demonstration</p>
+                      <p className="text-sm text-slate-600 text-center">Stable illumination for greenways, community paths, and school routes.</p>
+                    </div>
+                  </>
+                ) : product.id === "solar-street-rks" ? (
+                  <>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc2/proj1.png"
+                          alt="Smart City Daytime Showcase"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Smart City Daytime Showcase</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Orderly pole layout for modern boulevards and civic roads.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc2/proj2.png"
+                          alt="Palm Avenue Nightscape"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Palm Avenue Nightscape</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Warm, decorative lighting for landscaped boulevards and resort drives.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc2/proj3.png"
+                          alt="Park Trail Safety Lighting"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Park Trail Safety Lighting</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Comfortable pathway lighting for parks, riversides, and community jog routes.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc2/proj4.png"
+                          alt="Expressway Interchange Guard"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Expressway Interchange Guard</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Bright coverage for curved exits and service roads to boost visibility.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc2/proj5.png"
+                          alt="Perimeter Security Lane"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Perimeter Security Lane</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Reliable illumination for facility edges, rural lanes, and patrol routes.</p>
+                    </div>
+                  </>
+                ) : product.id === "solar-street-lvxc" ? (
+                  <>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj1.png"
+                          alt="Urban Night Market Access"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Urban Night Market Access</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Bright, inviting streets that keep evening commerce active and safe.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj2.png"
+                          alt="Coastal Boulevard Glow"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Coastal Boulevard Glow</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Resort-style lighting that highlights palm-lined seaside drives.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj3.png"
+                          alt="Riverside Leisure Path"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Riverside Leisure Path</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Even, comfortable lighting for waterfront walks and bike routes.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj4.png"
+                          alt="Campus Walking Lane"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Campus Walking Lane</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Safe, glare-free corridors for schools, universities, and parks.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj5.png"
+                          alt="Industrial Park Spine"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Industrial Park Spine</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">High-output lighting to secure logistics roads and loading areas.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj6.png"
+                          alt="Suburban Community Loop"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Suburban Community Loop</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Welcoming streetlight levels for neighborhoods and village roads.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj7.png"
+                          alt="Hilltop Scenic Drive"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Hilltop Scenic Drive</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Clear visibility on winding elevation roads for safer night travel.</p>
+                    </div>
+                    <div className="group cursor-pointer w-full md:w-[calc(33.333%-1rem)]">
+                      <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 mb-3">
+                        <Image
+                          src="/Product/StreetLamp/lvxc3/proj8.png"
+                          alt="Safe Village Connector"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h4 className="font-bold text-white text-lg">Safe Village Connector</h4>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600 text-center">Reliable illumination linking barangays, farms, and rural hubs.</p>
                     </div>
                   </>
                 ) : product.id === "ev-charging-89" ? (
