@@ -25,10 +25,10 @@ export default function EVChargingSolutions() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://readdy.ai/api/search-image?query=modern%20electric%20vehicle%20charging%20installation%20site%20with%20professional%20technicians%20installing%20multiple%20EV%20charging%20stations%2C%20clean%20commercial%20setting%2C%20advanced%20charging%20infrastructure%2C%20blue%20and%20white%20color%20scheme%2C%20professional%20service%20quality&width=1920&height=1080&seq=evservice001&orientation=landscape')",
+              "url('/Sector/evcharging.jpeg')",
           }}
         >
-          <div className="absolute inset-0 bg-linear-to-br from-blue-900/90 via-blue-800/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-br from-green-900/90 via-green-800/70 to-transparent" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
           <LayoutContainer className="text-center space-y-8">

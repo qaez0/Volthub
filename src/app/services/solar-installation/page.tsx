@@ -27,7 +27,7 @@ export default function SolarInstallation() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://readdy.ai/api/search-image?query=professional%20solar%20panel%20installation%20team%20working%20on%20residential%20rooftop%2C%20modern%20house%20with%20blue%20solar%20panels%20being%20installed%2C%20safety%20equipment%2C%20professional%20installation%20process%2C%20clear%20blue%20sky%2C%20high-quality%20workmanship&width=1920&height=1080&seq=solarservice001&orientation=landscape')",
+              "url('/Sector/solarbg1.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-linear-to-br from-green-900/90 via-green-800/70 to-transparent" />
