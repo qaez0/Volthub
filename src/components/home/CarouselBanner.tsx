@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 import Link from "next/link";
@@ -211,7 +212,7 @@ export default function CarouselBanner({
 
   return (
     <div
-      className="relative w-full h-screen overflow-hidden max-w-full"
+      className="relative w-full  h-[500px] overflow-hidden max-w-full"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
@@ -235,7 +236,7 @@ export default function CarouselBanner({
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage: `url(${slide.backgroundImage || slide.image})`,
-                    backgroundSize: "cover",
+                    backgroundSize: "stretch",
                     backgroundPosition: "center",
                   }}
                 >
@@ -252,12 +253,19 @@ export default function CarouselBanner({
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
                       {/* Image on Left */}
                      {slide.showimg && (
-                      <div className={slide.imageClassName || "w-full md:w-1/2"}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                      <div
+                        className={
+                          slide.imageClassName ||
+                          "relative w-full md:w-1/2 h-[320px] md:h-[460px] lg:h-[500px]"
+                        }
+                      >
+                        <Image
                           src={slide.image}
                           alt={slide.title}
-                          className="w-full h-full object-contain"
+                          fill
+                          priority={index === currentSlide}
+                          sizes="(min-width: 1024px) 45vw, 90vw"
+                          className="object-cover rounded-2xl shadow-xl"
                         />
                       </div>
                     )}

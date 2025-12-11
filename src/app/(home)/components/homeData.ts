@@ -135,7 +135,7 @@ export const productShowcases = [
     ],
     description:
       "Smart home battery systems for energy independence. Store solar energy and reduce your electricity bills with our cutting-edge residential storage solutions.",
-    image: "/HomeBanner/89.png",
+    image: "/HomeBanner/89a.png",
     imageAlt: "Residential Energy Storage System",
     features: [
       { icon: RiBatteryChargeLine, text: "5-15 kWh Capacity", color: "text-primary" },
@@ -225,7 +225,7 @@ export const productShowcases = [
     ],
     description:
       "Large-scale energy storage solutions for commercial and industrial applications. Optimize your energy costs, ensure uninterrupted power supply, and reduce your carbon footprint with our enterprise-grade storage systems.",
-    image: "/HomeBanner/item4.png",
+    image: "/HomeBanner/homebatt1.png",
     imageAlt: "Commercial Energy Storage System",
     features: [
       { icon: RiFlashlightLine, text: "Scalable Capacity", color: "text-secondary" },
@@ -243,7 +243,7 @@ export const productShowcases = [
     ],
     imagePosition: "left" as const,
     gradientColors: { from: "from-secondary/20", to: "to-primary/20" },
-    bgGradient: "bg-gradient-to-br from-gray-50 via-white to-gray-50",
+    bgGradient: "bg-transparent",
   },
 ];
 

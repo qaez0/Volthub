@@ -6,6 +6,7 @@ import CarouselBanner from "@/components/home/CarouselBanner";
 import HoverEffects from "@/components/home/HoverEffects";
 // import ProductShowcase from "./components/ProductShowcase";
 import ProductGridShowcase from "./components/ProductGridShowcase";
+import RecommendedProducts from "./components/RecommendedProducts";
 import FeaturesSection from "./components/FeaturesSection";
 import StatsSection from "./components/StatsSection";
 import HowItWorksSection from "./components/HowItWorksSection";
@@ -64,7 +65,7 @@ export default function Home() {
         }))}
       />
 
-    
+      <RecommendedProducts />
 
       {/* How It Works Section */}
       <HowItWorksSection
