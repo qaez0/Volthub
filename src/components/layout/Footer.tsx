@@ -101,8 +101,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white py-8 md:py-16">
-      <LayoutContainer >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[25%_21%_1fr_20%_1fr] gap-2 md:gap-3 lg:gap-2 mb-8 md:mb-12">
+      <LayoutContainer>
+        <div className="grid grid-cols-1 lg:grid-cols-[25%_21%_1fr_20%_1fr] gap-2 md:gap-3 lg:gap-2 mb-8 md:mb-12">
           {/* Brand Section - Always visible */}
           <div>
             <div className="flex items-center space-x-3 mb-4 md:mb-6">
@@ -144,10 +144,13 @@ const Footer = () => {
           {footerColumns.map((column) => {
             const isOpen = openSections[column.heading] ?? false;
             return (
-              <div key={column.heading} className="border-b md:border-b-0 border-gray-800 pb-4 md:pb-0 last:border-b-0">
+              <div
+                key={column.heading}
+                className="border-b border-gray-800 pb-4 last:border-b-0 lg:border-b-0 lg:pb-0"
+              >
                 <button
                   onClick={() => toggleSection(column.heading)}
-                  className="w-full md:w-auto flex items-center justify-between md:justify-start mb-3 md:mb-4 md:pointer-events-none"
+                  className="w-full flex items-center justify-between mb-3 lg:w-auto lg:justify-start lg:mb-4 lg:pointer-events-none"
                   aria-expanded={isOpen}
                   aria-label={`Toggle ${column.heading} menu`}
                 >
@@ -155,17 +158,15 @@ const Footer = () => {
                     {column.heading}
                   </h4>
                   <RiArrowDownSLine
-                    className={`md:hidden ml-2 text-gray-400 transition-transform duration-200 ${
+                    className={`lg:hidden ml-2 text-gray-400 transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
                 <ul
-                  className={`space-y-2 md:space-y-3 text-gray-400 overflow-hidden transition-all duration-300 md:max-h-none ${
-                    isOpen
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0 md:max-h-none md:opacity-100"
-                  }`}
+                  className={`space-y-2 md:space-y-3 text-gray-400 overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  } lg:max-h-none lg:opacity-100`}
                 >
                   {column.links.map((link) => (
                     <li key={link.label}>
@@ -184,7 +185,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className=" hidden md:block border-t border-gray-800 pt-6 md:pt-8">
+        <div className=" hidden lg:block border-t border-gray-800 pt-6 md:pt-8">
           <div className="flex flex-col gap-4 text-gray-400 text-xs md:text-sm">
             <p className="text-center md:text-left">
               © {new Date().getFullYear()} VoltHub.
