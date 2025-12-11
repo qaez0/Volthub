@@ -5,6 +5,7 @@ import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import BackToTopButton from "@/components/common/BackToTopButton";
 import Link from "next/link";
+import SectorQuickNav from "@/components/common/SectorQuickNav";
 import {
   RiBatteryChargeLine,
   RiChargingPile2Line,
@@ -195,6 +196,8 @@ export default function CommercialSector() {
           </LayoutContainer>
         </div>
       </section>
+
+      <SectorQuickNav />
 
       {/* Overview Section */}
       <section className="py-16 bg-white">

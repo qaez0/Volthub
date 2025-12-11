@@ -5,6 +5,7 @@ import LayoutContainer from "@/components/layout/LayoutContainer";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import BackToTopButton from "@/components/common/BackToTopButton";
 import Link from "next/link";
+import SectorQuickNav from "@/components/common/SectorQuickNav";
 import {
   RiChargingPile2Line,
   RiLightbulbLine,
@@ -202,6 +203,8 @@ export default function SmartCitiesSector() {
           </LayoutContainer>
         </div>
       </section>
+
+      <SectorQuickNav />
 
       {/* Overview Section */}
       <section className="py-16 bg-white">
