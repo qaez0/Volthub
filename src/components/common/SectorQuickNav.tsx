@@ -22,7 +22,7 @@ export default function SectorQuickNav() {
   }, []);
 
   return (
-    <div className="sticky top-[72px] z-40 bg-slate-50/95 backdrop-blur border-b border-slate-200 md:hidden">
+    <div className="sticky top-[72px] z-40 bg-slate-50/95 backdrop-blur border-b border-slate-200 lg:hidden">
       <LayoutContainer className="px-3 md:px-4">
         <div className="py-2.5 md:py-3">
           <div className="overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

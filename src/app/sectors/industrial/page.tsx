@@ -163,6 +163,8 @@ export default function IndustrialSector() {
         </div>
       </section>
 
+      <SectorQuickNav />
+
       {/* Overview Section */}
       <section className="py-16 bg-white">
         <LayoutContainer>
@@ -200,8 +202,6 @@ export default function IndustrialSector() {
           </div>
         </LayoutContainer>
       </section>
-
-      <SectorQuickNav />
 
       {/* Storage Systems Section */}
       <section className="py-16 bg-slate-50">
