@@ -9,19 +9,21 @@ import ProductGridShowcase from "./components/ProductGridShowcase";
 import RecommendedProducts from "./components/RecommendedProducts";
 import FeaturesSection from "./components/FeaturesSection";
 import StatsSection from "./components/StatsSection";
-import HowItWorksSection from "./components/HowItWorksSection";
+// import HowItWorksSection from "./components/HowItWorksSection";
 import UserSegmentationSection from "./components/UserSegmentationSection";
-import SocialProofSection from "./components/SocialProofSection";
+// import SocialProofSection from "./components/SocialProofSection";
 import FAQSection from "./components/FAQSection";
+// import VideoSection from "./components/VideoSection";
 import {
   carouselSlides,
   features,
   stats,
   productShowcases,
-  howItWorksSteps,
+  // howItWorksSteps,
   userSegments,
-  testimonials,
-  trustBadges,
+  // testimonials,
+  // videoItems,
+  // trustBadges,
   faqs,
 } from "./components/homeData";
 
@@ -82,13 +84,13 @@ export default function Home() {
       />
 
       {/* Social Proof Section */}
-      <SocialProofSection
+      {/* <SocialProofSection
         title="What Our Customers Say"
         description="Join thousands of satisfied customers who have made the switch to clean energy."
         testimonials={testimonials}
         trustBadges={trustBadges}
         showCertifications={false}
-      />
+      /> */}
 
       {/* ROI Calculator Section */}
       {/* <ROICalculatorSection

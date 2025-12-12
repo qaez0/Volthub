@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
-import Link from "next/link";
-import type { Route } from "next";
+// import Link from "next/link";
+// import type { Route } from "next";
 
 interface CarouselSlide {
   id: number;
@@ -323,10 +323,10 @@ export default function CarouselBanner({
                         <p className="font-orbitron tracking-[0.2em] md:tracking-[0.3em] text-xs sm:text-sm text-secondary uppercase animate-fade-in">
                           {slide.subtitle}
                         </p>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight break-words">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight wrap-break-word ">
                           <span className="neon-glow block">{slide.title}</span>
                         </h1>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 leading-relaxed max-w-xl break-words">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 leading-relaxed max-w-xl wrap-break-word">
                           {slide.description}
                         </p>
                       </div>

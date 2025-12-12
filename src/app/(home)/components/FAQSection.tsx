@@ -30,8 +30,8 @@ export default function FAQSection({
       <LayoutContainer className="flex flex-col md:flex-col gap-6 md:gap-8 p-2">
         <div className="text-center space-y-3 md:space-y-4 mb-8 md:mb-16 reveal-on-scroll px-2">
           <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] md:tracking-[0.3em] text-primary uppercase">{badge}</p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text break-words">{title}</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto break-words px-2">{description}</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text wrap-break-word">{title}</h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto wrap-break-word px-2">{description}</p>
         </div>
 
         <div className="max-w-4xl mx-auto flex flex-col gap-3 md:gap-4">
@@ -43,12 +43,12 @@ export default function FAQSection({
             >
               <div className="flex items-start justify-between gap-3 md:gap-4">
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors duration-300 break-words">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors duration-300 wrap-break-word">
                     {faq.question}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed break-words">{faq.answer}</p>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed wrap-break-word">{faq.answer}</p>
                 </div>
-                <div className="w-7 h-7 md:w-8 md:h-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-7 h-7 md:w-8 md:h-8 bg-linear-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                   <RiQuestionLine className="text-primary text-sm md:text-base" />
                 </div>
               </div>

@@ -6,7 +6,7 @@ import {
   RiSunLine,
   RiChargingPile2Line,
   RiHomeSmileLine,
-  RiBatteryChargeLine,
+  // RiBatteryChargeLine,
   RiFlashlightLine,
 } from "react-icons/ri";
 import Link from "next/link";

@@ -8,7 +8,7 @@ import LayoutContainer from "@/components/layout/LayoutContainer";
 import { philippineRegions, interestOptions, socialIcons } from "./contactData";
 import ContactHeader from "./ContactHeader";
 import ContactInfo from "./ContactInfo";
-import { Card, CardContent } from "@/components/ui/card";
+// import { Card, CardContent } from "@/components/ui/card";
 
 export default function ContactForm() {
   const searchParams = useSearchParams();

@@ -1,5 +1,8 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { contactInfo, socialIcons } from "./contactData";
+import { 
+  contactInfo, 
+  // socialIcons 
+} from "./contactData";
 
 export default function ContactInfo() {
   return (
