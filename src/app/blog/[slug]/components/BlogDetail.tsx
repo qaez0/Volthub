@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowLeftLine, RiCalendarLine, RiFileTextLine, RiBookOpenLine, RiDownloadLine } from "react-icons/ri";
-import LayoutContainer from "@/components/layout/LayoutContainer";
+// import LayoutContainer from "@/components/layout/LayoutContainer";
 
 interface Resource {
   slug?: string;

@@ -74,7 +74,7 @@ export default function HistorySection() {
                   Address:
                 </p>
                 <p className="text-gray-700">
-                  Unit 2503, High Street South Corporate Plaza Tower 2,
+                  High Street South Corporate Plaza Tower 2, 11th Ave,
                   Bonifacio Global City, Taguig, Philippines
                 </p>
               </div>

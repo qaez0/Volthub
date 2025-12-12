@@ -130,7 +130,7 @@ export default function Home() {
         title="Latest Blogs & Insights"
         description="Stay updated with news, how-to guides, and deep dives on EV charging, solar, and smart energy."
         resources={resources}
-        viewAllLink="/contact"
+        // viewAllLink="/contact"
       />
 
       {/* Stats Section */}

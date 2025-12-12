@@ -12,9 +12,9 @@ import {
   RiUserLine,
   RiBuildingLine,
   RiVideoLine,
-  RiFileTextLine,
-  RiDownloadLine,
-  RiBookOpenLine,
+  // RiFileTextLine,
+  // RiDownloadLine,
+  // RiBookOpenLine,
 } from "react-icons/ri";
 
 // Carousel Slides

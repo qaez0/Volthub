@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import type { Route } from "next";
-import { IconType } from "react-icons";
+// import type { Route } from "next";
+// import { IconType } from "react-icons";
 import { RiArrowRightLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import Image from "next/image";
@@ -22,7 +22,7 @@ interface BlogResourcesSectionProps {
   title: string;
   description: string;
   resources: Resource[];
-  viewAllLink?: Route;
+  // viewAllLink?: Route;
 }
 
 export default function BlogResourcesSection({
@@ -30,7 +30,7 @@ export default function BlogResourcesSection({
   title,
   description,
   resources,
-  viewAllLink = "/contact",
+  // viewAllLink = "/contact",
 }: BlogResourcesSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 

@@ -202,7 +202,7 @@ const Footer = () => {
                 </a>  
               </p>
               <p className="text-sm md:text-base leading-relaxed select-text">
-                <span className="font-bold text-white">Address:</span> Unit 2503, High Street South Corporate Plaza Tower 2,
+                <span className="font-bold text-white">Address:</span>  High Street South Corporate Plaza Tower 2, 11th Ave,
                 Bonifacio Global City, Taguig, Philippines
               </p>
             </div>
