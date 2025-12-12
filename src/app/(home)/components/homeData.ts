@@ -376,22 +376,36 @@ export const resources = [
     description:
       "Everything you need to know about residential battery systems and how they can save you money.",
     type: "Guide",
-    icon: RiBookOpenLine,
-    color: "from-primary to-accent",
+    image: "/HomeBanner/banner1m.png",
+    imageAlt: "Solar energy storage guide",
   },
   {
     title: "EV Charging Infrastructure: Future of Transportation",
     description: "Explore how EV charging networks are shaping the future of sustainable mobility.",
     type: "Article",
-    icon: RiFileTextLine,
-    color: "from-accent to-primary",
+    image: "/HomeBanner/banner2m.png",
+    imageAlt: "EV charging infrastructure",
   },
   {
     title: "Energy Savings Calculator: ROI Analysis",
     description: "Download our free calculator to estimate your potential savings with renewable energy.",
     type: "Tool",
-    icon: RiDownloadLine,
-    color: "from-primary to-emerald-600",
+    image: "/HomeBanner/banner3m.png",
+    imageAlt: "Energy savings calculator",
+  },
+  {
+    title: "Smart Grid Integration: Powering the Future",
+    description: "Learn how smart grid technology enables efficient energy distribution and management for modern homes and businesses.",
+    type: "Article",
+    image: "/HomeBanner/commercial1.png",
+    imageAlt: "Smart grid integration technology",
+  },
+  {
+    title: "Commercial Energy Solutions: A Business Guide",
+    description: "Discover how commercial energy storage systems can reduce operational costs and improve sustainability for your business.",
+    type: "Guide",
+    image: "/HomeBanner/banner4m.png",
+    imageAlt: "Commercial energy solutions",
   },
 ];
 

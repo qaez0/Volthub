@@ -26,6 +26,7 @@ export default function ProductsClient() {
       ? categoryParam
       : "all",
   );
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (
@@ -43,10 +44,23 @@ export default function ProductsClient() {
     }
   }, [categoryParam]);
 
-  const filteredProducts =
-    activeCategory === "all"
-      ? products
-      : products.filter((p) => p.category === activeCategory);
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
+  const filteredProducts = products
+    .filter((p) => (activeCategory === "all" ? true : p.category === activeCategory))
+    .filter((p) => {
+      if (!normalizedQuery) return true;
+      const haystack = [
+        p.name,
+        p.subtitle,
+        p.tag,
+        p.description,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(normalizedQuery);
+    });
 
   const showBackToTop = activeCategory === "all";
 
@@ -69,6 +83,8 @@ export default function ProductsClient() {
             <ProductGrid
               products={filteredProducts}
               activeCategory={activeCategory}
+              searchQuery={searchQuery}
+              onSearchQueryChange={setSearchQuery}
             />
           </div>
         </LayoutContainer>

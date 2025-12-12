@@ -5,13 +5,15 @@ import type { Route } from "next";
 import { IconType } from "react-icons";
 import { RiArrowRightLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
+import Image from "next/image";
+import { useRef } from "react";
 
 interface Resource {
   title: string;
   description: string;
   type: string;
-  icon: IconType;
-  color: string;
+  image: string;
+  imageAlt?: string;
 }
 
 interface BlogResourcesSectionProps {
@@ -29,45 +31,98 @@ export default function BlogResourcesSection({
   resources,
   viewAllLink = "/contact",
 }: BlogResourcesSectionProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollBy = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <LayoutContainer>
-        <div className="text-center space-y-4 mb-16 reveal-on-scroll">
-          <p className="text-sm font-semibold tracking-[0.3em] text-accent uppercase">{badge}</p>
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text">{title}</h2>
-          <p className="text-gray-600 max-w-3xl mx-auto text-lg">{description}</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {resources.map((resource, index) => (
-            <div
-              key={index}
-              className="stagger-card reveal-on-scroll p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group cursor-pointer"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div
-                className={`w-14 h-14 bg-gradient-to-br ${resource.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <resource.icon className="text-2xl text-white" />
-              </div>
-              <div className="mb-2">
-                <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                  {resource.type}
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-primary transition-colors duration-300">
-                {resource.title}
-              </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">{resource.description}</p>
-              <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-300">
-                <span>Read More</span>
-                <RiArrowRightLine className="text-lg" />
-              </div>
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
+          {/* Title Section */}
+          <div className="flex flex-col gap-4 lg:gap-6 lg:w-1/3 lg:sticky lg:top-8">
+            <div className="space-y-4 reveal-on-scroll">
+              <p className="text-sm font-semibold tracking-[0.3em] text-accent uppercase">{badge}</p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text leading-tight">
+                {title}
+              </h2>
+              <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
+                {description}
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Blog Cards Section */}
+          <div className="flex-1 w-full lg:w-2/3 relative">
+            <div className="hidden md:flex items-center gap-3 absolute right-0 -top-16 z-10">
+              <button
+                type="button"
+                onClick={() => scrollBy(-320)}
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-gray-200 shadow-md hover:shadow-lg hover:bg-gray-50 transition-all duration-300 text-gray-700 hover:text-primary"
+                aria-label="Scroll left"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollBy(320)}
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-gray-200 shadow-md hover:shadow-lg hover:bg-gray-50 transition-all duration-300 text-gray-700 hover:text-primary"
+                aria-label="Scroll right"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              ref={scrollRef}
+              className="flex gap-4 md:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              {resources.map((resource, index) => (
+                <div
+                  key={index}
+                  className="stagger-card snap-start w-[310px] md:w-[460px] min-w-[260px] md:min-w-[300px] lg:min-w-[320px] flex-shrink-0 reveal-on-scroll p-4 md:p-5 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                  style={{ animationDelay: `${index * 0.08}s` }}
+                >
+                  <div className="relative w-full h-40 md:h-44 lg:h-48 rounded-xl overflow-hidden mb-3 md:mb-4">
+                    <Image
+                      src={resource.image}
+                      alt={resource.imageAlt || resource.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(min-width: 1024px) 320px, (min-width: 768px) 300px, 260px"
+                      priority={index === 0}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide">
+                      {resource.type}
+                    </span>
+                  </div>
+                  <h3 className="text-lg md:text-xl font-semibold mb-3 text-gray-800 group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-snug">
+                    {resource.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed text-sm md:text-base line-clamp-3">
+                    {resource.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-300 text-sm md:text-base">
+                    <span>Read More</span>
+                    <RiArrowRightLine className="text-lg" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Link
             href={viewAllLink}
             className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 group"
@@ -75,7 +130,7 @@ export default function BlogResourcesSection({
             View All Resources
             <RiArrowRightLine className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
           </Link>
-        </div>
+        </div> */}
       </LayoutContainer>
     </section>
   );

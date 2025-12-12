@@ -7,7 +7,7 @@ import HoverEffects from "@/components/home/HoverEffects";
 // import ProductShowcase from "./components/ProductShowcase";
 import ProductGridShowcase from "./components/ProductGridShowcase";
 import RecommendedProducts from "./components/RecommendedProducts";
-import FeaturesSection from "./components/FeaturesSection";
+import BlogResourcesSection from "./components/BlogResourcesSection";
 import StatsSection from "./components/StatsSection";
 // import HowItWorksSection from "./components/HowItWorksSection";
 import UserSegmentationSection from "./components/UserSegmentationSection";
@@ -16,7 +16,6 @@ import FAQSection from "./components/FAQSection";
 // import VideoSection from "./components/VideoSection";
 import {
   carouselSlides,
-  features,
   stats,
   productShowcases,
   // howItWorksSteps,
@@ -24,6 +23,7 @@ import {
   // testimonials,
   // videoItems,
   // trustBadges,
+  resources,
   faqs,
 } from "./components/homeData";
 
@@ -126,11 +126,11 @@ export default function Home() {
         description="Join thousands of satisfied customers. Get a free consultation and discover how much you could save with clean energy."
       /> */}
 
-  {/* Features Section */}
-  <FeaturesSection
-        title="Clean energy without compromise"
-        description="From ultra-efficient solar modules to AI-driven grid intelligence, we engineer every layer of the renewable ecosystem to deliver measurable impact on day one."
-        features={features}
+      <BlogResourcesSection
+        title="Latest Blogs & Insights"
+        description="Stay updated with news, how-to guides, and deep dives on EV charging, solar, and smart energy."
+        resources={resources}
+        viewAllLink="/contact"
       />
 
       {/* Stats Section */}

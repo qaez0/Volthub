@@ -4,16 +4,20 @@ import ProductCard from "./ProductCard";
 interface ProductGridProps {
   products: Product[];
   activeCategory: ProductCategory;
+  searchQuery: string;
+  onSearchQueryChange: (value: string) => void;
 }
 
 export default function ProductGrid({
   products,
   activeCategory,
+  searchQuery,
+  onSearchQueryChange,
 }: ProductGridProps) {
   return (
     <div className="space-y-4 md:space-y-6 flex-1 w-full md:w-auto">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 md:gap-4">
-        <div>
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-4">
+        <div className="space-y-1">
           <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-primary font-semibold">
             Products
           </p>
@@ -23,9 +27,23 @@ export default function ProductGrid({
               : categories.find((c) => c.id === activeCategory)?.label}
           </h2>
         </div>
-        <p className="text-xs md:text-sm text-slate-500">
-          Showing {products.length} of {allProducts.length} products
-        </p>
+        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 w-full md:w-auto">
+          <div className="relative w-full md:w-72">
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => onSearchQueryChange(e.target.value)}
+              placeholder="Search products..."
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30 transition"
+            />
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+              🔍
+            </span>
+          </div>
+          <p className="text-xs md:text-sm text-slate-500 md:text-right">
+            Showing {products.length} of {allProducts.length} products
+          </p>
+        </div>
       </div>
 
       {products.length === 0 ? (
