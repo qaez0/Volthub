@@ -65,7 +65,7 @@ const products: RecommendedProduct[] = [
     hoverIconClass: "group-hover:text-lime-700",
     hoverTextClass: "group-hover:text-lime-700",
     Icon: RiFlashlightLine,
-    href: "/products?category=container",
+    href: "/products?category=cabinet",
     description: "Industrial-grade power supply solutions and energy storage systems for commercial and large-scale applications with maximum reliability.",
   },
 ];
@@ -76,10 +76,10 @@ export default function RecommendedProducts() {
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="text-center space-y-2 md:space-y-3">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Recommended Products
+            Products Categories
           </h2>
           <p className="text-sm md:text-base text-gray-600">
-            Please feel free to choose!
+            Choose from our products categories and feel free to choose!
           </p>
         </div>
 

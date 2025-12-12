@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       "ev-charging-station": "EV Charging Station",
       "solar-street-lights": "Solar Street Lights",
       "smart-home-ips": "Smart Home IPS",
-      "cabinet-type-power-supply": "Cabinet Type Power Supply",
+      "cabinet-type-power-supply": "Power Supplies",
       "container-type-power-supply": "Container Type Power Supply",
       // Services - EV Charging
       "ev-charging-installation": "EV Charging Installation",

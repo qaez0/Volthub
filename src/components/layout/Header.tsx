@@ -35,13 +35,13 @@ const navItems: NavItem[] = [
       { label: "EV Chargers", href: "/products?category=ev-charging" },
       { label: "Energy Storage", href: "/products?category=smart-home" },
       {
-        label: "Cabinet Type Power Supplies",
+        label: "Power Supplies",
         href: "/products?category=cabinet",
       },
-      {
-        label: "Container Type Power Supplies",
-        href: "/products?category=container",
-      },
+      // {
+      //   label: "Container Type Power Supplies",
+      //   href: "/products?category=container",
+      // },
     ],
   },
   {

@@ -135,7 +135,7 @@ export const interestOptions = [
   { value: "ev-charging-station", label: "EV Charging Station" },
   { value: "solar-street-lights", label: "Solar Street Lights" },
   { value: "smart-home-ips", label: "Smart Home IPS" },
-  { value: "cabinet-type-power-supply", label: "Cabinet Type Power Supply" },
+  { value: "cabinet-type-power-supply", label: "Power Supplies" },
   { value: "container-type-power-supply", label: "Container Type Power Supply" },
   // Services - EV Charging
   { value: "ev-charging-installation", label: "EV Charging Installation" },
@@ -165,11 +165,13 @@ export const contactInfo = [
     icon: RiPhoneLine,
     title: "Phone",
     detail: "+63 9659700823",
+    link: "tel:+639659700823",
   },
   {
     icon: RiMailLine,
     title: "Email",
     detail: "admin-help@volthub-ev.com",
+    link: "mailto:admin-help@volthub-ev.com",
   },
   {
     icon: RiMapPinLine,

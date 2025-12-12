@@ -41,7 +41,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const isEVProduct = product.category === "ev-charging";
   const isSmartHomeProduct = product.category === "smart-home";
   const isCabinetProduct = product.category === "cabinet";
-  const isContainerProduct = product.category === "container";
+  // Container category merged into cabinet; detect by ID for container-specific UI
+  const isContainerProduct = product.id === "container-con1";
   
   // Get related products from the same category, excluding current product
   const relatedProducts = products.filter(
@@ -983,7 +984,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {activeTab === "projects" && (
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">
-                {isEVProduct || isCabinetProduct || isSmartHomeProduct ? "Applicable Spaces" : isContainerProduct ? "Applicable Scenarios" : "Sample Projects"}
+                {isContainerProduct
+                  ? "Applicable Scenarios"
+                  : isEVProduct || isCabinetProduct || isSmartHomeProduct
+                  ? "Applicable Spaces"
+                  : "Sample Projects"}
               </h3>
               {isContainerProduct ? (
                 <div className="space-y-4 md:space-y-6">

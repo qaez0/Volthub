@@ -33,8 +33,10 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.category === "solar-street" && (
             <RiSunLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
           )}
-          {(product.category === "cabinet" ||
-            product.category === "container") && (
+          {(product.category === "cabinet" 
+            // product.category === "container"
+          ) 
+            && (
             <RiBatteryChargeLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
           )}
           <span className="uppercase tracking-[0.16em] truncate">

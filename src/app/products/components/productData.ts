@@ -4,7 +4,8 @@ export type ProductCategory =
   | "solar-street"
   | "smart-home"
   | "cabinet"
-  | "container";
+  // | "container"
+  ;
 
 export type ProductVariation = {
   name: string;
@@ -35,8 +36,8 @@ export const categories: { id: ProductCategory; label: string }[] = [
   { id: "ev-charging", label: "EV Charging Station" },
   { id: "solar-street", label: "Solar Street Lights" },
   { id: "smart-home", label: "Smart Home IPS" },
-  { id: "cabinet", label: "Cabinet Type Power Supply" },
-  { id: "container", label: "Container Type Power Supply" },
+  { id: "cabinet", label: "Power Supplies" },
+  // { id: "container", label: "Container Type Power Supply" },
 ];
 
 export const categoryBanner: Record<
@@ -75,13 +76,13 @@ export const categoryBanner: Record<
     image: "/HomeBanner/commercial.png",
     video: "/Product/CNvB.mp4",
   },
-  container: {
-    title: "Container Type Power Supply",
-    description:
-      "Utility‑scale containerized BESS and hybrid power systems ready for rapid deployment.",
-    image: "/HomeBanner/container.png",
-    video: "/Product/CBMB.mp4",
-  },
+  // container: {
+  //   title: "Container Type Power Supply",
+  //   description:
+  //     "Utility‑scale containerized BESS and hybrid power systems ready for rapid deployment.",
+  //   image: "/HomeBanner/container.png",
+  //   video: "/Product/CBMB.mp4",
+  // },
 };
 
 // Based on Absen Energy products layout, adapted to VoltHub
@@ -223,7 +224,7 @@ export const products: Product[] = [
     price: "₱17,036.25",
     images: [
       "/Product/StreetLamp/lvxc3/prod1.png",
-     // "/Product/StreetLamp/lvxc3/disc1.png",
+   // "/Product/StreetLamp/lvxc3/disc1.png",
       "/Product/StreetLamp/lvxc3/disc2.png",
       "/Product/StreetLamp/lvxc3/disc3.png",
       "/Product/StreetLamp/lvxc3/disc4.png",
@@ -420,7 +421,7 @@ export const products: Product[] = [
     id: "container-con1",
     name: "Container Type Power Supply",
     subtitle: "Utility-scale containerized BESS and hybrid power system",
-    category: "container",
+    category: "cabinet",
     tag: "Off-Grid Power Generation System",
     image: "/Product/containertype/con1.png",
     images: [

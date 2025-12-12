@@ -52,17 +52,17 @@ const menu: Record<string, MenuItem[] | MenuItem> = {
       image: "/HomeBanner/homebatt.png",
     },
     {
-      title: "Cabinet Type Power Supplies",
+      title: "Power Supplies",
       href: "/products?category=cabinet",
       description: "Cabinet-type modular power supply systems.",
       image: "/HomeBanner/commercial.png",
     },
-    {
-      title: "Container Type Power Supplies",
-      href: "/products?category=container",
-      description: "Containerized power supply solutions.",
-      image: "/HomeBanner/container.png",
-    },
+    // {
+    //   title: "Container Type Power Supplies",
+    //   href: "/products?category=container",
+    //   description: "Containerized power supply solutions.",
+    //   image: "/HomeBanner/container.png",
+    // },
   ],
 
   sectors: [

@@ -27,9 +27,18 @@ export default function ContactInfo() {
                     <p className="font-semibold text-white text-base">
                       {item.title}
                     </p>
-                    <p className={`text-white text-base ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}>
-                      {item.detail}
-                    </p>
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        className={`text-white text-base hover:underline ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}
+                      >
+                        {item.detail}
+                      </a>
+                    ) : (
+                      <p className={`text-white text-base ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}>
+                        {item.detail}
+                      </p>
+                    )}
                     {item.detail2 && (
                       <p className="text-white text-base wrap-break-word">
                         {item.detail2}

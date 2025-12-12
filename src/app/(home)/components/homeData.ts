@@ -131,24 +131,85 @@ export const stats = [
 // Product Showcases
 export const productShowcases = [
   {
-    badge: "Featured Product",
+    badge: "Premium Solution",
     badgeColor: "text-amber-300",
-    title: "Residential Energy Storage",
+    title: "DC EV Charger Dual Gun",
     titleParts: [
-      { text: "Electric Vehicles", color: "text-emerald-400" },
-      { text: "Charging Stations", color: "text-accent" },
+      { text: "DC EV", color: "text-amber-200" },
+      { text: "Charger", color: "text-green-600" },
+      { text: "60kW/120kW", color: "text-primary" },
     ],
     description:
-      "Electric Vehicles Charging Stations that are fast, safe, and reliable for energy independence.",
-    image: "/HomeBanner/89a.png",
-    imageAlt: "Residential Energy Storage System",
+      "Premium dual-gun DC fast charger for fleets and public sites. Features single-gun full power or dual-gun current sharing modes for maximum flexibility.",
+    image: "/home/greenev.png",
+    imageAlt: "DC EV Charger Dual Gun 60kW/120kW",
     features: [
-      { icon: RiBatteryChargeLine, text: "5-15 kWh Capacity", color: "text-primary" },
-      { icon: RiSunLine, text: "Smart Monitoring", color: "text-accent" },
-      { icon: RiShieldCheckLine, text: "10+ Year Warranty", color: "text-green-600" },
+      { icon: RiBatteryChargeLine, text: "Dual-Gun Design", color: "text-emerald-700" },
+      { icon: RiHomeGearLine, text: "Flexible Power Sharing", color: "text-primary" },
+      { icon: RiFlashlightLine, text: "Smart Grid Integration", color: "text-accent" },
     ],
     ctas: [
-      { text: "View Residential Energy Storage Products", href: "/products" as Route, variant: "primary" as const },
+      { text: "View Dual-Gun EV Charger Products", href: "/products/ev-charging-89" as Route, variant: "primary" as const },
+      { text: "Schedule Consultation", href: "/contact" as Route, variant: "secondary" as const },
+    ],
+    trustIndicators: [
+      { icon: RiBatteryChargeLine, text: "Dual Charging", color: "text-emerald-700" },
+      { icon: RiShieldCheckLine, text: "Warranty Included", color: "text-primary" },
+      { icon: RiSpeedUpLine, text: "Fast Setup", color: "text-accent" },
+    ],
+    imagePosition: "left" as const,
+    gradientColors: { from: "from-emerald-600/20", to: "to-primary/20" },
+    bgGradient: "bg-gradient-to-br from-white via-gray-50 to-white",
+  },
+  {
+    badge: "Ultra-High Power",
+    badgeColor: "text-teal-600",
+    title: "DC EV Charger 400kW",
+    titleParts: [
+      { text: "DC EV", color: "text-teal-600" },
+      { text: "Charger 400kW", color: "text-green-800" },
+    ],
+    description:
+      "Ultra-high power DC fast charging solution for commercial sites and fleet depots. Delivers powerful rapid charging capabilities for heavy-duty electric vehicles.",
+    image: "/home/redev.png",
+    imageAlt: "DC EV Charger 400kW",
+    features: [
+      { icon: RiFlashlightLine, text: "400kW Ultra-High Power", color: "text-accent" },
+      { icon: RiSpeedUpLine, text: "Rapid Charging", color: "text-primary" },
+      { icon: RiHomeGearLine, text: "Smart Management", color: "text-green-600" },
+    ],
+    ctas: [
+      { text: "Explore DC EV Charger Products", href: "/products/ev-charging-64" as Route, variant: "primary" as const },
+      { text: "Request Demo", href: "/contact" as Route, variant: "secondary" as const },
+    ],
+    trustIndicators: [
+      { icon: RiFlashlightLine, text: "High Power Output", color: "text-accent" },
+      { icon: RiBatteryChargeLine, text: "Fast Charging", color: "text-primary" },
+      { icon: RiPlantLine, text: "Carbon Neutral", color: "text-green-600" },
+    ],
+    imagePosition: "left" as const,
+    gradientColors: { from: "from-accent/20", to: "to-primary/20" },
+    bgGradient: "bg-gradient-to-br from-gray-50 via-white to-gray-50",
+  },
+  {
+    badge: "Residential EV Charging",
+    badgeColor: "text-amber-300",
+    title: "AC EV Charger 7kW",
+    titleParts: [
+      { text: "AC EV", color: "text-emerald-400" },
+      { text: "Charger 7kW", color: "text-accent" },
+    ],
+    description:
+      "High-performance AC EV charging system perfect for home use. Fast, safe, and reliable charging for your electric vehicle with smart monitoring capabilities.",
+    image: "/home/residentialev.png",
+    imageAlt: "AC EV Charger 7kW",
+    features: [
+      { icon: RiBatteryChargeLine, text: "7kW Charging Power", color: "text-primary" },
+      { icon: RiSunLine, text: "Smart Monitoring", color: "text-accent" },
+      { icon: RiShieldCheckLine, text: "Safe & Certified", color: "text-green-600" },
+    ],
+    ctas: [
+      { text: "View AC EV Charger Products", href: "/products/ev-charging-59" as Route, variant: "primary" as const },
       { text: "Get Quote", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
@@ -161,86 +222,25 @@ export const productShowcases = [
     bgGradient: "bg-gradient-to-br from-white via-gray-50 to-white",
   },
   {
-    badge: "Premium Solution",
-    badgeColor: "text-teal-600",
-    title: "Advanced Solar System",
-    titleParts: [
-      { text: "Advanced      ", color: "text-teal-600" },
-      { text: "Energy Storage", color: "text-green-800" },
-      { text: "Systems", color: "text-primary" },
-    ],
-    description:
-      "High-efficiency solar panels with integrated energy storage. Maximize your energy independence with our premium solar solutions designed for modern homes and businesses.",
-    image: "/HomeBanner/item5.png",
-    imageAlt: "Advanced Solar System",
-    features: [
-      { icon: RiSunLine, text: "High Efficiency Panels", color: "text-accent" },
-      { icon: RiFlashlightLine, text: "Integrated Storage", color: "text-primary" },
-      { icon: RiHomeGearLine, text: "Smart Energy Management", color: "text-green-600" },
-    ],
-    ctas: [
-      { text: "Explore Solar Energy Products", href: "/products" as Route, variant: "primary" as const },
-      { text: "Request Demo", href: "/contact" as Route, variant: "secondary" as const },
-    ],
-    trustIndicators: [
-      { icon: RiSunLine, text: "25+ Year Lifespan", color: "text-accent" },
-      { icon: RiBatteryChargeLine, text: "Energy Storage", color: "text-primary" },
-      { icon: RiPlantLine, text: "Carbon Neutral", color: "text-green-600" },
-    ],
-    imagePosition: "left" as const,
-    gradientColors: { from: "from-accent/20", to: "to-primary/20" },
-    bgGradient: "bg-gradient-to-br from-gray-50 via-white to-gray-50",
-  },
-  {
-    badge: "Street Lighting Solution",
-    badgeColor: "text-amber-300",
-    title: "Solar Street Lighting",
-    titleParts: [
-      { text: "Street  ", color: "text-amber-200" },
-      { text: "Lighting", color: "text-green-600" },
-      { text: " Systems", color: "text-primary" },
-    ],
-    description:
-      "Compact and powerful home battery systems that seamlessly integrate with your solar panels. Store excess energy during the day and use it when you need it most, reducing your reliance on the grid.",
-    image: "/HomeBanner/LVXC.png",
-    imageAlt: "Home Battery Storage System",
-    features: [
-      { icon: RiBatteryChargeLine, text: "Compact Design", color: "text-emerald-700" },
-      { icon: RiHomeGearLine, text: "Easy Installation", color: "text-primary" },
-      { icon: RiFlashlightLine, text: "Grid Integration", color: "text-accent" },
-    ],
-    ctas: [
-      { text: "View Home Battery Storage Products", href: "/products" as Route, variant: "primary" as const },
-      { text: "Schedule Consultation", href: "/contact" as Route, variant: "secondary" as const },
-    ],
-    trustIndicators: [
-      { icon: RiBatteryChargeLine, text: "Long Lasting", color: "text-emerald-700" },
-      { icon: RiShieldCheckLine, text: "Warranty Included", color: "text-primary" },
-      { icon: RiSpeedUpLine, text: "Fast Setup", color: "text-accent" },
-    ],
-    imagePosition: "left" as const,
-    gradientColors: { from: "from-emerald-600/20", to: "to-primary/20" },
-    bgGradient: "bg-gradient-to-br from-white via-gray-50 to-white",
-  },
-  {
-    badge: "Home Energy Solution",
+    badge: "Commercial Grade",
     badgeColor: "text-green-700",
-    title: "Home Energy Storage",
+    title: "DC EV Charger Dual Gun",
     titleParts: [
-      { text: "Home", color: "text-yellow-300" },
-      { text: "Energy Storage", color: "text-lime-700" },
+      { text: "DC EV", color: "text-yellow-300" },
+      { text: "Charger", color: "text-lime-700" },
+      { text: "160kW", color: "text-primary" },
     ],
     description:
-      "Large-scale energy storage solutions for commercial and industrial applications. Optimize your energy costs, ensure uninterrupted power supply, and reduce your carbon footprint with our enterprise-grade storage systems.",
-    image: "/HomeBanner/homebatt1.png",
-    imageAlt: "Commercial Energy Storage System",
+      "High-power dual-gun DC fast charger for premium charging hubs and expressway service areas. Future-proof for newer EVs with advanced charging capabilities.",
+    image: "/home/yellowev.png",
+    imageAlt: "DC EV Charger Dual Gun 160kW/240kW",
     features: [
-      { icon: RiFlashlightLine, text: "Scalable Capacity", color: "text-secondary" },
-      { icon: RiGlobalLine, text: "Enterprise Grade", color: "text-primary" },
-      { icon: RiSpeedUpLine, text: "Fast Response Time", color: "text-accent" },
+      { icon: RiFlashlightLine, text: "160kW/240kW Power", color: "text-secondary" },
+      { icon: RiGlobalLine, text: "Commercial Grade", color: "text-primary" },
+      { icon: RiSpeedUpLine, text: "Future-Proof Design", color: "text-accent" },
     ],
     ctas: [
-      { text: "View Products", href: "/products" as Route, variant: "primary" as const },
+      { text: "View Commercial EV Charger Products", href: "/products/ev-charging-53" as Route, variant: "primary" as const },
       { text: "Contact Sales", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
