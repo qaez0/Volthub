@@ -5,9 +5,10 @@ import { createPortal } from "react-dom";
 import type React from "react";
 import { useSearchParams } from "next/navigation";
 import LayoutContainer from "@/components/layout/LayoutContainer";
-import { philippineRegions, interestOptions } from "./contactData";
+import { philippineRegions, interestOptions, socialIcons } from "./contactData";
 import ContactHeader from "./ContactHeader";
 import ContactInfo from "./ContactInfo";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
@@ -848,6 +849,34 @@ export default function ContactForm() {
               </div>
 
               <ContactInfo />
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+              <div className="flex-1 min-w-0 lg:min-w-[500px]">
+                <h4 className="text-lg font-semibold mb-3 text-white">Follow Us</h4>
+                <div className="flex gap-4">
+                  {socialIcons.map(({ icon: Icon, href, label }) => (
+                    <a
+                      key={href}
+                      href={href}
+                      aria-label={label}
+                      className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+                    >
+                      <Icon className="text-xl text-white" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex min-w-0">
+                <div className="bg-white/10 rounded-xl p-4 border border-white/10">
+                  <h4 className="text-lg font-semibold mb-2 text-white">24/7 Support</h4>
+                  <p className="text-blue-100 text-sm">
+                    Our technical support team is available around the clock to
+                    assist with any questions or system issues.
+                  </p>
+                </div>
+              </div>
             </div>
           </LayoutContainer>
         </div>

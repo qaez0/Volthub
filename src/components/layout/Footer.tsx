@@ -102,9 +102,9 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-8 md:py-16">
       <LayoutContainer>
-        <div className="grid grid-cols-1 lg:grid-cols-[25%_21%_1fr_20%_1fr] gap-2 md:gap-3 lg:gap-2 mb-8 md:mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[22%_20%_1fr_15%_1fr_1fr] gap-2 md:gap-3 lg:gap-2 mb-8 md:mb-12">
           {/* Brand Section - Always visible */}
-          <div>
+          <div className="max-w-xs">
             <div className="flex items-center space-x-3 mb-4 md:mb-6">
               <span className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
                 <Image
@@ -117,7 +117,7 @@ const Footer = () => {
               </span>
               <span className="text-xl md:text-2xl font-bold">VoltHub</span>
             </div>
-            <p className="text-sm md:text-base text-gray-400 mb-4 md:mb-6 leading-relaxed">
+            <p className="text-sm md:text-base text-gray-400 mb-4 md:mb-3 leading-relaxed">
               Leading the future of clean energy with innovative solutions for a
               sustainable tomorrow.
             </p>
@@ -182,6 +182,25 @@ const Footer = () => {
               </div>
             );
           })}
+
+          {/* Contact Information Column */}
+          <div className="border-b border-gray-800 pb-4 last:border-b-0 lg:border-b-0 lg:pb-0">
+            <h4 className="text-base md:text-lg font-semibold text-left mb-3 lg:mb-4">
+              Contact Us :
+            </h4>
+            <div className="space-y-2 md:space-y-3 text-gray-400">
+              <p className="text-sm md:text-base leading-relaxed">
+                <span className="font-bold text-white">Phone:</span> +63 9659700823
+              </p>
+              <p className="text-sm md:text-base leading-relaxed">
+                <span className="font-bold text-white">Email:</span> admin-help@volthub-ev.com  
+              </p>
+              <p className="text-sm md:text-base leading-relaxed">
+                <span className="font-bold text-white">Address:</span> High Street South Corporate Plaza Tower 2. 11th Ave,
+                Taguig, Metro Manila, Philippines
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Copyright Section */}
@@ -205,8 +224,10 @@ const Footer = () => {
                 Terms of Service
               </a>
             </div>
+            
           </div>
         </div>
+        
       </LayoutContainer>
     </footer>
   );

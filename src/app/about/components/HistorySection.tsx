@@ -42,7 +42,7 @@ export default function HistorySection() {
             {futureGoals.map((goal, index) => (
               <div
                 key={index}
-                className="p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100 hover:shadow-md transition-all duration-300"
               >
                 <h5 className="font-semibold text-gray-900 mb-3 text-lg">
                   {goal.title}
