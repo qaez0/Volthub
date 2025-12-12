@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRef } from "react";
 
 interface Resource {
+  slug?: string;
   title: string;
   description: string;
   type: string;
@@ -40,7 +41,7 @@ export default function BlogResourcesSection({
   };
 
   return (
-    <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <section className="section-spacing bg-linear-to-br from-gray-50 via-white to-gray-50">
       <LayoutContainer>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
           {/* Title Section */}
@@ -86,9 +87,10 @@ export default function BlogResourcesSection({
               className="flex gap-4 md:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
               {resources.map((resource, index) => (
-                <div
+                <Link
                   key={index}
-                  className="stagger-card snap-start w-[310px] md:w-[460px] min-w-[260px] md:min-w-[300px] lg:min-w-[320px] flex-shrink-0 reveal-on-scroll p-4 md:p-5 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                  href={resource.slug ? `/blog/${resource.slug}` : "#"}
+                  className="stagger-card snap-start w-[310px] md:w-[460px] min-w-[260px] md:min-w-[300px] lg:min-w-[320px] shrink-0 reveal-on-scroll p-4 md:p-5 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group cursor-pointer block"
                   style={{ animationDelay: `${index * 0.08}s` }}
                 >
                   <div className="relative w-full h-40 md:h-44 lg:h-48 rounded-xl overflow-hidden mb-3 md:mb-4">
@@ -116,7 +118,7 @@ export default function BlogResourcesSection({
                     <span>Read More</span>
                     <RiArrowRightLine className="text-lg" />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

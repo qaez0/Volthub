@@ -36,8 +36,8 @@ export default function ContactInfo() {
                       </a>
                     ) : (
                       <p className={`text-white text-base select-text ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}>
-                        {item.detail}
-                      </p>
+                      {item.detail}
+                    </p>
                     )}
                     {item.detail2 && (
                       <p className="text-white text-base wrap-break-word select-text">

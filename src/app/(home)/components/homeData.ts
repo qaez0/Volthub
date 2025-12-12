@@ -372,6 +372,7 @@ export const videoItems = [
 // Resources
 export const resources = [
   {
+    slug: "complete-guide-to-solar-energy-storage",
     title: "Complete Guide to Solar Energy Storage",
     description:
       "Everything you need to know about residential battery systems and how they can save you money.",
@@ -380,6 +381,7 @@ export const resources = [
     imageAlt: "Solar energy storage guide",
   },
   {
+    slug: "ev-charging-infrastructure-future-of-transportation",
     title: "EV Charging Infrastructure: Future of Transportation",
     description: "Explore how EV charging networks are shaping the future of sustainable mobility.",
     type: "Article",
@@ -387,6 +389,7 @@ export const resources = [
     imageAlt: "EV charging infrastructure",
   },
   {
+    slug: "energy-savings-calculator-roi-analysis",
     title: "Energy Savings Calculator: ROI Analysis",
     description: "Download our free calculator to estimate your potential savings with renewable energy.",
     type: "Tool",
@@ -394,6 +397,7 @@ export const resources = [
     imageAlt: "Energy savings calculator",
   },
   {
+    slug: "smart-grid-integration-powering-the-future",
     title: "Smart Grid Integration: Powering the Future",
     description: "Learn how smart grid technology enables efficient energy distribution and management for modern homes and businesses.",
     type: "Article",
@@ -401,6 +405,7 @@ export const resources = [
     imageAlt: "Smart grid integration technology",
   },
   {
+    slug: "commercial-energy-solutions-business-guide",
     title: "Commercial Energy Solutions: A Business Guide",
     description: "Discover how commercial energy storage systems can reduce operational costs and improve sustainability for your business.",
     type: "Guide",
@@ -408,6 +413,11 @@ export const resources = [
     imageAlt: "Commercial energy solutions",
   },
 ];
+
+// Helper function to get resource by slug
+export function getResourceBySlug(slug: string) {
+  return resources.find((resource) => resource.slug === slug);
+}
 
 // FAQs
 export const faqs = [

@@ -19,25 +19,25 @@ export default function ProductCard({ product }: ProductCardProps) {
           height={420}
           className="w-full h-48 md:h-52 lg:h-56 object-cover group-hover:scale-[1.03] transition-transform duration-500"
         />
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/5 via-transparent to-transparent opacity-70" />
+        <div className="absolute inset-0 pointer-events-none bg-linear-to-t from-black/5 via-transparent to-transparent opacity-70" />
       </div>
 
       <div className="p-4 md:p-5 lg:p-6 flex flex-col gap-2 md:gap-3 flex-1">
         <div className="flex items-center gap-2 text-xs text-slate-500 ">
           {product.category === "smart-home" && (
-            <RiHomeGearLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
+            <RiHomeGearLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary shrink-0" />
           )}
           {product.category === "ev-charging" && (
-            <RiChargingPile2Line className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
+            <RiChargingPile2Line className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary shrink-0" />
           )}
           {product.category === "solar-street" && (
-            <RiSunLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
+            <RiSunLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary shrink-0" />
           )}
           {(product.category === "cabinet" 
             // product.category === "container"
           ) 
             && (
-            <RiBatteryChargeLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
+            <RiBatteryChargeLine className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary shrink-0" />
           )}
           <span className="uppercase tracking-[0.16em] truncate">
             {product.category === "all"
@@ -57,7 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               {product.tag}
             </span>
           )}
-          <div className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-1.5 transition-all flex-shrink-0">
+          <div className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-1.5 transition-all shrink-0">
             <span className="hidden sm:inline">Learn More</span>
             <span className="sm:hidden">More</span>
             <RiArrowRightSLine className="h-3.5 w-3.5 md:h-4 md:w-4" />
