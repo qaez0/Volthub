@@ -39,63 +39,60 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
         */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-6 items-stretch">
           {/* Top Left - Commercial (Wide Card) - Spans 2 columns */}
-           <div className="relative group md:col-span-2">
+          <Link href="/products/smart-home-smp4" className="relative group md:col-span-2 block cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
             {/* Background image for Commercial card */}
-            <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden lg:h-[350px] h-full ">
+            <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden lg:h-[350px] h-full transition-all duration-300 group-hover:brightness-110">
               <Image
                 src="/HomeBanner/homeFbg.jpg"
                 alt="Commercial Energy Storage background"
                 fill
-                className="object-cover object-top lg:object-bottom lg:h-[350px] h-full"
+                className="object-cover object-top lg:object-bottom lg:h-[350px] h-full transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </div>
-            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden h-full flex flex-col md:block bg-transparent shadow-none">
-                <div className="grid md:grid-cols-2 gap-1 md:gap-8 lg:gap-12 items-center h-auto md:auto ">
-                <div className="relative h-48 md:h-80 mt-[10px]   overflow-hidden bg-transparent flex items-end justify-center ">
-                  <Image
-                    src={commercialProduct.image}
-                    alt={commercialProduct.imageAlt}
-                    fill
-                    className="object-contain  drop-shadow-2xl "
-                  />
-                </div>
-                {/* Content */}
-                <div className="p-4 md:p-6 lg:p-12 mt-[-20px] space-y-3 md:space-y-4 lg:space-y-6 flex-1 flex flex-col h-full">
-                  <p className={`text-[10px] md:text-xs lg:text-sm font-semibold tracking-[0.15em] md:tracking-[0.3em] ${commercialProduct.badgeColor} uppercase`}>
-                    {commercialProduct.badge}
-                  </p>
-                  <h2 className="text-lg md:text-2xl lg:text-3xl xl:text-5xl font-bold leading-tight">
-                    {commercialProduct.titleParts.map((part, index) => (
-                      <span key={index} className={part.color}>
-                        {part.text}{" "}
-                      </span>
-                    ))}
-                  </h2>
-               
-                  <Link
-                    href="/products/smart-home-smp4"
-                    className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-2 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl"
-                  >
-                    {commercialProduct.ctaText}
-                    <RiArrowRightLine className="text-base md:text-lg lg:text-xl" />
-                  </Link>
+            <div className="relative grid md:grid-cols-2 gap-1 md:gap-8 lg:gap-12 items-center h-full lg:h-[350px]">
+              <div className="relative h-48 md:h-80 mt-[10px] overflow-hidden bg-transparent flex items-end justify-center z-10">
+                <Image
+                  src={commercialProduct.image}
+                  alt={commercialProduct.imageAlt}
+                  fill
+                  className="object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+              {/* Content */}
+              <div className="p-4 md:p-6 lg:p-12 mt-[-20px] space-y-3 md:space-y-4 lg:space-y-6 flex-1 flex flex-col h-full z-10">
+                <p className={`text-[10px] md:text-xs lg:text-sm font-semibold tracking-[0.15em] md:tracking-[0.3em] ${commercialProduct.badgeColor} uppercase`}>
+                  {commercialProduct.badge}
+                </p>
+                <h2 className="text-lg md:text-2xl lg:text-3xl xl:text-5xl font-bold leading-tight">
+                  {commercialProduct.titleParts.map((part, index) => (
+                    <span key={index} className={part.color}>
+                      {part.text}{" "}
+                    </span>
+                  ))}
+                </h2>
+             
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-2 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl opacity-0 group-hover:opacity-100"
+                >
+                  {commercialProduct.ctaText}
+                  <RiArrowRightLine className="text-base md:text-lg lg:text-xl" />
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Top Right - Residential (Tall Card) - Spans 2 rows */}
-          <div className="relative group md:col-start-3 md:row-start-1 md:row-span-2 h-full md:self-stretch">
+          <Link href="/products/ev-charging-89" className="relative group md:col-start-3 md:row-start-1 md:row-span-2 h-full md:self-stretch block cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
           
-            <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col">
+            <div className="relative bg-transparent rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col transition-all duration-300">
               {/* Background image for Residential card */}
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 transition-all duration-300 group-hover:brightness-110">
                 <Image
                   src="/HomeBanner/homeFbg2.jpg"
                   alt="Residential Energy Storage background"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                   priority
                 />
               </div>
@@ -108,7 +105,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   src={residentialProduct.image}
                   alt={residentialProduct.imageAlt}
                   fill
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
 
@@ -127,30 +124,29 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   </h3>
                 
                 </div>
-                <Link
-                  href="/products/ev-charging-89"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg opacity-0 group-hover:opacity-100"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
-                </Link>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Bottom Left - Advanced (Small Card) */}
-          <div className="relative group md:row-start-2 h-full">
+          <Link href="/products/cabinet-item4" className="relative group md:row-start-2 h-full block cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
             <div
               className={`absolute inset-0 bg-linear-to-br ${advancedProduct.gradientColors.from} ${advancedProduct.gradientColors.to} rounded-2xl md:rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500 opacity-50`}
             />
-            <div className="relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col">
+            <div className="relative bg-transparent rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col transition-all duration-300">
               {/* Background image for Advanced card */}
-              <div className="absolute inset-0   ">
+              <div className="absolute inset-0 transition-all duration-300 group-hover:brightness-110">
                 <Image
                   src="/HomeBanner/homeGbg1.jpg"
                   alt="Advanced Solar System background"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                   priority
                 />
               </div>
@@ -163,7 +159,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   src={advancedProduct.image}
                   alt={advancedProduct.imageAlt}
                   fill
-                  className="object-contain p-4 md:p-6 drop-shadow-2xl"
+                  className="object-contain p-4 md:p-6 drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
 
@@ -180,44 +176,43 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   ))}
                 </h3>
              
-                <Link
-                  href="/products/cabinet-item4"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto"
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto opacity-0 group-hover:opacity-100"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
-                </Link>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Bottom Middle - Home (Small Card) */}
-          <div className="relative group md:row-start-2 h-80 max-h-80">
+          <Link href="/products/solar-street-lvxc" className="relative group md:row-start-2 h-80 max-h-80 block cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
             {/* Background image for Home Battery card */}
-            <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-300 group-hover:brightness-110">
               <Image
                 src="/HomeBanner/homeFbg4.jpg"
                 alt="Home Battery Storage background"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </div>
             {/* Soft overlay for readability */}
-            <div className="absolute inset-0 " />
+            <div className="absolute inset-0 transition-all duration-300" />
 
-            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col bg-transparent">
+            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col bg-transparent transition-all duration-300">
               {/* Image */}
               <div className="absolute w-full h-full  mt-[20px] md:h-[80%] flex items-end justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:h-[273px] lg:w-[307px] lg:-translate-x-1/2 lg:-translate-y-1/2 z-10">
                 <Image
                   src={homeProduct.image}
                   alt={homeProduct.imageAlt}
                   fill
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
               {/* Content */}
-              <div className="p-4 md:p-6 flex-1 flex flex-col gap-3 md:gap-4 relative z-10 absolute bottom-0 left-0 right-0 ">
+              <div className="p-4 md:p-6 flex-1 flex flex-col gap-3 md:gap-4 absolute z-10 bottom-0 left-0 right-0 ">
                 <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${homeProduct.badgeColor} uppercase`}>
                   {homeProduct.badge}
                 </p>
@@ -229,16 +224,15 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   ))}
                 </h3>
                
-                <Link
-                  href="/products/solar-street-lvxc"
-                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto"
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto opacity-0 group-hover:opacity-100"
                 >
                   View Products
                   <RiArrowRightLine className="text-base md:text-lg" />
-                </Link>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </LayoutContainer>
     </section>

@@ -68,11 +68,11 @@ export default function Home() {
       <RecommendedProducts />
 
       {/* How It Works Section */}
-      <HowItWorksSection
+      {/* <HowItWorksSection
         title="How It Works"
         description="From consultation to installation, we make the transition to clean energy simple and seamless."
         steps={howItWorksSteps}
-      />
+      /> */}
 
       {/* User Segmentation Section */}
       <UserSegmentationSection
