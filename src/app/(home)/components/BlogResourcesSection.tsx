@@ -103,7 +103,7 @@ export default function BlogResourcesSection({
                       priority={index === 0}
                     />
                   </div>
-                  <div className="mb-3">
+                  <div className="mb-3 ">
                     <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide">
                       {resource.type}
                     </span>
