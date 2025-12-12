@@ -14,6 +14,8 @@ interface CarouselSlide {
   description: string;
   image: string;
   backgroundImage?: string; // Optional background image
+  mobileBackgroundImage?: string; // Mobile-specific background image
+  mobileBackgroundPosition?: string; // Mobile-specific background position
   buttonText: string;
   buttonLink: string;
   gradient: string;
@@ -37,11 +39,23 @@ export default function CarouselBanner({
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+
+  // Detect mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Auto-play functionality with proper cleanup
   useEffect(() => {
@@ -235,9 +249,16 @@ export default function CarouselBanner({
                 <div
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
-                    backgroundImage: `url(${slide.backgroundImage || slide.image})`,
+                    backgroundImage: `url(${
+                      isMobile && slide.mobileBackgroundImage
+                        ? slide.mobileBackgroundImage
+                        : slide.backgroundImage || slide.image
+                    })`,
                     backgroundSize: "stretch",
-                    backgroundPosition: "center",
+                    backgroundPosition:
+                      isMobile && slide.mobileBackgroundPosition
+                        ? slide.mobileBackgroundPosition
+                        : "center",
                   }}
                 >
                   {/* Gradient Overlay - Reduced opacity to show background */}
@@ -256,7 +277,7 @@ export default function CarouselBanner({
                       <div
                         className={
                           slide.imageClassName ||
-                          "relative w-full md:w-1/2 h-[320px] md:h-[460px] lg:h-[500px]"
+                          "relative w-full md:w-1/2 h-full md:h-[460px] lg:h-[500px]"
                         }
                       >
                         <Image
@@ -265,7 +286,7 @@ export default function CarouselBanner({
                           fill
                           priority={index === currentSlide}
                           sizes="(min-width: 1024px) 45vw, 90vw"
-                          className="object-cover rounded-2xl shadow-xl"
+                          className=" object-contain md:object-cover object-right md:object-center rounded-2xl shadow-xl"
                         />
                       </div>
                     )}
@@ -304,9 +325,16 @@ export default function CarouselBanner({
                 <div
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
-                    backgroundImage: `url(${slide.backgroundImage || slide.image})`,
+                    backgroundImage: `url(${
+                      isMobile && slide.mobileBackgroundImage
+                        ? slide.mobileBackgroundImage
+                        : slide.backgroundImage || slide.image
+                    })`,
                     backgroundSize: "cover",
-                    backgroundPosition: "center",
+                    backgroundPosition:
+                      isMobile && slide.mobileBackgroundPosition
+                        ? slide.mobileBackgroundPosition
+                        : "center",
                   }}
                 >
                   {/* Gradient Overlay */}
