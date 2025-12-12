@@ -6,7 +6,7 @@ import {
 
 export default function ContactInfo() {
   return (
-    <div className="flex-1 min-w-0 space-y-10 relative z-0">
+    <div className="flex-1 min-w-0 space-y-10 relative z-0 select-text">
       <Card className="bg-black/50 backdrop-blur-sm border-white/20 relative z-0">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-white">
@@ -18,34 +18,34 @@ export default function ContactInfo() {
             {contactInfo.map((item) => (
               <div key={item.title}>
                 <div
-                  className="flex items-start gap-4 px-4 py-3"
+                  className="flex items-start gap-4 px-4 py-3 select-text"
                 >
                   <span className="w-12 h-12 shrink-0 rounded-xl bg-primary/30 flex items-center justify-center border-2 border-secondary">
                     <item.icon className="text-xl gradient-text" />
                   </span>
                   <div className="leading-snug flex-1 min-w-0">
-                    <p className="font-semibold text-white text-base">
+                    <p className="font-semibold text-white text-base select-text">
                       {item.title}
                     </p>
                     {item.link ? (
                       <a
                         href={item.link}
-                        className={`text-white text-base hover:underline ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}
+                        className={`text-white text-base hover:underline select-text ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}
                       >
                         {item.detail}
                       </a>
                     ) : (
-                      <p className={`text-white text-base ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}>
+                      <p className={`text-white text-base select-text ${item.title === "Email" ? "break-all" : "wrap-break-word"}`}>
                         {item.detail}
                       </p>
                     )}
                     {item.detail2 && (
-                      <p className="text-white text-base wrap-break-word">
+                      <p className="text-white text-base wrap-break-word select-text">
                         {item.detail2}
                       </p>
                     )}
                     {item.detail3 && (
-                      <p className="text-white text-base wrap-break-word">
+                      <p className="text-white text-base wrap-break-word select-text">
                         {item.detail3}
                       </p>
                     )}

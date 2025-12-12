@@ -176,8 +176,8 @@ export const contactInfo = [
   {
     icon: RiMapPinLine,
     title: "Address",
-    detail: "High Street South Corporate Plaza Tower 2. 11th Ave",
-    detail2: "Taguig, Metro Manila",
+    detail: "Unit 2503, High Street South Corporate Plaza Tower 2",
+    detail2: "Bonifacio Global City, Taguig",
     detail3: "Philippines",
   },
 ];

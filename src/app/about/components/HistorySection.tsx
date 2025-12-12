@@ -69,13 +69,13 @@ export default function HistorySection() {
                 </p>
                 <p className="text-gray-700">January 17, 2025</p>
               </div>
-              <div>
+              <div className="select-text">
                 <p className="font-semibold text-gray-900 mb-2 text-lg">
                   Address:
                 </p>
                 <p className="text-gray-700">
                   Unit 2503, High Street South Corporate Plaza Tower 2,
-                  Bonifacio Global City, Taguig
+                  Bonifacio Global City, Taguig, Philippines
                 </p>
               </div>
             </div>

@@ -70,7 +70,7 @@ export const categoryBanner: Record<
     video: "/Product/SMVB.mp4",
   },
   cabinet: {
-    title: "Cabinet Type Power Supply",
+    title: "Power Supplies",
     description:
       "Modular cabinet energy storage and power supply systems for commercial and industrial applications.",
     image: "/HomeBanner/commercial.png",

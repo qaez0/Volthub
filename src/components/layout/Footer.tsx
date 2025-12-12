@@ -189,21 +189,21 @@ const Footer = () => {
               Contact Us :
             </h4>
             <div className="space-y-2 md:space-y-3 text-gray-400">
-            <p className="text-sm md:text-base leading-relaxed">
+            <p className="text-sm md:text-base leading-relaxed select-text">
                 <span className="font-bold text-white">Phone:</span>{" "}
                 <a href="tel:+639659700823" className="hover:underline">
                   +63 9659700823
                 </a>
               </p>
-              <p className="text-sm md:text-base leading-relaxed">
+              <p className="text-sm md:text-base leading-relaxed select-text">
                 <span className="font-bold text-white">Email:</span>{" "}
                 <a href="mailto:admin-help@volthub-ev.com" className="hover:underline">
                   admin-help@volthub-ev.com
                 </a>  
               </p>
-              <p className="text-sm md:text-base leading-relaxed">
-                <span className="font-bold text-white">Address:</span> High Street South Corporate Plaza Tower 2. 11th Ave,
-                Taguig, Metro Manila, Philippines
+              <p className="text-sm md:text-base leading-relaxed select-text">
+                <span className="font-bold text-white">Address:</span> Unit 2503, High Street South Corporate Plaza Tower 2,
+                Bonifacio Global City, Taguig, Philippines
               </p>
             </div>
           </div>
