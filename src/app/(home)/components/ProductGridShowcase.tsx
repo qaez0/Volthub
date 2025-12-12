@@ -37,7 +37,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
             Top: Commercial (2 cols wide) | Residential (2 rows tall on right)
             Bottom: Advanced | Home
         */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-6 items-stretch">
           {/* Top Left - Commercial (Wide Card) - Spans 2 columns */}
            <div className="relative group md:col-span-2">
             {/* Background image for Commercial card */}
@@ -74,7 +74,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                   </h2>
                
                   <Link
-                    href="/products?category=cabinet"
+                    href="/products/smart-home-smp4"
                     className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-2 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl"
                   >
                     {commercialProduct.ctaText}
@@ -125,12 +125,10 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                       </span>
                     ))}
                   </h3>
-                  <p className="text-xs md:text-sm text-gray-700">
-                    {residentialProduct.description}
-                  </p>
+                
                 </div>
                 <Link
-                  href="/products?category=ev-charging"
+                  href="/products/ev-charging-89"
                   className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   View Products
@@ -160,7 +158,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
               <div className="absolute inset-0 " />
 
               {/* Foreground image */}
-              <div className="relative h-48 md:h-[80%] flex items-end justify-center ">
+              <div className="relative h-[273px] w-full   flex items-end justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:h-[273px] lg:w-[307px] lg:-translate-x-1/2 lg:-translate-y-1/2">
                 <Image
                   src={advancedProduct.image}
                   alt={advancedProduct.imageAlt}
@@ -170,7 +168,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
               </div>
 
               {/* Content */}
-              <div className="relative p-4 md:p-6 flex-1 flex flex-col gap-1 md:gap-4   ">
+              <div className="absolute bottom-0 left-0 right-0 p-4 h-full md:p-6 flex-1 flex flex-col gap-1 md:gap-4  ">
                 <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${advancedProduct.badgeColor} uppercase`}>
                   {advancedProduct.badge}
                 </p>
@@ -183,7 +181,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                 </h3>
              
                 <Link
-                  href="/products?category=solar-street"
+                  href="/products/cabinet-item4"
                   className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto"
                 >
                   View Products
@@ -194,11 +192,11 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
           </div>
 
           {/* Bottom Middle - Home (Small Card) */}
-          <div className="relative group md:row-start-2 h-full">
+          <div className="relative group md:row-start-2 h-80 max-h-80">
             {/* Background image for Home Battery card */}
             <div className="absolute inset-0 rounded-2xl md:rounded-3xl overflow-hidden">
               <Image
-                src="/HomeBanner/homeFbg3.jpg"
+                src="/HomeBanner/homeFbg4.jpg"
                 alt="Home Battery Storage background"
                 fill
                 className="object-cover"
@@ -210,7 +208,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
 
             <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl h-full flex flex-col bg-transparent">
               {/* Image */}
-              <div className="relative h-48 md:h-50 flex items-end justify-center ">
+              <div className="absolute w-full h-full  mt-[20px] md:h-[80%] flex items-end justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:h-[273px] lg:w-[307px] lg:-translate-x-1/2 lg:-translate-y-1/2 z-10">
                 <Image
                   src={homeProduct.image}
                   alt={homeProduct.imageAlt}
@@ -219,7 +217,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                 />
               </div>
               {/* Content */}
-              <div className="p-4 md:p-6 flex-1 flex flex-col gap-3 md:gap-4 relative">
+              <div className="p-4 md:p-6 flex-1 flex flex-col gap-3 md:gap-4 relative z-10 absolute bottom-0 left-0 right-0 ">
                 <p className={`text-[10px] md:text-xs font-semibold tracking-[0.15em] ${homeProduct.badgeColor} uppercase`}>
                   {homeProduct.badge}
                 </p>
@@ -232,7 +230,7 @@ export default function ProductGridShowcase({ products }: ProductGridShowcasePro
                 </h3>
                
                 <Link
-                  href="/products?category=smart-home"
+                  href="/products/solar-street-lvxc"
                   className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-linear-to-r from-primary to-accent text-white rounded-lg md:rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg mt-auto"
                 >
                   View Products

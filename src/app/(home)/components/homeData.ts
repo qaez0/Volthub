@@ -26,7 +26,7 @@ export const carouselSlides = [
     description:
       "VoltHub delivers next-generation electric and renewable energy solutions—from smart solar systems to EV charging infrastructure—for a cleaner, more resilient planet.",
     image: "/HomeBanner/89.png",
-    backgroundImage: "/HomeBanner/banner1.jpg",
+    backgroundImage: "/HomeBanner/banner1.png",
     showimg: false,
     descriptionClassName: "w-full md:w-1/2 md:ml-auto md:max-w-2xl",
     buttonText: "Explore Products",
@@ -127,14 +127,14 @@ export const stats = [
 export const productShowcases = [
   {
     badge: "Featured Product",
-    badgeColor: "text-primary",
+    badgeColor: "text-amber-300",
     title: "Residential Energy Storage",
     titleParts: [
-      { text: "Residential", color: "text-primary" },
-      { text: "Energy Storage", color: "text-accent" },
+      { text: "Electric Vehicles", color: "text-emerald-400" },
+      { text: "Charging Stations", color: "text-accent" },
     ],
     description:
-      "Smart home battery systems for energy independence. Store solar energy and reduce your electricity bills with our cutting-edge residential storage solutions.",
+      "Electric Vehicles Charging Stations that are fast, safe, and reliable for energy independence.",
     image: "/HomeBanner/89a.png",
     imageAlt: "Residential Energy Storage System",
     features: [
@@ -157,15 +157,16 @@ export const productShowcases = [
   },
   {
     badge: "Premium Solution",
-    badgeColor: "text-accent",
+    badgeColor: "text-teal-600",
     title: "Advanced Solar System",
     titleParts: [
-      { text: "Advanced", color: "text-accent" },
-      { text: "Solar System", color: "text-primary" },
+      { text: "Advanced      ", color: "text-teal-600" },
+      { text: "Energy Storage", color: "text-green-800" },
+      { text: "Systems", color: "text-primary" },
     ],
     description:
       "High-efficiency solar panels with integrated energy storage. Maximize your energy independence with our premium solar solutions designed for modern homes and businesses.",
-    image: "/HomeBanner/LVXC.png",
+    image: "/HomeBanner/item5.png",
     imageAlt: "Advanced Solar System",
     features: [
       { icon: RiSunLine, text: "High Efficiency Panels", color: "text-accent" },
@@ -186,16 +187,17 @@ export const productShowcases = [
     bgGradient: "bg-gradient-to-br from-gray-50 via-white to-gray-50",
   },
   {
-    badge: "Home Energy Solution",
-    badgeColor: "text-emerald-700",
-    title: "Home Battery Storage",
+    badge: "Street Lighting Solution",
+    badgeColor: "text-amber-300",
+    title: "Solar Street Lighting",
     titleParts: [
-      { text: "Home Battery", color: "text-emerald-700" },
-      { text: "Storage", color: "text-primary" },
+      { text: "Street  ", color: "text-amber-200" },
+      { text: "Lighting", color: "text-green-600" },
+      { text: " Systems", color: "text-primary" },
     ],
     description:
       "Compact and powerful home battery systems that seamlessly integrate with your solar panels. Store excess energy during the day and use it when you need it most, reducing your reliance on the grid.",
-    image: "/HomeBanner/homebatt.png",
+    image: "/HomeBanner/LVXC.png",
     imageAlt: "Home Battery Storage System",
     features: [
       { icon: RiBatteryChargeLine, text: "Compact Design", color: "text-emerald-700" },
@@ -216,12 +218,12 @@ export const productShowcases = [
     bgGradient: "bg-gradient-to-br from-white via-gray-50 to-white",
   },
   {
-    badge: "Industrial Solution",
-    badgeColor: "text-secondary",
-    title: "Commercial Energy Storage",
+    badge: "Home Energy Solution",
+    badgeColor: "text-green-700",
+    title: "Home Energy Storage",
     titleParts: [
-      { text: "Commercial", color: "text-secondary" },
-      { text: "Energy Storage", color: "text-primary" },
+      { text: "Home", color: "text-yellow-300" },
+      { text: "Energy Storage", color: "text-lime-700" },
     ],
     description:
       "Large-scale energy storage solutions for commercial and industrial applications. Optimize your energy costs, ensure uninterrupted power supply, and reduce your carbon footprint with our enterprise-grade storage systems.",

@@ -220,7 +220,7 @@ export default function CarouselBanner({
       onTouchEnd={handleTouchEnd}
     >
       {/* Slides Container */}
-      <div ref={carouselRef} className="relative w-full h-full">
+      <div ref={carouselRef} className="relative w-full h-full mt-15">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -271,7 +271,7 @@ export default function CarouselBanner({
                     )}
                       
                       {/* Text on Right */}
-                      <div className={slide.descriptionClassName || "w-full md:w-1/2"}>
+                      {/* <div className={slide.descriptionClassName || "w-full md:w-1/2"}>
                         <div className="space-y-3 md:space-y-4">
                           <p className="font-orbitron tracking-[0.2em] md:tracking-[0.3em] text-xs sm:text-sm text-secondary uppercase animate-fade-in">
                             {slide.subtitle}
@@ -292,7 +292,7 @@ export default function CarouselBanner({
                             <RiArrowRightLine className="text-base md:text-lg group-hover:translate-x-1 transition-transform" />
                           </Link>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -330,15 +330,7 @@ export default function CarouselBanner({
                           {slide.description}
                         </p>
                       </div>
-                      <div className="pt-3 md:pt-4">
-                        <Link
-                          href={slide.buttonLink as Route}
-                          className="group inline-flex items-center justify-center gap-2 bg-linear-to-r from-primary to-accent text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-base font-semibold shadow-lg glow-effect transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                        >
-                          {slide.buttonText}
-                          <RiArrowRightLine className="text-base md:text-lg group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      </div>
+                   
                     </div>
                   </div>
                 </div>
