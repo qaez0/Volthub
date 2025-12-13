@@ -34,7 +34,7 @@ export const carouselSlides = [
     buttonText: "Explore Products",
     buttonLink: "/products",
     gradient: "bg-gradient-to-br from-primary/90 via-primary/70 to-transparent",
-    // layout: "side-by-side" as const,
+    layout: "side-by-side" as const,
   },
   {
     id: 2,
@@ -51,7 +51,7 @@ export const carouselSlides = [
     buttonText: "View Residential Solutions",
     buttonLink: "/sectors/residential",
     gradient: "bg-gradient-to-br from-emerald-700/90 via-primary/70 to-transparent",
-    // layout: "side-by-side" as const,
+    layout: "side-by-side" as const,
   },
   {
     id: 3,
@@ -68,7 +68,7 @@ export const carouselSlides = [
     buttonText: "Learn About C&I Solutions",
     buttonLink: "/sectors/commercial",
     gradient: "bg-gradient-to-br from-accent/90 via-primary/70 to-transparent",
-    // layout: "side-by-side" as const,
+    layout: "side-by-side" as const,
   },
   {
     id: 4,
@@ -86,7 +86,7 @@ export const carouselSlides = [
     buttonText: "Explore EV Solutions",
     buttonLink: "/services/ev-charging",
     gradient: "bg-gradient-to-br from-secondary/80 via-primary/70 to-transparent",
-    // layout: "side-by-side" as const,
+    layout: "side-by-side" as const,
   },
   // {
   //   id: 5,

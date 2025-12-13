@@ -143,6 +143,10 @@ export default function Navigator() {
     // For dropdown menus, check if any item in the array matches
     const menuItems = menu[menuKey];
     if (Array.isArray(menuItems)) {
+      // For sectors, also check if we're on /sectors
+      if (menuKey === "sectors" && currentPath === "/sectors") {
+        return true;
+      }
       return menuItems.some((item) => {
         const itemPath = item.href.split("?")[0];
         return (
@@ -159,7 +163,9 @@ export default function Navigator() {
       <NavigationMenuList className="flex-wrap justify-center">
         {Object.entries(menu).map(([key, items]) => {
           if (Array.isArray(items)) {
-            const isActive = isRouteActive(items[0]?.href || "", key);
+            // For sectors, use /sectors as the check href, otherwise use first item
+            const checkHref = key === "sectors" ? "/sectors" : (items[0]?.href || "");
+            const isActive = isRouteActive(checkHref, key);
             return (
               <NavigationMenuItemWithHover
                 key={key}
@@ -221,10 +227,13 @@ function NavigationMenuItemWithHover({
     return "row-span-3";
   };
 
+  // For sectors, the main link should go to /sectors, not the first dropdown item
+  const mainHref = menuKey === "sectors" ? "/sectors" : (items[0]?.href as Route);
+
   return (
     <NavigationMenuItem className="relative flex items-center">
       <NavigationMenuTrigger asChild className="capitalize" active={isActive}>
-        <Link href={items[0]?.href as Route}>{menuKey}</Link>
+        <Link href={mainHref}>{menuKey}</Link>
       </NavigationMenuTrigger>
       <NavigationMenuContent 
         style={{ 
