@@ -127,7 +127,7 @@ export default function ContactForm() {
       if (subject === "installation") {
         detailsText = "I would like to request installation for ";
       } else if (subject === "consultation") {
-        detailsText = "I would like to schedule a consultation for ";
+        detailsText = "I would like to schedule a consultation";
       } else {
         detailsText = "I would like to request a quote for ";
       }
@@ -136,9 +136,7 @@ export default function ContactForm() {
         detailsText += productName;
       } else if (product) {
         detailsText += product;
-      } else {
-        detailsText += "this product";
-      }
+      } 
       
       if (model) {
         detailsText += ` (Model: ${model})`;

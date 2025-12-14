@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
   },
   {
     label: "Sectors",
-    href: "/sectors/residential",
+    href: "/sectors",
     description: "Target customers and sector-specific solutions",
     dropdown: [
       { label: "Residential", href: "/sectors/residential" },

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { RiArrowRightLine, RiQuestionLine } from "react-icons/ri";
+// import LayoutContainer from "@/components/layout/LayoutContainer";
 import { Route } from "next";
 
 interface FAQ {
@@ -28,8 +29,8 @@ export default function FAQSection({
   bannerImage = "/HomeBanner/faq.jpg",
 }: FAQSectionProps) {
   return (
-    <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-gray-50 w-[100vw] ">
-      <div className=" w-[100vw] mx-auto flex md:flex-row flex-col items-center justify-center gap-5 ">
+    <section className="section-spacing bg-linear-to-br from-gray-50 via-white to-gray-50 w-screen ">
+      <div className=" w-screen mx-auto flex flex-row items-center justify-center gap-5">
         {/* Row 1: Banner/Image */}
         <div className=" md:w-1/2 w-full md:h-auto ">
           <div className="relative w-full h-50 lg:h-140">
@@ -41,7 +42,7 @@ export default function FAQSection({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-green-900/80 via-green-900/60 to-transparent flex  pt-10 items-start justify-center">
+            <div className="absolute inset-0 bg-linear-to-br from-green-900/80 via-green-900/60 to-transparent flex  pt-10 items-start justify-center">
               <div className="text-center space-y-3 md:space-y-4 px-4 ">
                 <p className="text-sm md:text-base font-semibold tracking-[0.3em] text-white/90 uppercase">
                   {badge}
@@ -66,7 +67,7 @@ export default function FAQSection({
               style={{ animationDelay: `${index * 0.08}s` }}
             >
               <div className="flex items-start gap-4 md:gap-5">
-                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300">
+                <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300">
                   <RiQuestionLine className="text-primary text-lg md:text-xl" />
                 </div>
                 <div className="flex-1 min-w-0 pt-1">
