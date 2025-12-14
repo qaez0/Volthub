@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { RiArrowRightLine, RiQuestionLine } from "react-icons/ri";
-import LayoutContainer from "@/components/layout/LayoutContainer";
 import { Route } from "next";
 
 interface FAQ {
@@ -30,10 +29,10 @@ export default function FAQSection({
 }: FAQSectionProps) {
   return (
     <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-gray-50 w-[100vw] ">
-      <div className=" w-[100vw] mx-auto flex flex-row items-center justify-center gap-5">
+      <div className=" w-[100vw] mx-auto flex md:flex-row flex-col items-center justify-center gap-5 ">
         {/* Row 1: Banner/Image */}
-        <div className=" w-1/2 ">
-          <div className="relative w-full h-150 lg:h-140">
+        <div className=" md:w-1/2 w-full md:h-auto ">
+          <div className="relative w-full h-50 lg:h-140">
             <Image
               src={bannerImage}
               alt="FAQ Banner"

@@ -13,6 +13,7 @@ import StatsSection from "./components/StatsSection";
 import UserSegmentationSection from "./components/UserSegmentationSection";
 // import SocialProofSection from "./components/SocialProofSection";
 import FAQSection from "./components/FAQSection";
+// import EnergySavingsCalculator from "./components/EnergySavingsCalculator";
 // import VideoSection from "./components/VideoSection";
 import {
   carouselSlides,
@@ -92,11 +93,10 @@ export default function Home() {
         showCertifications={false}
       /> */}
 
-      {/* ROI Calculator Section */}
-      {/* <ROICalculatorSection
+      {/* Energy Savings Calculator Section */}
+      {/* <EnergySavingsCalculator
         title="Energy Savings Calculator"
         description="Discover how much you could save with VoltHub's energy solutions. Get an instant estimate of your potential savings and ROI."
-        benefits={roiCalculatorBenefits}
       /> */}
 
       {/* Video Section */}
