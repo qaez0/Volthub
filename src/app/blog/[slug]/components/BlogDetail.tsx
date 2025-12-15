@@ -315,12 +315,108 @@ const blogContent: Record<string, { content: string; author?: string; date?: str
   },
   "commercial-energy-solutions-business-guide": {
     content: `
-      <p>Commercial energy storage systems help businesses reduce operational costs, improve sustainability, and ensure reliable power for critical operations, becoming essential for competitive businesses as energy costs represent a significant portion of operational expenses that are only increasing. Peak shaving is one of the most valuable features of commercial energy storage, as many utilities charge significantly higher rates during peak demand periods typically in the afternoon and early evening, and by using stored energy during these peak hours instead of drawing from the grid, businesses can dramatically reduce their demand charges which can account for 30-50% of commercial electricity bills. For businesses with critical operations such as data centers, manufacturing facilities, healthcare facilities, or cold storage warehouses, the reliability benefits of energy storage are equally important since even brief power outages can result in significant losses from spoiled inventory to production downtime to data loss, with energy storage systems providing seamless backup power that activates instantly when the grid goes down to protect your business from these costly disruptions. From small commercial installations (40-200kWh) ideal for retail stores, small offices, and restaurants, to medium-scale systems (200-400kWh) for larger commercial facilities like shopping centers and hotels, to large-scale industrial systems (400-800kWh and beyond) designed for major manufacturing facilities and data centers, VoltHub offers solutions scaled to your business needs that can power essential operations for several hours during an outage and provide significant peak shaving benefits during normal operation.</p>
+      <div class="intro-section">
+        <p class="lead-text">⚡️ Conquer Peak Demand: How VoltHub Energy Storage Cuts Utility Bills and Fortifies Your Business</p>
+        <p>Commercial energy costs are rapidly becoming a significant portion of operational expenses. One of the most punishing aspects is peak shaving, where utility companies charge significantly higher rates during peak demand periods (typically in the afternoon and early evening).</p>
+        <div class="highlight-box">
+          <p><strong>Did you know?</strong> Using stored energy during these peak hours instead of drawing from the grid can dramatically reduce your demand charges, often accounting for <strong>30-50% of your commercial electricity bills</strong>.</p>
+        </div>
+        <p>This isn't just about saving money; it's about reliability. Business-critical operations like data centers, manufacturing, healthcare, and cold storage facilities simply cannot afford downtime. Even brief power outages can lead to significant losses, from spoiled inventory to production downtime and data loss.</p>
+      </div>
+
+      <h2>The Rising Cost of Doing Business (And How to Fight It)</h2>
+      <p>Commercial energy costs are rapidly becoming a significant portion of operational expenses. One of the most punishing aspects is peak shaving, where utility companies charge significantly higher rates during peak demand periods (typically in the afternoon and early evening).</p>
       
-      <p>Commercial energy storage typically provides payback within 3-6 years with ongoing savings for decades, with many businesses seeing 20-40% reduction in energy costs as the financial benefits come from multiple sources including demand charge reduction which is often the largest contributor, time-of-use optimization that allows businesses to charge batteries when rates are low and discharge when rates are high, and significant incentives from many jurisdictions including tax credits, rebates, and accelerated depreciation that can reduce the net cost of a system by 30-50%. When combined with energy savings, many commercial systems achieve payback in just a few years, after which they continue generating pure savings for the remainder of their 15-20 year lifespan, while beyond the direct financial benefits, commercial energy storage positions your business as a leader in sustainability, enhancing your brand reputation, attracting environmentally conscious customers and employees, and helping you meet increasingly stringent environmental regulations and corporate sustainability goals. Our team handles everything from initial assessment and system design to installation, commissioning, and ongoing maintenance, beginning with a comprehensive energy audit to understand your consumption patterns, peak demand periods, and backup power requirements, which informs the system design to ensure we recommend the optimal size and configuration for your specific needs. Installation is carefully planned to minimize disruption to your business operations, with our experienced technicians working efficiently and often completing installations during off-hours or in phases that allow your business to continue operating normally, and once installed, we provide comprehensive training for your staff and establish a maintenance schedule to ensure optimal long-term performance, as businesses across various industries have successfully implemented VoltHub energy solutions, achieving significant cost savings and sustainability improvements, with examples including a manufacturing facility in Metro Manila that reduced its monthly electricity costs by 35% through peak shaving and load shifting while achieving payback in just 4 years.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🏪</div>
+          <h3>Small Commercial Installations</h3>
+          <p><strong>40-200kWh:</strong> Ideal for retail, small offices, and restaurants.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🏢</div>
+          <h3>Large Commercial Installations</h3>
+          <p><strong>400-800kWh+:</strong> Designed for major manufacturing, shopping centers, and hotels.</p>
+        </div>
+      </div>
+
+      <p>VoltHub offers solutions tailored to your specific business needs that can power essential operations for several hours during an outage and provide significant peak shaving benefits during normal operation.</p>
+
+      <h2>The VoltHub Advantage: Financial Gains and Operational Security</h2>
+      <p>Commercial energy storage typically provides payback within <strong>3–6 years</strong>, with many businesses seeing <strong>20-40% reduction in energy costs immediately</strong>. The financial benefits come from multiple sources, including:</p>
+
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <h3>Demand Charge Reduction</h3>
+          <p>The largest contributor, allowing you to use stored energy when rates are high.</p>
+        </div>
+        <div class="benefit-item">
+          <h3>Time-of-Use Optimization</h3>
+          <p>Charging when rates are low and discharging when rates are high.</p>
+        </div>
+        <div class="benefit-item">
+          <h3>Significant Incentives</h3>
+          <p>Leveraging tax credits, rebates, and accelerated depreciation that can reduce the net cost of a system by <strong>30-50%</strong>.</p>
+        </div>
+      </div>
+
+      <p>When combined with energy savings, many commercial systems achieve payback in just a few years. After that, they continue generating pure savings for the remainder of their <strong>15-20 year lifespan</strong>.</p>
+
+      <div class="highlight-box success">
+        <p><strong>🌱 Beyond the Bottom Line: Sustainability and Leadership</strong></p>
+        <p>Choosing VoltHub positions your business as a leader in sustainability, enhancing your brand reputation, attracting environmentally conscious customers and employees, and helping you meet increasingly stringent environmental regulations and corporate sustainability goals.</p>
+      </div>
+
+      <h2>Seamless Implementation: Our Comprehensive 4-Step Process</h2>
+      <p>Our team handles everything from initial assessment to system deployment. We ensure minimal disruption and optimal performance with a comprehensive strategy:</p>
+
+      <div class="ecosystem-features">
+        <div class="ecosystem-item">
+          <h3>1. Initial Assessment and System Design</h3>
+          <p>We begin with a comprehensive energy audit to understand your consumption patterns, peak demand periods, and backup power requirements. This informs the system design to ensure we recommend the optimal size and configuration for your specific needs.</p>
+        </div>
+        <div class="ecosystem-item">
+          <h3>2. Professional Installation</h3>
+          <p>Installation is carefully planned to minimize disruption to your business operations, with our experienced technicians working efficiently and often completing installations during off-hours or in phases.</p>
+        </div>
+        <div class="ecosystem-item">
+          <h3>3. Training and Scheduling</h3>
+          <p>Once installed, we provide comprehensive training for your staff and establish a maintenance schedule to ensure optimal long-term performance.</p>
+        </div>
+        <div class="ecosystem-item">
+          <h3>4. Ongoing Support</h3>
+          <p>VoltHub solutions have successfully implemented energy solutions, achieving significant cost savings and sustainability improvements.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Success Story:</strong> A manufacturing facility in Metro Manila that utilized VoltHub reduced its monthly electricity costs by <strong>35%</strong> through peak shaving and load shifting while achieving payback in just <strong>4 years</strong>.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">3-6</div>
+          <div class="stat-label">Years to Payback</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20-40%</div>
+          <div class="stat-label">Immediate Cost Reduction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15-20</div>
+          <div class="stat-label">Year System Lifespan</div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h2>🚀 Ready to Take Control of Your Energy Costs?</h2>
+        <p>Stop losing money to peak demand charges and secure your operations against unexpected outages.</p>
+        <p><strong>VoltHub is more than storage—it's an investment in your financial and operational future.</strong></p>
+      </div>
     `,
     author: "VoltHub Commercial Team",
-    date: "January 25, 2025",
+    date: "January 28, 2025",
+    readingTime: "7 mins",
   },
 };
 
@@ -551,6 +647,31 @@ export default function BlogDetail({ resource }: BlogDetailProps) {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-lg font-semibold hover:bg-white/20 transition-all"
                 >
                   Explore Our Solutions
+                  <RiArrowRightLine className="h-5 w-5" />
+                </Link>
+              </div>
+            </>
+          ) : resource.slug === "commercial-energy-solutions-business-guide" ? (
+            <>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                Ready to Conquer Peak Demand and Cut Your Energy Costs?
+              </h3>
+              <p className="text-white/90 mb-6 text-lg leading-relaxed">
+                Stop losing money to peak demand charges and secure your operations against unexpected outages. Get a free consultation and discover how VoltHub can reduce your energy costs by 20-40% with payback in just 3-6 years.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+                >
+                  Get Free Commercial Consultation
+                  <RiArrowRightLine className="h-5 w-5" />
+                </Link>
+                <Link
+                  href="/sectors/commercial"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-lg font-semibold hover:bg-white/20 transition-all"
+                >
+                  Explore Commercial Solutions
                   <RiArrowRightLine className="h-5 w-5" />
                 </Link>
               </div>

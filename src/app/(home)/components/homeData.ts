@@ -24,48 +24,48 @@ export const carouselSlides = [
     title: "Powering Tomorrow, Today",
     subtitle: "Smart Power. Clean Future.",
     description:
-      "VoltHub delivers next-generation electric and renewable energy solutions—from smart solar systems to EV charging infrastructure—for a cleaner, more resilient planet.",
+      "Cut energy costs by up to 40% and achieve energy independence with VoltHub's next-generation energy storage and EV charging solutions. Join thousands of businesses saving millions on utility bills.",
     image: "/HomeBanner/89.png",
     backgroundImage: "/HomeBanner/banner1.png",
     mobileBackgroundImage: "/HomeBanner/banner1m.png",
     mobileBackgroundPosition: "right center",
     showimg: false,
     descriptionClassName: "w-full md:w-1/2 md:ml-auto md:max-w-2xl",
-    buttonText: "Explore Products",
-    buttonLink: "/products",
+    buttonText: "Calculate Your Savings",
+    buttonLink: "/contact",
     gradient: "bg-gradient-to-br from-primary/90 via-primary/70 to-transparent",
     layout: "side-by-side" as const,
   },
   {
     id: 2,
     title: "Residential Energy Storage",
-    subtitle: "Energy Independence",
+    subtitle: "Energy Independence Starts at Home",
     description:
-      "Smart home battery systems that store solar energy for round-the-clock power. Reduce your electricity bills and achieve energy independence with our cutting-edge residential storage solutions.",
+      "Reduce electricity bills by 70% with smart home battery systems. Store solar energy for round-the-clock power, protect against outages, and achieve true energy independence. 10+ year warranty included.",
     image: "/HomeBanner/LVXC.png",
     backgroundImage: "/HomeBanner/banner2.png",
     mobileBackgroundImage: "/HomeBanner/banner2m.png",
     showimg: false,
     imageClassName: "absolute bottom-0 right-0 h-full w-1/2 mb-[-170px]",
     descriptionClassName: "space-y-6 text-white z-[100]",
-    buttonText: "View Residential Solutions",
-    buttonLink: "/sectors/residential",
+    buttonText: "Get Free Consultation",
+    buttonLink: "/contact",
     gradient: "bg-gradient-to-br from-emerald-700/90 via-primary/70 to-transparent",
     layout: "side-by-side" as const,
   },
   {
     id: 3,
-    title: "Commercial & Industrial ESS",
-    subtitle: "Enterprise Solutions",
+    title: "Conquer Peak Demand Charges",
+    subtitle: "Cut Commercial Energy Costs by 20-40%",
     description:
-      "Scalable energy storage systems for businesses and factories. Maximize energy efficiency, reduce costs, and ensure uninterrupted power with our industrial-grade storage solutions.",
+      "Stop losing money to peak demand charges. VoltHub's commercial energy storage systems provide payback in 3-6 years while protecting your business from costly outages. Achieve 30-50% reduction in demand charges.",
     image: "/HomeBanner/banner3product.png",
     backgroundImage: "/HomeBanner/banner3.png",
     mobileBackgroundImage: "/HomeBanner/banner3m.png",
     showimg: false,
     imageClassName: "absolute bottom-0 right-0 h-full w-1/2 mb-[-170px]",
     descriptionClassName: "space-y-6 text-white z-[100]",
-    buttonText: "Learn About C&I Solutions",
+    buttonText: "See Commercial Solutions",
     buttonLink: "/sectors/commercial",
     gradient: "bg-gradient-to-br from-accent/90 via-primary/70 to-transparent",
     layout: "side-by-side" as const,
@@ -73,9 +73,9 @@ export const carouselSlides = [
   {
     id: 4,
     title: "EV Charging Infrastructure",
-    subtitle: "Future of Mobility",
+    subtitle: "Future-Ready Mobility Solutions",
     description:
-      "Fast charging networks for electric vehicles. Build comprehensive EV charging infrastructure with smart grid integration and seamless user experience.",
+      "Build comprehensive EV charging networks with ultra-fast 50-150kW DC chargers. Attract customers, increase foot traffic by 35%, and future-proof your business with smart grid integration.",
     image:
       "https://readdy.ai/api/search-image?query=electric%20vehicle%20charging%20station%20network%2C%20modern%20EV%20charging%20infrastructure%2C%20smart%20grid%20technology%2C%20sustainable%20transportation%2C%20clean%20mobility%20future&width=1920&height=1080&seq=hero004&orientation=landscape",
     backgroundImage: "/HomeBanner/banner4.png",
@@ -144,7 +144,7 @@ export const productShowcases = [
       { text: "60kW/120kW", color: "text-primary" },
     ],
     description:
-      "Premium dual-gun DC fast charger for fleets and public sites. Features single-gun full power or dual-gun current sharing modes for maximum flexibility.",
+      "Premium dual-gun DC fast charger for fleets and public sites. Charge two vehicles simultaneously or deliver full power to one. Increase revenue and customer satisfaction with flexible power sharing modes.",
     image: "/home/greenev.png",
     imageAlt: "DC EV Charger Dual Gun 60kW/120kW",
     features: [
@@ -154,7 +154,7 @@ export const productShowcases = [
     ],
     ctas: [
       { text: "View Dual-Gun EV Charger Products", href: "/products/ev-charging-89" as Route, variant: "primary" as const },
-      { text: "Schedule Consultation", href: "/contact" as Route, variant: "secondary" as const },
+      { text: "Get Free Quote", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiBatteryChargeLine, text: "Dual Charging", color: "text-emerald-700" },
@@ -174,7 +174,7 @@ export const productShowcases = [
       { text: "Charger 400kW", color: "text-green-800" },
     ],
     description:
-      "Ultra-high power DC fast charging solution for commercial sites and fleet depots. Delivers powerful rapid charging capabilities for heavy-duty electric vehicles.",
+      "Ultra-high power DC fast charging solution for commercial sites and fleet depots. Charge heavy-duty vehicles in minutes, not hours. Future-proof your infrastructure with industry-leading power output.",
     image: "/home/redev.png",
     imageAlt: "DC EV Charger 400kW",
     features: [
@@ -204,7 +204,7 @@ export const productShowcases = [
       { text: "Charger 7kW", color: "text-accent" },
     ],
     description:
-      "High-performance AC EV charging system perfect for home use. Fast, safe, and reliable charging for your electric vehicle with smart monitoring capabilities.",
+      "High-performance AC EV charging system perfect for home use. Charge your EV overnight while you sleep. Smart scheduling optimizes charging during off-peak hours to maximize savings.",
     image: "/home/residentialev.png",
     imageAlt: "AC EV Charger 7kW",
     features: [
@@ -214,7 +214,7 @@ export const productShowcases = [
     ],
     ctas: [
       { text: "View AC EV Charger Products", href: "/products/ev-charging-59" as Route, variant: "primary" as const },
-      { text: "Get Quote", href: "/contact" as Route, variant: "secondary" as const },
+      { text: "Get Free Quote", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiShieldCheckLine, text: "Certified & Safe", color: "text-green-600" },
@@ -235,7 +235,7 @@ export const productShowcases = [
       { text: "160kW", color: "text-primary" },
     ],
     description:
-      "High-power dual-gun DC fast charger for premium charging hubs and expressway service areas. Future-proof for newer EVs with advanced charging capabilities.",
+      "High-power dual-gun DC fast charger for premium charging hubs and expressway service areas. Maximize revenue with dual charging capability. Future-proof design supports next-generation EVs.",
     image: "/home/yellowev.png",
     imageAlt: "DC EV Charger Dual Gun 160kW/240kW",
     features: [
@@ -245,7 +245,7 @@ export const productShowcases = [
     ],
     ctas: [
       { text: "View Commercial EV Charger Products", href: "/products/ev-charging-53" as Route, variant: "primary" as const },
-      { text: "Contact Sales", href: "/contact" as Route, variant: "secondary" as const },
+      { text: "Get Free Consultation", href: "/contact" as Route, variant: "secondary" as const },
     ],
     trustIndicators: [
       { icon: RiFlashlightLine, text: "High Capacity", color: "text-secondary" },
@@ -295,29 +295,29 @@ export const userSegments = [
   {
     title: "For Homeowners",
     description:
-      "Reduce energy bills and achieve energy independence with residential solar and storage solutions.",
+      "Cut electricity bills by up to 70% and achieve true energy independence. Protect your home from outages while increasing property value. 10+ year warranty included.",
     icon: RiUserLine,
-    features: ["Lower Electricity Bills", "Energy Independence", "Increase Home Value", "10+ Year Warranty"],
-    cta: "Explore Residential Solutions",
-    link: "/sectors/residential" as Route,
+    features: ["Save Up to 70% on Bills", "Energy Independence", "Increase Home Value", "10+ Year Warranty"],
+    cta: "Get Free Consultation",
+    link: "/contact" as Route,
     color: "from-primary to-accent",
   },
   {
     title: "For Businesses",
-    description: "Cut operational costs and reduce carbon footprint with commercial energy solutions.",
+    description: "Reduce energy costs by 20-40% and achieve payback in 3-6 years. Protect critical operations from outages while meeting sustainability goals.",
     icon: RiBuildingLine,
-    features: ["Reduce Energy Costs", "Tax Incentives", "24/7 Support", "Scalable Solutions"],
-    cta: "Explore Commercial Solutions",
-    link: "/sectors/commercial" as Route,
+    features: ["20-40% Cost Reduction", "3-6 Year Payback", "24/7 Support", "Scalable Solutions"],
+    cta: "Calculate Your Savings",
+    link: "/contact" as Route,
     color: "from-accent to-primary",
   },
   {
     title: "For Developers",
-    description: "Large-scale energy infrastructure for residential and commercial developments.",
+    description: "Large-scale energy infrastructure for residential and commercial developments. Bulk pricing available with custom solutions and fast deployment.",
     icon: RiGlobalLine,
     features: ["Bulk Pricing", "Custom Solutions", "Project Management", "Fast Deployment"],
-    cta: "Explore Industrial Solutions",
-    link: "/sectors/industrial" as Route,
+    cta: "Contact Sales Team",
+    link: "/contact" as Route,
     color: "from-primary to-emerald-600",
   },
 ];
@@ -410,11 +410,11 @@ export const resources = [
   },
   {
     slug: "commercial-energy-solutions-business-guide",
-    title: "Commercial Energy Solutions: A Business Guide",
-    description: "Discover how commercial energy storage systems can reduce operational costs and improve sustainability for your business.",
+    title: "⚡️ Conquer Peak Demand: How VoltHub Energy Storage Cuts Utility Bills and Fortifies Your Business",
+    description: "Discover how commercial energy storage systems can reduce operational costs by 20-40%, achieve payback in 3-6 years, and protect your business from costly outages.",
     type: "Guide",
-    image: "/HomeBanner/banner4m.png",
-    imageAlt: "Commercial energy solutions",
+    image: "/Blog/blog5T.png",
+    imageAlt: "Commercial energy solutions - Peak demand management and cost savings",
   },
 ];
 
