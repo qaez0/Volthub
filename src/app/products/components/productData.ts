@@ -166,6 +166,7 @@ export const products: Product[] = [
     image: "/Product/StreetLamp/F2L.png",
     price: "₱45,164.50",
     images: [
+      "/Product/StreetLamp/F2L.png",
       "/Product/StreetLamp/f2/prod4.png",
       "/Product/StreetLamp/f2/disc1.png",
       "/Product/StreetLamp/f2/disc2.png",
@@ -184,6 +185,7 @@ export const products: Product[] = [
     image: "/Product/StreetLamp/RKlv02.png",
     price: "₱17,346.00",
     images: [
+      "/Product/StreetLamp/RKlv02.png",
       "/Product/StreetLamp/lvxc2/prod1.png",
       "/Product/StreetLamp/lvq2/disc1.png",
       "/Product/StreetLamp/lvq2/disc2.png",
@@ -203,6 +205,7 @@ export const products: Product[] = [
     image: "/Product/StreetLamp/RKS.png",
     price: "₱17,036.25",
     images: [
+      "/Product/StreetLamp/RKS.png",
       "/Product/StreetLamp/lvq2/prod1.png",
      // "/Product/StreetLamp/lvxc2/disc1.png",
       "/Product/StreetLamp/lvxc2/disc2.png",
@@ -223,6 +226,7 @@ export const products: Product[] = [
     image: "/Product/StreetLamp/LVXC.png",
     price: "₱17,036.25",
     images: [
+      "/Product/StreetLamp/LVXC.png",
       "/Product/StreetLamp/lvxc3/prod1.png",
    // "/Product/StreetLamp/lvxc3/disc1.png",
       "/Product/StreetLamp/lvxc3/disc2.png",
