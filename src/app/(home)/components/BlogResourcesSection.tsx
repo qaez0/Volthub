@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-// import type { Route } from "next";
+import type { Route } from "next";
 // import { IconType } from "react-icons";
 import { RiArrowRightLine } from "react-icons/ri";
 import LayoutContainer from "@/components/layout/LayoutContainer";
@@ -22,7 +22,7 @@ interface BlogResourcesSectionProps {
   title: string;
   description: string;
   resources: Resource[];
-  viewAllLink?: string;
+  viewAllLink?: Route;
 }
 
 export default function BlogResourcesSection({
