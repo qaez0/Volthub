@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ChatSupport from "@/components/common/ChatSupport";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,7 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "VoltHub",
   description: "Electronic power generation services",
   manifest: "/site.webmanifest",
@@ -61,6 +63,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <ChatSupport />
         </ThemeProvider>
       </body>
     </html>
