@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import { RiMapPinLine } from "react-icons/ri";
@@ -27,11 +27,6 @@ export default function ProjectCasesSection({
   badge = "Our Work",
   projectCases,
 }: ProjectCasesSectionProps) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   // Group images into rows for justified layout
   const groupIntoRows = (items: typeof projectCases, itemsPerRow: number) => {
@@ -43,8 +38,9 @@ export default function ProjectCasesSection({
   };
 
   // Calculate items per row based on screen size
+  // Use a consistent default for SSR, will adjust on client
   const getItemsPerRow = () => {
-    if (typeof window === 'undefined') return 4;
+    if (typeof window === 'undefined') return 4; // Default for SSR
     if (window.innerWidth >= 1024) return 5;
     if (window.innerWidth >= 768) return 4;
     if (window.innerWidth >= 640) return 3;
@@ -112,9 +108,7 @@ export default function ProjectCasesSection({
                   return (
                     <div
                       key={project.id}
-                      className={`group relative overflow-hidden h-full cursor-pointer hover-lift flex-1 ${
-                        isVisible ? slideDirection : "opacity-0"
-                      }`}
+                      className={`group relative overflow-hidden h-full cursor-pointer hover-lift flex-1 ${slideDirection}`}
                       style={{
                         animationDelay: `${animationDelay}s`,
                         animationDuration: "0.8s",
