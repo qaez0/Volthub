@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import ProductDetail from "../components/ProductDetail";
 import { getProductById } from "../components/productData";
+import BackToTopButton from "@/components/common/BackToTopButton";
 
 type ProductPageProps = {
   params: Promise<{
@@ -43,6 +44,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <main className="bg-slate-50 min-h-screen pt-20 md:pt-28 pb-12 md:pb-20 flex  items-center justify-center">
       <LayoutContainer>
         <ProductDetail product={product} />
+        <BackToTopButton />
       </LayoutContainer>
     </main>
   );
