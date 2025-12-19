@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import LayoutContainer from "@/components/layout/LayoutContainer";
 import { RiMapPinLine } from "react-icons/ri";
@@ -28,6 +28,26 @@ export default function ProjectCasesSection({
   projectCases,
 }: ProjectCasesSectionProps) {
 
+  // State to track items per row - starts with SSR-safe default
+  const [itemsPerRow, setItemsPerRow] = useState(4);
+
+  // Update items per row after mount to avoid hydration mismatch
+  useEffect(() => {
+    const updateItemsPerRow = () => {
+      if (window.innerWidth >= 1024) setItemsPerRow(5);
+      else if (window.innerWidth >= 768) setItemsPerRow(4);
+      else if (window.innerWidth >= 640) setItemsPerRow(3);
+      else setItemsPerRow(2);
+    };
+
+    // Set initial value
+    updateItemsPerRow();
+
+    // Update on window resize
+    window.addEventListener('resize', updateItemsPerRow);
+    return () => window.removeEventListener('resize', updateItemsPerRow);
+  }, []);
+
   // Group images into rows for justified layout
   const groupIntoRows = (items: typeof projectCases, itemsPerRow: number) => {
     const rows: typeof projectCases[] = [];
@@ -35,16 +55,6 @@ export default function ProjectCasesSection({
       rows.push(items.slice(i, i + itemsPerRow));
     }
     return rows;
-  };
-
-  // Calculate items per row based on screen size
-  // Use a consistent default for SSR, will adjust on client
-  const getItemsPerRow = () => {
-    if (typeof window === 'undefined') return 4; // Default for SSR
-    if (window.innerWidth >= 1024) return 5;
-    if (window.innerWidth >= 768) return 4;
-    if (window.innerWidth >= 640) return 3;
-    return 2;
   };
 
   // Get slide direction based on index for variety
@@ -90,7 +100,7 @@ export default function ProjectCasesSection({
       {/* Project Cases Justified Grid - Full Width */}
       <div className="w-full relative z-10">
         <div className="flex flex-col space-y-0.5 md:space-y-1 w-full">
-          {groupIntoRows(projectCases, getItemsPerRow()).map((row, rowIndex) => {
+          {groupIntoRows(projectCases, itemsPerRow).map((row, rowIndex) => {
             // Same height for all rows - justified grid style
             const rowHeight = 200; // Fixed height for all rows
             const slideDirection = getSlideDirection(rowIndex);
@@ -102,7 +112,7 @@ export default function ProjectCasesSection({
                 style={{ height: `${rowHeight}px` }}
               >
                 {row.map((project, itemIndex) => {
-                  const globalIndex = rowIndex * getItemsPerRow() + itemIndex;
+                  const globalIndex = rowIndex * itemsPerRow + itemIndex;
                   const animationDelay = globalIndex * 0.06;
 
                   return (
