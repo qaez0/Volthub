@@ -132,7 +132,7 @@ For inquiries, support, returns, warranties, or any questions, please contact us
     });
 
     // Add applicable spaces/use cases
-    const applicableSpaces = getApplicableSpacesForProduct(product, details);
+    const applicableSpaces = getApplicableSpacesForProduct(product);
     if (applicableSpaces) {
       chunks.push({
         id: `product-${product.id}-spaces`,
@@ -189,7 +189,7 @@ For inquiries, support, returns, warranties, or any questions, please contact us
 /**
  * Get applicable spaces for a product
  */
-function getApplicableSpacesForProduct(product: Product, details: any): string | null {
+function getApplicableSpacesForProduct(product: Product): string | null {
   const isEVProduct = product.category === "ev-charging";
   const isSmartHomeProduct = product.category === "smart-home";
   const isCabinetProduct = product.category === "cabinet";

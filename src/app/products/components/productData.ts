@@ -16,6 +16,8 @@ export type ProductVariation = {
   specifications?: { label: string; value: string }[]; // Optional specifications for this variation
 };
 
+export type ProductLayout = "ev" | "b2b" | "auto"; // "auto" uses category-based default
+
 export type Product = {
   id: string;
   name: string;
@@ -29,6 +31,7 @@ export type Product = {
   variations?: ProductVariation[];
   specifications?: { label: string; value: string }[];
   features?: string[];
+  layout?: ProductLayout; // Optional: specify which layout to use ("ev" or "b2b"), defaults to "auto" (category-based)
 };
 
 export const categories: { id: ProductCategory; label: string }[] = [
@@ -322,6 +325,7 @@ export const products: Product[] = [
     name: "Smart Home IPS 25kWh",
     subtitle: "More Hours, Same Power",
     category: "smart-home",
+    layout: "ev", // Use EV layout for this product
     tag: "Mobile Energy Storage Power",
     image: "/Product/SmartHome/SMP6.png",
     images: [

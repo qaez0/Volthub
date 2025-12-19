@@ -115,10 +115,10 @@ const ChatSupport = () => {
             sender: "support",
           },
         ]);
-      } catch (error: any) {
+      } catch (error: unknown) {
         setIsTyping(false);
         // Fallback to contact redirect if LLM is unavailable
-        const errorMessage = error.message || "I'm having trouble connecting to the AI service right now.";
+        const errorMessage = error instanceof Error ? error.message : "I'm having trouble connecting to the AI service right now.";
         setMessages((prev) => [
           ...prev,
           {
