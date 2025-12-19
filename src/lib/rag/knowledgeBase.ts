@@ -15,6 +15,7 @@ const companyInfo = {
   address: "High Street South Corporate Plaza Tower 2, 11th Ave, Bonifacio Global City, Taguig, Philippines",
   phone: "+63 9659700823",
   email: "admin-help@volthub-ev.com",
+  website: "https://volthubs.app.netlify",
   description: "A forward-looking energy technology company specializing in EV charging infrastructure, solar power systems, and smart energy solutions.",
   mission: "Building the blueprint for a cleaner energy economy. We provide end-to-end services—from design, engineering, and installation to maintenance and system optimization—tailored for commercial, residential, and industrial clients.",
   services: [
@@ -59,6 +60,7 @@ Established: ${companyInfo.established}
 Address: ${companyInfo.address}
 Phone: ${companyInfo.phone}
 Email: ${companyInfo.email}
+Website: ${companyInfo.website}
 Description: ${companyInfo.description}
 Mission: ${companyInfo.mission}
 Services: ${companyInfo.services.join(', ')}
@@ -74,8 +76,9 @@ Product Categories: ${companyInfo.categories.join(', ')}`,
 Phone: ${companyInfo.phone}
 Email: ${companyInfo.email}
 Address: ${companyInfo.address}
+Website: ${companyInfo.website}
 
-For inquiries, support, returns, warranties, or any questions, please contact us using the information above.`,
+For inquiries, support, returns, warranties, or any questions, please contact us using the information above. You can also visit our website at ${companyInfo.website} for more information.`,
     metadata: {}
   });
 
