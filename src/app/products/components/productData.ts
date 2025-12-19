@@ -48,13 +48,13 @@ export const categoryBanner: Record<
     title: "Energy Storage & Power Products",
     description:
       "From EV charging to smart home backup and utility-scale storage, VoltHub delivers trusted, safe and efficient power for every scenario.",
-    image: "/HomeBanner/banner3.jpg",
+    image: "/resources/bulb.jpg",
   },
   "ev-charging": {
     title: "EV Charging Station Solutions",
     description:
       "Fast, reliable EV charging systems for homes, fleets and public sites, with smart monitoring and billing.",
-    image: "/Product/evpb.jpg",
+    image: "/resources/charging-stats.jpg",
   },
   "solar-street": {
     title: "Solar Street Lighting Systems",
@@ -73,8 +73,8 @@ export const categoryBanner: Record<
     title: "Power Supplies",
     description:
       "Modular cabinet energy storage and power supply systems for commercial and industrial applications.",
-    image: "/HomeBanner/commercial.png",
-    video: "/Product/CNvB.mp4",
+    image: "/resources/power-grid.jpg",
+   // video: "/Product/CNvB.mp4",
   },
   // container: {
   //   title: "Container Type Power Supply",

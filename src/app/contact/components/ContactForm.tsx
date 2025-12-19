@@ -52,6 +52,7 @@ export default function ContactForm() {
     const productName = searchParams.get("productName");
     const quantity = searchParams.get("quantity");
     const price = searchParams.get("price");
+    const details = searchParams.get("details");
 
     // If interest is directly provided, use it
     if (interest) {
@@ -175,6 +176,10 @@ export default function ContactForm() {
       } else {
         setIsDetailsReadOnly(false);
       }
+    } else if (details) {
+      // If details parameter is provided directly (e.g., from chat), use it
+      setFormState((prev) => ({ ...prev, details }));
+      setIsDetailsReadOnly(false);
     } else {
       // If no product page parameters, allow editing
       setIsDetailsReadOnly(false);
