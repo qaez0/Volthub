@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { RiCloseLine, RiImageLine, RiSendPlaneFill, RiCustomerService2Fill, RiMailSendLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 import { generateAIResponse, generateContactLink } from "@/lib/chatbot";
@@ -9,20 +9,13 @@ import { getProductById } from "@/app/products/components/productData";
 
 const ChatSupport = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Array<{ id: number; text: string; sender: "user" | "support" }>>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [currentProductId, setCurrentProductId] = useState<string | null>(null);
   const [lastUserMessage, setLastUserMessage] = useState<string>("");
-  const [mounted, setMounted] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
-
-  // Ensure component is mounted (client-side only)
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Detect if we're on a product page
   useEffect(() => {
@@ -74,7 +67,7 @@ const ChatSupport = () => {
     if (!isOpen) {
       setMessages([]);
     }
-  }, [isOpen, currentProductId]);
+  }, [isOpen, currentProductId, messages.length]);
 
   const handleSend = () => {
     if (message.trim()) {
@@ -119,11 +112,6 @@ const ChatSupport = () => {
       handleSend();
     }
   };
-
-  // Don't render until mounted to prevent hydration issues
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <>
@@ -238,7 +226,12 @@ const ChatSupport = () => {
           <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
             <div className="space-y-4">
               {messages.map((msg) => {
-                const isContactRequired = msg.sender === "support" && msg.text.includes("__CONTACT_REQUIRED__");
+                const isContactRequired = msg.sender === "support" && (
+                  msg.text.includes("__CONTACT_REQUIRED__") ||
+                  msg.text.includes("I couldn't find") ||
+                  msg.text.includes("I apologize") ||
+                  msg.text.includes("couldn't find a specific answer")
+                );
                 const displayText = isContactRequired 
                   ? msg.text.replace("__CONTACT_REQUIRED__:", "").trim()
                   : msg.text;
