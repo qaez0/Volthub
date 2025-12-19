@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { RiCloseLine, RiImageLine, RiSendPlaneFill, RiCustomerService2Fill, RiMailSendLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
-import { generateAIResponse, generateContactLink } from "@/lib/chatbot";
+import { generateContactLink } from "@/lib/chatbot";
 import { getProductById } from "@/app/products/components/productData";
 
 const ChatSupport = () => {
@@ -69,7 +69,7 @@ const ChatSupport = () => {
     }
   }, [isOpen, currentProductId, messages.length]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (message.trim()) {
       const userMessage = message.trim();
       setLastUserMessage(userMessage);
@@ -80,19 +80,55 @@ const ChatSupport = () => {
       setMessage("");
       setIsTyping(true);
       
-      // Generate AI response with product context
-      setTimeout(() => {
-        const aiResponse = generateAIResponse(userMessage, currentProductId);
+      try {
+        // Prepare conversation history (last 5 messages for context)
+        const recentMessages = messages.slice(-5).map(msg => ({
+          sender: msg.sender,
+          text: msg.text,
+        }));
+
+        // Call LLM API
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: userMessage,
+            conversationHistory: recentMessages,
+            productId: currentProductId,
+          }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to get response");
+        }
+
+        const data = await response.json();
         setIsTyping(false);
         setMessages((prev) => [
           ...prev,
           {
             id: prev.length + 1,
-            text: aiResponse,
+            text: data.response,
             sender: "support",
           },
         ]);
-      }, 800 + Math.random() * 400); // Simulate thinking time
+      } catch (error: any) {
+        setIsTyping(false);
+        // Fallback to contact redirect if LLM is unavailable
+        const errorMessage = error.message || "I'm having trouble connecting to the AI service right now.";
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: prev.length + 1,
+            text: `${errorMessage}\n\nWould you like to contact our support team directly?`,
+            sender: "support",
+          },
+        ]);
+        console.error("Chat API error:", error);
+      }
     }
   };
 
@@ -121,7 +157,7 @@ const ChatSupport = () => {
           onClick={() => setIsOpen(true)}
           style={{
             position: 'fixed',
-            bottom: '24px',
+            bottom: '112px',
             right: '24px',
             zIndex: 99999,
             width: '64px',
