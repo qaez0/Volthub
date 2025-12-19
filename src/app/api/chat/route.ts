@@ -2,6 +2,78 @@ import { NextResponse } from "next/server";
 import { getRelevantContext } from "@/lib/rag/knowledgeBase";
 
 /**
+ * Get page information for non-product pages
+ */
+function getPageInfo(path: string): { name: string; description: string } | null {
+  // Handle sub-paths (e.g., /sectors/commercial, /sectors/residential)
+  if (path.startsWith('/sectors/')) {
+    const sector = path.split('/sectors/')[1];
+    const sectorNames: Record<string, string> = {
+      'commercial': 'Commercial Energy Solutions',
+      'residential': 'Residential Energy Solutions',
+      'industrial': 'Industrial Energy Solutions',
+      'government': 'Government & Public Sector Solutions',
+      'smart-cities': 'Smart Cities Solutions',
+    };
+    
+    const sectorName = sectorNames[sector] || `Sector: ${sector}`;
+    return {
+      name: sectorName,
+      description: `the ${sectorName.toLowerCase()} page showing energy solutions and products specifically designed for ${sector} sector applications`
+    };
+  }
+  
+  // Handle product sub-paths (e.g., /products/ev-charging)
+  if (path.startsWith('/products/') && !path.match(/^\/products\/[^/]+$/)) {
+    // This is a category page, not a specific product
+    const category = path.split('/products/')[1];
+    return {
+      name: `Products - ${category}`,
+      description: `the products page filtered by category: ${category}`
+    };
+  }
+  
+  const pageMap: Record<string, { name: string; description: string }> = {
+    '/': { 
+      name: 'Home', 
+      description: 'the homepage with company overview, featured products, and main navigation' 
+    },
+    '/products': { 
+      name: 'Products', 
+      description: 'the products listing page showing all available products by category' 
+    },
+    '/sectors': { 
+      name: 'Sectors', 
+      description: 'the sectors page showing energy solutions organized by industry sectors (residential, commercial, industrial, etc.)' 
+    },
+    '/services': { 
+      name: 'Services', 
+      description: 'the services page with information about installation, maintenance, and support services' 
+    },
+    '/about': { 
+      name: 'About', 
+      description: 'the about page with company information, mission, and team details' 
+    },
+    '/contact': { 
+      name: 'Contact', 
+      description: 'the contact page where users can reach out for inquiries, support, or quotes' 
+    },
+  };
+
+  // Check exact match first
+  if (pageMap[path]) {
+    return pageMap[path];
+  }
+
+  // Check if it's a product page (already handled separately)
+  if (path.match(/^\/products\/[^/]+$/)) {
+    return null; // Product pages are handled via productId
+  }
+
+  return null;
+}
+
+/**
  * Chat API Route - Integrates with Ollama LLM (local or cloud)
  * 
  * To use this, you need to:
@@ -32,7 +104,8 @@ interface ChatMessage {
 async function callOllama(
   messages: ChatMessage[],
   context?: string,
-  currentProduct?: { id: string; name: string }
+  currentProduct?: { id: string; name: string },
+  currentPagePath?: string | null
 ): Promise<string> {
   try {
     // Build the prompt with context
@@ -40,11 +113,19 @@ async function callOllama(
 You help customers with questions about products, services, pricing, specifications, installation, and warranty information.
 Be friendly, professional, and concise. If you don't know something, suggest contacting the support team.`;
 
-    // Add current page context if user is viewing a product
+    // Add current page context
     if (currentProduct) {
       systemPrompt += `\n\nIMPORTANT: The user is currently viewing the product page for "${currentProduct.name}" (ID: ${currentProduct.id}). 
 When they ask questions like "this product", "what page am I on", "tell me about this", or "I'd like to know more about this product", 
 they are referring to "${currentProduct.name}". Always assume questions about "this product" refer to "${currentProduct.name}" unless they explicitly mention a different product.`;
+    } else if (currentPagePath) {
+      // Handle non-product pages
+      const pageInfo = getPageInfo(currentPagePath);
+      if (pageInfo) {
+        systemPrompt += `\n\nIMPORTANT: The user is currently on the "${pageInfo.name}" page (${currentPagePath}). 
+When they ask "what page am I on", "where am I", or questions about the current page, they are referring to the "${pageInfo.name}" page. 
+You can provide information about: ${pageInfo.description}`;
+      }
     }
 
     if (context) {
@@ -108,7 +189,7 @@ they are referring to "${currentProduct.name}". Always assume questions about "t
  */
 export async function POST(request: Request) {
   try {
-    const { message, conversationHistory = [], productId } = await request.json();
+    const { message, conversationHistory = [], productId, currentPagePath } = await request.json();
 
     if (!message || typeof message !== "string") {
       return NextResponse.json(
@@ -127,8 +208,8 @@ export async function POST(request: Request) {
       }
     }
 
-    // Get relevant context from knowledge base
-    const context = getRelevantContext(message, productId || null, 5);
+    // Get relevant context from knowledge base (with current page info)
+    const context = getRelevantContext(message, productId || null, currentPagePath || null, 5);
 
     // Build conversation history
     const messages: ChatMessage[] = conversationHistory.map((msg: { sender: string; text: string }) => ({
@@ -142,8 +223,8 @@ export async function POST(request: Request) {
       content: message,
     });
 
-    // Call Ollama with current product context
-    const response = await callOllama(messages, context, currentProduct);
+    // Call Ollama with current product and page context
+    const response = await callOllama(messages, context, currentProduct, currentPagePath);
 
     return NextResponse.json({
       response,
