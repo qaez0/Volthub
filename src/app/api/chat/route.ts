@@ -116,7 +116,7 @@ export async function POST(request: Request) {
     const context = getRelevantContext(message, productId || null, 5);
 
     // Build conversation history
-    const messages: ChatMessage[] = conversationHistory.map((msg: any) => ({
+    const messages: ChatMessage[] = conversationHistory.map((msg: { sender: string; text: string }) => ({
       role: msg.sender === "user" ? "user" : "assistant",
       content: msg.text,
     }));
@@ -134,11 +134,12 @@ export async function POST(request: Request) {
       response,
       contextUsed: context.length > 0,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Chat API error:", error);
 
     // Check if Ollama is not running
-    if (error.message?.includes("fetch failed") || error.message?.includes("ECONNREFUSED")) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("fetch failed") || errorMessage.includes("ECONNREFUSED")) {
       return NextResponse.json(
         {
           error: "LLM service unavailable",
@@ -152,7 +153,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error: "Failed to generate response",
-        message: error.message || "An unexpected error occurred",
+        message: error instanceof Error ? error.message : "An unexpected error occurred",
       },
       { status: 500 }
     );
@@ -179,15 +180,15 @@ export async function GET() {
       );
     }
 
-    const data = await response.json();
+    const data = await response.json() as { models?: Array<{ name: string }> };
     const models = data.models || [];
-    const hasModel = models.some((m: any) => m.name.includes(OLLAMA_MODEL));
+    const hasModel = models.some((m: { name: string }) => m.name.includes(OLLAMA_MODEL));
 
     return NextResponse.json({
       status: "available",
       ollamaUrl: OLLAMA_BASE_URL,
       model: OLLAMA_MODEL,
-      modelsInstalled: models.map((m: any) => m.name),
+      modelsInstalled: models.map((m: { name: string }) => m.name),
       modelAvailable: hasModel,
     });
   } catch (error) {
