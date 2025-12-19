@@ -19,6 +19,7 @@ import { getRelevantContext } from "@/lib/rag/knowledgeBase";
 
 const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://localhost:11434";
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "llama3.2";
+const OLLAMA_API_KEY = process.env.OLLAMA_API_KEY; // Optional API key for cloud Ollama
 
 interface ChatMessage {
   role: "system" | "user" | "assistant";
@@ -59,11 +60,25 @@ they are referring to "${currentProduct.name}". Always assume questions about "t
       ...messages.filter(m => m.role !== "system"),
     ];
 
-    const response = await fetch(`${OLLAMA_BASE_URL}/api/chat`, {
+    // Handle both localhost and cloud Ollama URLs
+    // If base URL already includes /api (cloud), use it directly; otherwise append /api
+    const apiUrl = OLLAMA_BASE_URL.includes('ollama.com') || OLLAMA_BASE_URL.endsWith('/api')
+      ? `${OLLAMA_BASE_URL}/chat`  // Cloud API: https://ollama.com/api/chat
+      : `${OLLAMA_BASE_URL}/api/chat`;  // Local: http://localhost:11434/api/chat
+    
+    // Prepare headers with API key if provided
+    const headers: HeadersInit = {
+      "Content-Type": "application/json",
+    };
+    
+    // Add API key for cloud Ollama (if provided)
+    if (OLLAMA_API_KEY) {
+      headers["Authorization"] = `Bearer ${OLLAMA_API_KEY}`;
+    }
+
+    const response = await fetch(apiUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify({
         model: OLLAMA_MODEL,
         messages: ollamaMessages,
@@ -166,8 +181,22 @@ export async function POST(request: Request) {
 export async function GET() {
   try {
     // Check if Ollama is available
-    const response = await fetch(`${OLLAMA_BASE_URL}/api/tags`, {
+    // Handle both localhost and cloud Ollama URLs
+    const tagsUrl = OLLAMA_BASE_URL.includes('ollama.com') || OLLAMA_BASE_URL.endsWith('/api')
+      ? `${OLLAMA_BASE_URL}/tags`  // Cloud API: https://ollama.com/api/tags
+      : `${OLLAMA_BASE_URL}/api/tags`;  // Local: http://localhost:11434/api/tags
+    
+    // Prepare headers with API key if provided
+    const headers: HeadersInit = {};
+    
+    // Add API key for cloud Ollama (if provided)
+    if (OLLAMA_API_KEY) {
+      headers["Authorization"] = `Bearer ${OLLAMA_API_KEY}`;
+    }
+    
+    const response = await fetch(tagsUrl, {
       method: "GET",
+      headers,
     });
 
     if (!response.ok) {
